@@ -144,7 +144,30 @@
     <option name="myCurrentFavoritesList" value="charva" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="Status.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/Status.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="72" selection-start="1101" selection-end="1101" vertical-scroll-proportion="0.56198347">
+              <folding>
+                <element signature="tag#td#0;tag#tr#0;tag#table#0;tag#body#0;tag#html#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Support.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docs/Support.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="256" column="47" selection-start="7982" selection-end="7982" vertical-scroll-proportion="0.8173077">
+              <folding>
+                <element signature="tag#td#0;tag#tr#0;tag#table#0;tag#body#0;tag#html#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -299,7 +322,7 @@
         <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\tmp\charva" />
+        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva" />
         <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
       </PATH_ELEMENT>
     </PATH>
@@ -313,15 +336,11 @@
         <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\tmp\charva" />
+        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva" />
         <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\tmp\charva\test" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\tmp\charva\test\src" />
+        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva\docs" />
         <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
       </PATH_ELEMENT>
     </PATH>
@@ -335,99 +354,15 @@
         <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\tmp\charva" />
+        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva" />
         <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\tmp\charva\java" />
+        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva\docs" />
         <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\tmp\charva\java\src" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-      </PATH_ELEMENT>
-    </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="charva.ipr" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="charva" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\tmp\charva" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\tmp\charva\java" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\tmp\charva\java\dist" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\tmp\charva\java\dist\lib" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-      </PATH_ELEMENT>
-    </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="charva.ipr" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="charva" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\tmp\charva" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\tmp\charva\docs" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-      </PATH_ELEMENT>
-    </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="charva.ipr" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="charva" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\tmp\charva" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\tmp\charva\docs" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\tmp\charva\docs\images" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-      </PATH_ELEMENT>
-    </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="charva.ipr" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="charva" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\tmp\charva" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\tmp\charva\c" />
+        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva\docs\images" />
         <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
       </PATH_ELEMENT>
     </PATH>
@@ -452,34 +387,34 @@
   <component name="PropertiesComponent">
     <property name="vcs_file_view_treeWidth2" value="214" />
     <property name="vcs_file_view_treeOrder4" value="4" />
-    <property name="cvs_file_history_treeWidth0" value="135" />
+    <property name="cvs_file_history_treeWidth0" value="170" />
     <property name="cvs_file_history_treeOrder4" value="4" />
-    <property name="cvs_file_history_flatWidth2" value="136" />
+    <property name="cvs_file_history_flatWidth2" value="171" />
     <property name="cvs_file_history_flatOrder4" value="4" />
     <property name="cvs_file_history_flatOrder1" value="1" />
-    <property name="cvs_file_history_flatWidth1" value="135" />
     <property name="vcs_file_view_flatWidth2" value="179" />
+    <property name="cvs_file_history_flatWidth1" value="171" />
     <property name="vcs_file_view_flatWidth5" value="179" />
-    <property name="cvs_file_history_flatOrder2" value="2" />
     <property name="vcs_file_view_flatOrder3" value="3" />
+    <property name="cvs_file_history_flatOrder2" value="2" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="cvs_file_history_flatWidth4" value="182" />
+    <property name="cvs_file_history_flatWidth4" value="217" />
     <property name="vcs_file_view_treeWidth0" value="336" />
     <property name="vcs_file_view_treeOrder0" value="0" />
     <property name="cvs_file_history_treeOrder5" value="5" />
     <property name="vcs_file_view_flatOrder4" value="4" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="cvs_file_history_flatOrder0" value="0" />
-    <property name="cvs_file_history_treeWidth4" value="136" />
+    <property name="cvs_file_history_treeWidth4" value="171" />
     <property name="cvs_file_history_treeOrder3" value="3" />
     <property name="vcs_file_view_flatWidth4" value="180" />
-    <property name="cvs_file_history_treeWidth6" value="135" />
+    <property name="cvs_file_history_treeWidth6" value="170" />
     <property name="vcs_file_view_flatOrder2" value="2" />
-    <property name="cvs_file_history_treeWidth3" value="135" />
+    <property name="cvs_file_history_treeWidth3" value="171" />
     <property name="vcs_file_view_treeWidth4" value="214" />
     <property name="cvs_file_history_flatOrder6" value="6" />
     <property name="vcs_file_view_treeWidth3" value="214" />
-    <property name="cvs_file_history_flatWidth3" value="135" />
+    <property name="cvs_file_history_flatWidth3" value="171" />
     <property name="vcs_file_view_flatOrder0" value="0" />
     <property name="vcs_file_view_flatWidth0" value="180" />
     <property name="vcs_file_view_flatWidth1" value="179" />
@@ -488,23 +423,23 @@
     <property name="vcs_file_view_flatOrder1" value="1" />
     <property name="cvs_file_history_treeOrder1" value="1" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="cvs_file_history_treeWidth1" value="135" />
+    <property name="cvs_file_history_treeWidth1" value="171" />
     <property name="cvs_file_history_treeOrder6" value="6" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="cvs_file_history_treeWidth2" value="136" />
+    <property name="cvs_file_history_treeWidth2" value="171" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="cvs_file_history_flatOrder3" value="3" />
-    <property name="cvs_file_history_flatWidth6" value="112" />
+    <property name="cvs_file_history_flatWidth6" value="147" />
     <property name="vcs_file_view_flatOrder5" value="5" />
     <property name="vcs_file_view_treeOrder3" value="3" />
     <property name="vcs_file_view_treeWidth1" value="113" />
     <property name="cvs_file_history_flatOrder5" value="5" />
-    <property name="cvs_file_history_flatWidth5" value="112" />
+    <property name="cvs_file_history_flatWidth5" value="148" />
     <property name="cvs_file_history_treeOrder2" value="2" />
     <property name="vcs_file_view_treeOrder2" value="2" />
-    <property name="cvs_file_history_treeWidth5" value="135" />
+    <property name="cvs_file_history_treeWidth5" value="171" />
     <property name="vcs_file_view_flatWidth3" value="179" />
-    <property name="cvs_file_history_flatWidth0" value="135" />
+    <property name="cvs_file_history_flatWidth0" value="170" />
     <property name="vcs_file_view_treeOrder1" value="1" />
     <property name="cvs_file_history_treeOrder0" value="0" />
   </component>
@@ -515,6 +450,15 @@
   <component name="RestoreUpdateTree" />
   <component name="RunManager">
     <activeType name="Remote" />
+    <configuration selected="false" default="true" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <module name="" />
+    </configuration>
     <configuration selected="false" default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -543,22 +487,6 @@
         <value defaultName="wholeProject" />
       </option>
     </configuration>
-    <configuration selected="false" default="true" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <module name="" />
-    </configuration>
-    <configuration selected="false" default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-    </configuration>
     <configuration selected="false" default="true" type="WebLogic Instance" factoryName="Local">
       <option name="WORKING_DIRECTORY" />
       <option name="HOST" value="localhost" />
@@ -572,6 +500,13 @@
       <option name="PASSWORD" value="weblogic" />
       <option name="SERVER_NAME" value="myserver" />
       <option name="DOMAIN_NAME" value="mydomain" />
+    </configuration>
+    <configuration selected="false" default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
     </configuration>
     <configuration selected="true" default="false" name="Tutorial" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -629,24 +564,24 @@
       <window_info id="Colour Chooser" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="3" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.6351145" order="8" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="6" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.25080907" order="0" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.25485438" order="0" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.47272727" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.24693878" order="1" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.42954546" order="9" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.4" order="5" />
-      <window_info id="IdeaSpring" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="8" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="3" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="8" />
       <window_info id="Favorites" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.32928804" order="3" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.12783171" order="1" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.12783171" order="1" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="2" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.249742" order="2" />
       <window_info id="Dilbert" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="8" />
       <window_info id="File View" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.8907767" order="3" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.4" order="3" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="sliding" type="sliding" visible="false" weight="0.4" order="0" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="8" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.32954547" order="8" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="0" />
+      <window_info id="IdeaSpring" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="8" />
       <window_info id="Message Pane" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="10" />
       <window_info id="CVS File View" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.99285716" order="3" />
       <window_info id="Properties Pane" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.3298969" order="3" />
@@ -738,89 +673,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/docs/Status.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="671" column="28" selection-start="23363" selection-end="23363" vertical-scroll-proportion="0.8546798">
-          <folding>
-            <element signature="tag#td#0;tag#tr#0;tag#table#0;tag#body#0;tag#html#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/c/src/README.win32.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="4" selection-start="1605" selection-end="1605" vertical-scroll-proportion="0.46916565">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/Support.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="231" column="31" selection-start="6798" selection-end="6798" vertical-scroll-proportion="0.43772674">
-          <folding>
-            <element signature="tag#td#0;tag#tr#0;tag#table#0;tag#body#0;tag#html#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/Screenshots.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="19" selection-start="1595" selection-end="1595" vertical-scroll-proportion="0.020556228">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wintest.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="63" selection-start="835" selection-end="835" vertical-scroll-proportion="0.2929448">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="254" column="4" selection-start="8224" selection-end="8224" vertical-scroll-proportion="0.020556228">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/Contribute.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="236" column="22" selection-start="7076" selection-end="7076" vertical-scroll-proportion="0.46305418">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/Documentation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="244" column="35" selection-start="7633" selection-end="7633" vertical-scroll-proportion="0.5041322">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/Download.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="390" column="21" selection-start="13762" selection-end="13762" vertical-scroll-proportion="0.44391972">
-          <folding>
-            <element signature="tag#td#0;tag#tr#0;tag#table#0;tag#body#0;tag#html#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="12" selection-start="1499" selection-end="1499" vertical-scroll-proportion="0.5973558">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/FAQ.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="908" column="56" selection-start="37545" selection-end="37545" vertical-scroll-proportion="0.020070838">
@@ -846,6 +698,68 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="61" column="24" selection-start="1587" selection-end="1587" vertical-scroll-proportion="0.020070838">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/images/fig1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/images/charva1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/images/fig2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/images/fig3.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/images/fig4.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/images/fig5.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/images/java1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Download.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="231" column="55" selection-start="6798" selection-end="6836" vertical-scroll-proportion="0.6422668">
+          <folding>
+            <element signature="tag#td#0;tag#tr#0;tag#table#0;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Status.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="72" selection-start="1101" selection-end="1101" vertical-scroll-proportion="0.56198347">
+          <folding>
+            <element signature="tag#td#0;tag#tr#0;tag#table#0;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Support.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="256" column="47" selection-start="7982" selection-end="7982" vertical-scroll-proportion="0.8173077">
+          <folding>
+            <element signature="tag#td#0;tag#tr#0;tag#table#0;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

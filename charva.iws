@@ -159,38 +159,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="KeyEvent.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/java/src/charva/awt/event/KeyEvent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="13" selection-start="976" selection-end="976" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="animal_cz.gif" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/images/animal_cz.gif">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="animal_en.gif" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/images/animal_en.gif">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Toolkit.c" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/c/src/Toolkit.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="758" column="16" selection-start="20017" selection-end="20017" vertical-scroll-proportion="0.9371221">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="README.win32.txt" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/c/src/README.win32.txt">
           <provider selected="true" editor-type-id="text-editor">
@@ -203,43 +171,81 @@
       <file leaf-file-name="FAQ.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/FAQ.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="801" column="53" selection-start="32975" selection-end="32975" vertical-scroll-proportion="0.66142684">
+            <state line="52" column="27" selection-start="1395" selection-end="1395" vertical-scroll-proportion="0.53808945">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.txt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.txt">
+      <file leaf-file-name="Features.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/Features.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="51" column="27" selection-start="1380" selection-end="1380" vertical-scroll-proportion="0.7400242">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wintest.bat" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/wintest.bat">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.18842365">
+            <state line="51" column="27" selection-start="1380" selection-end="1380" vertical-scroll-proportion="0.86336154">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.sh" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.sh">
+      <file leaf-file-name="Licence.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/Licence.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="48" selection-start="832" selection-end="832" vertical-scroll-proportion="0.24630542">
+            <state line="52" column="27" selection-start="1395" selection-end="1395" vertical-scroll-proportion="0.6989117">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tutorial.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/src/tutorial/charva/Tutorial.java">
+      <file leaf-file-name="Screenshots.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/Screenshots.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="863" column="45" selection-start="32683" selection-end="32683" vertical-scroll-proportion="0.15598549">
+            <state line="52" column="27" selection-start="1395" selection-end="1395" vertical-scroll-proportion="0.6989117">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Status.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/Status.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="27" selection-start="1377" selection-end="1377" vertical-scroll-proportion="0.18500605">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Support.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docs/Support.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="37" column="41" selection-start="1028" selection-end="1028" vertical-scroll-proportion="0.46059114">
+              <folding>
+                <element signature="tag#td#0;tag#tr#0;tag#table#0;tag#body#0;tag#html#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Documentation.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/Documentation.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="52" column="27" selection-start="1395" selection-end="1395" vertical-scroll-proportion="0.6989117">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Download.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/Download.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="52" column="27" selection-start="1395" selection-end="1395" vertical-scroll-proportion="0.33497536">
               <folding />
             </state>
           </provider>
@@ -403,6 +409,24 @@
       </PATH_ELEMENT>
       <PATH_ELEMENT>
         <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva" />
+        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="charva.ipr" />
+        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="charva" />
+        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva" />
+        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva\docs" />
         <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
       </PATH_ELEMENT>
     </PATH>
@@ -617,7 +641,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.12652068" order="1" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="2" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.249742" order="2" />
-      <window_info id="Dilbert" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="8" />
+      <window_info id="Dilbert" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.32954547" order="8" />
       <window_info id="File View" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.890511" order="3" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.4" order="3" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="sliding" type="sliding" visible="false" weight="0.4" order="0" />
@@ -644,7 +668,7 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="PUT_FOCUS_INTO_COMMENT" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Apply fixes contributed by Urban Leos for fixing the handling of FocusEvents" />
+    <option name="LAST_COMMIT_MESSAGE" value="Apply code contributed by Urban Leos for handling UTF-8 characters" />
     <option name="SAVE_LAST_COMMIT_MESSAGE" value="true" />
     <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -660,6 +684,7 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="Get CVS and local copy into sync." />
     <MESSAGE value="Apply fixes contributed by Urban Leos for fixing the handling of FocusEvents" />
+    <MESSAGE value="Apply code contributed by Urban Leos for handling UTF-8 characters" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -718,91 +743,9 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/docs/Documentation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="17" selection-start="637" selection-end="637" vertical-scroll-proportion="0.43965518">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/java/src/charva/awt/EventQueue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="11" selection-start="2102" selection-end="2102" vertical-scroll-proportion="0.37363967">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Component.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="396" column="16" selection-start="12490" selection-end="12490" vertical-scroll-proportion="0.33251232">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/c/src/Makefile.linux.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="50" selection-start="612" selection-end="612" vertical-scroll-proportion="0.32889965">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Toolkit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="7" selection-start="4697" selection-end="4697" vertical-scroll-proportion="-12.986699">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/java/src/charva/awt/event/KeyEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="13" selection-start="976" selection-end="976" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/images/animal_cz.gif">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="48" selection-start="832" selection-end="832" vertical-scroll-proportion="0.24630542">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/src/tutorial/charva/Tutorial.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="863" column="45" selection-start="32683" selection-end="32683" vertical-scroll-proportion="0.15598549">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/images/animal_en.gif">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/c/src/Toolkit.c">
       <provider selected="true" editor-type-id="text-editor">
         <state line="758" column="16" selection-start="20017" selection-end="20017" vertical-scroll-proportion="0.9371221">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/c/src/README.win32.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.78839177">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/FAQ.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="801" column="53" selection-start="32975" selection-end="32975" vertical-scroll-proportion="0.66142684">
           <folding />
         </state>
       </provider>
@@ -816,8 +759,94 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wintest.bat">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.18842365">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Applications.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="27" selection-start="1705" selection-end="1712" vertical-scroll-proportion="0.6166868">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Contribute.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="27" selection-start="1395" selection-end="1395" vertical-scroll-proportion="0.5862069">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Documentation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="27" selection-start="1395" selection-end="1395" vertical-scroll-proportion="0.6989117">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Download.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="27" selection-start="1395" selection-end="1395" vertical-scroll-proportion="0.33497536">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/c/src/README.win32.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.78839177">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/FAQ.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="27" selection-start="1395" selection-end="1395" vertical-scroll-proportion="0.53808945">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Features.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="27" selection-start="1380" selection-end="1380" vertical-scroll-proportion="0.7400242">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="27" selection-start="1380" selection-end="1380" vertical-scroll-proportion="0.86336154">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Licence.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="27" selection-start="1395" selection-end="1395" vertical-scroll-proportion="0.6989117">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Screenshots.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="27" selection-start="1395" selection-end="1395" vertical-scroll-proportion="0.6989117">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Status.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="27" selection-start="1377" selection-end="1377" vertical-scroll-proportion="0.18500605">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Support.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="41" selection-start="1028" selection-end="1028" vertical-scroll-proportion="0.46059114">
+          <folding>
+            <element signature="tag#td#0;tag#tr#0;tag#table#0;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

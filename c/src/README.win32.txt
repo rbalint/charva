@@ -1,18 +1,18 @@
 BUILDING Terminal.dll AND RUNNING THE CHARVA TUTORIAL ON Win32
 ==============================================================
 
-10 March, 2004.
+7 August, 2006.
 
-The file "Terminal.dll", built using MinGW32 version 2.0.0 and PDCurses 2.6,
-is included in this directory. It may work for you. If not, you can build
-a version for your Win32 system using the procedure below.
+The file "Terminal.dll", built using MinGW32 version 4.1 and PDCurses 2.6,
+is included in the directory %CHARVA_HOME%\c\lib. It may work for you. If not,
+you can build a version for your Win32 system using the procedure below.
 
 BUILDING Terminal.dll
 =====================
 First, download and install the following packages, with the specified
 versions or later:
 
-    MinGW32 version 2.0.0. with all recommended updates 
+    MinGW32 version 4.1. with all recommended updates
 	( http://sourceforge.net/projects/mingw/ )
 
     MSYS version 1.0.8
@@ -22,8 +22,8 @@ versions or later:
 	( http://sourceforge.net/projects/pdcurses/ )
 
 
-On my system (I have tested this on Windows 98 Second Edition and
-on Windows 2000):
+On my system (I have tested this on Windows 98 Second Edition, Windows 2000 and
+Windows XP professional):
 
     MinGW is installed in C:\MinGW
 
@@ -74,7 +74,7 @@ Start up a DOS prompt or command shell or whatever you call it.
 	C:\charva> wintest.bat
 
 
-The tutorial application works OK on Windows 2000. Note that
+The tutorial application works OK on Windows 2000 and Windows XP. Note that
 the "underline" text attribute doesn't work on Win32; it seems this
 is a bug in PDCurses.
 

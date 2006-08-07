@@ -1,3 +1,6 @@
+This is version 1.1.2 of Charva.
+===============================
+
 For instructions on building and installing this software, look at the
 file "docs/Download.html".
 

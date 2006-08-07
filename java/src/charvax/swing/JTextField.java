@@ -32,6 +32,15 @@ import java.util.Vector;
  * The JTextField class, being a subclass of JComponent, has a setBorder()
  * method which allows an optional Border to be set.
  */
+
+/**
+ * Support for
+    public void setBounds( Rectangle bounds )
+    public void setBounds( int top_, int left_, int bottom_, int right_)
+    public void setBounds(Point topleft_, Dimension size_)
+ *
+ *
+ */
 public class JTextField
         extends JTextComponent {
 
@@ -84,6 +93,22 @@ public class JTextField
             padbuf.append(' ');
         _padding = new String(padbuf);
         super.invalidate();
+    }
+
+    public void setBounds( Rectangle bounds ) {
+        super.setBounds(bounds);
+        setColumns(bounds.getRight() - bounds.getLeft() + 1 );
+
+    }
+
+    public void setBounds( int top_, int left_, int bottom_, int right_) {
+        super.setBounds(top_,left_,bottom_, right_);
+        setColumns( right_ -  left_ + 1);
+    }
+
+    public void setBounds(Point topleft_, Dimension size_) {
+        super.setBounds(topleft_, size_);
+        setColumns( size_.width );
     }
 
     /**

@@ -17,6 +17,27 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+/*
+ * Support for 
+     public void setBounds( Rectangle bounds )
+     public void setBounds( int top_, int left_, int bottom_, int right_) 
+     public void setBounds(Point topleft_, Dimension size_)
+
+* Change of
+     protected Container getParent() by 
+     public Container getParent()
+
+* Correct manage of KeysEvents ( Lost and Gained )
+    public void addKeyListener(KeyListener kl_)
+
+* Correct manage of FocusEvents ( Lost and Gained )
+    public void addFocusListener(FocusListener fl_)
+    public void requestFocus() 
+
+ *
+ *
+ */
+
 package charva.awt;
 
 import charva.awt.event.*;
@@ -155,6 +176,18 @@ public abstract class Component {
         return new Rectangle(_origin, getSize());
     }
 
+    public void setBounds( Rectangle bounds ) {
+        setLocation(bounds.getLeft(), bounds.getTop());
+    }
+
+    public void setBounds( int top_, int left_, int bottom_, int right_) {
+        setLocation(left_, top_ );
+    }
+
+    public void setBounds(Point topleft_, Dimension size_) {
+        setLocation(topleft_ );
+    }
+
     /**
      * Checks whether this component "contains" the specified point,
      * where the point's x and y coordinates are defined to be relative
@@ -192,7 +225,7 @@ public abstract class Component {
      * Get the parent container of this component. Can return null if the
      * component has no parent.
      */
-    protected Container getParent() {
+    public Container getParent() {
         if (_parent == null)
             return null;
 
@@ -207,7 +240,9 @@ public abstract class Component {
     public void addKeyListener(KeyListener kl_) {
         if (_keyListeners == null)
             _keyListeners = new Vector();
-        _keyListeners.add(kl_);
+        if ( ! _keyListeners.contains(kl_)) {
+           _keyListeners.add(kl_);
+        }
     }
 
     /**
@@ -216,7 +251,9 @@ public abstract class Component {
     public void addFocusListener(FocusListener fl_) {
         if (_focusListeners == null)
             _focusListeners = new Vector();
-        _focusListeners.add(fl_);
+        if ( ! _focusListeners.contains(fl_)) {
+            _focusListeners.add(fl_);
+        }
     }
 
     /**
@@ -292,6 +329,7 @@ public abstract class Component {
      * for this component.
      */
     public void processFocusEvent(FocusEvent fe_) {
+        //System.err.println( "procFocusEvent:" + this.toString() + " ev:" + fe_.toString() );
         if (_focusListeners != null) {
             for (Enumeration e = _focusListeners.elements();
                  e.hasMoreElements();) {
@@ -316,7 +354,7 @@ public abstract class Component {
             return (Window) this;
 
         for (ancestor = getParent();
-             (ancestor instanceof Window) == false;
+             !(ancestor instanceof Window);
              ancestor = nextancestor) {
 
             if (ancestor == null)
@@ -334,20 +372,48 @@ public abstract class Component {
      * FOCUS_GAINED event when the component gains the keyboard focus.
      */
     public void requestFocus() {
-
+        boolean temporary = false;
         /* Generate the FOCUS_GAINED only if the component does not
          * already have the focus.
          */
         Window ancestor = getAncestorWindow();
         Component currentFocus = ancestor.getCurrentFocus();
-        if (currentFocus != this) {
+        Window sourcewin = Toolkit.getDefaultToolkit().getTopWindow(); 
+        Component currentFocusX = sourcewin.getCurrentFocus();
+     /*
+        System.err.println( "requestFocus1: " + toString() );
+        System.err.println( "currentFocus2: " + currentFocusX.toString() );
+      */
+        if (currentFocus != this ||
+            ( currentFocusX == this && ! _hadFocus )) {
+            _hadFocus = true;
             EventQueue evtQueue =
                     Toolkit.getDefaultToolkit().getSystemEventQueue();
-            FocusEvent evt = new FocusEvent(AWTEvent.FOCUS_LOST, currentFocus);
-            evtQueue.postEvent(evt);
+            FocusEvent evt;
+            FocusEvent lastEvt = Toolkit.getDefaultToolkit().getLastFocusEvent();
 
-            evt = new FocusEvent(AWTEvent.FOCUS_GAINED, this);
+            if ( lastEvt != null ) {
+                currentFocus = (Component)lastEvt.getSource();
+                if ( currentFocus != null &&
+                     currentFocus.getAncestorWindow() != null &&
+                     currentFocus.getAncestorWindow().isEnabled() &&
+                     currentFocus.getAncestorWindow() != ancestor ) {
+                     temporary = true;
+                }
+                else {
+                     temporary = false;
+                }
+                evt = new FocusEvent(AWTEvent.FOCUS_LOST, currentFocus, temporary, this);
+                evtQueue.postEvent(evt);
+                //System.err.println( "DisparoFocusLost: " + currentFocus.toString() + " Window:" + currentFocus.getAncestorWindow().toString() + " //" + currentFocus.getAncestorWindow().isValid() );
+            }
+            else {
+                currentFocus = null;
+            }
+
+            evt = new FocusEvent(AWTEvent.FOCUS_GAINED, this,  temporary, currentFocus);
             evtQueue.postEvent(evt);
+            //System.err.println( "DisparoFocusGained: " + this.toString() + " Window:" + ancestor.toString() );
 
 //	    if (getParent() != null)
             getParent().setFocus(this);
@@ -517,7 +583,7 @@ public abstract class Component {
      * (this is done by posting a RepaintEvent onto the system queue).
      */
     public void repaint() {
-        if (isDisplayed() == false)
+        if (!isDisplayed())
             return;
 
         PaintEvent evt = new PaintEvent(this, getBounds());
@@ -585,6 +651,8 @@ public abstract class Component {
 
     //====================================================================
     // INSTANCE VARIABLES
+
+    private boolean _hadFocus = false;
 
     /**
      * The coordinates of the top-left corner of the component, relative to

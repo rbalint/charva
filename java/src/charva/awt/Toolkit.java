@@ -34,6 +34,7 @@ import charva.awt.event.AWTEvent;
 import charva.awt.event.GarbageCollectionEvent;
 import charva.awt.event.KeyEvent;
 import charva.awt.event.MouseEvent;
+import charva.awt.event.FocusEvent;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -48,6 +49,12 @@ import java.util.Vector;
  * The default colors are white foreground and black background, but
  * these defaults can be modified by changing the static variables
  * _defaultForeground and _defaultBackground.
+ */
+
+/**
+ * Correct manage of FocusEvents
+    public FocusEvent getLastFocusEvent() 
+    protected void setLastFocusEvent(FocusEvent ev_ )
  */
 public class Toolkit {
     /**
@@ -151,6 +158,14 @@ public class Toolkit {
             id = AWTEvent.KEY_TYPED;
 
         _evtQueue.postEvent(new KeyEvent(key_, id, source_));
+    }
+
+    public FocusEvent getLastFocusEvent() {
+        return _lastFocusEvent;
+    }
+
+    protected void setLastFocusEvent(FocusEvent ev_ ) {
+        _lastFocusEvent = ev_;
     }
 
     /**
@@ -774,6 +789,8 @@ public class Toolkit {
     // INSTANCE VARIABLES
 
     private static Toolkit _instance = null;
+
+    private static FocusEvent _lastFocusEvent = null;
 
     /**
      * A list of visible Windows.  The first in the list is at the bottom, the

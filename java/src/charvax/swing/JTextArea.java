@@ -43,6 +43,13 @@ import java.util.Vector;
  * javax.swing) the user can user can use the mouse to move the keyboard
  * input focus away from the JTextArea, whereas CHARVA has no mouse support.
  */
+
+/**
+ * Support for
+    public void setBounds( Rectangle bounds )
+    public void setBounds( int top_, int left_, int bottom_, int right_)
+    public void setBounds(Point topleft_, Dimension size_)
+ */
 public class JTextArea
         extends charvax.swing.text.JTextComponent
         implements charva.awt.Scrollable {
@@ -75,6 +82,26 @@ public class JTextArea
         _preferredColumns = columns_;
         setCaretPosition(0);
     }
+
+    public void setBounds( Rectangle bounds ) {
+        super.setBounds(bounds);
+        setColumns(bounds.getRight() - bounds.getLeft() + 1 );
+        setRows(bounds.getBottom() - bounds.getTop() + 1 );
+    }
+
+    public void setBounds( int top_, int left_, int bottom_, int right_) {
+        super.setBounds(top_,left_,bottom_,right_);
+        setColumns( right_ -  left_ + 1);
+        setRows( bottom_ - top_ + 1);
+  
+    }
+
+    public void setBounds(Point topleft_, Dimension size_) {
+        super.setBounds(topleft_, size_);
+        setColumns( size_.width );
+        setRows( size_.height );
+    }
+
 
     /**
      * Sets the number of columns in this JTextArea.

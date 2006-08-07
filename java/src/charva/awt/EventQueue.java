@@ -20,6 +20,7 @@
 package charva.awt;
 
 import charva.awt.event.AWTEvent;
+import charva.awt.event.FocusEvent;
 import charva.awt.event.InvocationEvent;
 import charva.awt.event.SyncEvent;
 
@@ -36,6 +37,10 @@ import java.util.LinkedList;
  * SyncEvents are enqueued with a lower priority than other events, and
  * if multiple SyncEvents are found on the queue they are coalesced into
  * a single SyncEvent.
+ */
+
+/**
+ * Correct manage of FocusEvents ( Lost and Gained )
  */
 public class EventQueue {
 
@@ -54,13 +59,16 @@ public class EventQueue {
     }
 
     public synchronized void postEvent(AWTEvent evt_) {
+        if ( evt_.getID() == AWTEvent.FOCUS_GAINED ) {  
+           Toolkit.getDefaultToolkit().setLastFocusEvent( (FocusEvent)evt_ );
+        }
         addLast(evt_);
         notifyAll();	    // wake up the dequeueing thread
     }
 
     /**
      * Block until an event is available, then return the event.
-     * @return the AWTEvent
+     * @return the next available AWTEvent
      */
     public synchronized AWTEvent waitForNextEvent() {
 

@@ -19,7 +19,6 @@
 
 package charva.awt.event;
 
-import charva.awt.event.AWTEvent;
 import charva.awt.*;
 
 /**
@@ -29,9 +28,15 @@ import charva.awt.*;
  * registered to receive such events using the object's addFocusListener()
  * method.
  */
+
+/**
+ * Correct manage of FocusEvents.
+ */
 public class FocusEvent
     extends AWTEvent
 {
+    private boolean temporary=false;
+    private transient Component opposite=null;
     /**
      * Create a new FocusEvent.
      * @param id_ The event identifier. Must be FOCUS_LOST or FOCUS_GAINED.
@@ -41,8 +46,22 @@ public class FocusEvent
 	super(source_, id_);
     }
 
+    public FocusEvent(int id_, Component source_, boolean temporary, Component opposite) {
+	super(source_, id_);
+        this.temporary = temporary;
+        this.opposite = opposite;
+    }
+
+    public Component getOppositeComponent() {
+       return opposite;
+    }
+
+    public boolean isTemporary() {
+       return temporary;
+    }
+
     public String toString() {
 	return ("FocusEvent: source=[" + getSource() + "] id=" + 
-	    ((getID() == FOCUS_LOST) ? "FOCUS_LOST" : "FOCUS_GAINED"));
+	    ((getID() == FOCUS_LOST) ? "FOCUS_LOST" : "FOCUS_GAINED") + " temp=" + temporary + " opposite=[" + ((opposite != null) ? opposite.toString() : "NULL" ) + "]");
     }
 }

@@ -196,18 +196,18 @@
 
         <tr><td>
             <script type="text/javascript"><!--
-    google_ad_client = "pub-1886875109433545";
-    google_ad_width = 160;
-    google_ad_height = 600;
-    google_ad_format = "160x600_as";
-    google_ad_type = "text";
-    google_ad_channel ="";
-    google_color_border = "336699";
-    google_color_bg = "FFFFFF";
-    google_color_link = "0000FF";
-    google_color_url = "008000";
-    google_color_text = "000000";
-    //--></script>
+            google_ad_client = "pub-1886875109433545";
+            google_ad_width = 160;
+            google_ad_height = 600;
+            google_ad_format = "160x600_as";
+            google_ad_type = "text";
+            google_ad_channel = "";
+            google_color_border = "336699";
+            google_color_bg = "FFFFFF";
+            google_color_link = "0000FF";
+            google_color_url = "008000";
+            google_color_text = "000000";
+            //--></script>
             <script type="text/javascript"
                     src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
             </script>
@@ -691,7 +691,7 @@
 
                 <p>
                 <pre>
-           System.setProperty("charva.color","");
+                    System.setProperty("charva.color","");
                 </pre>
 
                 <p>
@@ -786,15 +786,23 @@
     </tr>
 
 <tr>
-    <td class="question"><i>Is Charva capable of handling Asian
-        character sets?</i></td>
+    <td class="question"><i>Is Charva capable of handling non-ASCII character sets?</i></td>
     <tr>
         <td class="answer">
-            Currently, it doesn't. I think that it should theoretically be possible to
-            modify it to support wide (multibyte) character sets, using the
-            <code>add_wch</code> function provided by ncurses; but I am not familiar
-            with multibyte character support. I'd welcome help from Asian programmers
-            in implementing this.
+            <b>Leos Urban</b> has kindly added support for unicode (UTF-8) characters. The changes
+            mainly involved linking with <b>libncursesw</b> instead of <b>libncurses</b>. To quote
+            Leos' email: &quot;I send to you my changes to Charva, tested with Linux (Fedora Core 5).
+            With my changes I can display unicode (UTF-8) characters without problem
+            (see attached screenshot <a href="images/animal_cz.gif">animal_cz.gif</a>
+            - grabbed from linux with cs_CZ.UTF-8 locale)&quot;.
+
+            <p>The English version of the same screen is
+                <a href="images/animal_en.gif">animal_en.gif</a></p>
+
+            <p>According to Leos, there are some limitations to the UTF-8 support:
+                &quot;With JTextArea I cannot type any national characters, after some changes
+                I can type most of characters in JTextEdit (but 0x11b and 0x10d do simply
+                nothing and 0x161 works as backtab).&quot; </p>
         </td>
     </tr>
 
@@ -836,10 +844,10 @@
             Just create a subclass of JFrame that has zero-width insets, as follows:
             <pre>
                 public class MyFrame extends JFrame {
-                    public MyFrame() {
-                        super();
-                        super._insets = new Insets(0, 0, 0, 0);
-                    }
+                public MyFrame() {
+                super();
+                super._insets = new Insets(0, 0, 0, 0);
+                }
                 }
             </pre>
             Then just use your customized subclass instead of JFrame - it will draw itself without
@@ -905,9 +913,9 @@
                 .
                 .
                 try {
-                    toolkit.print(<var>String_to_be_printed</var>);
+                toolkit.print(<var>String_to_be_printed</var>);
                 } catch (TerminfoCapabilityException e) {
-                    ...
+                ...
                 }
             </pre>
             Thanks to Craig O'Shannessy for information about this issue.

@@ -53,7 +53,7 @@ import java.util.Vector;
 
 /**
  * Correct manage of FocusEvents
-    public FocusEvent getLastFocusEvent() 
+    public FocusEvent getLastFocusEvent()
     protected void setLastFocusEvent(FocusEvent ev_ )
  */
 public class Toolkit {
@@ -152,10 +152,10 @@ public class Toolkit {
      */
     public void fireKeystroke(int key_, Component source_) {
         int id;
-        if (key_ > 255 || key_ < ' ')
-            id = AWTEvent.KEY_PRESSED;
-        else
+        if (Toolkit.isActionKey(key_))
             id = AWTEvent.KEY_TYPED;
+        else
+            id = AWTEvent.KEY_PRESSED;
 
         _evtQueue.postEvent(new KeyEvent(key_, id, source_));
     }
@@ -784,6 +784,52 @@ public class Toolkit {
      * characters using curses/ncurses.
      */
     private static native int getACSchar(int offset_);
+
+ /**
+     * Returns true if the key code is greater than 255, indicating
+     * that it is a function key.
+     */
+    //public boolean isActionKey() { return (_key >= 256); }
+    public static boolean isActionKey( int _key )
+    {
+        boolean value = false;
+        if ( _key == charva.awt.event.KeyEvent.VK_ESCAPE ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_DOWN ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_UP ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_LEFT ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_RIGHT ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_HOME ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_BACK_SPACE ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F1 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F2 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F3 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F4 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F5 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F6 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F7 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F8 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F9 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F10 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F11 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F12 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F13 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F14 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F15 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F16 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F17 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F18 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F19 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_F20 ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_DELETE ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_INSERT ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_PAGE_DOWN ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_PAGE_UP ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_ENTER ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_BACK_TAB ) value=true;
+        if ( _key == charva.awt.event.KeyEvent.VK_END ) value=true;
+
+        return (value);
+    }
 
     //====================================================================
     // INSTANCE VARIABLES

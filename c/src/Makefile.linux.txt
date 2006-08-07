@@ -6,14 +6,16 @@ SHARED_OBJECT_EXT = so
 TARGET = libTerminal.${SHARED_OBJECT_EXT}
 
 CC = gcc
-CFLAGS = -fpic -shared
+# "-D_USE_NCURSESW" was added for handling UTF-8 characters (contributed by Urban Leos)
+CFLAGS = -fpic -shared -D_USE_NCURSESW_
 
 # The file "jni.h" is in ${JAVA_HOME}/include
 # The file "jni_md.h" (included from jni.h) contains machine-dependent 
 # type definitions and is in ${JAVA_HOME}/include/${OS}
 INCLUDES = -I${JAVA_HOME}/include -I${JAVA_HOME}/include/${OS} -I../include
 
-LIBS = -lncurses
+# Changed "-lncurses" to "-lncursesw" (Urban Leos)
+LIBS = -lncursesw
 
 
 all : ${TARGET}

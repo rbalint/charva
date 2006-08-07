@@ -35,6 +35,9 @@
 #elif (defined _USE_CURSES_)
     #include <curses.h>
     #include <term.h>
+#elif (defined _USE_NCURSESW_)
+    #include <locale.h>
+    #include <ncursesw/curses.h>
 #else
     // Default is to use ncurses
     #include <ncurses.h>
@@ -49,6 +52,8 @@
 static void my_move(int y_, int x_);
 static void my_addch(int chr_);
 static void my_addch_with_clip(int chr_);
+static int is_special_drawing(int chr_);
+static int my_readkey();
 
 //************************************************************************
 // LOCAL VARIABLES
@@ -170,6 +175,11 @@ JNIEXPORT void JNICALL Java_charva_awt_Toolkit_init
     char *strcap;
     int i;
 
+#if (defined _USE_NCURSESW_)
+    // tested with "cs_CZ.UTF-8" setting, must work with any setting
+    setlocale(LC_ALL,""); // from environment (LANG)
+#endif
+
     initscr();
     keypad(stdscr, TRUE);   // enable keyboard mapping
     timeout(100);           // wait up to 100msec for input
@@ -196,6 +206,51 @@ JNIEXPORT void JNICALL Java_charva_awt_Toolkit_init
     Java_charva_awt_Toolkit_resetClipRect(env, jo);
 }
 
+
+/* 
+ * read a key as UTF-8 and return unicode character 
+ * Worked with one and two bytes characters only.
+ */
+static int my_readkey()
+{
+   int utf[6] = {0,0,0,0,0,0};
+   int c = 0;
+   utf[0] = getch();
+   if (utf[0]==-1) return -1;
+   if ( (utf[0] & 0x80) == 0 )
+   { //0xxxxxxxx (1 byte UTF-8)
+     c = utf[0];
+   }
+   if ( (utf[0] & 0xC0) == 0xC0 )
+   { //110xxxxx 10xxxxxx ( 2 byte UTF-8 )
+     utf[1] = getch();
+     if (utf[1]==-1) return -1;
+     c = (utf[0] & 0x1f)*0x40 + (utf[1] & 0x3f);
+   }
+   if ( (utf[0] & 0x70) == 0x70 )
+   { //1110xxxx 10xxxxxx 10xxxxxx ( 3 byte UTF-8 )
+     // cannot be tested = not supported :-(
+     // must be similar to 2 byte encoding
+   }
+   if ( (utf[0] & 0xf0) == 0xf0 )
+   { //11110xxx 10xxxxxx 10xxxxxx 10xxxxxx( 4 byte UTF-8 )
+     // cannot be tested = not supported :-(
+     // must be similar to 2 byte encoding
+   }
+   if ( (utf[0] & 0xf8) == 0xf8 )
+   { //111110xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx( 5 byte UTF-8 )
+     // cannot be tested = not supported :-(
+     // must be similar to 2 byte encoding
+   }
+   if ( (utf[0] & 0xfc) == 0xfc )
+   { //1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx ( 6 byte UTF-8 )
+     // cannot be tested = not supported :-(
+     // must be similar to 2 byte encoding
+   }
+
+   return c;
+}
+
 // Returns -1 if there was no character to read.
 // Otherwise returns the character that was read.
 JNIEXPORT jint JNICALL Java_charva_awt_Toolkit_readKey
@@ -204,7 +259,11 @@ JNIEXPORT jint JNICALL Java_charva_awt_Toolkit_readKey
     jint c;	// defined as a long for Linux.
 
 try_again:
+#if (defined _USE_NCURSESW_)
+    c = (jint) my_readkey();
+#else
     c = (jint) getch();
+#endif
 
  // THIS HAS ALL CHANGED: getch() is now called from the event-dispatching thread!!! (November 2004)
     // There are two known scenarios in which getch() returns ERR.
@@ -273,12 +332,14 @@ JNIEXPORT void JNICALL Java_charva_awt_Toolkit_addString
     }
     else {
 	    for (i=0; i<stringlength; i++) {
+                attron(attr);
 	        if (cursorx >= left && cursorx <= right)
-		        my_addch(chrs[i] | attr);
+		        my_addch(chrs[i]);
 	        else {
 		        cursorx++;
 		        move(cursory, cursorx);
 	        }
+                attroff(attr);
 	    }
     }
 
@@ -293,7 +354,9 @@ JNIEXPORT void JNICALL Java_charva_awt_Toolkit_addChar
     if (colors_started)
 	attr |= COLOR_PAIR(colorpair_);
 
-    my_addch_with_clip(chr_ | attr);
+    attron(attr);
+    my_addch_with_clip(chr_);
+    attroff(attr);
 }
 
 JNIEXPORT void JNICALL Java_charva_awt_Toolkit_drawBoxNative
@@ -309,25 +372,25 @@ JNIEXPORT void JNICALL Java_charva_awt_Toolkit_drawBoxNative
     // to draw the top.
     if (top_ >= top && top_ <= bottom) {
 	    my_move(top_, left_);
-	    my_addch_with_clip(ACS_ULCORNER | attr);    // upper left corner
+	    my_addch_with_clip(ACS_ULCORNER);    // upper left corner
 
 	    for (i=left_+1; i<right_; i++) {
-	        my_addch_with_clip(ACS_HLINE | attr);   // top horizontal line
+	        my_addch_with_clip(ACS_HLINE );   // top horizontal line
 	    }
 
-	    my_addch_with_clip(ACS_URCORNER | attr);    // upper right corner
+	    my_addch_with_clip(ACS_URCORNER);    // upper right corner
     }
 
     // If the bottom of the box is outside the clipping rectangle, don't bother
     if (bottom_ >= top && bottom_ <= bottom) {
 	    my_move(bottom_, left_);
-	    my_addch_with_clip(ACS_LLCORNER | attr);    // lower left corner
+	    my_addch_with_clip(ACS_LLCORNER);    // lower left corner
 
 	    for (i=left_+1; i<right_; i++)
-	        my_addch_with_clip(ACS_HLINE | attr);   // bottom horizontal line
+	        my_addch_with_clip(ACS_HLINE );   // bottom horizontal line
 
 	    my_move(bottom_, right_);
-	    my_addch_with_clip(ACS_LRCORNER | attr);    // lower right corner
+	    my_addch_with_clip(ACS_LRCORNER );    // lower right corner
     }
 
     // If the left side of the box is outside the clipping rectangle, don't
@@ -335,7 +398,7 @@ JNIEXPORT void JNICALL Java_charva_awt_Toolkit_drawBoxNative
     if (left_ >= left && left_ <= right) {
 	    for (i=top_+1; i<bottom_; i++) {
 	        my_move(i, left_);
-	        my_addch_with_clip(ACS_VLINE | attr);   // left vertical line
+	        my_addch_with_clip(ACS_VLINE);   // left vertical line
 	    }
     }
     //
@@ -344,7 +407,7 @@ JNIEXPORT void JNICALL Java_charva_awt_Toolkit_drawBoxNative
     if (right_ >= left && right_ <= right) {
 	    for (i=top_+1; i<bottom_; i++) {
 	        my_move(i, right_);
-	        my_addch_with_clip(ACS_VLINE | attr);   // right vertical line
+	        my_addch_with_clip(ACS_VLINE);   // right vertical line
 	    }
     }
 }
@@ -358,14 +421,18 @@ JNIEXPORT void JNICALL Java_charva_awt_Toolkit_blankBoxNative
     if (colors_started)
 	attr = COLOR_PAIR(colorpair_);
 
+    attron(attr);
     for (row=top_; row<=bottom_; row++) {
 	    if (row < top || row > bottom)
 	        continue;	// do some clipping
 
 	    my_move(row, left_);
 	    for (col=left_; col<=right_; col++)
-	        my_addch_with_clip(' ' | attr);
+            { 
+	        my_addch_with_clip(' ');
+            }
     }
+    attroff(attr);
 }
 
 /*
@@ -435,11 +502,13 @@ JNIEXPORT void JNICALL Java_charva_awt_Toolkit_addVerticalLine
     // Set current cursor position
     x = cursorx;
     y = cursory;
-
+    
+    attron(attr);
     for (i=0; i<length_; i++) {
 	    my_move(y+i, x);
-	    my_addch_with_clip(ACS_VLINE | attr);
+	    my_addch_with_clip(ACS_VLINE);
     }
+    attroff(attr);
 }
 
 /* Draw a horizontal line starting at the current cursor position.
@@ -457,10 +526,12 @@ JNIEXPORT void JNICALL Java_charva_awt_Toolkit_addHorizontalLine
     x = cursorx;
     y = cursory;
 
+    attron(attr);
     for (i=0; i<length_; i++) {
 	    my_move(y, x+i);
-	    my_addch_with_clip(ACS_HLINE | attr);
+	    my_addch_with_clip(ACS_HLINE);
     }
+    attroff(attr);
 }
 
 /* Get the y position of the cursor.
@@ -733,7 +804,24 @@ JNIEXPORT jstring JNICALL Java_charva_awt_Toolkit_getTtyName
  */
 static void my_addch(int chr_)
 {
+#if (defined _USE_NCURSESW_)
+    if ( is_special_drawing(chr_) )
+    {  // for special chars must be used addch(), widechar does not work
+       // better way is look for other way of drawing of box in unicode 
+       addch(chr_);
+    }
+    else
+    {
+       // use method for output unicode characters
+       // does exist better way how to display ONE wide character?
+       wchar_t buff_wcs[2];  // widechar
+       buff_wcs[0] = chr_;   // unicode value
+       buff_wcs[1] = 0x0000; // end of string
+       addwstr(buff_wcs); // display wide string at curren position
+    }
+#else
     addch(chr_);
+#endif
     cursorx++;
 }
 
@@ -766,4 +854,28 @@ static void my_addch_with_clip(int chr_)
 	    cursorx++;
 	move(cursory, cursorx);
     }
+}
+
+/*
+ * check if character is special character or normal character,
+ * this function is used to find a way how display unicode character 
+ * Be warned - every this special character replaces one official unicode
+ * character.
+ * TODO: how to display boxes in unicode mode by other way?
+ */
+static int is_special_drawing(int chr_)
+{
+  int value = 0;
+  if (chr_ == ACS_ULCORNER) value=1;
+  if (chr_ == ACS_LLCORNER) value=1;
+  if (chr_ == ACS_URCORNER) value=1;
+  if (chr_ == ACS_LRCORNER) value=1;
+  if (chr_ == ACS_HLINE) value=1;
+  if (chr_ == ACS_VLINE) value=1;
+  if (chr_ == ACS_LTEE) value=1;
+  if (chr_ == ACS_RTEE) value=1;
+  if (chr_ == ACS_BTEE) value=1;
+  if (chr_ == ACS_TTEE) value=1;
+  if (chr_ == ACS_PLUS) value=1;
+  return value;
 }

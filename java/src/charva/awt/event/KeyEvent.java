@@ -58,7 +58,11 @@ public class KeyEvent
      * Returns true if the key code is greater than 255, indicating
      * that it is a function key.
      */
-    public boolean isActionKey() { return (_key >= 256); }
+    //public boolean isActionKey() { return (_key >= 256); }
+    public boolean isActionKey() 
+    {
+        return ( charva.awt.Toolkit.isActionKey(_key) ); 
+    }
 
     public String toString() {
 	return ("KeyEvent: key=" + Toolkit.key2ASCII(getKeyCode()) + 

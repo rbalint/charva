@@ -27,7 +27,7 @@ class Tutorial
 
 
     public Tutorial() {
-        super("Charva Demo - copyright R Pitman, 2002 - 2004");
+        super("Charva Demo - copyright R Pitman, 2002 - 2006");
         setForeground(Color.green);
         setBackground(Color.black);
         Container contentPane = getContentPane();

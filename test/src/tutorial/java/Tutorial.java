@@ -24,7 +24,7 @@ class Tutorial
         implements ActionListener {
 
     public Tutorial() {
-        super("Charva Demo - copyright R Pitman, 2004");
+        super("Charva Demo - copyright R Pitman, 2004-2006");
         Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
         setForeground(Color.black);

@@ -221,7 +221,7 @@
 
     -->
 
-    <target name="javadoc" depends="clean,compile"
+    <target name="javadoc" depends="compile"
             description="Create Javadoc API documentation">
 
         <mkdir dir="${basedir}/docs/api"/>
@@ -229,8 +229,11 @@
                  overview="${src.home}/overview.html"
                  destdir="${basedir}/docs/api"
                  packagenames="*"
-                 excludepackagenames="test">
-            <!--	    <classpath refid="compile.classpath"/>-->
+                 excludepackagenames="org.apache.commons.logging"
+                 breakiterator="true">
+            <classpath>
+                <fileset dir="java/lib" includes="commons-logging.jar"/>
+            </classpath>
         </javadoc>
 
     </target>
@@ -326,5 +329,16 @@
 	</java>
     </target>
  	-->
+
+    <!-- Zip up everything into a file for upload to the SourceForge repository.
+        Note that both the Windows "Terminal.dll" and Linux "libTerminal.so" files should
+        be present, which implies running "ant makeDLL" first. -->
+    <target name="zip-all" depends="dist,javadoc,javah,compile-test"
+            description="Create a ZIP file for upload to Sourceforge">
+        <zip basedir="${basedir}/.." 
+             destfile="/tmp/${app.name}.zip">
+            <exclude name="CVS"/>
+        </zip>
+    </target>
 
 </project>

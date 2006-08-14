@@ -8,15 +8,16 @@
 # and "ant makeDLL" (to make libTerminal.so) before running this Makefile.
 
 library :
-	gcj java/dist/lib/charva.jar -shared -fjni -o c/lib/libcharva.so
+	gcj --classpath=java/lib/commons-logging.jar -shared -fjni -o c/lib/libcharva.so java/dist/lib/charva.jar
+	gcj -shared -o c/lib/libcommons-logging-api.so java/lib/commons-logging-api.jar
 
 
 # Use this target to compile the Tutorial application into an executable named "charvatutgcj"
 # in the current directory (i.e. "make -f c/src/Makefile.gcj.txt charvatutgcj").
 
 charvatutgcj :
-	gcj -Ijava/dist/lib/charva.jar \
-	-Lc/lib -lcharva -lTerminal \
+	gcj -Ijava/lib/commons-logging-api.jar -Ijava/dist/lib/charva.jar \
+	-Lc/lib -lcharva -lcommons-logging-api -lTerminal \
 	-ggdb --main=tutorial.charva.Tutorial \
 	-o charvatutgcj \
 	test/src/tutorial/charva/Tutorial.java

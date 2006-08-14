@@ -32,7 +32,7 @@ public class PlaybackThread extends Thread {
     private File _scriptFile;
     private Toolkit _toolkit;
     private int numberOfLoops = 1;
-    private int playbackRate = 1;
+    private long playbackRate = 1L;
 
     PlaybackThread(File scriptFile) {
         _scriptFile = scriptFile;
@@ -45,18 +45,19 @@ public class PlaybackThread extends Thread {
                 System.err.println("Property charva.script.playbackLoops (value=[" + loops + "" +
                         "]) must be an integer!");
             }
-            if (numberOfLoops <= 0)
+            if (numberOfLoops <= 0) {
                 System.err.println("Property charva.script.playbackLoops (value=[" + loops + "" +
                         "]) must be greater than 0!");
-            numberOfLoops = 1;
+                numberOfLoops = 1;
+            }
         }
         String rate = System.getProperty("charva.script.playbackRate");
         if (rate != null) {
-            playbackRate = Integer.parseInt("charva.script.playbackRate");
-            if (playbackRate <= 1) {
+            playbackRate = Long.parseLong(rate);
+            if (playbackRate < 1L) {
                 System.err.println("Property charva.script.playbackRate (value=" + rate +
-                ") must be greater than 1!");
-                playbackRate = 1;
+                        ") must be greater than 1!");
+                playbackRate = 1L;
             }
         }
     }
@@ -65,7 +66,9 @@ public class PlaybackThread extends Thread {
 
         try {
             for (int i = 0; i < numberOfLoops; i++) {
+                System.err.println("Starting script loop " + (i + 1) + " out of " + numberOfLoops);
                 runScriptOnce(_scriptFile);
+                System.err.println("Ended script loop " + (i + 1));
             }
         } catch (IOException e) {
             System.err.println("Error reading script file: " + e.getMessage());
@@ -89,7 +92,9 @@ public class PlaybackThread extends Thread {
             StringTokenizer st = new StringTokenizer(line);
             String delayToken = st.nextToken();
             long delay = Long.parseLong(delayToken);
-            delay = (delay / playbackRate);         // speed up the playback
+            // Reduce the duration of pauses that are longer than half a second
+            if (delay > 500L)
+                delay = (delay / playbackRate);
 
             String gestureToken = st.nextToken();
             if (gestureToken.equals("KEY")) {

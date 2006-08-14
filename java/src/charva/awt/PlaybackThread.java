@@ -19,6 +19,9 @@
 
 package charva.awt;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.io.*;
 import java.util.StringTokenizer;
 
@@ -33,6 +36,7 @@ public class PlaybackThread extends Thread {
     private Toolkit _toolkit;
     private int numberOfLoops = 1;
     private long playbackRate = 1L;
+    private static final Log LOG = LogFactory.getLog(PlaybackThread.class);
 
     PlaybackThread(File scriptFile) {
         _scriptFile = scriptFile;
@@ -42,11 +46,11 @@ public class PlaybackThread extends Thread {
             try {
                 numberOfLoops = Integer.parseInt(loops);
             } catch (NumberFormatException e) {
-                System.err.println("Property charva.script.playbackLoops (value=[" + loops + "" +
+                LOG.warn("Property charva.script.playbackLoops (value=[" + loops + "" +
                         "]) must be an integer!");
             }
             if (numberOfLoops <= 0) {
-                System.err.println("Property charva.script.playbackLoops (value=[" + loops + "" +
+                LOG.warn("Property charva.script.playbackLoops (value=[" + loops + "" +
                         "]) must be greater than 0!");
                 numberOfLoops = 1;
             }
@@ -55,7 +59,7 @@ public class PlaybackThread extends Thread {
         if (rate != null) {
             playbackRate = Long.parseLong(rate);
             if (playbackRate < 1L) {
-                System.err.println("Property charva.script.playbackRate (value=" + rate +
+                LOG.warn("Property charva.script.playbackRate (value=" + rate +
                         ") must be greater than 1!");
                 playbackRate = 1L;
             }
@@ -66,12 +70,12 @@ public class PlaybackThread extends Thread {
 
         try {
             for (int i = 0; i < numberOfLoops; i++) {
-                System.err.println("Starting script loop " + (i + 1) + " out of " + numberOfLoops);
+                LOG.debug("Starting script loop " + (i + 1) + " out of " + numberOfLoops);
                 runScriptOnce(_scriptFile);
-                System.err.println("Ended script loop " + (i + 1));
+                LOG.debug("Ended script loop " + (i + 1));
             }
         } catch (IOException e) {
-            System.err.println("Error reading script file: " + e.getMessage());
+            LOG.warn("Error reading script file: " + e.getMessage());
         }
 
     }
@@ -126,8 +130,10 @@ public class PlaybackThread extends Thread {
                     } catch (InterruptedException ei) {
                     }
                 }
-//                    System.err.println("Mouse-click (button " + button +
-//                            ") at (" + mouseEventInfo.getX() + "," + mouseEventInfo.getY() + ")");
+                if (LOG.isDebugEnabled()) {
+                    LOG.debug("Mouse-click (button " + button +
+                            ") at (" + mouseEventInfo.getX() + "," + mouseEventInfo.getY() + ")");
+                }
                 _toolkit.fireMouseEvent(mouseEventInfo);
             } else {
                 throw new IOException("Parse error [" + line + "] on line " + lineno +

@@ -16,16 +16,15 @@
 -->
 
 
-<!-- A "project" describes a set of targets that may be requested
-     when Ant is executed.  The "default" attribute defines the
-     target which is executed if no specific target is requested,
-     and the "basedir" attribute defines the current working directory
-     from which Ant executes the requested task.  This is normally
-     set to the current working directory.
--->
+        <!-- A "project" describes a set of targets that may be requested
+             when Ant is executed.  The "default" attribute defines the
+             target which is executed if no specific target is requested,
+             and the "basedir" attribute defines the current working directory
+             from which Ant executes the requested task.  This is normally
+             set to the current working directory.
+        -->
 
 <project name="CHARVA" default="compile" basedir=".">
-
 
 
     <!-- ===================== Property Definitions =========================== -->
@@ -55,7 +54,7 @@
 
     -->
 
-<!--    <property file="build.properties"/>-->
+    <!--    <property file="build.properties"/>-->
     <property file="${user.home}/build.properties"/>
 
     <!--
@@ -138,7 +137,7 @@
     -->
 
     <target name="all" depends="clean,makeDLL,javadoc,dist,compile-test"
-        description="Clean build and dist directories, then compile classes
+            description="Clean build and dist directories, then compile classes
          and generate the distribution files"/>
 
     <!-- ==================== Clean Target ==================================== -->
@@ -151,15 +150,14 @@
     -->
 
     <target name="clean"
-        description="Delete old build and dist directories">
+            description="Delete old build and dist directories">
         <delete dir="${build.home}"/>
         <delete dir="${dist.home}"/>
         <delete dir="${basedir}/docs/api"/>
         <delete dir="${test.home}/classes"/>
-        <delete dir="${c.home}/lib" />
+        <delete dir="${c.home}/lib"/>
         <delete dir="${c.home}/include"/>
     </target>
-
 
 
     <!-- ==================== Compile Target ================================== -->
@@ -171,40 +169,43 @@
     -->
 
     <target name="compile"
-        description="Compile Java sources">
+            description="Compile Java sources">
 
         <!-- Compile Java classes as necessary -->
         <mkdir dir="${build.home}"/>
         <javac srcdir="${src.home}"
-            excludes="test/**"
-            destdir="${build.home}"
-            debug="${compile.debug}"
-            deprecation="${compile.deprecation}"
-            optimize="${compile.optimize}">
+               excludes="test/**"
+               destdir="${build.home}"
+               debug="${compile.debug}"
+               deprecation="${compile.deprecation}"
+               optimize="${compile.optimize}">
+            <classpath>
+                <fileset dir="java/lib" includes="commons-logging.jar"/>
+            </classpath>
         </javac>
     </target>
 
 
     <target name="javah" depends="compile"
-        description="Generate C header file">
+            description="Generate C header file">
 
         <mkdir dir="${c.home}/include"/>
         <javah destdir="${c.home}/include"
-            class="charva.awt.Toolkit"
-            classpath="${build.home}"/>
+               class="charva.awt.Toolkit"
+               classpath="${build.home}"/>
 
     </target>
 
 
     <target name="makeDLL" depends="javah"
-        description="Compile the JNI shared library">
+            description="Compile the JNI shared library">
 
         <echo>Compiling the shared library using "Makefile.${OS_NAME}.txt"</echo>
         <mkdir dir="${c.home}/lib"/>
         <exec executable="make"
-            dir="${c.home}/src"
-            output="${c.home}/lib/make.out.txt"
-            failonerror="true">
+              dir="${c.home}/src"
+              output="${c.home}/lib/make.out.txt"
+              failonerror="true">
             <arg line="-f Makefile.${OS_NAME}.txt"/>
         </exec>
     </target>
@@ -221,14 +222,14 @@
     -->
 
     <target name="javadoc" depends="clean,compile"
-        description="Create Javadoc API documentation">
+            description="Create Javadoc API documentation">
 
         <mkdir dir="${basedir}/docs/api"/>
         <javadoc sourcepath="${src.home}"
-            overview="${src.home}/overview.html"
-            destdir="${basedir}/docs/api"
-            packagenames="*"
-            excludepackagenames="test">
+                 overview="${src.home}/overview.html"
+                 destdir="${basedir}/docs/api"
+                 packagenames="*"
+                 excludepackagenames="test">
             <!--	    <classpath refid="compile.classpath"/>-->
         </javadoc>
 
@@ -241,27 +242,30 @@
     -->
 
     <target name="dist" depends="compile"
-        description="Create distribution JAR">
+            description="Create distribution JAR">
 
         <mkdir dir="${dist.home}/lib"/>
         <jar destfile="${dist.home}/lib/${app.name}.jar"
-            basedir="${build.home}"
-            excludes="tutorial/**"/>
+             basedir="${build.home}"
+             excludes="tutorial/**"/>
 
     </target>
 
     <!-- Compile the tutorial program.
     -->
     <target name="compile-test" depends="compile"
-        description="Compile the tutorial program">
+            description="Compile the tutorial program">
 
         <mkdir dir="${test.home}/classes"/>
         <javac srcdir="${test.home}/src"
-            destdir="${test.home}/classes"
-            classpath="${build.home}"
-            debug="${compile.debug}"
-            deprecation="${compile.deprecation}"
-            optimize="${compile.optimize}">
+               destdir="${test.home}/classes"
+               debug="${compile.debug}"
+               deprecation="${compile.deprecation}"
+               optimize="${compile.optimize}">
+            <classpath>
+                <pathelement location="${build.home}"/>
+                <fileset dir="java/lib" includes="commons-logging.jar"/>
+            </classpath>
         </javac>
     </target>
 

@@ -21,6 +21,7 @@ package charva.awt.util;
 
 import charva.awt.*;
 import charva.awt.event.*;
+
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -28,100 +29,108 @@ import java.util.Vector;
  * Implements a label that displays multiple lines of text.
  */
 public class MultiLineLabel
-    extends Component
-{
+        extends Component {
 
     public MultiLineLabel(String[] textarray_) {
-	for (int i=0; i<textarray_.length; i++)
-	    _labeltext.add(textarray_[i]);
+        for (int i = 0; i < textarray_.length; i++)
+            _labeltext.add(textarray_[i]);
     }
 
     public Dimension minimumSize() {
-	int width=0, height=0;
+        int width = 0, height = 0;
 
-	Enumeration e = _labeltext.elements();
-	while (e.hasMoreElements()) {
-	    String s = (String) e.nextElement();
-	    if (s.length() > width)
-		width = s.length();
-	    height++;
-	}
+        Enumeration e = _labeltext.elements();
+        while (e.hasMoreElements()) {
+            String s = (String) e.nextElement();
+            if (s.length() > width)
+                width = s.length();
+            height++;
+        }
 
-	return new Dimension(width, height);
+        return new Dimension(width, height);
     }
 
     public void draw() {
 
-	/* Get the absolute origin of this component.
-	 */
-	Point origin = getLocationOnScreen();
+        /* Get the absolute origin of this component.
+       */
+        Point origin = getLocationOnScreen();
 
-	Toolkit term = Toolkit.getDefaultToolkit();
+        Toolkit term = Toolkit.getDefaultToolkit();
 
-	// we'll sort out justification and video-attributes etc later.
-	Enumeration e = _labeltext.elements();
-	for (int row=0; e.hasMoreElements(); row++) {
-	    String s = (String) e.nextElement();
-	    term.setCursor(origin.addOffset(0, row));
-	    term.addString(s, 0, 0);
-	}
+        // we'll sort out justification and video-attributes etc later.
+        Enumeration e = _labeltext.elements();
+        for (int row = 0; e.hasMoreElements(); row++) {
+            String s = (String) e.nextElement();
+            term.setCursor(origin.addOffset(0, row));
+            term.addString(s, 0, 0);
+        }
     }
 
     /**
      * This may be wrong, but it'll do for now.
      */
     public Dimension getSize() {
-	return minimumSize();
+        return minimumSize();
     }
 
-    public int getWidth() { return getSize().width; }
-    public int getHeight() { return getSize().height; }
+    public int getWidth() {
+        return getSize().width;
+    }
+
+    public int getHeight() {
+        return getSize().height;
+    }
 
     public synchronized void setText(String[] textarray_) {
-	_labeltext.removeAllElements();
-	for (int i=0; i<textarray_.length; i++)
-	    _labeltext.add(textarray_[i]);
+        _labeltext.removeAllElements();
+        for (int i = 0; i < textarray_.length; i++)
+            _labeltext.add(textarray_[i]);
 
-	/* If this component is already displayed, generate a PaintEvent
-	 * and post it onto the queue.
-	 */
-	repaint();
+        /* If this component is already displayed, generate a PaintEvent
+       * and post it onto the queue.
+       */
+        repaint();
     }
 
     public String[] getText() {
-	String[] strings = new String[_labeltext.size()];
-	Enumeration e = _labeltext.elements();
-	for (int i=0; e.hasMoreElements(); i++) {
-	    String s = (String) e.nextElement();
-	    strings[i] = s;
-	}
-	return strings;
+        String[] strings = new String[_labeltext.size()];
+        Enumeration e = _labeltext.elements();
+        for (int i = 0; e.hasMoreElements(); i++) {
+            String s = (String) e.nextElement();
+            strings[i] = s;
+        }
+        return strings;
     }
 
-    /** This component will not receive focus when Tab or Shift-Tab is pressed.
+    /**
+     * This component will not receive focus when Tab or Shift-Tab is pressed.
      */
-    public boolean isFocusTraversable() { return false; }
+    public boolean isFocusTraversable() {
+        return false;
+    }
 
-    /** The MultiLineLabel class ignores key events. A MultiLineLabel should 
+    /**
+     * The MultiLineLabel class ignores key events. A MultiLineLabel should
      * never have input focus anyway.
      */
-    public void processKeyEvent(KeyEvent ke_) { }
+    public void processKeyEvent(KeyEvent ke_) {
+    }
 
     /**
      * The MultiLineLabel component never gets the keyboard input focus.
      */
-    public void requestFocus() {}
+    public void requestFocus() {
+    }
 
     public void debug(int level_) {
-	for (int i=0; i<level_; i++)
-	    System.err.print("    ");
-	System.err.println("MultiLineLabel origin=" + _origin + 
-	    " size=" + getSize() + " label=" + (String) _labeltext.elementAt(0));
+        for (int i = 0; i < level_; i++)
+            System.err.print("    ");
+        System.err.println("MultiLineLabel origin=" + _origin +
+                " size=" + getSize() + " label=" + _labeltext.elementAt(0));
     }
 
     private Vector _labeltext = new Vector();
-
-    private int _justification = LEFT;
 
     public static final int LEFT = 1;
     public static final int CENTER = 2;

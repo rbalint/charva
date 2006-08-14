@@ -19,10 +19,15 @@
 
 package charva.awt;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 /**
  * A class used to represent the color values available on a text terminal.
  */
 public class Color {
+
+    private static final Log LOG = LogFactory.getLog(Color.class);
     /**
      * Construct a Color from the specified RGB values. Each value must
      * be in the range 0-255.
@@ -132,7 +137,7 @@ public class Color {
                 curses_color_pair = toolkit.getColorPairIndex(color_pair);
             }
         } catch (TerminfoCapabilityException e) {
-            System.err.println("can't set color pair: foreground " +
+            LOG.warn("can't set color pair: foreground " +
                     foreground_ + " background " + background_);
         }
         return curses_color_pair;

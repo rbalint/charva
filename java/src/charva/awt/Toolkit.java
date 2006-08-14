@@ -41,6 +41,9 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.Vector;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 /**
  * The Toolkit class provides the interface to the "ncurses" library
  * functions. Exceptions and error messages are reported to the
@@ -57,6 +60,9 @@ import java.util.Vector;
     protected void setLastFocusEvent(FocusEvent ev_ )
  */
 public class Toolkit {
+
+    private static final Log LOG = LogFactory.getLog(Toolkit.class);
+
     /**
      * The constructor can only be called by the getDefaultToolkit() method,
      * making this an example of the Singleton pattern.
@@ -254,7 +260,7 @@ public class Toolkit {
          * THIS HAS CHANGED! readKey returns -1 if there was no key to read.
          */
         if (key == -1) {
-            //System.err.println("end of file on keyboard input");
+            LOG.debug("end of file on keyboard input");
             //System.exit(-1);
             return;
         }
@@ -883,7 +889,7 @@ public class Toolkit {
             try {
                 _scriptPrintStream = new PrintStream(new FileOutputStream(scriptfilename));
             } catch (FileNotFoundException ef) {
-                System.err.println("Cannot open script file \"" +
+                LOG.warn("Cannot open script file \"" +
                         scriptfilename + "\" for writing");
                 System.exit(1);
             }

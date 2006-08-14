@@ -9,6 +9,9 @@
 
 package tutorial.java;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
@@ -1833,6 +1836,9 @@ class ProgressBarTest
      * A nonstatic inner class that pretends to perform a time-consuming task.
      */
     private class TaskThread extends Thread {
+
+        private final Log logger = LogFactory.getLog(TaskThread.class);
+
         /**
          * Constructor
          */
@@ -1868,7 +1874,7 @@ class ProgressBarTest
                     EventQueue.invokeLater(updater);
                 }
             } catch (InterruptedException e) {
-                System.err.println("TaskThread was interrupted");
+                logger.warn("TaskThread was interrupted");
                 return;
             }
         }

@@ -19,6 +19,9 @@
 
 package charva.awt;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 
 /**
  * The Dialog class is similar to a Frame but includes a blank area
@@ -27,6 +30,9 @@ package charva.awt;
  */
 public class Dialog
         extends Window {
+
+    private static final Log LOG = LogFactory.getLog(Dialog.class);
+
     /**
      * Creates a modal dialog without a title and with a Frame owner.
      */
@@ -92,7 +98,7 @@ public class Dialog
     }
 
     public void debug(int level_) {
-        System.err.println("Dialog origin=" + _origin +
+        LOG.debug("Dialog origin=" + _origin +
                 " size=" + _size);
     }
 

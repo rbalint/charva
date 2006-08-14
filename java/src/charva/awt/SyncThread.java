@@ -22,6 +22,8 @@ package charva.awt;
 import charva.awt.event.AWTEvent;
 import charva.awt.event.GarbageCollectionEvent;
 import charva.awt.event.SyncEvent;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * The purpose of this class it to speed up redrawing of the screen
@@ -46,6 +48,9 @@ import charva.awt.event.SyncEvent;
  */
 class SyncThread
         extends Thread {
+
+    private static final Log LOG = LogFactory.getLog(SyncThread.class);
+
     SyncThread(SyncQueue syncQueue_, EventQueue eventQueue_) {
         _syncQueue = syncQueue_;
         _eventQueue = eventQueue_;
@@ -57,7 +62,7 @@ class SyncThread
             try {
                 sleep(50);
             } catch (InterruptedException e) {
-                System.err.println("SyncThread: sleep interrupted!");
+                LOG.warn("SyncThread: sleep interrupted!");
             }
 
             if (evt instanceof SyncEvent) {

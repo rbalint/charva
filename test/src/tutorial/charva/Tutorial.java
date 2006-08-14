@@ -20,11 +20,14 @@ import charvax.swing.event.ListDataEvent;
 import charvax.swing.event.ListDataListener;
 import charvax.swing.event.ListSelectionEvent;
 import charvax.swing.event.ListSelectionListener;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 class Tutorial
         extends JFrame
         implements ActionListener {
 
+    private static final Log LOG = LogFactory.getLog(Tutorial.class);
 
     public Tutorial() {
         super("Charva Demo - copyright R Pitman, 2002 - 2006");
@@ -305,7 +308,7 @@ class Tutorial
 
         int option = JOptionPane.showConfirmDialog(this, messages, "Select an Option",
                 JOptionPane.YES_NO_CANCEL_OPTION);
-        String result = "";
+        String result;
         if (option == JOptionPane.YES_OPTION)
             result = "User selected YES option";
         else if (option == JOptionPane.NO_OPTION)
@@ -326,7 +329,7 @@ class Tutorial
             "that displays an array of Strings"};
         String result = JOptionPane.showInputDialog(this, messages, "Input a value",
                 JOptionPane.QUESTION_MESSAGE);
-        String msg = null;
+        String msg;
         if (result == null)
             msg = "User selected Cancel option";
         else
@@ -366,7 +369,7 @@ class Tutorial
         JDialog dialog = pane.createDialog(parent_, "Custom JOptionPane");
         dialog.show();
         Object selectedValue = pane.getValue();
-        System.err.println("Selected value is " + selectedValue);
+        LOG.debug("Selected value is " + selectedValue);
         results[0] = "The input value is \"" +
                 (String) pane.getInputValue() + "\"";
 
@@ -2002,6 +2005,9 @@ class ProgressBarTest
      * A nonstatic inner class that pretends to perform a time-consuming task.
      */
     private class TaskThread extends Thread {
+
+        private final Log logger = LogFactory.getLog(TaskThread.class);
+
         /**
          * Constructor
          */
@@ -2037,7 +2043,7 @@ class ProgressBarTest
                     SwingUtilities.invokeLater(updater);
                 }
             } catch (InterruptedException e) {
-                System.err.println("TaskThread was interrupted");
+                logger.warn("TaskThread was interrupted");
                 return;
             }
         }

@@ -489,9 +489,9 @@
     <td class="question"><i>How can I debug Charva applications?</i></td>
     <tr>
         <td class="answer">
-            <p>One way is to sprinkle your source code with <code>System.err.println()</code>
-                statements. The output of these statements is redirected to the logfile
-                <code>$HOME/charva.log</code>.</p>
+            <p>Since version 1.1.3, Charva uses <a href="http://jakarta.apache.org/commons/logging/index.html">Jakarta
+                commons-logging</a>. You should use the same mechanism for adding debug statements to your code.
+                See the commons-logging website for details. </p>
 
             <p>Another way is to use a commercial IDE such as <a href="http://www.jetbrains.com">
                 IntelliJ IDEA</a> which has a good debugger built into it. You have to start the debuggee application

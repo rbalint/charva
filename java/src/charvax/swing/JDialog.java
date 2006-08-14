@@ -20,6 +20,8 @@
 package charvax.swing;
 
 import charva.awt.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * In the CHARVA package, the JDialog provides exactly the same functionality
@@ -28,7 +30,9 @@ import charva.awt.*;
  */
 public class JDialog
         extends Dialog {
-    
+
+    private static final Log LOG = LogFactory.getLog(JDialog.class);
+
     /**
      * Default constructor, creates a JDialog without a specified Frame
      * owner.
@@ -79,7 +83,6 @@ public class JDialog
     }
 
     public void debug(int level_) {
-        System.err.println("JDialog origin=" + _origin +
-                " size=" + _size);
+        LOG.debug("JDialog origin=" + _origin + " size=" + _size);
     }
 }

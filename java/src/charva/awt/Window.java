@@ -21,12 +21,12 @@ package charva.awt;
 
 import charva.awt.event.*;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.File;
 import java.util.Enumeration;
 import java.util.Vector;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * The Window class represents a "toplevel" window with
@@ -36,6 +36,9 @@ import java.util.Vector;
 public class Window
         extends Container
         implements Runnable {
+
+    private static final Log LOG = LogFactory.getLog(Window.class);
+
     public Window(Window owner_) {
         _owner = owner_;
         init();
@@ -322,7 +325,7 @@ public class Window
     public void hide() {
 
         if (!_visible) {
-            System.err.println("Trying to hide window " + this + " that is already hidden!");
+            LOG.warn("Trying to hide window " + this + " that is already hidden!");
             return;    // This window is already hidden.
         }
 
@@ -377,8 +380,7 @@ public class Window
     }
 
     public void debug(int level_) {
-        System.err.println("Window origin=" + _origin +
-                " size=" + _size);
+        LOG.debug("Window origin=" + _origin + " size=" + _size);
         super.debug(1);
     }
 
@@ -389,7 +391,7 @@ public class Window
 
         File scriptFile = new File(scriptfilename);
         if (!scriptFile.canRead()) {
-            System.err.println("Cannot read script tile \"" + scriptfilename + "\"");
+            LOG.warn("Cannot read script tile \"" + scriptfilename + "\"");
             return;
         }
 

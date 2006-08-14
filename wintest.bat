@@ -37,7 +37,7 @@ rem as NetBeans and JBuilder have the same capability).
 rem set TEST_OPTS=%TEST_OPTS% -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005
 
 
-%JAVA_HOME%\bin\java %TEST_OPTS% -cp test/classes;java/dist/lib/charva.jar -Djava.library.path=c\lib tutorial.charva.Tutorial
+%JAVA_HOME%\bin\java %TEST_OPTS% -cp .;test/classes;java/lib/commons-logging.jar;java/lib/log4j-1.2.8.jar;java/dist/lib/charva.jar -Djava.library.path=c\lib tutorial.charva.Tutorial
 goto end
 
 

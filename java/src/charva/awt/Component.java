@@ -46,10 +46,16 @@ import java.lang.ref.WeakReference;
 import java.util.Enumeration;
 import java.util.Vector;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 /**
  * Component is the abstract superclass of all the other CHARVA widgets.
  */
 public abstract class Component {
+
+    private static final Log LOG = LogFactory.getLog(Component.class);
+
     /**
      * Constructor
      */
@@ -329,7 +335,7 @@ public abstract class Component {
      * for this component.
      */
     public void processFocusEvent(FocusEvent fe_) {
-        //System.err.println( "procFocusEvent:" + this.toString() + " ev:" + fe_.toString() );
+        LOG.debug( "processFocusEvent:" + this.toString() + " ev:" + fe_.toString() );
         if (_focusListeners != null) {
             for (Enumeration e = _focusListeners.elements();
                  e.hasMoreElements();) {
@@ -378,11 +384,11 @@ public abstract class Component {
          */
         Window ancestor = getAncestorWindow();
         Component currentFocus = ancestor.getCurrentFocus();
-        Window sourcewin = Toolkit.getDefaultToolkit().getTopWindow(); 
+        Window sourcewin = Toolkit.getDefaultToolkit().getTopWindow();
         Component currentFocusX = sourcewin.getCurrentFocus();
      /*
-        System.err.println( "requestFocus1: " + toString() );
-        System.err.println( "currentFocus2: " + currentFocusX.toString() );
+        LOG.debug( "requestFocus1: " + toString() );
+        LOG.debug( "currentFocus2: " + currentFocusX.toString() );
       */
         if (currentFocus != this ||
             ( currentFocusX == this && ! _hadFocus )) {

@@ -44,6 +44,9 @@ import charvax.swing.filechooser.FileFilter;
 import java.io.File;
 import java.util.*;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 /**
  * <p>The JFileChooser class displays a dialog from which the user can choose
  * a file.  The dialog is always modal (i.e. the user cannot interact
@@ -76,6 +79,8 @@ import java.util.*;
  */
 public class JFileChooser
         extends JComponent {
+
+    private static final Log LOG = LogFactory.getLog(JFileChooser.class);
 
     /**
      * Constructs a JFileChooser pointing to the user's home directory.
@@ -255,8 +260,7 @@ public class JFileChooser
     }
 
     public void debug(int level_) {
-        System.err.println("JFileChooser origin=" + _origin +
-                " title=" + _title);
+        LOG.debug("JFileChooser origin=" + _origin + " title=" + _title);
     }
 
     /**

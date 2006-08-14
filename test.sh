@@ -59,6 +59,6 @@ TEST_OPTS="${TEST_OPTS} -Dcharva.color=1"
 
 ${JAVA_HOME}/bin/java \
     ${TEST_OPTS} \
-    -cp "java/classes:test/classes" \
+    -cp ".:java/classes:test/classes:java/lib/commons-logging.jar:java/lib/log4j-1.2.8.jar" \
     tutorial.charva.Tutorial 2> $HOME/charva.log
 stty sane

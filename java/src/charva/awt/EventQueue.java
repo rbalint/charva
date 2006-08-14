@@ -26,6 +26,9 @@ import charva.awt.event.SyncEvent;
 
 import java.util.LinkedList;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 /**
  * The EventQueue class queues "AWT" events, which are used to trigger
  * drawing actions.  They can be enqueued using the postEvent() method
@@ -44,6 +47,8 @@ import java.util.LinkedList;
  */
 public class EventQueue {
 
+    private static final Log LOG = LogFactory.getLog(EventQueue.class);
+
     /**
      * The constructor cannot be called from outside the class, making
      * this an example of the Singleton pattern.
@@ -59,15 +64,16 @@ public class EventQueue {
     }
 
     public synchronized void postEvent(AWTEvent evt_) {
-        if ( evt_.getID() == AWTEvent.FOCUS_GAINED ) {  
-           Toolkit.getDefaultToolkit().setLastFocusEvent( (FocusEvent)evt_ );
+        if (evt_.getID() == AWTEvent.FOCUS_GAINED) {
+            Toolkit.getDefaultToolkit().setLastFocusEvent((FocusEvent) evt_);
         }
         addLast(evt_);
-        notifyAll();	    // wake up the dequeueing thread
+        notifyAll();        // wake up the dequeueing thread
     }
 
     /**
      * Block until an event is available, then return the event.
+     *
      * @return the next available AWTEvent
      */
     public synchronized AWTEvent waitForNextEvent() {
@@ -79,7 +85,7 @@ public class EventQueue {
             try {
                 wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();	// should never happen
+                e.printStackTrace();    // should never happen
             }
         }
         return (AWTEvent) removeFirst();
@@ -87,10 +93,11 @@ public class EventQueue {
 
     /**
      * This method is only called if we know that an event is available.
+     *
      * @return the first AWTEvent on the queue.
      */
     public synchronized AWTEvent getNextEvent() {
-           return (AWTEvent) removeFirst();
+        return (AWTEvent) removeFirst();
     }
 
     /**
@@ -129,12 +136,12 @@ public class EventQueue {
             return _highPriorityQueue.removeFirst();
         else {
 
-/* FOR DEBUGGING
-if (_lowPriorityQueue.size() > 1) 
-    System.err.println("Coalescing " + _lowPriorityQueue.size() + " SyncEvents on queue");
-else
-    System.err.println("1 SyncEvent");
-*/
+            if (LOG.isDebugEnabled()) {
+                if (_lowPriorityQueue.size() > 1)
+                    LOG.debug("Coalescing " + _lowPriorityQueue.size() + " SyncEvents on queue");
+                else
+                    LOG.debug("1 SyncEvent");
+            }
 
             /* Coalesce multiple SyncEvents into one.
              */

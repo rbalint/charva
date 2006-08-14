@@ -5,7 +5,7 @@ rem "directory in a DOS command shell."
 rem "It expects to find Terminal.dll in the directory
 rem '%CHARVA_HOME%\c\lib', and the charva.jar file in the directory
 rem '%CHARVA_HOME%\java\lib'.
-rem "Last Modified: 2004/5/25 by Rob Pitman <rob@pitman.co.za>"
+rem "Last Modified: 2006/8/14 by Rob Pitman <rob@pitman.co.za>"
 
 rem Check that we are in the right directory to run this script.
 if not exist "c\lib\Terminal.dll" goto noDLL
@@ -17,8 +17,12 @@ rem set JAVA_HOME=C:\j2sdk1.4.2
 if not exist %JAVA_HOME% goto noJAVA_HOME
 
 rem Uncomment the next line to log keystrokes and debug key-mappings 
-rem (the script file is %HOME%\script.charva).
-rem set TEST_OPTS="-Dcharva.script.record=%HOME%/script.charva"
+rem (the script file is %TMP%\script.charva).
+set TEST_OPTS="-Dcharva.script.record=script.charva.txt"
+
+rem Uncomment the following line to play back a script that was previously
+rem recorded using "charva.script.record".
+rem set TEST_OPTS="-Dcharva.script.playback=script.charva.txt -Dcharva.script.playbackLoops=3"
 
 rem Uncomment the following option to test for memory leaks.
 rem set TEST_OPTS=%TEST_OPTS% -Xrunhprof:heap=sites

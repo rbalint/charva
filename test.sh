@@ -37,7 +37,7 @@ TEST_OPTS="-Dcharva.script.record=${HOME}/script.charva"
 
 # Uncomment the following line to play back a script that was previously
 # recorded using "charva.script.record".
-#TEST_OPTS=-Dcharva.script.playback=${HOME}/script.charva
+#TEST_OPTS=-Dcharva.script.playback=${HOME}/script.charva -Dcharva.script.playbackLoops=3
 
 # Uncomment the next line to enable color.
 TEST_OPTS="${TEST_OPTS} -Dcharva.color=1"

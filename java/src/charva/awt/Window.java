@@ -24,6 +24,7 @@ import charva.awt.event.*;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.File;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -126,7 +127,7 @@ public class Window
     public void show() {
 
         if (_visible)
-            return;	// This window is already visible.
+            return;    // This window is already visible.
 
         _visible = true;
         _term.addWindow(this);
@@ -135,7 +136,7 @@ public class Window
          * the contained components (i.e. children) and their descendants,
          * and in the process will set the valid flag of all descendants.
          */
-        super.doLayout();	// call method in Container superclass
+        super.doLayout();    // call method in Container superclass
 
         this.adjustLocation();   // ensure it fits inside the screen
 
@@ -193,7 +194,7 @@ public class Window
                      */
                     processEvent((AWTEvent) evt);
                 }
-            }	// end FOR loop
+            }    // end FOR loop
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
@@ -285,7 +286,7 @@ public class Window
                         window = (Window) winlist.elementAt(i);
                         window.draw();
                     }
-                    if (window != null)	    // (there may be no windows left)
+                    if (window != null)        // (there may be no windows left)
                         window.requestFocus();
                 }
 
@@ -301,7 +302,7 @@ public class Window
                 if (window != null)
                     SyncQueue.getInstance().postEvent(new SyncEvent(window));
             }
-        }	// end if WindowEvent
+        }    // end if WindowEvent
         else if (evt_ instanceof GarbageCollectionEvent) {
             SyncQueue.getInstance().postEvent(evt_);
         } else if (evt_ instanceof InvocationEvent) {
@@ -322,7 +323,7 @@ public class Window
 
         if (!_visible) {
             System.err.println("Trying to hide window " + this + " that is already hidden!");
-            return;	// This window is already hidden.
+            return;    // This window is already hidden.
         }
 
         _visible = false;
@@ -382,20 +383,18 @@ public class Window
     }
 
     private void startPlayback() {
-        String scriptfilename = null;
-        BufferedReader scriptReader = null;
+        String scriptfilename;
         if ((scriptfilename = System.getProperty("charva.script.playback")) == null)
             return;
 
-        try {
-            scriptReader = new BufferedReader(new FileReader(scriptfilename));
-        } catch (FileNotFoundException ef) {
-            System.err.println("Cannot open script file \"" +
-                    scriptfilename + "\" for reading");
+        File scriptFile = new File(scriptfilename);
+        if (!scriptFile.canRead()) {
+            System.err.println("Cannot read script tile \"" + scriptfilename + "\"");
             return;
         }
 
-        PlaybackThread thr = new PlaybackThread(scriptReader);
+
+        PlaybackThread thr = new PlaybackThread(scriptFile);
         thr.setDaemon(true);
         thr.setName("playback thread");
         thr.start();

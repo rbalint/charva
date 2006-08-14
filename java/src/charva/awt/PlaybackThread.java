@@ -19,8 +19,7 @@
 
 package charva.awt;
 
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.StringTokenizer;
 
 /**
@@ -30,69 +29,95 @@ import java.util.StringTokenizer;
  */
 public class PlaybackThread extends Thread {
 
-    PlaybackThread(BufferedReader scriptReader_) {
-        _scriptReader = scriptReader_;
+    private File _scriptFile;
+    private Toolkit _toolkit;
+    private int numberOfLoops = 1;
+
+    PlaybackThread(File scriptFile) {
+        _scriptFile = scriptFile;
         _toolkit = Toolkit.getDefaultToolkit();
-    }
-
-    public void run() {
-        String line;
-        int lineno = 0;
-
-        try {
-            while ((line = _scriptReader.readLine()) != null) {
-
-                lineno++;
-                StringTokenizer st = new StringTokenizer(line);
-                String delayToken = st.nextToken();
-                long delay = Long.parseLong(delayToken);
-
-                String gestureToken = st.nextToken();
-                if (gestureToken.equals("KEY")) {
-                    String keycodeToken = st.nextToken();
-                    int keycode = Integer.parseInt(keycodeToken, 16);
-
-                    if (delay != 0) {
-                        try {
-                            Thread.sleep(delay);
-                        } catch (InterruptedException ei) {
-                        }
-                    }
-
-                    _toolkit.fireKeystroke(keycode);
-
-                } else if (gestureToken.equals("MOUSE")) {
-                    // It wasn't a keystroke, it must have been a mouse-click
-                    String buttonToken = st.nextToken();
-                    int button = Integer.parseInt(buttonToken);
-                    String xToken = st.nextToken();
-                    int x = Integer.parseInt(xToken);
-                    String yToken = st.nextToken();
-                    int y = Integer.parseInt(yToken);
-                    MouseEventInfo mouseEventInfo = new MouseEventInfo(button, x, y);
-
-                    if (delay != 0) {
-                        try {
-                            Thread.sleep(delay);
-                        } catch (InterruptedException ei) {
-                        }
-                    }
-//                    System.err.println("Mouse-click (button " + button +
-//                            ") at (" + mouseEventInfo.getX() + "," + mouseEventInfo.getY() + ")");
-                    _toolkit.fireMouseEvent(mouseEventInfo);
-                } else {
-                    throw new RuntimeException("Parse error [" + line + "] on line " + lineno + " of script file ");
-                }
+        String loops = System.getProperty("charva.script.playbackloops");
+        if (loops != null) {
+            try {
+                numberOfLoops = Integer.parseInt(loops);
+            } catch (NumberFormatException e) {
+                System.err.println("Property charva.script.playbackLoops (value=[" + loops + "" +
+                        "]) must be an integer!");
             }
-        } catch (IOException ei) {
-            throw new RuntimeException("Error reading script file", ei);
+            if (numberOfLoops <= 0)
+                System.err.println("Property charva.script.playbackLoops (value=[" + loops + "" +
+                        "]) must be greater than 0!");
         }
     }
 
-    //====================================================================
-    // INSTANCE VARIABLES
+    public void run() {
 
-    private BufferedReader _scriptReader;
+        try {
+            for (int i = 0; i < numberOfLoops; i++) {
+                runScriptOnce(_scriptFile);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading script file: " + e.getMessage());
+        }
 
-    private Toolkit _toolkit;
+    }
+
+    private void runScriptOnce(File scriptfile) throws IOException {
+        String line;
+        int lineno = 0;
+        BufferedReader scriptReader = null;
+        try {
+            scriptReader = new BufferedReader(new FileReader(scriptfile));
+        } catch (FileNotFoundException e) {
+            // should never happen, because we checked the file for readability
+        }
+
+        while ((line = scriptReader.readLine()) != null) {
+
+            lineno++;
+            StringTokenizer st = new StringTokenizer(line);
+            String delayToken = st.nextToken();
+            long delay = Long.parseLong(delayToken);
+
+            String gestureToken = st.nextToken();
+            if (gestureToken.equals("KEY")) {
+                String keycodeToken = st.nextToken();
+                int keycode = Integer.parseInt(keycodeToken, 16);
+
+                if (delay != 0) {
+                    try {
+                        Thread.sleep(delay);
+                    } catch (InterruptedException ei) {
+                    }
+                }
+
+                _toolkit.fireKeystroke(keycode);
+
+            } else if (gestureToken.equals("MOUSE")) {
+                // It wasn't a keystroke, it must have been a mouse-click
+                String buttonToken = st.nextToken();
+                int button = Integer.parseInt(buttonToken);
+                String xToken = st.nextToken();
+                int x = Integer.parseInt(xToken);
+                String yToken = st.nextToken();
+                int y = Integer.parseInt(yToken);
+                MouseEventInfo mouseEventInfo = new MouseEventInfo(button, x, y);
+
+                if (delay != 0) {
+                    try {
+                        Thread.sleep(delay);
+                    } catch (InterruptedException ei) {
+                    }
+                }
+//                    System.err.println("Mouse-click (button " + button +
+//                            ") at (" + mouseEventInfo.getX() + "," + mouseEventInfo.getY() + ")");
+                _toolkit.fireMouseEvent(mouseEventInfo);
+            } else {
+                throw new IOException("Parse error [" + line + "] on line " + lineno +
+                        " of script file " + scriptfile.getAbsolutePath());
+            }
+        }
+        scriptReader.close();
+    }
+
 }

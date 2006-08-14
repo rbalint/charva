@@ -209,44 +209,48 @@ JNIEXPORT void JNICALL Java_charva_awt_Toolkit_init
 
 /* 
  * read a key as UTF-8 and return unicode character 
- * Worked with one and two bytes characters only.
+ * Works with one and two bytes characters only.
  */
 static int my_readkey()
 {
-   int utf[6] = {0,0,0,0,0,0};
-   int c = 0;
-   utf[0] = getch();
-   if (utf[0]==-1) return -1;
-   if ( (utf[0] & 0x80) == 0 )
-   { //0xxxxxxxx (1 byte UTF-8)
-     c = utf[0];
-   }
-   if ( (utf[0] & 0xC0) == 0xC0 )
-   { //110xxxxx 10xxxxxx ( 2 byte UTF-8 )
-     utf[1] = getch();
-     if (utf[1]==-1) return -1;
-     c = (utf[0] & 0x1f)*0x40 + (utf[1] & 0x3f);
-   }
-   if ( (utf[0] & 0x70) == 0x70 )
-   { //1110xxxx 10xxxxxx 10xxxxxx ( 3 byte UTF-8 )
-     // cannot be tested = not supported :-(
-     // must be similar to 2 byte encoding
-   }
-   if ( (utf[0] & 0xf0) == 0xf0 )
-   { //11110xxx 10xxxxxx 10xxxxxx 10xxxxxx( 4 byte UTF-8 )
-     // cannot be tested = not supported :-(
-     // must be similar to 2 byte encoding
-   }
-   if ( (utf[0] & 0xf8) == 0xf8 )
-   { //111110xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx( 5 byte UTF-8 )
-     // cannot be tested = not supported :-(
-     // must be similar to 2 byte encoding
-   }
-   if ( (utf[0] & 0xfc) == 0xfc )
-   { //1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx ( 6 byte UTF-8 )
-     // cannot be tested = not supported :-(
-     // must be similar to 2 byte encoding
-   }
+    int utf[6] = {0,0,0,0,0,0};
+    utf[0] = getch();
+    int c = 0;
+
+    if (utf[0] == -1) return -1;         // error
+
+    if (utf[0] == 0631) return 0631;     // mouse event
+
+    if ( (utf[0] & 0x80) == 0 ) {
+        //0xxxxxxxx (1 byte UTF-8)
+        c = utf[0];
+    }
+    else if ( (utf[0] & 0xe0) == 0xc0 ) {
+        // 110xxxxx 10xxxxxx ( 2 byte UTF-8 )
+        utf[1] = getch();
+        if (utf[1] == -1) return -1;
+        c = (utf[0] & 0x1f) * 0x40 + (utf[1] & 0x3f);
+    }
+    else if ( (utf[0] & 0xf8) == 0xf0 ) {
+        // 1110xxxx 10xxxxxx 10xxxxxx ( 3 byte UTF-8 )
+        // cannot be tested = not supported :-(
+        // must be similar to 2 byte encoding
+    }
+    else if ( (utf[0] & 0xf0) == 0xf0 ) {
+        // 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx( 4 byte UTF-8 )
+        // cannot be tested = not supported :-(
+        // must be similar to 2 byte encoding
+    }
+    else if ( (utf[0] & 0xfc) == 0xf8 ) {
+        // 111110xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx( 5 byte UTF-8 )
+        // cannot be tested = not supported :-(
+        // must be similar to 2 byte encoding
+    }
+    if ( (utf[0] & 0xfe) == 0xfc ) {
+        // 1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx ( 6 byte UTF-8 )
+        // cannot be tested = not supported :-(
+        // must be similar to 2 byte encoding
+    }
 
    return c;
 }

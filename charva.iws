@@ -176,24 +176,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Window.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Window.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="324" column="32" selection-start="11746" selection-end="11746" vertical-scroll-proportion="0.40731996">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="File.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://E:/j2sdk1.4.2_10/src.zip!/java/io/File.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="632" column="19" selection-start="25390" selection-end="25390" vertical-scroll-proportion="0.3872491">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PlaybackThread.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/java/src/charva/awt/PlaybackThread.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -203,37 +185,82 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.sh" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="test.sh" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="47" selection-start="1031" selection-end="1031" vertical-scroll-proportion="0.38134593">
+            <state line="39" column="114" selection-start="1100" selection-end="1211" vertical-scroll-proportion="0.4214876">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wintest.bat" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="JMenuItem.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/java/src/charvax/swing/JMenuItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="26" selection-start="1011" selection-end="1011" vertical-scroll-proportion="0.20070839">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Features.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/Features.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="62" column="76" selection-start="1587" selection-end="1587" vertical-scroll-proportion="0.12042503">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FAQ.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/FAQ.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1051" column="19" selection-start="43752" selection-end="43752" vertical-scroll-proportion="0.81936246">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Status.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/Status.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="685" column="19" selection-start="23964" selection-end="23964" vertical-scroll-proportion="0.81936246">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="376" column="26" selection-start="14187" selection-end="14187" vertical-scroll-proportion="0.81936246">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractButton.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/java/src/charvax/swing/AbstractButton.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="22" selection-start="1142" selection-end="1142" vertical-scroll-proportion="-2.8701298">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JMenu.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/java/src/charvax/swing/JMenu.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="13" selection-start="1091" selection-end="1091" vertical-scroll-proportion="-5.041322">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wintest.bat" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wintest.bat">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="47" selection-start="1152" selection-end="1152" vertical-scroll-proportion="0.501771">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tutorial.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/src/tutorial/java/Tutorial.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1870" column="36" selection-start="66340" selection-end="66340" vertical-scroll-proportion="0.661157">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="script.charva.txt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/script.charva.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="19" column="42" selection-start="831" selection-end="831" vertical-scroll-proportion="0.38134593">
               <folding />
             </state>
           </provider>
@@ -445,6 +472,24 @@
       </PATH_ELEMENT>
       <PATH_ELEMENT>
         <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva\java\dist\lib" />
+        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="charva.ipr" />
+        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="charva" />
+        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva" />
+        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva\docs" />
         <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
       </PATH_ELEMENT>
     </PATH>
@@ -768,55 +813,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/docs/Status.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="259" column="21" selection-start="7793" selection-end="7793" vertical-scroll-proportion="0.020070838">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/c/src/Makefile.gcj.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="37" selection-start="979" selection-end="979" vertical-scroll-proportion="0.46162927">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/Download.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="383" column="61" selection-start="13493" selection-end="13493" vertical-scroll-proportion="0.30889422">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/c/src/README.win32.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="813" selection-end="813" vertical-scroll-proportion="0.020070838">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/Features.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="27" selection-start="1380" selection-end="1380" vertical-scroll-proportion="0.020070838">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/j2sdk1.4.2_10/src.zip!/java/io/FileReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="11" selection-start="1238" selection-end="1238" vertical-scroll-proportion="0.33293977">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/j2sdk1.4.2_10/src.zip!/java/io/File.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="632" column="19" selection-start="25390" selection-end="25390" vertical-scroll-proportion="0.3872491">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/script.charva.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -826,14 +822,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/src/tutorial/java/Tutorial.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1870" column="36" selection-start="66340" selection-end="66340" vertical-scroll-proportion="0.661157">
+        <state line="1870" column="36" selection-start="66340" selection-end="66340" vertical-scroll-proportion="0.6896552">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Window.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="324" column="32" selection-start="11746" selection-end="11746" vertical-scroll-proportion="0.40731996">
+        <state line="324" column="32" selection-start="11746" selection-end="11746" vertical-scroll-proportion="0.4171705">
           <folding />
         </state>
       </provider>
@@ -859,16 +855,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wintest.bat">
+    <entry file="file://$PROJECT_DIR$/java/src/charvax/swing/JMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="47" selection-start="1152" selection-end="1152" vertical-scroll-proportion="0.501771">
+        <state line="32" column="13" selection-start="1091" selection-end="1091" vertical-scroll-proportion="-5.041322">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/charvax/swing/AbstractButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="22" selection-start="1142" selection-end="1142" vertical-scroll-proportion="-2.8701298">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/charvax/swing/JMenuItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="26" selection-start="1011" selection-end="1011" vertical-scroll-proportion="0.20070839">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="376" column="26" selection-start="14187" selection-end="14187" vertical-scroll-proportion="0.81936246">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Features.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="76" selection-start="1587" selection-end="1587" vertical-scroll-proportion="0.12042503">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/FAQ.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1051" column="19" selection-start="43752" selection-end="43752" vertical-scroll-proportion="0.81936246">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Status.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="685" column="19" selection-start="23964" selection-end="23964" vertical-scroll-proportion="0.81936246">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="47" selection-start="1031" selection-end="1031" vertical-scroll-proportion="0.38134593">
+        <state line="39" column="114" selection-start="1100" selection-end="1211" vertical-scroll-proportion="0.4214876">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wintest.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="42" selection-start="831" selection-end="831" vertical-scroll-proportion="0.38134593">
           <folding />
         </state>
       </provider>

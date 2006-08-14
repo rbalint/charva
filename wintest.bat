@@ -17,12 +17,12 @@ rem set JAVA_HOME=C:\j2sdk1.4.2
 if not exist %JAVA_HOME% goto noJAVA_HOME
 
 rem Uncomment the next line to log keystrokes and debug key-mappings 
-rem (the script file is %TMP%\script.charva).
+rem (the script file is "script.charva.txt").
 set TEST_OPTS="-Dcharva.script.record=script.charva.txt"
 
 rem Uncomment the following line to play back a script that was previously
 rem recorded using "charva.script.record".
-rem You have to edit the script to ensure that the last key in the scriptfile is an ESC (1b).
+rem This line will cause the script to loop three times, at a speeded-up rate (5 times the speed of the recording).
 rem set TEST_OPTS="-Dcharva.script.playbackFile=script.charva.txt -Dcharva.script.playbackLoops=3 -Dcharva.script.playbackRate=5"
 
 rem Uncomment the following option to test for memory leaks.

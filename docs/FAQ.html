@@ -258,11 +258,26 @@
             interfaces, or subpackages that are in any way identified as "java", "javax" or "sun".
         </code>
 
-        <p>
-            In any case, it is not practical to run Swing applications as Charva
+        <p> In any case, it is not practical to run Swing applications as Charva
             applications without modifying <i>some</i> lines of source code. In Swing, for
             example, dimensions are measured in pixels, whereas in Charva they are in rows and
-            columns.
+            columns.</p>
+    </td>
+</tr>
+
+<tr>
+    <td class="question"><i>How scalable is Charva? Can I run multiple instances of Charva in one
+        JVM?</i></td>
+</tr>
+<tr>
+    <td class="answer">
+        Because Charva uses of ncurses, each instance of Charva must run within its own JVM.
+
+        <p>Having said that, I've found that I can easily run 40 instances of the Charva "Tutorial" program
+            (included with the download tarball), each simulating a busy user, on a single-CPU Pentium with a
+            1.5GHz CPU and 768 MByte of memory. With this number of simultaneous instances there is no swapping
+            of memory to disk. Though each instance has quite a high usage of virtual memory
+            (about 200 MBytes), the RSS (Resident Set Size) of each instance is only 10 MBytes.</p>
     </td>
 </tr>
 
@@ -1034,6 +1049,6 @@
 </tr>
 </table>
 <hr>
-<i>Last updated: 7 August, 2006</i>
+<i>Last updated: 14 August, 2006</i>
 </body>
 </html>

@@ -266,12 +266,11 @@
 </tr>
 
 <tr>
-    <td class="question"><i>How scalable is Charva? Can I run multiple instances of Charva in one
-        JVM?</i></td>
+    <td class="question"><i>How scalable is Charva? Can Charva handle multiple users in one JVM?</i></td>
 </tr>
 <tr>
     <td class="answer">
-        Because Charva uses of ncurses, each instance of Charva must run within its own JVM.
+        Because Charva uses <i>ncurses</i>, each user requires his/her own instance of Charva, in its own JVM.
 
         <p>Having said that, I've found that I can easily run 40 instances of the Charva "Tutorial" program
             (included with the download tarball), each simulating a busy user, on a single-CPU Pentium with a

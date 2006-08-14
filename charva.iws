@@ -179,7 +179,7 @@
       <file leaf-file-name="Window.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Window.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="386" column="50" selection-start="13581" selection-end="13581" vertical-scroll-proportion="0.3175915">
+            <state line="386" column="76" selection-start="13607" selection-end="13607" vertical-scroll-proportion="0.5584416">
               <folding />
             </state>
           </provider>
@@ -197,25 +197,34 @@
       <file leaf-file-name="PlaybackThread.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/java/src/charva/awt/PlaybackThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="9" selection-start="2624" selection-end="2624" vertical-scroll-proportion="0.97992915">
+            <state line="91" column="76" selection-start="3415" selection-end="3415" vertical-scroll-proportion="1.4014168">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.sh" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="test.sh" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="89" selection-start="1187" selection-end="1187" vertical-scroll-proportion="0.42908654">
+            <state line="39" column="125" selection-start="1223" selection-end="1223" vertical-scroll-proportion="0.42908654">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wintest.bat" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="wintest.bat" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wintest.bat">
           <provider selected="true" editor-type-id="text-editor">
             <state line="20" column="0" selection-start="835" selection-end="835" vertical-scroll-proportion="0.40865386">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tutorial.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/src/tutorial/java/Tutorial.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1870" column="36" selection-start="66340" selection-end="66340" vertical-scroll-proportion="0.6730769">
               <folding />
             </state>
           </provider>
@@ -677,7 +686,7 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="PUT_FOCUS_INTO_COMMENT" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix the encoding of UTF-8 characters and restore mouse capability" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add capability to loop through a playback script multiple times." />
     <option name="SAVE_LAST_COMMIT_MESSAGE" value="true" />
     <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -699,6 +708,7 @@
     <MESSAGE value="Correct mistake in Makefile.gcj.txt" />
     <MESSAGE value="Updated the copyright dates in Tutorial.java" />
     <MESSAGE value="Fix the encoding of UTF-8 characters and restore mouse capability" />
+    <MESSAGE value="Add capability to loop through a playback script multiple times." />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -757,13 +767,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/c/src/Makefile.linux.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="49" selection-start="611" selection-end="611" vertical-scroll-proportion="0.3211334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/c/src/Toolkit.c">
       <provider selected="true" editor-type-id="text-editor">
         <state line="235" column="53" selection-start="6310" selection-end="6310" vertical-scroll-proportion="0.5253837">
@@ -827,13 +830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Window.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="386" column="50" selection-start="13581" selection-end="13581" vertical-scroll-proportion="0.3175915">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/script.charva.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -841,23 +837,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/wintest.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="835" selection-end="835" vertical-scroll-proportion="0.40865386">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/src/tutorial/java/Tutorial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1870" column="36" selection-start="66340" selection-end="66340" vertical-scroll-proportion="0.6730769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/java/src/charva/awt/PlaybackThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="9" selection-start="2624" selection-end="2624" vertical-scroll-proportion="0.97992915">
+        <state line="91" column="76" selection-start="3415" selection-end="3415" vertical-scroll-proportion="1.4014168">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="386" column="76" selection-start="13607" selection-end="13607" vertical-scroll-proportion="0.5584416">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="89" selection-start="1187" selection-end="1187" vertical-scroll-proportion="0.42908654">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wintest.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="835" selection-end="835" vertical-scroll-proportion="0.40865386">
+        <state line="39" column="125" selection-start="1223" selection-end="1223" vertical-scroll-proportion="0.42908654">
           <folding />
         </state>
       </provider>

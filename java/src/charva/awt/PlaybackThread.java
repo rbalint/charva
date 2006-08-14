@@ -32,11 +32,12 @@ public class PlaybackThread extends Thread {
     private File _scriptFile;
     private Toolkit _toolkit;
     private int numberOfLoops = 1;
+    private int playbackRate = 1;
 
     PlaybackThread(File scriptFile) {
         _scriptFile = scriptFile;
         _toolkit = Toolkit.getDefaultToolkit();
-        String loops = System.getProperty("charva.script.playbackloops");
+        String loops = System.getProperty("charva.script.playbackLoops");
         if (loops != null) {
             try {
                 numberOfLoops = Integer.parseInt(loops);
@@ -47,6 +48,16 @@ public class PlaybackThread extends Thread {
             if (numberOfLoops <= 0)
                 System.err.println("Property charva.script.playbackLoops (value=[" + loops + "" +
                         "]) must be greater than 0!");
+            numberOfLoops = 1;
+        }
+        String rate = System.getProperty("charva.script.playbackRate");
+        if (rate != null) {
+            playbackRate = Integer.parseInt("charva.script.playbackRate");
+            if (playbackRate <= 1) {
+                System.err.println("Property charva.script.playbackRate (value=" + rate +
+                ") must be greater than 1!");
+                playbackRate = 1;
+            }
         }
     }
 
@@ -78,6 +89,7 @@ public class PlaybackThread extends Thread {
             StringTokenizer st = new StringTokenizer(line);
             String delayToken = st.nextToken();
             long delay = Long.parseLong(delayToken);
+            delay = (delay / playbackRate);         // speed up the playback
 
             String gestureToken = st.nextToken();
             if (gestureToken.equals("KEY")) {

@@ -384,7 +384,7 @@ public class Window
 
     private void startPlayback() {
         String scriptfilename;
-        if ((scriptfilename = System.getProperty("charva.script.playback")) == null)
+        if ((scriptfilename = System.getProperty("charva.script.playbackFile")) == null)
             return;
 
         File scriptFile = new File(scriptfilename);

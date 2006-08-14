@@ -37,6 +37,7 @@ TEST_OPTS="-Dcharva.script.record=${HOME}/script.charva"
 
 # Uncomment the following line to play back a script that was previously
 # recorded using "charva.script.record".
+# You have to edit the script to ensure that the last key in the scriptfile is an ESC (1b).
 #TEST_OPTS="-Dcharva.script.playbackFile=${HOME}/script.charva -Dcharva.script.playbackLoops=3 -Dcharva.script.playbackRate=5"
 
 # Uncomment the next line to enable color.

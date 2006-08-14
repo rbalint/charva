@@ -197,25 +197,25 @@
       <file leaf-file-name="PlaybackThread.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/java/src/charva/awt/PlaybackThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="40" selection-start="3662" selection-end="3662" vertical-scroll-proportion="0.71900827">
+            <state line="136" column="23" selection-start="5326" selection-end="5326" vertical-scroll-proportion="1.5218418">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.sh" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="test.sh" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="125" selection-start="1223" selection-end="1223" vertical-scroll-proportion="0.4214876">
+            <state line="37" column="47" selection-start="1031" selection-end="1031" vertical-scroll-proportion="0.38134593">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wintest.bat" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="wintest.bat" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wintest.bat">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="119" selection-start="1130" selection-end="1130" vertical-scroll-proportion="0.48170012">
+            <state line="25" column="47" selection-start="1152" selection-end="1152" vertical-scroll-proportion="0.501771">
               <folding />
             </state>
           </provider>
@@ -686,7 +686,7 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="PUT_FOCUS_INTO_COMMENT" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add capability to loop through a playback script multiple times at a speeded-up rate." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix bugs in playback thread." />
     <option name="SAVE_LAST_COMMIT_MESSAGE" value="true" />
     <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -700,7 +700,6 @@
     <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Get CVS and local copy into sync." />
     <MESSAGE value="Apply fixes contributed by Urban Leos for fixing the handling of FocusEvents" />
     <MESSAGE value="Apply code contributed by Urban Leos for handling UTF-8 characters" />
     <MESSAGE value="Fix bugs in CSS styles" />
@@ -710,6 +709,7 @@
     <MESSAGE value="Fix the encoding of UTF-8 characters and restore mouse capability" />
     <MESSAGE value="Add capability to loop through a playback script multiple times." />
     <MESSAGE value="Add capability to loop through a playback script multiple times at a speeded-up rate." />
+    <MESSAGE value="Fix bugs in playback thread." />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -768,13 +768,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/c/src/Toolkit.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="235" column="53" selection-start="6310" selection-end="6310" vertical-scroll-proportion="0.5253837">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/Status.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="259" column="21" selection-start="7793" selection-end="7793" vertical-scroll-proportion="0.020070838">
@@ -817,13 +810,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://E:/j2sdk1.4.2_10/src.zip!/java/io/BufferedReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="11" selection-start="2321" selection-end="2321" vertical-scroll-proportion="0.33293977">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://E:/j2sdk1.4.2_10/src.zip!/java/io/File.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="632" column="19" selection-start="25390" selection-end="25390" vertical-scroll-proportion="0.3872491">
@@ -845,13 +831,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="125" selection-start="1223" selection-end="1223" vertical-scroll-proportion="0.4214876">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Window.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="324" column="32" selection-start="11746" selection-end="11746" vertical-scroll-proportion="0.40731996">
@@ -859,16 +838,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://E:/j2sdk1.4.2_10/src.zip!/java/io/Reader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="218" column="26" selection-start="7237" selection-end="7237" vertical-scroll-proportion="0.81936246">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/j2sdk1.4.2_10/src.zip!/java/io/BufferedReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="501" column="13" selection-start="14613" selection-end="14613" vertical-scroll-proportion="0.7390791">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/java/src/charva/awt/PlaybackThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="40" selection-start="3662" selection-end="3662" vertical-scroll-proportion="0.71900827">
+        <state line="136" column="23" selection-start="5326" selection-end="5326" vertical-scroll-proportion="1.5218418">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wintest.bat">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="119" selection-start="1130" selection-end="1130" vertical-scroll-proportion="0.48170012">
+        <state line="25" column="47" selection-start="1152" selection-end="1152" vertical-scroll-proportion="0.501771">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="47" selection-start="1031" selection-end="1031" vertical-scroll-proportion="0.38134593">
           <folding />
         </state>
       </provider>

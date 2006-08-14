@@ -22,7 +22,8 @@ set TEST_OPTS="-Dcharva.script.record=script.charva.txt"
 
 rem Uncomment the following line to play back a script that was previously
 rem recorded using "charva.script.record".
-rem set TEST_OPTS="-Dcharva.script.playback=script.charva.txt -Dcharva.script.playbackLoops=3 -Dcharva.script.playbackRate=5"
+rem You have to edit the script to ensure that the last key in the scriptfile is an ESC (1b).
+rem set TEST_OPTS="-Dcharva.script.playbackFile=script.charva.txt -Dcharva.script.playbackLoops=3 -Dcharva.script.playbackRate=5"
 
 rem Uncomment the following option to test for memory leaks.
 rem set TEST_OPTS=%TEST_OPTS% -Xrunhprof:heap=sites

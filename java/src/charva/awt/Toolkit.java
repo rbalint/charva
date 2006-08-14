@@ -260,8 +260,6 @@ public class Toolkit {
          * THIS HAS CHANGED! readKey returns -1 if there was no key to read.
          */
         if (key == -1) {
-            LOG.debug("end of file on keyboard input");
-            //System.exit(-1);
             return;
         }
 

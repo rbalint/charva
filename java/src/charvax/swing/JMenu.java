@@ -133,7 +133,7 @@ public class JMenu
 
         term.setCursor(origin);
 
-        int attribute = 0;
+        int attribute;
         if (!(getParent() instanceof JMenuBar)) {
             // This menu is in a JPopupMenu.
             super.draw();
@@ -258,6 +258,9 @@ public class JMenu
             _popup.setInvoker(parentMenuBar);
             _popup.setLocation(p);
         }
+        // On showing the popup menu, always give focus to the first JMenuItem in it.
+        _popup.setFocus(_popup.getFirstMenuItem());
+
         _popup.show();
     }
 

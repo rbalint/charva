@@ -16,7 +16,10 @@
     <option name="USE_USER_FILTER" value="false" />
     <option name="USER" value="" />
   </component>
-  <component name="CheckinPanelState" />
+  <component name="CheckinPanelState">
+    <Excluded key="$PROJECT_DIR$/java/src/charvax/swing/JMenu.java" />
+    <Excluded key="$PROJECT_DIR$/java/src/charvax/swing/JPopupMenu.java" />
+  </component>
   <component name="Commander">
     <leftPanel url="file://$PROJECT_DIR$" />
     <rightPanel url="file://$PROJECT_DIR$" />
@@ -841,7 +844,7 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="PUT_FOCUS_INTO_COMMENT" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix the Makefile for GCJ, and add a ZIP target to the build.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add the commons-loggin-api JAR to CVS control." />
     <option name="SAVE_LAST_COMMIT_MESSAGE" value="true" />
     <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -855,7 +858,6 @@
     <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Add capability to loop through a playback script multiple times at a speeded-up rate." />
     <MESSAGE value="Fix bugs in playback thread." />
     <MESSAGE value="Update documentation." />
     <MESSAGE value="Update README" />
@@ -865,6 +867,7 @@
     <MESSAGE value="Comment out the script-recording and -playback options, they don't work in Windows." />
     <MESSAGE value="Remove obsolete code." />
     <MESSAGE value="Fix the Makefile for GCJ, and add a ZIP target to the build.xml" />
+    <MESSAGE value="Add the commons-loggin-api JAR to CVS control." />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />

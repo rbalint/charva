@@ -78,6 +78,14 @@ public class JPopupMenu
             return null;
     }
 
+    public JMenuItem getFirstMenuItem() {
+        for (int i = 0; i < super._components.size(); i++) {
+            if (_components.elementAt(i) instanceof JMenuItem)
+                return (JMenuItem) _components.elementAt(i);
+        }
+        throw new RuntimeException("A JPopupMenu should contain at least one JMenuItem");
+    }
+
     public int getComponentIndex(Component c) {
         return super._components.indexOf(c);
     }
@@ -88,27 +96,31 @@ public class JPopupMenu
         _rightWasPressed = false;
 
         if (!_visible)
-            return;	// the popup has already been dismissed.
+            return;    // the popup has already been dismissed.
 
         int key = e.getKeyCode();
         Toolkit term = Toolkit.getDefaultToolkit();
 
         if (key == KeyEvent.VK_UP) {
             super.previousFocus();
+
         } else if (key == KeyEvent.VK_DOWN) {
             super.nextFocus();
+
         } else if (key == KeyEvent.VK_LEFT) {
             /* Pressing the LEFT cursor key has the effect of cancelling
              * the selected menu and invoking the next menu on the left.
              */
             _leftWasPressed = true;
             hide();
+
         } else if (key == KeyEvent.VK_RIGHT) {
             /* Pressing the RIGHT cursor key has the effect of cancelling
              * the selected menu and invoking the next menu on the right.
              */
             _rightWasPressed = true;
             hide();
+
         } else if (key == KeyEvent.VK_ENTER) {
             /* Pressing ENTER sends an ActionEvent. The source of the
              * event is the menu item, not the menu; this means that the
@@ -119,10 +131,12 @@ public class JPopupMenu
             JMenuItem item = (JMenuItem) super.getCurrentFocus();
             _activate(item);
             e.consume();
+
         } else if (key == KeyEvent.VK_BACK_SPACE || key == 0x1b) {
             // Backspace or ESC was pressed
             _wasCancelled = true;
             hide();
+            
         } else {
             /* Check if one of the mnemonic keys was pressed.
              * Note that the user can press a lowercase or an uppercase
@@ -145,7 +159,7 @@ public class JPopupMenu
             }
             term.beep();
         }
-    }	    // end of processKeyEvent()
+    }        // end of processKeyEvent()
 
     public boolean wasCancelled() {
         return _wasCancelled;
@@ -173,7 +187,7 @@ public class JPopupMenu
                 Toolkit.getDefaultToolkit().fireKeystroke(KeyEvent.VK_LEFT);
             } else if (menu.getPopupMenu().rightWasPressed()) {
                 Toolkit.getDefaultToolkit().fireKeystroke(KeyEvent.VK_RIGHT);
-            } else if (menu.getPopupMenu().wasCancelled() == false)
+            } else if (!menu.getPopupMenu().wasCancelled())
                 hide();
         } else {
             ActionEvent evt = new ActionEvent(item_, item_.getActionCommand());

@@ -176,82 +176,82 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MultiLineLabel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/java/src/charva/awt/util/MultiLineLabel.java">
+      <file leaf-file-name="JMenu.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/java/src/charvax/swing/JMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="134" column="25" selection-start="3832" selection-end="3832" vertical-scroll-proportion="0.7992916">
+            <state line="135" column="21" selection-start="3850" selection-end="3850" vertical-scroll-proportion="0.33293977">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/index.html">
+      <file leaf-file-name="JPopupMenu.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/java/src/charvax/swing/JPopupMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="138" column="12" selection-start="4472" selection-end="4472" vertical-scroll-proportion="1.3364817">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Features.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/Features.html">
+      <file leaf-file-name="JFrame.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/java/src/charvax/swing/JFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="314" column="26" selection-start="12052" selection-end="12052" vertical-scroll-proportion="0.8595041">
+            <state line="27" column="17" selection-start="963" selection-end="963" vertical-scroll-proportion="0.20070839">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Status.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/Status.html">
+      <file leaf-file-name="Frame.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Frame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="247" column="14" selection-start="7168" selection-end="7168" vertical-scroll-proportion="0.38134593">
+            <state line="25" column="20" selection-start="924" selection-end="924" vertical-scroll-proportion="0.100354195">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wintest.bat" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wintest.bat">
+      <file leaf-file-name="Window.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Window.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="11" selection-start="896" selection-end="896" vertical-scroll-proportion="0.3064904">
+            <state line="36" column="20" selection-start="1231" selection-end="1231" vertical-scroll-proportion="0.24085006">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/build.xml">
+      <file leaf-file-name="Container.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Container.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="336" column="69" selection-start="11221" selection-end="11221" vertical-scroll-proportion="1.3400236">
+            <state line="29" column="22" selection-start="1008" selection-end="1008" vertical-scroll-proportion="-1.0082644">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Download.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/Download.html">
+      <file leaf-file-name="JMenuItem.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/java/src/charvax/swing/JMenuItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="230" column="35" selection-start="6781" selection-end="6781" vertical-scroll-proportion="0.46162927">
+            <state line="105" column="16" selection-start="3298" selection-end="3298" vertical-scroll-proportion="0.33293977">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Toolkit.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Toolkit.java">
+      <file leaf-file-name="Component.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Component.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="268" column="40" selection-start="9083" selection-end="9083" vertical-scroll-proportion="0.43919715">
+            <state line="379" column="0" selection-start="11606" selection-end="11606" vertical-scroll-proportion="0.2716346">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Rectangle.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Rectangle.java">
+      <file leaf-file-name="JMenuBar.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/java/src/charvax/swing/JMenuBar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="41" selection-start="1294" selection-end="1294" vertical-scroll-proportion="0.17355372">
+            <state line="139" column="23" selection-start="4050" selection-end="4050" vertical-scroll-proportion="0.28689492">
               <folding />
             </state>
           </provider>
@@ -432,29 +432,11 @@
         <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva\test" />
+        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva\java" />
         <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva\test\src" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-      </PATH_ELEMENT>
-    </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="charva.ipr" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="charva" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva\docs" />
+        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva\java\src" />
         <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
       </PATH_ELEMENT>
     </PATH>
@@ -472,7 +454,15 @@
         <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva\c" />
+        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva\java" />
+        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva\java\src" />
+        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva\java\src\charvax\swing" />
         <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
       </PATH_ELEMENT>
     </PATH>
@@ -490,33 +480,7 @@
         <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva\c" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva\c\lib" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-      </PATH_ELEMENT>
-    </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="charva.ipr" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="charva" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva\c" />
-        <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva\c\include" />
+        <option name="myItemId" value="PsiDirectory:C:\sourceforge\charva-1.1.1\charva\java" />
         <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
       </PATH_ELEMENT>
     </PATH>
@@ -546,11 +510,11 @@
     <property name="cvs_file_history_flatWidth2" value="171" />
     <property name="cvs_file_history_flatOrder4" value="4" />
     <property name="cvs_file_history_flatOrder1" value="1" />
-    <property name="vcs_file_view_flatWidth2" value="181" />
     <property name="cvs_file_history_flatWidth1" value="170" />
+    <property name="vcs_file_view_flatWidth2" value="181" />
     <property name="vcs_file_view_flatWidth5" value="181" />
-    <property name="vcs_file_view_flatOrder3" value="3" />
     <property name="cvs_file_history_flatOrder2" value="2" />
+    <property name="vcs_file_view_flatOrder3" value="3" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="cvs_file_history_flatWidth4" value="217" />
     <property name="vcs_file_view_treeWidth0" value="335" />
@@ -602,7 +566,7 @@
   </component>
   <component name="RecentsManager" />
   <component name="RestoreUpdateTree">
-    <UpdateInfo date="06/08/14 06:21" ActionInfo="Check Status">
+    <UpdateInfo date="06/09/10 08:34" ActionInfo="Check Status">
       <UpdatedFiles>
         <FILE-GROUP>
           <option name="myUpdateName" value="Updated from server" />
@@ -667,8 +631,7 @@
           <option name="mySupportsDeletion" value="true" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UNKNOWN" />
-          <PATH>C:\sourceforge\charva-1.1.1\charva\script.charva.txt</PATH>
-          <PATH>C:\sourceforge\charva-1.1.1\charva\charva.log</PATH>
+          <PATH>C:\sourceforge\charva-1.1.1\charva\java\lib\commons-logging-api.jar</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Locally added" />
@@ -724,17 +687,12 @@
   </component>
   <component name="RunManager">
     <activeType name="Remote" />
-    <configuration selected="false" default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="C:/IntelliJ-IDEA-3.0.5/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+    <configuration selected="false" default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
     </configuration>
     <configuration selected="false" default="true" type="WebLogic Instance" factoryName="Local">
       <option name="WORKING_DIRECTORY" />
@@ -749,13 +707,6 @@
       <option name="PASSWORD" value="weblogic" />
       <option name="SERVER_NAME" value="myserver" />
       <option name="DOMAIN_NAME" value="mydomain" />
-    </configuration>
-    <configuration selected="false" default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
     </configuration>
     <configuration selected="false" default="true" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" />
@@ -782,6 +733,18 @@
         <value defaultName="wholeProject" />
       </option>
     </configuration>
+    <configuration selected="false" default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="C:/IntelliJ-IDEA-3.0.5/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+    </configuration>
     <configuration selected="true" default="false" name="Tutorial" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -804,7 +767,7 @@
   <component name="StructureViewFactory">
     <option name="AUTOSCROLL_MODE" value="true" />
     <option name="AUTOSCROLL_FROM_SOURCE" value="false" />
-    <option name="ACTIVE_ACTIONS" value="" />
+    <option name="ACTIVE_ACTIONS" value="ALPHA_COMPARATOR" />
   </component>
   <component name="SvnChangesBrowserSettings">
     <option name="USE_AUTHOR_FIELD" value="true" />
@@ -834,7 +797,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1288" height="1004" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Goals" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="3" />
       <window_info id="Colour Chooser" active="false" anchor="left" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="3" />
@@ -848,10 +811,10 @@
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="3" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="8" />
       <window_info id="Favorites" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.32928804" order="3" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.12652068" order="1" />
+      <window_info id="Ant Build" active="true" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="true" weight="0.12652068" order="1" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.33" order="2" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.249742" order="2" />
-      <window_info id="Dilbert" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.32613635" order="8" />
+      <window_info id="Dilbert" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.6465909" order="8" />
       <window_info id="File View" active="false" anchor="right" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.890511" order="3" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="docked" type="docked" visible="false" weight="0.4" order="3" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="sliding" type="sliding" visible="false" weight="0.4" order="0" />
@@ -878,7 +841,7 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="PUT_FOCUS_INTO_COMMENT" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove obsolete code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix the Makefile for GCJ, and add a ZIP target to the build.xml" />
     <option name="SAVE_LAST_COMMIT_MESSAGE" value="true" />
     <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -892,7 +855,6 @@
     <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Add capability to loop through a playback script multiple times." />
     <MESSAGE value="Add capability to loop through a playback script multiple times at a speeded-up rate." />
     <MESSAGE value="Fix bugs in playback thread." />
     <MESSAGE value="Update documentation." />
@@ -902,6 +864,7 @@
     <MESSAGE value="Update status to include Commons Logging." />
     <MESSAGE value="Comment out the script-recording and -playback options, they don't work in Windows." />
     <MESSAGE value="Remove obsolete code." />
+    <MESSAGE value="Fix the Makefile for GCJ, and add a ZIP target to the build.xml" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -960,88 +923,9 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/log4j.properties">
+    <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/FAQ.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="493" column="60" selection-start="18770" selection-end="18770" vertical-scroll-proportion="0.553719">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Component.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="413" column="18" selection-start="13142" selection-end="13142" vertical-scroll-proportion="0.158867">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/java/src/charva/awt/util/MultiLineLabel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="25" selection-start="3832" selection-end="3832" vertical-scroll-proportion="0.7992916">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/Features.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="314" column="26" selection-start="12052" selection-end="12052" vertical-scroll-proportion="0.8595041">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/Status.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="247" column="14" selection-start="7168" selection-end="7168" vertical-scroll-proportion="0.38134593">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="10" selection-start="2191" selection-end="2191" vertical-scroll-proportion="0.8546798">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wintest.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="11" selection-start="896" selection-end="896" vertical-scroll-proportion="0.3064904">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/Documents and Settings/Rob Pitman/build.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Rectangle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="41" selection-start="1294" selection-end="1294" vertical-scroll-proportion="0.17355372">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Toolkit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="268" column="40" selection-start="9083" selection-end="9083" vertical-scroll-proportion="0.43919715">
+        <state line="336" column="69" selection-start="11221" selection-end="11221" vertical-scroll-proportion="1.3400236">
           <folding />
         </state>
       </provider>
@@ -1053,9 +937,93 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.xml">
+    <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Toolkit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="336" column="69" selection-start="11221" selection-end="11221" vertical-scroll-proportion="1.3400236">
+        <state line="268" column="40" selection-start="9083" selection-end="9083" vertical-scroll-proportion="0.43919715">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Rectangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="41" selection-start="1294" selection-end="1294" vertical-scroll-proportion="0.17355372">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/charvax/swing/AbstractButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="22" selection-start="1142" selection-end="1142" vertical-scroll-proportion="-5.181818">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="379" column="0" selection-start="11606" selection-end="11606" vertical-scroll-proportion="0.2716346">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/charvax/swing/JMenuItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="105" column="16" selection-start="3298" selection-end="3298" vertical-scroll-proportion="0.33293977">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/charvax/swing/JMenuBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="139" column="23" selection-start="4050" selection-end="4050" vertical-scroll-proportion="0.28689492">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/charvax/swing/JFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="17" selection-start="963" selection-end="963" vertical-scroll-proportion="0.20070839">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Frame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="20" selection-start="924" selection-end="924" vertical-scroll-proportion="0.100354195">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="20" selection-start="1231" selection-end="1231" vertical-scroll-proportion="0.24085006">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/charva/awt/Container.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="22" selection-start="1008" selection-end="1008" vertical-scroll-proportion="-1.0082644">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/charvax/swing/JSeparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="13" selection-start="905" selection-end="905" vertical-scroll-proportion="0.18063754">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/charvax/swing/JPopupMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="138" column="12" selection-start="4472" selection-end="4472" vertical-scroll-proportion="1.3364817">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/charvax/swing/JMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="135" column="21" selection-start="3850" selection-end="3850" vertical-scroll-proportion="0.33293977">
           <folding />
         </state>
       </provider>

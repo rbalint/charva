@@ -57,22 +57,6 @@
     <!--    <property file="build.properties"/>-->
     <property file="${user.home}/build.properties"/>
 
-    <!--
-     NOTE: THE FOLLOWING PROPERTY MUST BE SET TO THE APPROPRIATE VALUE FOR
-     THE OPERATING SYSTEM ON WHICH YOU ARE BUILDING CHARVA.
-     POSSIBLE VALUES ARE:
-         aix
-         beos
-         freebsd
-         gcj
-         hpux
-         linux
-         mac_osx
-         solaris
-         win32
-     -->
-    <property name="OS_NAME" value="win32"/>
-
 
     <!-- ==================== File and Directory Names ======================== -->
 
@@ -155,8 +139,12 @@
         <delete dir="${dist.home}"/>
         <delete dir="${basedir}/docs/api"/>
         <delete dir="${test.home}/classes"/>
-        <delete dir="${c.home}/lib"/>
-        <delete dir="${c.home}/include"/>
+        <delete>
+            <fileset dir="${c.home}/lib" includes="*"/>
+        </delete>
+        <delete>
+            <fileset dir="${c.home}/include" includes="*"/>
+        </delete>
     </target>
 
 
@@ -200,13 +188,19 @@
     <target name="makeDLL" depends="javah"
             description="Compile the JNI shared library">
 
-        <echo>Compiling the shared library using "Makefile.${OS_NAME}.txt"</echo>
         <mkdir dir="${c.home}/lib"/>
+        <input
+                message="Enter the operating system type: "
+                validargs="aix,beos,freebsd,gcj,hpux,linux,mac_osx,solaris,win32"
+                addproperty="os.type"
+                />
+
+        <echo>Compiling the shared library using "Makefile.${os.type}.txt"</echo>
         <exec executable="make"
               dir="${c.home}/src"
               output="${c.home}/lib/make.out.txt"
               failonerror="true">
-            <arg line="-f Makefile.${OS_NAME}.txt"/>
+            <arg line="-f Makefile.${os.type}.txt"/>
         </exec>
     </target>
 
@@ -335,7 +329,7 @@
         be present, which implies running "ant makeDLL" first. -->
     <target name="zip-all" depends="dist,javadoc,javah,compile-test"
             description="Create a ZIP file for upload to Sourceforge">
-        <zip basedir="${basedir}/.." 
+        <zip basedir="${basedir}/.."
              destfile="/tmp/${app.name}.zip">
             <exclude name="CVS"/>
         </zip>

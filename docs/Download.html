@@ -248,15 +248,15 @@
         </pre></li>
 
     <li>At this stage, if you have JDK1.3, JDK1.4 or JDK1.5 installed, you can run the test program as
-        described in step 8 below (the precompiled libraries, compiled with J2SDK1.4.2, are included in the
+        described in step 8 below (precompiled libraries for Linux, compiled with J2SDK1.4.2, are included in the
         download package, as <code>$CHARVA_HOME/c/lib/libTerminal.so</code>
         and <code>$CHARVA_HOME/java/dist/lib/charva.jar</code>).
-        I have tested Charva with RedHat Linux 7, 8 and 9, Fedora 3 and 4, Windows 98, Windows 2000 and Windows XP.
-        Others have ported Charva to various other flavors of Unix. If you are running some other
+        I have tested Charva with RedHat Linux 7, 8 and 9, Fedora 3 and 4, CentOS 4, Windows 98, Windows 2000,
+        and Windows XP. Others have ported Charva to various other flavors of Unix. If you are running some other
         version of Unix or have a different version of the JDK,
         you will have to build the libraries and the test program as described in the following steps.
         Operating-system-specific Makefiles are provided in the <code>$CHARVA_HOME/c/src</code>
-        directory. A DLL for Windows is provided in the <code>$CHARVA_HOME/c/lib</code> directory.
+        directory. The required DLL for Windows is provided in the <code>$CHARVA_HOME/c/lib</code> directory.
 
         <p></li>
 
@@ -298,7 +298,7 @@
         <p>(If you are running Windows, use <code>wintest.bat</code> instead). Two different versions (a Swing version
             and a CHARVA version) of the tutorial program are provided in the tarball. The source code of the two
             programs is almost identical; they differ in only a few lines. To run the Swing version instead of the
-            Charva version, type <code>"./test.sh swing"</code> instead. Note that this program uses the standard Java
+            Charva version, type <code>"sh test.sh swing"</code> instead. Note that this program uses the standard Java
             Swing GUI, and therefore your X display must be up and running for this program to work.</p>
     </li>
 </ol>

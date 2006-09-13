@@ -80,7 +80,7 @@ public abstract class Component {
     public void show() {
         if (!_visible) {
             _visible = true;
-            repaint();	// post a PaintEvent
+            repaint();    // post a PaintEvent
         }
     }
 
@@ -105,7 +105,7 @@ public abstract class Component {
                 }
             }
 
-            repaint();	// post a PaintEvent
+            repaint();    // post a PaintEvent
         }
     }
 
@@ -162,7 +162,8 @@ public abstract class Component {
         Container parent = getParent();
         if (parent == null) {
             throw new IllegalComponentStateException("cannot get component location " +
-                    "before it has been added to a container");
+                    "before it has been added to a container: component= " +
+                    this.toString());
         }
 
         return parent.getLocationOnScreen().addOffset(_origin);
@@ -182,16 +183,16 @@ public abstract class Component {
         return new Rectangle(_origin, getSize());
     }
 
-    public void setBounds( Rectangle bounds ) {
+    public void setBounds(Rectangle bounds) {
         setLocation(bounds.getLeft(), bounds.getTop());
     }
 
-    public void setBounds( int top_, int left_, int bottom_, int right_) {
-        setLocation(left_, top_ );
+    public void setBounds(int top_, int left_, int bottom_, int right_) {
+        setLocation(left_, top_);
     }
 
     public void setBounds(Point topleft_, Dimension size_) {
-        setLocation(topleft_ );
+        setLocation(topleft_);
     }
 
     /**
@@ -246,8 +247,8 @@ public abstract class Component {
     public void addKeyListener(KeyListener kl_) {
         if (_keyListeners == null)
             _keyListeners = new Vector();
-        if ( ! _keyListeners.contains(kl_)) {
-           _keyListeners.add(kl_);
+        if (! _keyListeners.contains(kl_)) {
+            _keyListeners.add(kl_);
         }
     }
 
@@ -257,7 +258,7 @@ public abstract class Component {
     public void addFocusListener(FocusListener fl_) {
         if (_focusListeners == null)
             _focusListeners = new Vector();
-        if ( ! _focusListeners.contains(fl_)) {
+        if (! _focusListeners.contains(fl_)) {
             _focusListeners.add(fl_);
         }
     }
@@ -335,7 +336,7 @@ public abstract class Component {
      * for this component.
      */
     public void processFocusEvent(FocusEvent fe_) {
-        LOG.debug( "processFocusEvent:" + this.toString() + " ev:" + fe_.toString() );
+        LOG.debug("processFocusEvent:" + this.toString() + " ev:" + fe_.toString());
         if (_focusListeners != null) {
             for (Enumeration e = _focusListeners.elements();
                  e.hasMoreElements();) {
@@ -386,38 +387,36 @@ public abstract class Component {
         Component currentFocus = ancestor.getCurrentFocus();
         Window sourcewin = Toolkit.getDefaultToolkit().getTopWindow();
         Component currentFocusX = sourcewin.getCurrentFocus();
-     /*
-        LOG.debug( "requestFocus1: " + toString() );
-        LOG.debug( "currentFocus2: " + currentFocusX.toString() );
-      */
+        /*
+          LOG.debug( "requestFocus1: " + toString() );
+          LOG.debug( "currentFocus2: " + currentFocusX.toString() );
+        */
         if (currentFocus != this ||
-            ( currentFocusX == this && ! _hadFocus )) {
+                (currentFocusX == this && ! _hadFocus)) {
             _hadFocus = true;
             EventQueue evtQueue =
                     Toolkit.getDefaultToolkit().getSystemEventQueue();
             FocusEvent evt;
             FocusEvent lastEvt = Toolkit.getDefaultToolkit().getLastFocusEvent();
 
-            if ( lastEvt != null ) {
-                currentFocus = (Component)lastEvt.getSource();
-                if ( currentFocus != null &&
-                     currentFocus.getAncestorWindow() != null &&
-                     currentFocus.getAncestorWindow().isEnabled() &&
-                     currentFocus.getAncestorWindow() != ancestor ) {
-                     temporary = true;
-                }
-                else {
-                     temporary = false;
+            if (lastEvt != null) {
+                currentFocus = (Component) lastEvt.getSource();
+                if (currentFocus != null &&
+                        currentFocus.getAncestorWindow() != null &&
+                        currentFocus.getAncestorWindow().isEnabled() &&
+                        currentFocus.getAncestorWindow() != ancestor) {
+                    temporary = true;
+                } else {
+                    temporary = false;
                 }
                 evt = new FocusEvent(AWTEvent.FOCUS_LOST, currentFocus, temporary, this);
                 evtQueue.postEvent(evt);
                 //System.err.println( "DisparoFocusLost: " + currentFocus.toString() + " Window:" + currentFocus.getAncestorWindow().toString() + " //" + currentFocus.getAncestorWindow().isValid() );
-            }
-            else {
+            } else {
                 currentFocus = null;
             }
 
-            evt = new FocusEvent(AWTEvent.FOCUS_GAINED, this,  temporary, currentFocus);
+            evt = new FocusEvent(AWTEvent.FOCUS_GAINED, this, temporary, currentFocus);
             evtQueue.postEvent(evt);
             //System.err.println( "DisparoFocusGained: " + this.toString() + " Window:" + ancestor.toString() );
 

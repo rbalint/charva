@@ -20,6 +20,8 @@
 package charva.awt;
 
 import charva.awt.event.AWTEvent;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * This class is used to coalesce several "sync" events together,
@@ -30,6 +32,7 @@ class SyncQueue
         extends java.util.LinkedList {
 
     private static SyncQueue _instance;
+    private static final Log LOG = LogFactory.getLog(SyncQueue.class);
 
     private SyncQueue() {
         super();
@@ -64,7 +67,7 @@ class SyncQueue
             try {
                 wait();
             } catch (InterruptedException ie) {
-                ie.printStackTrace();
+                LOG.error("SyncQueue.getNextEvent() should never be interrupted!", ie);
             }
         }
         return (AWTEvent) _instance.removeFirst();

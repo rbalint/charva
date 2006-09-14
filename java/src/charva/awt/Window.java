@@ -199,7 +199,7 @@ public class Window
                 }
             }    // end FOR loop
         } catch (Exception e) {
-            e.printStackTrace();
+            LOG.error("Exception occurred in event dispatch thread ", e);
             System.exit(1);
         }
     }

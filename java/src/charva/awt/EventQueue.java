@@ -85,7 +85,7 @@ public class EventQueue {
             try {
                 wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();    // should never happen
+                LOG.error("should never be interrupted!", e);    // should never happen
             }
         }
         return (AWTEvent) removeFirst();

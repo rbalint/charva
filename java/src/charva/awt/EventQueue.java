@@ -97,6 +97,9 @@ public class EventQueue {
      * @return the first AWTEvent on the queue.
      */
     public synchronized AWTEvent getNextEvent() {
+        if (!("event dispatcher".equals(Thread.currentThread().getName()))) {
+            LOG.warn("Incorrect thread is calling getNextEvent(): [" + Thread.currentThread().getName() + "]");
+        }
         return (AWTEvent) removeFirst();
     }
 

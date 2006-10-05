@@ -276,10 +276,9 @@ public class GridBagLayout
                 cont.doLayout();
             }
 
-
             /* Calculate the x position of the component's origin (i.e. top
-             * left corner).
-             */
+            * left corner).
+            */
             int cx = 0;
             switch (gbc.anchor) {
                 case GridBagConstraints.WEST:
@@ -343,6 +342,10 @@ public class GridBagLayout
         /* Make a copy of the constraints object passed to us, so that the
          * caller can re-use it for other components.
          */
+        if (!(constraint_ instanceof GridBagConstraints))
+            throw new IllegalArgumentException("expected constraint to be an instance of GridBagConstraints, " +
+                    "is instance of " + constraint_.getClass().getName());
+
         GridBagConstraints constraint = (GridBagConstraints) constraint_;
         GridBagConstraints newc = new GridBagConstraints();
         newc.gridx = constraint.gridx;

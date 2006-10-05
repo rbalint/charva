@@ -35,11 +35,9 @@ import java.util.Vector;
 
 /**
  * Support for
-    public void setBounds( Rectangle bounds )
-    public void setBounds( int top_, int left_, int bottom_, int right_)
-    public void setBounds(Point topleft_, Dimension size_)
- *
- *
+ * public void setBounds( Rectangle bounds )
+ * public void setBounds( int top_, int left_, int bottom_, int right_)
+ * public void setBounds(Point topleft_, Dimension size_)
  */
 public class JTextField
         extends JTextComponent {
@@ -95,20 +93,20 @@ public class JTextField
         super.invalidate();
     }
 
-    public void setBounds( Rectangle bounds ) {
+    public void setBounds(Rectangle bounds) {
         super.setBounds(bounds);
-        setColumns(bounds.getRight() - bounds.getLeft() + 1 );
+        setColumns(bounds.getRight() - bounds.getLeft() + 1);
 
     }
 
-    public void setBounds( int top_, int left_, int bottom_, int right_) {
-        super.setBounds(top_,left_,bottom_, right_);
-        setColumns( right_ -  left_ + 1);
+    public void setBounds(int top_, int left_, int bottom_, int right_) {
+        super.setBounds(top_, left_, bottom_, right_);
+        setColumns(right_ - left_ + 1);
     }
 
     public void setBounds(Point topleft_, Dimension size_) {
         super.setBounds(topleft_, size_);
-        setColumns( size_.width );
+        setColumns(size_.width);
     }
 
     /**
@@ -292,7 +290,7 @@ public class JTextField
             /* Post an action event if ENTER was pressed.
              */
             else if (key == KeyEvent.VK_ENTER) {
-                ActionEvent ae = new ActionEvent(this, _actionCommand);
+                ActionEvent ae = new ActionEvent(this, getActionCommand());
                 Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(ae);
             }
         }
@@ -324,7 +322,7 @@ public class JTextField
             int new_caret = _offset + (x - origin.x);
             super._caretPosition =
                     (new_caret < super._document.length()) ?
-                    new_caret : super._document.length();
+                            new_caret : super._document.length();
             repaint();
         }
     }
@@ -361,17 +359,20 @@ public class JTextField
 
     /**
      * Invoke all the ActionListener callbacks that may have been registered
-     * for this component.
+     * for this component. The listener list is processed in last to first order.
      */
     public void postActionEvent(ActionEvent ae_) {
         if (_actionListeners != null) {
-            for (Enumeration e = _actionListeners.elements();
-                 e.hasMoreElements();) {
-
-                ActionListener al = (ActionListener) e.nextElement();
+            for (int i = _actionListeners.size() - 1; i >= 0; i--) {
+                ActionListener al = (ActionListener) _actionListeners.get(i);
                 al.actionPerformed(ae_);
             }
         }
+    }
+
+    public void fireActionPerformed() {
+        ActionEvent ae = new ActionEvent(this, getActionCommand());
+        postActionEvent(ae);
     }
 
     /**
@@ -402,7 +403,7 @@ public class JTextField
     public String toString() {
         return "JTextField location=" + getLocation() +
                 " text=\"" + super._document + "\"" +
-                " actionCommand=\"" + _actionCommand + "\"";
+                " actionCommand=\"" + getActionCommand() + "\"";
     }
 
     public void debug(int level_) {

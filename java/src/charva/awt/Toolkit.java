@@ -159,9 +159,9 @@ public class Toolkit {
     public void fireKeystroke(int key_, Component source_) {
         int id;
         if (Toolkit.isActionKey(key_))
-            id = AWTEvent.KEY_TYPED;
-        else
             id = AWTEvent.KEY_PRESSED;
+        else
+            id = AWTEvent.KEY_TYPED;
 
         _evtQueue.postEvent(new KeyEvent(key_, id, source_));
     }

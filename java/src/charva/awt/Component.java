@@ -297,14 +297,14 @@ public abstract class Component {
     /**
      * Invoke all the KeyListener callbacks that may have been registered
      * for this component. The KeyListener objects may modify the
-     * keycodes, and can also set the "consumed" flag.
+     * keycodes, and can also set the "consumed" flag. The KeyListeners are
+     * invoked in last to first order.
      */
     public void processKeyEvent(KeyEvent ke_) {
         if (_keyListeners != null) {
-            for (Enumeration e = _keyListeners.elements();
-                 e.hasMoreElements();) {
+            for (int i = _keyListeners.size() - 1; i >= 0; i--) {
 
-                KeyListener kl = (KeyListener) e.nextElement();
+                KeyListener kl = (KeyListener) _keyListeners.get(i);
                 if (ke_.getID() == AWTEvent.KEY_PRESSED)
                     kl.keyPressed(ke_);
                 else if (ke_.getID() == AWTEvent.KEY_TYPED)

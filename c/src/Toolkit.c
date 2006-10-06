@@ -182,7 +182,12 @@ JNIEXPORT void JNICALL Java_charva_awt_Toolkit_init
 
     initscr();
     keypad(stdscr, TRUE);   // enable keyboard mapping
+#if (defined _PDCURSES_)
+    // In PDCurses, "timeout()" is a no-op, so we are forced to use "nodelay()".
+    nodelay(stdscr,TRUE);
+#else
     timeout(100);           // wait up to 100msec for input
+#endif
     noecho();               /* don't echo input */
     raw();
     nonl();

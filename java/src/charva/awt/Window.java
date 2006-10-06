@@ -145,6 +145,9 @@ public class Window
 
         this.draw();
 
+        WindowEvent we = new WindowEvent(this, AWTEvent.WINDOW_OPENED);
+        _term.getSystemEventQueue().postEvent(we);
+
         /* Rather than call Toolkit.sync() directly here, we put a SyncEvent
          * onto the SyncQueue. The SyncThread will read it off the SyncQueue
          * and then sleep for 50msec before putting the SyncEvent onto

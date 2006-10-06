@@ -267,22 +267,17 @@ JNIEXPORT jint JNICALL Java_charva_awt_Toolkit_readKey
 {
     jint c;	// defined as a long for Linux.
 
-try_again:
 #if (defined _USE_NCURSESW_)
     c = (jint) my_readkey();
 #else
     c = (jint) getch();
 #endif
 
- // THIS HAS ALL CHANGED: getch() is now called from the event-dispatching thread!!! (November 2004)
-    // There are two known scenarios in which getch() returns ERR.
-    // 1. The user resizes his PuTTY window (in which case errno == 0).
-    // 2. The user closes his Telnet/SSH session (errno == EINTR).
-    //if (c == ERR && errno == 0) {
-	//    // The window has been resized.
-	//    Java_charva_awt_Toolkit_resetClipRect(env, jo);
-	//    goto try_again;
-    //}
+#if (defined _PDCURSES_)
+    // PDCurses returns 0 if there was no key to read.
+    if (c == 0)
+        c = -1;
+#endif
 
     return c;
 }

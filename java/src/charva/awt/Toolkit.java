@@ -255,11 +255,9 @@ public class Toolkit {
         int key = readKey();
         MouseEventInfo mouse_info = null;
 
-        /* The possibility of an error return from readKey() was
-         * pointed out by Uwe Buettner.
-         * THIS HAS CHANGED! readKey returns -1 if there was no key to read.
+        /* readKey() returns -1 if there was no key to read.
          */
-        if (key == -1) {
+        if (key == -1 || key == 0) {
             return;
         }
 

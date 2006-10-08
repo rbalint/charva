@@ -317,7 +317,7 @@ public class JScrollPane
                         borderInsets.top + i));
                 if (i >= scrollbar_offset &&
                         i < scrollbar_offset + scrollbar_height) {
-                    term.addChar(Toolkit.ACS_CKBOARD, 0, colorpair);
+                    term.addChar('+', 0, colorpair);
                 }
             }
         }
@@ -342,7 +342,7 @@ public class JScrollPane
                         borderInsets.top + extentSize.height));
                 if (i >= scrollbar_offset &&
                         i < scrollbar_offset + scrollbar_width) {
-                    term.addChar(Toolkit.ACS_CKBOARD, 0, colorpair);
+                    term.addChar('+', 0, colorpair);
                 }
             }
         }

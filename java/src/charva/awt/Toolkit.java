@@ -56,8 +56,8 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  * Correct manage of FocusEvents
-    public FocusEvent getLastFocusEvent()
-    protected void setLastFocusEvent(FocusEvent ev_ )
+ * public FocusEvent getLastFocusEvent()
+ * protected void setLastFocusEvent(FocusEvent ev_ )
  */
 public class Toolkit {
 
@@ -157,12 +157,7 @@ public class Toolkit {
      *             key as defined in the "VK_*" values.
      */
     public void fireKeystroke(int key_, Component source_) {
-        int id;
-        if (Toolkit.isActionKey(key_))
-            id = AWTEvent.KEY_PRESSED;
-        else
-            id = AWTEvent.KEY_TYPED;
-
+        int id = Toolkit.isActionKey(key_) ? AWTEvent.KEY_PRESSED : AWTEvent.KEY_TYPED;
         _evtQueue.postEvent(new KeyEvent(key_, id, source_));
     }
 
@@ -170,7 +165,7 @@ public class Toolkit {
         return _lastFocusEvent;
     }
 
-    protected void setLastFocusEvent(FocusEvent ev_ ) {
+    protected void setLastFocusEvent(FocusEvent ev_) {
         _lastFocusEvent = ev_;
     }
 
@@ -268,12 +263,12 @@ public class Toolkit {
         else if (key == '\n' || key == '\r')
             key = KeyEvent.VK_ENTER;
 
-        /* Likewise, some versions of curses don't map '\b' to
-         * VK_BACK_SPACE (Solaris at least); this works around
-         * that.  (I can't imagine anyone wanting \b to be mapped
-         * to anything else.  If they do, then they should set it
-         * up that way in the terminfo database.)
-         */
+            /* Likewise, some versions of curses don't map '\b' to
+            * VK_BACK_SPACE (Solaris at least); this works around
+            * that.  (I can't imagine anyone wanting \b to be mapped
+            * to anything else.  If they do, then they should set it
+            * up that way in the terminfo database.)
+            */
         else if (key == '\b')
             key = KeyEvent.VK_BACK_SPACE;
 
@@ -750,7 +745,6 @@ public class Toolkit {
      */
     public native MouseEventInfo getMouseEventInfo();
 
-
     //====================================================================
     // PRIVATE METHODS
 
@@ -787,50 +781,50 @@ public class Toolkit {
      */
     private static native int getACSchar(int offset_);
 
- /**
-     * Returns true if the key code is greater than 255, indicating
-     * that it is a function key.
+    /**
+     * Returns true if the key is a function key or control character.
      */
-    //public boolean isActionKey() { return (_key >= 256); }
-    public static boolean isActionKey( int _key )
-    {
-        boolean value = false;
-        if ( _key == charva.awt.event.KeyEvent.VK_ESCAPE ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_DOWN ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_UP ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_LEFT ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_RIGHT ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_HOME ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_BACK_SPACE ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F1 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F2 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F3 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F4 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F5 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F6 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F7 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F8 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F9 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F10 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F11 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F12 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F13 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F14 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F15 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F16 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F17 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F18 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F19 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_F20 ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_DELETE ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_INSERT ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_PAGE_DOWN ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_PAGE_UP ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_ENTER ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_BACK_TAB ) value=true;
-        if ( _key == charva.awt.event.KeyEvent.VK_END ) value=true;
-
-        return (value);
+    public static boolean isActionKey(int _key) {
+        switch (_key) {
+            case charva.awt.event.KeyEvent.VK_ESCAPE:
+            case charva.awt.event.KeyEvent.VK_DOWN:
+            case charva.awt.event.KeyEvent.VK_UP:
+            case charva.awt.event.KeyEvent.VK_LEFT:
+            case charva.awt.event.KeyEvent.VK_RIGHT:
+            case charva.awt.event.KeyEvent.VK_BACK_SPACE:
+            case charva.awt.event.KeyEvent.VK_F1:
+            case charva.awt.event.KeyEvent.VK_F2:
+            case charva.awt.event.KeyEvent.VK_F3:
+            case charva.awt.event.KeyEvent.VK_F4:
+            case charva.awt.event.KeyEvent.VK_F5:
+            case charva.awt.event.KeyEvent.VK_F6:
+            case charva.awt.event.KeyEvent.VK_F7:
+            case charva.awt.event.KeyEvent.VK_F8:
+            case charva.awt.event.KeyEvent.VK_F9:
+            case charva.awt.event.KeyEvent.VK_F10:
+            case charva.awt.event.KeyEvent.VK_F11:
+            case charva.awt.event.KeyEvent.VK_F12:
+            case charva.awt.event.KeyEvent.VK_F13:
+            case charva.awt.event.KeyEvent.VK_F14:
+            case charva.awt.event.KeyEvent.VK_F15:
+            case charva.awt.event.KeyEvent.VK_F16:
+            case charva.awt.event.KeyEvent.VK_F17:
+            case charva.awt.event.KeyEvent.VK_F18:
+            case charva.awt.event.KeyEvent.VK_F19:
+            case charva.awt.event.KeyEvent.VK_F20:
+            case charva.awt.event.KeyEvent.VK_DELETE:
+            case charva.awt.event.KeyEvent.VK_INSERT:
+            case charva.awt.event.KeyEvent.VK_PAGE_DOWN:
+            case charva.awt.event.KeyEvent.VK_PAGE_UP:
+            case charva.awt.event.KeyEvent.VK_ENTER:
+            case '\t':
+            case charva.awt.event.KeyEvent.VK_BACK_TAB:
+            case charva.awt.event.KeyEvent.VK_HOME:
+            case charva.awt.event.KeyEvent.VK_END:
+                return true;
+            default:
+                return false;
+        }
     }
 
     //====================================================================
@@ -892,7 +886,7 @@ public class Toolkit {
         }
 
         System.loadLibrary("Terminal");
-        Toolkit.init();	    // call native function to initalize ncurses.
+        Toolkit.init();        // call native function to initalize ncurses.
     }
 
     /**

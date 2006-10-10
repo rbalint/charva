@@ -11,7 +11,6 @@ package tutorial.charva;
 
 import charva.awt.*;
 import charva.awt.event.*;
-import charva.awt.util.CapsTextField;
 import charvax.swing.*;
 import charvax.swing.border.EmptyBorder;
 import charvax.swing.border.LineBorder;
@@ -185,7 +184,7 @@ class Tutorial
     public void actionPerformed(ActionEvent ae_) {
         String actionCommand = ae_.getActionCommand();
         if (actionCommand.equals("Exit")) {
-            System.gc();	// so that HPROF reports only live objects.
+            System.gc();    // so that HPROF reports only live objects.
             System.exit(0);
         } else if (actionCommand.equals("JFileChooser")) {
             testFileChooser();
@@ -289,7 +288,7 @@ class Tutorial
                 JFileChooser.APPROVE_OPTION) {
 
             String msgs[] = {"The selected file was:",
-                             chooser.getSelectedFile().getAbsolutePath()};
+                    chooser.getSelectedFile().getAbsolutePath()};
             JOptionPane.showMessageDialog(this, msgs,
                     "Results of JFileChooser", JOptionPane.PLAIN_MESSAGE);
         } else {
@@ -303,8 +302,8 @@ class Tutorial
      */
     private void showConfirmDialog() {
         String[] messages = {
-            "This is an example of a Confirm Dialog",
-            "that displays an array of Strings"};
+                "This is an example of a Confirm Dialog",
+                "that displays an array of Strings"};
 
         int option = JOptionPane.showConfirmDialog(this, messages, "Select an Option",
                 JOptionPane.YES_NO_CANCEL_OPTION);
@@ -325,8 +324,8 @@ class Tutorial
      */
     private void showInputDialog() {
         String[] messages = {
-            "This is an example of an Input Dialog",
-            "that displays an array of Strings"};
+                "This is an example of an Input Dialog",
+                "that displays an array of Strings"};
         String result = JOptionPane.showInputDialog(this, messages, "Input a value",
                 JOptionPane.QUESTION_MESSAGE);
         String msg;
@@ -348,9 +347,9 @@ class Tutorial
         String selected_option = null;
 
         String[] message = {
-            "This shows how to create and use",
-            "a JOptionPane directly, without using",
-            "the convenience methods"};
+                "This shows how to create and use",
+                "a JOptionPane directly, without using",
+                "the convenience methods"};
         JOptionPane pane = new JOptionPane(message);
 
         // Make the dialog display a JTextField for user input.
@@ -398,7 +397,7 @@ class Tutorial
                     selected_option = options[i];
                     break;
                 }
-            }	    // end for
+            }        // end for
         }
         results[1] = "The selected option is \"" + selected_option + "\"";
 
@@ -498,7 +497,7 @@ class LayoutTest
         super(owner_, "Miscellaneous Layout Test");
         setLocation(3, 3);
         Container contentPane = getContentPane();
-        contentPane.setLayout(new BorderLayout());	// default layout for JDialog
+        contentPane.setLayout(new BorderLayout());    // default layout for JDialog
 
         JPanel toppan = new JPanel();
         toppan.setBorder(new TitledBorder("North Panel"));
@@ -560,7 +559,7 @@ class ColorLayoutTest
         setForeground(Color.yellow);
         setBackground(Color.green);
         Container contentPane = getContentPane();
-        contentPane.setLayout(new BorderLayout());	// default layout for JDialog
+        contentPane.setLayout(new BorderLayout());    // default layout for JDialog
 
         JPanel toppan = new JPanel();
         toppan.setBorder(new TitledBorder("North Panel (inherits green background)"));
@@ -718,8 +717,8 @@ class GridBagLayoutTest
         gbc.gridheight = 6;
         gbc.insets = new Insets(1, 1, 1, 1);
         String[] countries = {"Portugal", "Spain", "France",
-                              "Italy", "Germany", "Poland", "Austria", "Belgium",
-                              "Denmark", "Norway", "Sweden"};
+                "Italy", "Germany", "Poland", "Austria", "Belgium",
+                "Denmark", "Norway", "Sweden"};
         _countryList = new JList(countries);
         _countryList.setVisibleRowCount(6);
         _countryList.setColumns(12);
@@ -862,9 +861,9 @@ class JTabbedPaneTest
 
             JPanel centerpan = new JPanel();
             String[] devices = {"Computer", "CD-ROM", "Disk drives",
-                                "Display adapters", "Floppy disk controllers",
-                                "Imaging devices", "Keyboard", "Modem",
-                                "Monitors", "Mouse"};
+                    "Display adapters", "Floppy disk controllers",
+                    "Imaging devices", "Keyboard", "Modem",
+                    "Monitors", "Mouse"};
             JList deviceList = new JList(devices);
             deviceList.setBorder(new TitledBorder("Devices"));
             centerpan.add(deviceList);
@@ -1136,8 +1135,8 @@ class SelectionTest
                     BorderLayout.NORTH);
 
             String[] colors = {"Red", "Blue", "Green",
-                               "Magenta", "Mauve", "Orange", "Black",
-                               "White", "Brown"};
+                    "Magenta", "Mauve", "Orange", "Black",
+                    "White", "Brown"};
             _comboBox = new JComboBox(colors);
             _comboBox.setMaximumRowCount(5);
             _comboBox.addItemListener(this);
@@ -1175,8 +1174,8 @@ class SelectionTest
                     BorderLayout.NORTH);
 
             String[] vehicles = {"Volkswagen", "Rolls-Royce",
-                                 "Toyota", "Chrysler", "Mercedes Benz",
-                                 "Bentley", "Bugatti", "Maserati", "Porsche"};
+                    "Toyota", "Chrysler", "Mercedes Benz",
+                    "Bentley", "Bugatti", "Maserati", "Porsche"};
             DefaultListModel model = new DefaultListModel();
             int columns = 0;
             for (int i = 0; i < vehicles.length; i++) {
@@ -1241,7 +1240,7 @@ class SelectionTest
             if (cmd.equals("Delete")) {
                 int[] indices = _vehicleList.getSelectedIndices();
                 if (indices.length == 0)
-                    return;	// there is no selected item
+                    return;    // there is no selected item
 
                 DefaultListModel model =
                         (DefaultListModel) _vehicleList.getModel();
@@ -1441,7 +1440,7 @@ class ButtonTest
         northpan.add(panel);
 
         _buttons.add(_strawberry);
-        _strawberry.setSelected(true);	// select one button in the group
+        _strawberry.setSelected(true);    // select one button in the group
         _buttons.add(_chocolate);
         _buttons.add(_vanilla);
         _buttons.add(_pistachio);
@@ -1528,13 +1527,13 @@ class JTableTest
         centerpan.setLayout(new FlowLayout(FlowLayout.LEFT, 2, 1));
         String[] headings = {"Name", "Color", "Composition", "Mass", "Radius", "Orbit"};
         String[][] data = {{"Mars", "Red", "Dust", "1.5e10", "2.7e6", "Elliptical"},
-                           {"Pluto", "Blue", "Rock", "2.3e11", "2.9e7", "Circular"},
-                           {"Luna", "Green", "Cheese", "1.3e5", "2.3e12", "Square"},
-                           {"Venus", "White", "Gas", "4.3e5", "2.3e12",
-                            "A funny irregular shape whose name is longer than the table width"},
-                           {"Jupiter", "Black", "Marshmallow", "4.3e6", "2.3e12", "Zigzag"},
-                           {"Neptune", "Purple", "Gas", "1.2e6", "2.4e2", "Elliptical"},
-                           {"Saturn", "Yellow", "Gas", "1.1e7", "1.4e6", "Circular"}};
+                {"Pluto", "Blue", "Rock", "2.3e11", "2.9e7", "Circular"},
+                {"Luna", "Green", "Cheese", "1.3e5", "2.3e12", "Square"},
+                {"Venus", "White", "Gas", "4.3e5", "2.3e12",
+                        "A funny irregular shape whose name is longer than the table width"},
+                {"Jupiter", "Black", "Marshmallow", "4.3e6", "2.3e12", "Zigzag"},
+                {"Neptune", "Purple", "Gas", "1.2e6", "2.4e2", "Elliptical"},
+                {"Saturn", "Yellow", "Gas", "1.1e7", "1.4e6", "Circular"}};
 
         /* The following inner class overrides the processKeyEvent() method
          * of JTable, so that we can display the selected rows and columns.
@@ -1635,7 +1634,7 @@ class KeyEventTest
     private JCheckBox _checkBox1 = new JCheckBox("System ON");
     private JCheckBox _checkBox2 = new JCheckBox("Alarm ON");
     private JCheckBox _checkBox3 = new JCheckBox("System Armed");
-    private charva.awt.util.CapsTextField _capsField;
+    private JTextField _capsField;
 
     KeyEventTest(Frame owner_) {
         super(owner_, "KeyEvent Test");
@@ -1672,7 +1671,7 @@ class KeyEventTest
         int key = e_.getKeyCode();
         if (key == KeyEvent.VK_DOWN &&
                 (src == _checkBox1 ||
-                src == _checkBox2 || src == _checkBox3)) {
+                        src == _checkBox2 || src == _checkBox3)) {
 
             /* Move the keyboard input focus to the textfield below.
              */
@@ -1733,17 +1732,16 @@ class KeyEventTest
         centerpan.setBorder(new TitledBorder("A Text Field that converts to uppercase"));
         centerpan.setLayout(new BorderLayout());
 
-        JLabel label1 = new JLabel("The CapsTextField is a subclass of JTextField");
-        label1.setBorder(new EmptyBorder(1, 1, 0, 1));
-        centerpan.add(label1, BorderLayout.NORTH);
-
-        JLabel label2 = new JLabel("that overrides the processKeyEvent() method");
-        label2.setBorder(new EmptyBorder(0, 1, 1, 1));
-        centerpan.add(label2, BorderLayout.CENTER);
-
         JPanel southpan = new JPanel();
         southpan.add(new JLabel("CapsTextField: "));
-        _capsField = new CapsTextField("THIS FIELD AUTOMATICALLY CONVERTS TO UPPERCASE");
+        _capsField = new JTextField("THIS FIELD AUTOMATICALLY CONVERTS TO UPPERCASE");
+        _capsField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent ke) {
+                if (ke.getKeyChar() >= 'a' && ke.getKeyChar() <=  'z') {
+                    ke.setKeyChar((char)(ke.getKeyChar() - ('a' - 'A')));
+                }
+            }
+        });
         southpan.add(_capsField);
         centerpan.add(southpan, BorderLayout.SOUTH);
 

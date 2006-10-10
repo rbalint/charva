@@ -28,28 +28,22 @@ public class KeyEvent
         extends InputEvent {
 
     private int _keyCode;
-    private char _keyChar;
 
     public KeyEvent(int key_, int id_, Component source_) {
         super(source_, id_);
-//        _keyCode = (id_ == AWTEvent.KEY_TYPED) ? VK_UNDEFINED : key_;
-        // The above line is consistent with Swing's interpretation of a keyCode;
-        // however, changing it to be consistent with Swing would break existing Charva applications.
         _keyCode = key_;
-        _keyChar = (id_ == AWTEvent.KEY_PRESSED) ? CHAR_UNDEFINED : (char) key_;
     }
 
     /**
      * Returns the integer keyCode associated with the key in this event.
      *
      * @return the integer code for an actual key on the keyboard.
-     *         (For <code>KEY_TYPED</code> events, the keyCode is
-     *         <code>VK_UNDEFINED</code>.)
-     *         Actually, ncurses has no way of knowing about key-modifiers such as ALT,
+     *         For <code>KEY_TYPED</code> events, Swing sets the keyCode to <code>VK_UNDEFINED</code>.
+     *         But ncurses has no way of knowing about key-modifiers such as ALT,
      *         so Charva just returns an integer representation of the key character.
      */
     public int getKeyCode() {
-        return  _keyCode;
+        return _keyCode;
     }
 
     /**
@@ -57,12 +51,13 @@ public class KeyEvent
      * For example, the key-typed event for shift + "a" returns the
      * value for "A".
      *
-     * @return the Unicode character defined for this key event.
-     *         If no valid Unicode character exists for this key event,
-     *         keyChar is <code>CHAR_UNDEFINED</code>.
+     * @return the character defined for this key event.
+     *         If no valid character exists for this key event,
+     *         Swing returns <code>CHAR_UNDEFINED</code>. But Charva just returns the keyCode
+     *         cast as a char.
      */
     public char getKeyChar() {
-        return _keyChar;
+        return (char) _keyCode;
     }
 
     /**
@@ -79,7 +74,7 @@ public class KeyEvent
      *                that make up this event.
      */
     public void setKeyChar(char keyChar) {
-        this._keyChar = keyChar;
+        this._keyCode = (int) keyChar;
     }
 
     /**

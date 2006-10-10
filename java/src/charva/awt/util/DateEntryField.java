@@ -35,6 +35,8 @@ import org.apache.commons.logging.LogFactory;
  * and allows the user to edit the contents of the three subfields.
  * It intercepts each keystroke and causes a beep if a non-numeric key
  * is typed.
+ * ACTUALLY, THIS CLASS IS OBSOLETE: IT IS BETTER TO ADD A KeyListener TO A JTextField
+ * IF YOU WANT TO OVERRIDE ITS DEFAULT BEHAVIOUS.
  */
 public class DateEntryField
         extends JPanel

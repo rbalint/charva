@@ -246,7 +246,8 @@ public class JTextField
          */
         if (!ke_.isActionKey()) {
 
-            /* It is a prinatble character, insert it into the text buffer.
+            /* It is a control-character or a printable character. If it is not a control character,
+             * insert it into the text buffer.
              */
             if (key >= ' ') {
                 super._document.insert(super._caretPosition, ke_.getKeyChar());

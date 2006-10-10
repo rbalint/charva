@@ -150,7 +150,13 @@ public class Toolkit {
 
     /**
      * Process a keystroke as if it was pressed while the focus was in the
-     * specified component.
+     * specified component. Swing sends two KeyEvents for keys that are not "action keys" (i.e.
+     * function keys and cursor keys); a KEY_PRESSED event followed by a KEY_TYPED event.
+     * Note that Swing considers ASCII control-characters as <b>not</b> being "action keys", and
+     * also sends a KEY_TYPED event for each control key.
+     * But since ncurses cannot detect when a "modifier key" (e.g. SHIFT, CTRL or ALT) is pressed,
+     * Charva only sends one event for each keystroke; either a KEY_PRESSED event (for function keys and
+     * cursor keys) or a KEY_TYPED event (for printable characters and control keys).
      *
      * @param key_ the keystroke that was pressed. If it is less than
      *             256, it is an ASCII or ISO8859-1 code; otherwise it is a function

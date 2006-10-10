@@ -23,7 +23,6 @@ import charva.awt.*;
 import charva.awt.event.*;
 import charvax.swing.text.JTextComponent;
 
-import java.util.Enumeration;
 import java.util.Vector;
 
 /**
@@ -245,13 +244,12 @@ public class JTextField
 
         /*
          */
-        if (ke_.isActionKey() == false) {
+        if (!ke_.isActionKey()) {
 
-            /* If it is a control character, ignore it.
-             * @todo Do something more useful with control chars.
+            /* It is a prinatble character, insert it into the text buffer.
              */
             if (key >= ' ') {
-                super._document.insert(super._caretPosition, (char) key);
+                super._document.insert(super._caretPosition, ke_.getKeyChar());
                 super._caretPosition++;
                 if (super._caretPosition - _offset > _columns)
                     _offset++;
@@ -264,21 +262,26 @@ public class JTextField
                 super._caretPosition--;
                 if (super._caretPosition < _offset)
                     _offset--;
+
             } else if (key == KeyEvent.VK_RIGHT && super._caretPosition < super._document.length()) {
                 super._caretPosition++;
                 if (super._caretPosition - _offset > _columns)
                     _offset++;
+
             } else if (key == KeyEvent.VK_BACK_SPACE && super._caretPosition > 0) {
                 super._caretPosition--;
                 super._document.deleteCharAt(super._caretPosition);
                 if (super._caretPosition < _offset)
                     _offset--;
+
             } else if (key == KeyEvent.VK_DELETE &&
                     super._caretPosition >= 0 && super._caretPosition < super._document.length()) {
                 super._document.deleteCharAt(super._caretPosition);
+
             } else if (key == KeyEvent.VK_HOME) {
                 super._caretPosition = 0;
                 _offset = 0;
+
             } else if (key == KeyEvent.VK_END) {
                 super._caretPosition = super._document.length();
                 if (super._document.length() > _columns)

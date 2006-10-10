@@ -33,6 +33,9 @@ import charvax.swing.table.TableModel;
 import java.util.Enumeration;
 import java.util.Vector;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 /**
  * JTable is a user-interface component that displays data in a two-
  * dimensional table format.<p>
@@ -50,6 +53,8 @@ import java.util.Vector;
 public class JTable
         extends JComponent
         implements TableModelListener, Scrollable, ListSelectionListener {
+
+    private static final Log LOG = LogFactory.getLog(JTable.class);
 
     /**
      * Default constructor
@@ -175,11 +180,11 @@ public class JTable
             x = getColumnWidth(0) + 1;
             for (int i = 0; i < columns - 1; i++) {
                 term.setCursor(origin.addOffset(x, 0));
-                term.addChar(Toolkit.ACS_TTEE, 0, colorpair);	    // top tee
+                term.addChar(Toolkit.ACS_TTEE, 0, colorpair);        // top tee
                 term.setCursor(origin.addOffset(x, 1));
                 term.addVerticalLine(rows, 0, colorpair);
                 term.setCursor(origin.addOffset(x, rows + 1));
-                term.addChar(Toolkit.ACS_BTEE, 0, colorpair);	    // bottom tee
+                term.addChar(Toolkit.ACS_BTEE, 0, colorpair);        // bottom tee
                 x += getColumnWidth(i + 1) + 1;
             }
         }
@@ -196,7 +201,7 @@ public class JTable
                  */
                 int attrib =
                         (isRowSelected(row) || isColumnSelected(column)) ?
-                        Toolkit.A_REVERSE : Toolkit.A_NORMAL;
+                                Toolkit.A_REVERSE : Toolkit.A_NORMAL;
 
                 // Highlight the current row and column
                 if (_currentRow == row || _currentColumn == column)
@@ -234,6 +239,7 @@ public class JTable
         } else if (key == KeyEvent.VK_BACK_TAB) {
             getParent().previousFocus();
             return;
+
         } else if (key == KeyEvent.VK_UP) {
             if (_currentRow == 0)
                 term.beep();
@@ -245,6 +251,13 @@ public class JTable
                 evtqueue.postEvent(new ScrollEvent(this, ScrollEvent.DOWN,
                         new Point(x, _currentRow + 1)));
             }
+
+        } else if (key == KeyEvent.VK_PAGE_UP) {
+            if (getParent() instanceof JViewport) {
+                JViewport parent = (JViewport) getParent();
+                LOG.debug("PAGE_UP: extentSize=" + parent.getExtentSize());
+            }
+
         } else if (key == KeyEvent.VK_DOWN) {
             if (_currentRow == _model.getRowCount() - 1)
                 term.beep();
@@ -256,6 +269,13 @@ public class JTable
                 evtqueue.postEvent(new ScrollEvent(this, ScrollEvent.UP,
                         new Point(x, _currentRow + 2)));
             }
+
+        } else if (key == KeyEvent.VK_PAGE_DOWN) {
+            if (getParent() instanceof JViewport) {
+                JViewport parent = (JViewport) getParent();
+                LOG.debug("PAGE_DOWN: extentSize=" + parent.getExtentSize());
+            }
+
         } else if (key == KeyEvent.VK_LEFT) {
             if (_currentColumn == 0)
                 term.beep();
@@ -267,6 +287,7 @@ public class JTable
                 evtqueue.postEvent(new ScrollEvent(this, ScrollEvent.RIGHT,
                         new Point(x, _currentRow)));
             }
+
         } else if (key == KeyEvent.VK_RIGHT) {
             if (_currentColumn == _model.getColumnCount() - 1)
                 term.beep();
@@ -278,18 +299,21 @@ public class JTable
                 evtqueue.postEvent(new ScrollEvent(this, ScrollEvent.LEFT,
                         new Point(x, _currentRow)));
             }
+
         } else if (key == KeyEvent.VK_HOME) {
             int x = 0;
             for (int i = 0; i < _currentColumn; i++)
                 x += getColumnWidth(i) + 1;
             evtqueue.postEvent(new ScrollEvent(this, ScrollEvent.RIGHT,
                     new Point(x, _currentRow)));
+
         } else if (key == KeyEvent.VK_END) {
             int x = 0;
             for (int i = 0; i <= _currentColumn; i++)
                 x += getColumnWidth(i) + 1;
             evtqueue.postEvent(new ScrollEvent(this, ScrollEvent.LEFT,
                     new Point(x, _currentRow)));
+
         } else if (key == KeyEvent.VK_ENTER) {
             if (getColumnSelectionAllowed())
                 selectCurrentColumn();
@@ -300,7 +324,7 @@ public class JTable
             repaint();
         }
 
-        if ((getParent() instanceof JViewport) == false) {
+        if (!(getParent() instanceof JViewport)) {
             draw();
             requestFocus();
             super.requestSync();

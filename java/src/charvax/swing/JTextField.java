@@ -310,6 +310,8 @@ public class JTextField
      */
     public void processMouseEvent(MouseEvent e_) {
         super.processMouseEvent(e_);
+        if (e_.isConsumed())
+            return;
 
         if (e_.getButton() == MouseEvent.BUTTON1 &&
                 e_.getModifiers() == MouseEvent.MOUSE_CLICKED &&

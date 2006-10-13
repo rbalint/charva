@@ -18,61 +18,65 @@
  */
 
 package charva.awt.event;
+
 import charva.awt.*;
 
 /**
  * An event which encapsulates information about a mouse-click.
  */
 public class MouseEvent
-    extends InputEvent
-{
+        extends InputEvent {
 
-    public MouseEvent(Component source_, int modifiers_, 
-	    int x_, int y_, int clickcount_, int button_) {
+    public MouseEvent(Component source_, int modifiers_,
+                      int x_, int y_, int clickcount_, int button_) {
 
-	super(source_, AWTEvent.MOUSE_EVENT);
-	modifiers = modifiers_;
-	x = x_;
-	y = y_;
-	clickcount = clickcount_;
-	button = button_;
+        super(source_, AWTEvent.MOUSE_EVENT);
+        modifiers = modifiers_;
+        x = x_;
+        y = y_;
+        clickcount = clickcount_;
+        button = button_;
     }
 
     public int getModifiers() {
-	return modifiers;
+        return modifiers;
     }
 
     public int getX() {
-	return x;
+        return x;
     }
 
     public int getY() {
-	return y;
+        return y;
     }
 
     public int getClickCount() {
-	return clickcount;
+        return clickcount;
     }
 
     public int getButton() {
-	return button;
+        return button;
     }
 
     public String toString() {
-	return ("MouseEvent: x=" + x + " y=" + y + 
-	    " modifiers=" + modifiers + " clickcount=" + clickcount +
-	    " button=" + button + " source=[" + getSource() + "]");
+        return ("MouseEvent: x=" + x + " y=" + y +
+                " modifiers=" + modifiers + " clickcount=" + clickcount +
+                " button=" + button + " source=[" + getSource() + "]");
     }
 
     // INSTANCE VARIABLES ================================================
 
-    /** Specifies whether the button was pressed, released or clicked. */
+    /**
+     * Specifies whether the button was pressed, released or clicked.
+     */
     protected int modifiers;
 
     protected int x;
     protected int y;
 
-    /** Specified which button was pressed, released or clicked. */
+    /**
+     * Specified which button was pressed, released or clicked.
+     */
     protected int button;
 
     protected int clickcount;

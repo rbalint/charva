@@ -20,9 +20,7 @@
 package charvax.swing;
 
 import charva.awt.*;
-import charva.awt.event.KeyEvent;
-import charva.awt.event.ScrollEvent;
-import charva.awt.event.ScrollListener;
+import charva.awt.event.*;
 import charvax.swing.event.ListSelectionEvent;
 import charvax.swing.event.ListSelectionListener;
 import charvax.swing.event.TableModelEvent;
@@ -52,7 +50,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class JTable
         extends JComponent
-        implements TableModelListener, Scrollable, ListSelectionListener {
+        implements TableModelListener, Scrollable, ListSelectionListener, MouseListener {
 
     private static final Log LOG = LogFactory.getLog(JTable.class);
 
@@ -85,7 +83,52 @@ public class JTable
     public JTable(TableModel model_) {
         setModel(model_);
         _rowSelectionModel.addListSelectionListener(this);
+        addMouseListener(this);
     }
+
+    // IMPLEMENTATION OF MouseListener INTERFACE========================================
+
+    /**
+     * JTable implements the MouseListener interface so that rows and columns can be selected with
+     * a single mouse click instead of the cursor keys. A double-click has the same effect as pressing ENTER.
+     *
+     * @param e the MouseEvent
+     */
+    public void mouseClicked(MouseEvent e) {
+
+        if (e.getClickCount() == 1) {// Calculate which column the mouse-click was in.
+            int x = 0;
+            int columnSelectedByMouse = 0;
+            int xMouseOffset = e.getX() - getLocationOnScreen().x - 1;
+            for (int i = 0; i < _model.getColumnCount(); i++) {
+                x += getColumnWidth(i) + 1;
+                if (xMouseOffset >= x)
+                    columnSelectedByMouse++;
+                else
+                    break;
+            }
+            _currentColumn = columnSelectedByMouse;
+            _currentRow = e.getY() - getLocationOnScreen().y - 1;
+
+        } else if (e.getClickCount() == 2) {
+            if (getColumnSelectionAllowed())
+                selectCurrentColumn();
+
+            if (getRowSelectionAllowed())
+                selectCurrentRow();
+        }
+
+        repaint();
+    }
+
+    public void mousePressed(MouseEvent e) {
+        //
+    }
+
+    public void mouseReleased(MouseEvent e) {
+        //
+    }
+    //==================================================================================
 
     /**
      * Sets the data model to the specified TableModel and registers with it

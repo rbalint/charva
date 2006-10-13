@@ -19,34 +19,34 @@
 
 package charva.awt.event;
 
-import charva.awt.*;
-
 /**
  * This is the base class for all the CHARVA user-interface events.
  * It encapsulates information about the event.
  */
 public abstract class AWTEvent
-    extends java.util.EventObject
-{
+        extends java.util.EventObject {
+
     /**
      * Construct an event with the specified source and ID.
+     *
      * @param source_ The component that emitted this event.
-     * @param id_ Identifies the event type.
+     * @param id_     Identifies the event type.
      */
-    public AWTEvent(Object source_, int id_)
-    {
-	super(source_);
-	_id = id_;
+    public AWTEvent(Object source_, int id_) {
+        super(source_);
+        _id = id_;
     }
 
-    public int getID() { return _id; }
+    public int getID() {
+        return _id;
+    }
 
     //====================================================================
     // INSTANCE VARIABLES
 
     private int _id;
 
-    /** 
+    /**
      * We may define other event types later.
      */
     public static final int KEY_PRESSED = 1;

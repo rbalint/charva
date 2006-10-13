@@ -264,6 +264,17 @@ public abstract class Component {
     }
 
     /**
+     * Register a MouseListener object for this component.
+     */
+    public void addMouseListener(MouseListener fl_) {
+        if (_mouseListeners == null)
+            _mouseListeners = new Vector();
+        if (! _mouseListeners.contains(fl_)) {
+            _mouseListeners.add(fl_);
+        }
+    }
+
+    /**
      * Process events that are implemented by all components.
      * This can be overridden by subclasses, to handle custom events.
      */
@@ -322,7 +333,27 @@ public abstract class Component {
      */
     public void processMouseEvent(MouseEvent e) {
 
-        // The default for a left-button-press is to request the focus;
+        /* First invoke all the MouseListeners that have been registered for this component.
+         * If any component sets the "consumed" flag, the method returns. The MouseListeners
+         * are invoked in last-to-first order.
+         */
+        if (_mouseListeners != null) {
+            for (int i = _mouseListeners.size() - 1; i >= 0; i--) {
+
+                MouseListener ml = (MouseListener) _mouseListeners.get(i);
+                if (e.getModifiers() == MouseEvent.MOUSE_PRESSED)
+                    ml.mousePressed(e);
+                else if (e.getModifiers() == MouseEvent.MOUSE_RELEASED)
+                    ml.mouseReleased(e);
+                else if (e.getModifiers() == MouseEvent.MOUSE_CLICKED)
+                    ml.mouseClicked(e);
+
+                if (e.isConsumed())
+                    return;
+            }
+        }
+
+        // The default for a left-mouse-button-press is to request the focus;
         // this is overridden by components such as buttons.
         if (e.getButton() == MouseEvent.BUTTON1 &&
                 e.getModifiers() == MouseEvent.MOUSE_PRESSED &&
@@ -698,6 +729,11 @@ public abstract class Component {
      * A list of FocusListeners registered for this component.
      */
     protected Vector _focusListeners = null;
+
+    /**
+     * A list of MouseListeners registered for this component.
+     */
+    protected Vector _mouseListeners = null;
 
     /**
      * the X-alignment of this component

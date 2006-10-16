@@ -227,7 +227,7 @@
 </tr>
 
 <tr>
-    <td> This page is under construction. Please
+    <td> Please
         <a href="mailto:rob@pitman.co.za">mail me</a> your questions to
         be added to the FAQ.</td>
 </tr>
@@ -273,10 +273,14 @@
         Because Charva uses <i>ncurses</i>, each user requires his/her own instance of Charva, in its own JVM.
 
         <p>Having said that, I've found that I can easily run 40 instances of the Charva "Tutorial" program
-            (included with the download tarball), each simulating a busy user, on a single-CPU Pentium with a
+            (included with the download zipfile), each simulating a <b>busy</b> user, on a single-CPU Pentium with a
             1.5GHz CPU and 768 MByte of memory. With this number of simultaneous instances there is no swapping
-            of memory to disk. Though each instance has quite a high usage of virtual memory
-            (about 200 MBytes), the RSS (Resident Set Size) of each instance is only 10 MBytes.</p>
+            of memory to disk. </p>
+
+        <p>Bearing in mind that (in 2006) RAM costs have dropped to, say, 25 US cents per megabyte, Charva is
+            well suited for &quot;intranet&quot;-type data-capture applications with up to several thousand
+            simultaneous users, provided you scale horizontally across multiple servers, with several hundred
+            users on each server.</p>
     </td>
 </tr>
 

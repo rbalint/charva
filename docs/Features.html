@@ -195,18 +195,18 @@
 
         <tr><td>
             <script type="text/javascript"><!--
-    google_ad_client = "pub-1886875109433545";
-    google_ad_width = 160;
-    google_ad_height = 600;
-    google_ad_format = "160x600_as";
-    google_ad_type = "text";
-    google_ad_channel ="";
-    google_color_border = "336699";
-    google_color_bg = "FFFFFF";
-    google_color_link = "0000FF";
-    google_color_url = "008000";
-    google_color_text = "000000";
-    //--></script>
+            google_ad_client = "pub-1886875109433545";
+            google_ad_width = 160;
+            google_ad_height = 600;
+            google_ad_format = "160x600_as";
+            google_ad_type = "text";
+            google_ad_channel = "";
+            google_color_border = "336699";
+            google_color_bg = "FFFFFF";
+            google_color_link = "0000FF";
+            google_color_url = "008000";
+            google_color_text = "000000";
+            //--></script>
             <script type="text/javascript"
                     src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
             </script>
@@ -242,7 +242,7 @@
                     or the JNI (Java Native Interface).</p>
 
                 <p>I found that it was not possible to port TUIPEER from JDK 1.1.x to
-                    JDK 1.2 or JDK 1.3, because in later versions of the JDK Sun had forced
+                    JDK 1.2 or later, because in later versions of the JDK, Sun had forced
                     implementations of the AWT to subclass Sun proprietary classes.
                     So I wrote CHARVA from scratch. I tried to maintain compatibility as far
                     as possible with the AWT and Swing APIs; in
@@ -250,10 +250,7 @@
                     "java.awt" to "charva.awt", and from "javax.swing" to "charvax.swing" to port
                     the program from Swing to CHARVA.</p>
 
-                <p>Since version 1.0.0, CHARVA provides mouse support (only on terminal-emulators
-                    that report mouse events, such as <i>xterm</i> and
-                    <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/"><i>PuTTY</i></a>).
-                    Of course, CHARVA does <em>not</em> support GUI-type features such as
+                <p> Of course, CHARVA does <em>not</em> support GUI-type features such as
                     cut-and-paste and drag-and-drop. But it provides most of the standard "graphical"
                     AWT-compatible base classes such as Point, Rectangle, Dimension, Component,
                     Container, Window, Frame, Dialog, etc. It also provides the FlowLayout,
@@ -274,15 +271,22 @@
                     (in the same manner as the corresponding Swing versions of these
                     components).</p>
 
+                <p>CHARVA provides mouse support (only on terminal-emulators
+                    that report mouse events, such as <i>xterm</i> and
+                    <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/"><i>PuTTY</i></a>).</p>
+
                 <p>CHARVA supports any terminal that has a "terminfo" capability-description
                     file; in other words, all popular terminals such as VT100, VT220, Wyse
                     and ANSI terminals and the "xterm" and "PuTTY" terminal emulators are
                     supported. CHARVA supports color on terminals that have color capability,
                     such as the ANSI terminal, "xterm" and "PuTTY".</p>
 
+                <p>CHARVA has support for UTF-8 characters, so it can handle East European
+                    character sets (e.g. Hungarian, Czech and Russian.).</p>
+
                 <p>Uncaught exceptions, error messages and diagnostic messages are logged using
                     <a href="http://jakarta.apache.org/commons/logging/index.html">Jakarta Commons Logging</a>.
-                    </p>
+                </p>
 
                 <p>The "stderr" stream <i>must</i> be
                     redirected to a logfile or some other logging machanism before any CHARVA class

@@ -229,13 +229,23 @@
 <td>
 
 In some applications a full-fledged bit-mapped graphical user interface is
-not feasible or appropriate. For example, you may be using
-<a href="http://www.symbol.com/products/mobile_computers/mobile_stationaryvmt_vrc_6900.html">
-    ruggedized mobile computers</a> that only have an ASCII display; or you may need
-to develop an administrative interface for a remote server or firewall, and
-you don't have enough bandwidth for X Windows or
-<a href="http://www.uk.research.att.com/archive/vnc/index.html">the
-    VNC protocol</a>. In such cases, CHARVA may be your solution.
+not feasible or appropriate. If you find yourself in one of the following situations,
+Charva may be your solution:
+<ul>
+    <li>You may be using
+        <a href="http://www.symbol.com/products/mobile_computers/mobile_stationaryvmt_vrc_6900.html">
+            ruggedized mobile computers</a> that only have an ASCII display. </li><br/>
+
+    <li>You may need to develop an administrative interface for a remote server or firewall, and
+        you don't have enough bandwidth for X Windows or
+        <a href="http://www.uk.research.att.com/archive/vnc/index.html">the VNC protocol</a>.</li><br/>
+
+    <li>You may have an existing application that is based on a large number of text terminals
+        (distributed throughout the country or the world), and you want to avoid the expense of
+        (a) replacing them all with PCs or graphical workstations, and (b) retraining all the users in the use of
+        a new graphical application interface.</li>
+</ul>
+
 <p>
     CHARVA is a Java framework for presenting a &quot;graphical&quot; user interface,
     composed of elements such as windows, dialogs, menus, textfields and buttons,
@@ -271,10 +281,7 @@ you don't have enough bandwidth for X Windows or
         (click here for a list)</a></li>
 </ul>
 
-<p>
-    CHARVA now also has mouse support on terminal-emulators that report mouse
-    events, such as <a href="http://invisible-island.net/xterm/">&quot;xterm&quot;</a> and
-    <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">&quot;PuTTY&quot;</a></p>
+
 
 <p>
     Here are some <b>benefits</b> of CHARVA:
@@ -356,10 +363,9 @@ you don't have enough bandwidth for X Windows or
     <li><a href="http://www.vizaginfo.com/comp/beos/beintro.htm">BeOS</a></li>
 
 </ul>
-(OS-specific Makefiles are provided in the download tarball).
+(OS-specific Makefiles are provided in the download zipfile).
 
-<p>Charva has support for UTF-8 characters, so it can handle East European
-    character sets (e.g. Hungarian and Czech.).</p>
+
 
 <p>
     Many developers <a href="Applications.html">have used CHARVA in their

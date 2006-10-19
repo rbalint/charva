@@ -120,7 +120,7 @@ public class JTabbedPane
 
         /* Remove the previously-selected component from the container.
          */
-        if (_selectedIndex != -1) {
+        if (_selectedIndex != -1 && _selectedIndex < _tabComponents.size()) {
             super.remove((Component) _tabComponents.elementAt(_selectedIndex));
             //_components.remove(_tabComponents)
             //_currentFocus = null;
@@ -156,8 +156,15 @@ public class JTabbedPane
         setSelectedIndex(index);
     }
 
+    public Component getSelectedComponent() {
+        if (_selectedIndex != -1)
+            return (Component) _tabComponents.get(_selectedIndex);
+        else return null;
+    }
+
     /**
-     * Override the method in Container.
+     * Override the method in Container. Balazs Poka suggested that we shouldn't override getSize(),
+     * but my applications don't work unless I do override. (Rob).
      */
     public Dimension getSize() {
         return minimumSize();
@@ -257,18 +264,26 @@ public class JTabbedPane
      */
     public void remove(int index) {
         //save this just in case
-        Component selected = (Component) _tabComponents.elementAt(0);
-        _tabComponents.remove(index);
+//        Component selected = (Component) _tabComponents.elementAt(0);
+        // remove little tab from parent
         super.remove((Component) _tabs.elementAt(index));
-        _tabs.remove(index);
+        // remove it from here also
+        TabButton tb = (TabButton) _tabs.remove(index);
+        // here comes the button group
+        _buttongroup.remove(tb);
+        // remove deleted container from parent
+        super.remove((Component) _tabComponents.elementAt(index));
+        // and from here
+        _tabComponents.remove(index);
 
         if (getSelectedIndex() == index) {
+            _selectedIndex = -1;
             if (index - 1 < 0) {
                 if (getTabCount() > 0) {
+                    // we NEED to revalidate selection
                     setSelectedIndex(0);
-                } else { //nothing left, this causes exception
-                    _selectedIndex = -1;
-                    super.remove(selected);
+                } else {
+                    this.setFocus(null);
                     super.validate();
                 }
             } else {

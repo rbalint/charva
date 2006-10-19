@@ -31,7 +31,7 @@ public class Example
 
 	// Use an anonymous inner class
 	addWindowListener(new WindowAdapter() {
-	    public void windowClosing(WindowEvent e) {
+	    public void windowClosed(WindowEvent e) {
 		terminate();
 	    }
 	} );

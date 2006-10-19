@@ -90,8 +90,6 @@ public class KeyEvent
                 " source=[" + getSource() + "]");
     }
 
-    public static final int KEY_PRESSED = 1;
-    public static final int KEY_TYPED = 2;
 
     /**
      * KEY_PRESSED events that don't map to a valid character

@@ -664,6 +664,14 @@ public abstract class Component {
         return _name;
     }
 
+    public Font getFont() {
+        return _font;
+    }
+
+    public void setFont(Font font) {
+        _font = font;
+    }
+
     /**
      * Compute the component's ncurses color-pair from its foreground
      * and background colors. If either color is null, it means that the
@@ -772,6 +780,8 @@ public abstract class Component {
      * recomputed.
      */
     protected int _cursesColor = 0;
+
+    protected Font _font = new Font("plain", Font.PLAIN, 1);
 
     public static final float TOP_ALIGNMENT = (float) 0.0;
     public static final float CENTER_ALIGNMENT = (float) 0.5;

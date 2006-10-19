@@ -252,14 +252,14 @@ Charva may be your solution:
     on a traditional character-cell ASCII terminal. It has an API based on
     that of &quot;Swing&quot; (a.k.a. the Java Foundation Classes). Programmers familiar
     with AWT and Swing will find programming CHARVA straightforward.
-    User interfaces can be designed on WYSIWYG IDEs such as Borland JBuilder
+    User interfaces can be designed on a WYSIWYG IDE,
     and then easily converted to CHARVA merely by changing the &quot;import&quot; statements
     to import the &quot;charva.awt and &quot;charvax.swing&quot; packages instead of the
     standard &quot;java.awt&quot; and &quot;javax.swing&quot; packages.</p>
 
 <p>
     CHARVA was designed to bring the power and flexibility of Java to applications
-    on Linux/Unix systems (and has also been ported to Windows). ASCII
+    on Linux/Unix systems (and has also been ported to MS Windows). ASCII
     terminal-based applications can now benefit from Java features such as
     object orientation, multithreading, automatic garbage-collection, and a
     vast range of libraries such as:</p>
@@ -281,13 +281,11 @@ Charva may be your solution:
         (click here for a list)</a></li>
 </ul>
 
-
-
 <p>
     Here are some <b>benefits</b> of CHARVA:
 <ul>
-    <li>The Total Cost of Ownership (TCO) of an ASCII terminal is considerably
-        lower than that of a PC. TCO refers to the total cost of acquiring,
+    <li>The Total Cost of Ownership (TCO) of an ASCII terminal or thin-client is considerably
+        lower than that of a desktop PC. TCO refers to the total cost of acquiring,
         deploying and maintaining equipment; in the case of a PC running MS-Windows and
         configured as a GUI workstation, the ongoing maintenance cost (including
         protecting the PC against viruses!) is considerable. For many applications
@@ -299,26 +297,26 @@ Charva may be your solution:
         You can use a single Linux computer to serve many dozens of ASCII terminals / terminal-emulators,
         each running its own instance of the same application. The Linux computer
         can handle the user interface logic and communicate (using standard protocols
-        such as HTTP, HTTPS or RMI) via a network (LAN or WAN) with an Application
+        such as HTTP, HTTPS, RMI or SOAP) via a network (LAN or WAN) with an Application
         Server, which handles the business logic.<br>
 
         <img src="images/architecture.gif" alt="Architecture">
         <br>
         So instead of having to download a new version of the application to each
-        workstation, you download only <i>one</i> copy of the new version (to the
-        Linux front-end server).</li><br>
+        workstation every time the application changes, you download only <i>one</i> copy of the
+        new version (to the Linux front-end server).</li><br>
 
     <li>The memory footprint and CPU usage of the CHARVA framework are
         <em>considerably</em> less than those of Swing. Provided you are using a terminal
         with a high bit-rate (or a PC-based terminal-emulator such as
         <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a> on a LAN), the response
         of CHARVA is <i>much</i> crisper than that of Swing. A single Linux
-        computer can support dozens of ASCII terminals running CHARVA-based
-        applications.</li><br>
+        server can support many dozen ASCII terminals running CHARVA-based applications.</li><br>
 
     <li>CHARVA uses a standard, flexible and powerful API which is already familiar
         to most Java programmers, thus enabling you to be productive without any
-        delay.</li><br>
+        delay. And because CHARVA applications are less complex than browser-based applications with
+        equivalent functionality, they are faster to develop and cost less to maintain.</li><br>
 
     <li>CHARVA is licensed with the
         <a href="http://www.gnu.org/copyleft/lesser.html">GNU Lesser General Public License</a>,
@@ -366,7 +364,6 @@ Charva may be your solution:
 (OS-specific Makefiles are provided in the download zipfile).
 
 
-
 <p>
     Many developers <a href="Applications.html">have used CHARVA in their
     applications</a>, and have reported that it is reliable and stable.
@@ -379,6 +376,6 @@ Charva may be your solution:
 </tr>
 </table>
 <hr>
-<i>Last updated: 10 September, 2006</i>
+<i>Last updated: 16 October, 2006</i>
 </body>
 </html>

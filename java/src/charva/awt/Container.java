@@ -285,7 +285,10 @@ public abstract class Container
     }
 
     public void requestFocus() {
-        getCurrentFocus().requestFocus();
+        Component _current = getCurrentFocus();
+        if (_current != null) {
+            _current.requestFocus();
+        }
     }
 
     /**

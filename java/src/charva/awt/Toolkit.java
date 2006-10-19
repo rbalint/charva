@@ -104,6 +104,12 @@ public class Toolkit {
         return (Window) _windowList.lastElement();
     }
 
+    public Window[] getWindows() {
+        synchronized (_windowList) {
+            return (Window[]) _windowList.toArray(new Window[0]);
+        }
+    }
+
     /**
      * Returns true if the specified window is currently displayed.
      */
@@ -788,7 +794,7 @@ public class Toolkit {
     private static native int getACSchar(int offset_);
 
     /**
-     * Returns true if the key is a function key or control character.
+     * Returns true if the key is a function key or cursor key.
      */
     public static boolean isActionKey(int _key) {
         switch (_key) {
@@ -823,7 +829,6 @@ public class Toolkit {
             case charva.awt.event.KeyEvent.VK_PAGE_DOWN:
             case charva.awt.event.KeyEvent.VK_PAGE_UP:
             case charva.awt.event.KeyEvent.VK_ENTER:
-            case '\t':
             case charva.awt.event.KeyEvent.VK_BACK_TAB:
             case charva.awt.event.KeyEvent.VK_HOME:
             case charva.awt.event.KeyEvent.VK_END:

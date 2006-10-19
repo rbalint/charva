@@ -259,6 +259,16 @@ public class JTable
         }
     }
 
+    private int getStepSize() {
+        Container parent = getParent();
+        if (parent instanceof JViewport) {
+            JViewport vport = (JViewport) parent;
+            return vport.getExtentSize().height - 1;
+        } else {
+            return 5;
+        }
+    }
+
     /**
      * Processes key events occurring on this object
      */
@@ -282,8 +292,15 @@ public class JTable
         } else if (key == KeyEvent.VK_BACK_TAB) {
             getParent().previousFocus();
             return;
+        }
 
-        } else if (key == KeyEvent.VK_UP) {
+        // allow no action if table empty
+        if (_model.getRowCount() == 0 || _model.getColumnCount() == 0) {
+            term.beep();
+            return;
+        }
+
+        if (key == KeyEvent.VK_UP) {
             if (_currentRow == 0)
                 term.beep();
             else {
@@ -296,9 +313,30 @@ public class JTable
             }
 
         } else if (key == KeyEvent.VK_PAGE_UP) {
-            if (getParent() instanceof JViewport) {
-                JViewport parent = (JViewport) getParent();
-                LOG.debug("PAGE_UP: extentSize=" + parent.getExtentSize());
+            if (_currentRow == 0)
+                term.beep();
+            else {
+                _currentRow -= getStepSize();
+                if (_currentRow < 0)
+                    _currentRow = 0;
+                int x = 0;
+                for (int i = 0; i < _currentColumn; i++)
+                    x += getColumnWidth(i) + 1;
+                evtqueue.postEvent(new ScrollEvent(this, ScrollEvent.DOWN,
+                        new Point(x, _currentRow + 1)));
+            }
+        } else if (key == KeyEvent.VK_PAGE_DOWN) {
+            if (_currentRow == _model.getRowCount() - 1)
+                term.beep();
+            else {
+                _currentRow += getStepSize();
+                if (_currentRow > _model.getRowCount() - 1)
+                    _currentRow = _model.getRowCount() - 1;
+                int x = 0;
+                for (int i = 0; i < _currentColumn; i++)
+                    x += getColumnWidth(i) + 1;
+                evtqueue.postEvent(new ScrollEvent(this, ScrollEvent.UP,
+                        new Point(x, _currentRow + 2)));
             }
 
         } else if (key == KeyEvent.VK_DOWN) {
@@ -654,7 +692,7 @@ public class JTable
                 " size=" + getSize());
     }
 
-    private int getColumnWidth(int column_) {
+    protected int getColumnWidth(int column_) {
         /* Calculate the column width for the specified column.
          */
         int columnwidth = _model.getColumnName(column_).length() + 2;
@@ -698,6 +736,14 @@ public class JTable
                 _rowSelectionModel.addSelectionInterval(_currentRow, _currentRow);
             }
         }
+    }
+
+    public int getCurrentRow() {
+        return _currentRow;
+    }
+
+    public int getCurrentColumn() {
+        return _currentColumn;
     }
 
     //--------------------------------------------------------------------

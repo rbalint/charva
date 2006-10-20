@@ -405,6 +405,22 @@ public abstract class Component {
     }
 
     /**
+     * Transfers the focus to the next component, as though this Component were
+     * the focus owner.
+     */
+    public void transferFocus() {
+        getParent().nextFocus();
+    }
+
+    /**
+     * Transfers the focus to the previous component, as though this Component
+     * were the focus owner.
+     */
+    public void transferFocusBackward() {
+        getParent().previousFocus();
+    }
+
+    /**
      * This method should be invoked by all subclasses of Component
      * which override this method; because this method generates the
      * FOCUS_GAINED event when the component gains the keyboard focus.
@@ -457,6 +473,16 @@ public abstract class Component {
 //	    requestSync();
             repaint();
         }
+    }
+
+    /**
+     * This is provided for compatibility with Swing
+     *
+     * @return true, always.
+     */
+    public boolean requestFocusInWindow() {
+        requestFocus();
+        return true;
     }
 
     /**

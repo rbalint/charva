@@ -333,6 +333,11 @@ public abstract class Container
      * in the list of contained components, and put FocusEvents on the queue,
      * one for the component that is losing the focus and one for the component
      * gaining the focus.
+     *
+     * @deprecated In Swing, nextFocus() is a method of the Component class, and has different
+     * semantics from Charva. In Charva application code, "nextFocus()" is
+     * (almost?) always called as "getParent().nextFocus()". One should replace
+     * all occurrences of "getParent().nextFocus()" with "transferFocus()"
      */
     public void nextFocus() {
 

@@ -83,7 +83,7 @@
     -->
 
     <property name="app.name" value="charva"/>
-    <property name="app.version" value="1.1.5"/>
+    <property name="app.version" value="1.1.5b"/>
     <property name="app.path" value="/${app.name}"/>
     <property name="build.home" value="${basedir}/java/classes"/>
     <property name="dist.home" value="${basedir}/java/dist"/>
@@ -331,6 +331,7 @@
     <target name="zip-all" depends="dist,javadoc,javah,compile-test"
             description="Create a ZIP file for upload to Sourceforge">
         <zip basedir="${basedir}/.."
+             includes="charva/**/*"
              destfile="/tmp/${app.name}-${app.version}.zip">
             <exclude name="CVS"/>
         </zip>

@@ -225,7 +225,7 @@ public class Toolkit {
             _lastMousePressTime = System.currentTimeMillis();
 
         Component component =
-                top_window.getComponentAt(x - origin.x, y - origin.y);
+                top_window.findComponentAt(x - origin.x, y - origin.y);
 
         if (component != null) {
             _evtQueue.postEvent(new MouseEvent(component, modifiers, x, y, 0, button));

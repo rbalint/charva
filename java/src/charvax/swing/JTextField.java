@@ -118,11 +118,6 @@ public class JTextField
         return _columns;
     }
 
-    public void setFont(Font font_) {
-        _bold = ((font_.getStyle() & Font.BOLD) != 0);
-    }
-
-
     /**
      * Set the action command
      */
@@ -189,9 +184,8 @@ public class JTextField
          * UNDERLINE attribute.
          */
         int attrib = 0;
-        if (super._enabled)
+        if (_enabled)
             attrib |= Toolkit.A_UNDERLINE;
-
         if (_bold)
             attrib |= Toolkit.A_BOLD;
 
@@ -414,8 +408,6 @@ public class JTextField
 
     //====================================================================
     // INSTANCE VARIABLES
-
-    protected boolean _bold = false;
 
     protected int _columns;
 

@@ -1,9 +1,9 @@
 BUILDING Terminal.dll AND RUNNING THE CHARVA TUTORIAL ON Win32
 ==============================================================
 
-7 August, 2006.
+17 January, 2007.
 
-The file "Terminal.dll", built using MinGW32 version 4.1 and PDCurses 2.6,
+The file "Terminal.dll", built using MinGW32 version 3.9 and PDCurses 2.8,
 is included in the directory %CHARVA_HOME%\c\lib. It may work for you. If not,
 you can build a version for your Win32 system using the procedure below.
 
@@ -12,13 +12,13 @@ BUILDING Terminal.dll
 First, download and install the following packages, with the specified
 versions or later:
 
-    MinGW32 version 4.1. with all recommended updates
+    MinGW32 version 3.9. with all recommended updates
 	( http://sourceforge.net/projects/mingw/ )
 
-    MSYS version 1.0.8
+    MSYS version 1.0.10
 	( http://www.mingw.org/msys.shtml )
 
-    PDCurses 2.6
+    PDCurses 2.8
 	( http://sourceforge.net/projects/pdcurses/ )
 
 
@@ -27,7 +27,7 @@ Windows XP professional):
 
     MinGW is installed in C:\MinGW
 
-    PDCurses is installed in C:\PDCurses
+    PDCurses is installed in C:\PDCurses2.8
 
     CHARVA is installed in C:\charva
 
@@ -38,19 +38,16 @@ Windows XP professional):
 I build the PDCurses library as follows, using the bash shell of MSYS (just
 click on the MSYS shortcut on the windows desktop to start the bash shell):
 
-	$ cd /c/PDCurses
-	$ mkdir obj
-	$ cp win32/gccwin32.mak obj/
-	$ cd obj
+	$ cd /c/PDCurses2.8
+	$ PDCURSES_SRCDIR=/c/PDCurses2.8
+	$ export PDCURSES_SRCDIR
+	$ make -f win32/mingwin32.mak
 
-	(Edit gccwin32.mak and change the values of PDCURSES_HOME and SHELL as appropriate)
+(The above commands build the library file "pdcurses.a" in the current directory).
 
-	$ make -f gccwin32.mak pdcurses.a
 
-(The above commands build the library file "pdcurses.a" in the directory
-/c/PDCurses/obj).
 
-Then, to build the Terminal.dll library:
+Then, to build Charva's "Terminal.dll" library:
 
 	$ cd /c/charva/c/src
 
@@ -60,9 +57,9 @@ Then, to build the Terminal.dll library:
 	....
 	....
 	c:\MinGW\bin\dllwrap.exe: no export definition file provided
-	creating one, but that may not be what you want
+	Creating one, but that may not be what you want
 
-    (YOU CAN IGNORE THE ABOVE ERROR MESSAGE, it doesn't appear to cause a problem).
+    (YOU CAN IGNORE THE ABOVE WARNING MESSAGE, it doesn't appear to cause a problem).
 
 
 

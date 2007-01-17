@@ -1,20 +1,19 @@
 #=========================================================================
-# Makefile for compilation of Windows 95/98/2000 version of Terminal
+# Makefile for compilation of Windows 95/98/2000/XP version of Terminal
 # shared library (DLL), using:
 #
-#   PDCurses 2.6
+#   PDCurses 2.8
 #   ( http://sourceforge.net/projects/pdcurses/ )
 #
-#   MinGW32 version 2.0.0. with all recommended updates (according to 
-#   ${MINGW_HOME}/include/_mingw.h, the MinGW version is 2.3).
+#   MinGW32 version 3.9.
 #   ( http://sourceforge.net/projects/mingw/ )
 #
-#   MSYS version 1.0.8
+#   MSYS version 1.0.10
 #   ( http://www.mingw.org/msys.shtml )
 #
 #=========================================================================
-# I have tested this on Windows 98 Second Edition and on
-# Windows 2000.
+# I have tested this on Windows 98 Second Edition, Windows 2000 and
+# Windows XP Professional.
 #
 # After you have installed MinGW and PDCurses, copy the PDCurses library
 # file (pdcurses.a) to the current directory (${CHARVA_HOME}/c/src) and
@@ -25,11 +24,11 @@ OS = win32
 # The file "jni.h" is in ${JAVA_HOME}/include
 # The file "jni_md.h" (included from jni.h) contains machine-dependent 
 # type definitions and is in ${JAVA_HOME}/include/${OS}
-JAVA_HOME=/e/j2sdk1.4.2
+JAVA_HOME=/c/jdk1.5.0_09
 
 # The file "curses.h" is in ${PDCURSES_HOME}; set this to the directory
 # where you installed PDCurses.
-PDCURSES_HOME=/c/pdcurses
+PDCURSES_HOME=/c/PDCurses2.8
 
 SHARED_OBJECT_EXT = dll
 TARGET = ../lib/Terminal.${SHARED_OBJECT_EXT}
@@ -40,7 +39,7 @@ CFLAGS = -o0 -g -D_PDCURSES_ -c
 
 INCLUDES = -I${JAVA_HOME}/include -I${PDCURSES_HOME} -I${JAVA_HOME}/include/${OS} -I../include
 
-LIBS = ${PDCURSES_HOME}/obj/pdcurses.a
+LIBS = ${PDCURSES_HOME}/pdcurses.a
 
 
 all : ${TARGET}
@@ -48,4 +47,4 @@ all : ${TARGET}
 
 ${TARGET} : ${DEPENDS}
 	${CC} ${CFLAGS} ${INCLUDES} Toolkit.c -o ../lib/Toolkit.o
-	dllwrap --add-stdcall-alias -o ${TARGET} -s ../lib/Toolkit.o ${LIBS}
+	dllwrap --output-exp temp.txt --add-stdcall-alias -o ${TARGET} -s ../lib/Toolkit.o ${LIBS}

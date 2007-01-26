@@ -241,7 +241,7 @@ public class JTextField
 
         /*
          */
-        if (ke_.isActionKey() == false) {
+        if (!ke_.isActionKey() && (ke_.getID() == KeyEvent.KEY_TYPED)) {
 
             /* If it is a control character, ignore it.
              * @todo Do something more useful with control chars.

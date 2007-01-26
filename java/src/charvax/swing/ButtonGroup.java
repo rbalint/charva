@@ -63,9 +63,10 @@ public class ButtonGroup
      * Adds the specified button to the group.
      */
     public void add(AbstractButton button_) {
+        if (getSelection() != null)
+            button_.setSelected(false);
         _buttons.add(button_);
         button_.addItemListener(this);
-        button_.setSelected(false);
     }
 
     /**

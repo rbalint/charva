@@ -10,12 +10,14 @@ public class CardLayout implements LayoutManager2 {
 
     protected HashMap names   = new HashMap();
     protected int     current = -1;
-    transient int     max     = 0;
+    protected int     max     = 0;
 
     public void addLayoutComponent(Component component, Object constraints) {
         if (!(constraints instanceof String))
             throw new IllegalArgumentException("cannot add to layout: constraint must be a string");
         String name = (String) constraints;
+        if ((max == 0) && (component.isVisible()))
+            current = 0;
         if (max > 0)
             component.setVisible(false); // initially only the first card may be visible
         if (name != null)
@@ -65,16 +67,17 @@ public class CardLayout implements LayoutManager2 {
      * @see       charva.awt.CardLayout#addLayoutComponent(java.awt.Component, java.lang.Object)
      */
     public void show(Container container, int index) {
+        if ((index < 0) || (index >= max) || (index == current))
+            return;
         for (int i = 0, j = container.getComponentCount(); i < j; ++i) {
             Component c = container.getComponent(i);
             if (c.isVisible())
                 c.setVisible(false);
         }
-        if (index < max) {
-            current = index;
-            container.getComponent(index).setVisible(true);
-            container.validate();
-        }
+        current = index;
+        container.getComponent(index).setVisible(true);
+        container.getComponent(index).requestFocus();
+        container.validate();
     }
 
     /**
@@ -86,7 +89,9 @@ public class CardLayout implements LayoutManager2 {
      * @see       charva.awt.CardLayout#addLayoutComponent(java.awt.Component, java.lang.Object)
      */
     public void show(Container container, String name) {
-        show(container, ((Integer) names.get(name)).intValue());
+        Integer val = (Integer) names.get(name);
+        if (val != null)
+            show(container, val.intValue());
     }
 
     /**

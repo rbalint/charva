@@ -99,39 +99,80 @@ public class KeyEvent
 
     public static final int VK_UNDEFINED = -1;
     public static final int VK_ESCAPE = 0x1b;
-    public static final int VK_DOWN = 0402;
-    public static final int VK_UP = 0403;
-    public static final int VK_LEFT = 0404;
-    public static final int VK_RIGHT = 0405;
-    public static final int VK_HOME = 0406;
-    public static final int VK_BACK_SPACE = 0407;
-    public static final int VK_F1 = 0411;
-    public static final int VK_F2 = 0412;
-    public static final int VK_F3 = 0413;
-    public static final int VK_F4 = 0414;
-    public static final int VK_F5 = 0415;
-    public static final int VK_F6 = 0416;
-    public static final int VK_F7 = 0417;
-    public static final int VK_F8 = 0420;
-    public static final int VK_F9 = 0421;
-    public static final int VK_F10 = 0422;
-    public static final int VK_F11 = 0423;
-    public static final int VK_F12 = 0424;
-    public static final int VK_F13 = 0425;
-    public static final int VK_F14 = 0426;
-    public static final int VK_F15 = 0427;
-    public static final int VK_F16 = 0430;
-    public static final int VK_F17 = 0431;
-    public static final int VK_F18 = 0432;
-    public static final int VK_F19 = 0433;
-    public static final int VK_F20 = 0434;
-    public static final int VK_DELETE = 0512;
-    public static final int VK_INSERT = 0513;
-    public static final int VK_PAGE_DOWN = 0522;
-    public static final int VK_PAGE_UP = 0523;
-    public static final int VK_ENTER = 0527;
-    public static final int VK_BACK_TAB = 0541;
-    public static final int VK_END = 0550;
+
+// Reallocated to unicode safe area.
+
+//    public static final int VK_DOWN = 0402;
+//    public static final int VK_UP = 0403;
+//    public static final int VK_LEFT = 0404;
+//    public static final int VK_RIGHT = 0405;
+//    public static final int VK_HOME = 0406;
+//    public static final int VK_BACK_SPACE = 0407;
+//    public static final int VK_F1 = 0411;
+//    public static final int VK_F2 = 0412;
+//    public static final int VK_F3 = 0413;
+//    public static final int VK_F4 = 0414;
+//    public static final int VK_F5 = 0415;
+//    public static final int VK_F6 = 0416;
+//    public static final int VK_F7 = 0417;
+//    public static final int VK_F8 = 0420;
+//    public static final int VK_F9 = 0421;
+//    public static final int VK_F10 = 0422;
+//    public static final int VK_F11 = 0423;
+//    public static final int VK_F12 = 0424;
+//    public static final int VK_F13 = 0425;
+//    public static final int VK_F14 = 0426;
+//    public static final int VK_F15 = 0427;
+//    public static final int VK_F16 = 0430;
+//    public static final int VK_F17 = 0431;
+//    public static final int VK_F18 = 0432;
+//    public static final int VK_F19 = 0433;
+//    public static final int VK_F20 = 0434;
+//    public static final int VK_DELETE = 0512;
+//    public static final int VK_INSERT = 0513;
+//    public static final int VK_PAGE_DOWN = 0522;
+//    public static final int VK_PAGE_UP = 0523;
+//    public static final int VK_ENTER = 0527;
+//    public static final int VK_BACK_TAB = 0541;
+//    public static final int VK_END = 0550;
+
+// Unicode safe area... Unicode Private Use Area on 0xE000 position
+
+    public static final int VK_DOWN         = 0xe000;
+    public static final int VK_UP           = 0xe001;
+    public static final int VK_LEFT         = 0xe002;
+    public static final int VK_RIGHT        = 0xe003;
+    public static final int VK_HOME         = 0xe004;
+    public static final int VK_BACK_SPACE   = 0xe005;
+    public static final int VK_F1           = 0xe006;
+    public static final int VK_F2           = 0xe007;
+    public static final int VK_F3           = 0xe008;
+    public static final int VK_F4           = 0xe009;
+    public static final int VK_F5           = 0xe00a;
+    public static final int VK_F6           = 0xe00b;
+    public static final int VK_F7           = 0xe00c;
+    public static final int VK_F8           = 0xe00d;
+    public static final int VK_F9           = 0xe00e;
+    public static final int VK_F10          = 0xe00f;
+    public static final int VK_F11          = 0xe010;
+    public static final int VK_F12          = 0xe011;
+    public static final int VK_F13          = 0xe012;
+    public static final int VK_F14          = 0xe013;
+    public static final int VK_F15          = 0xe014;
+    public static final int VK_F16          = 0xe015;
+    public static final int VK_F17          = 0xe016;
+    public static final int VK_F18          = 0xe017;
+    public static final int VK_F19          = 0xe018;
+    public static final int VK_F20          = 0xe019;
+    public static final int VK_DELETE       = 0xe01a;
+    public static final int VK_INSERT       = 0xe01b;
+    public static final int VK_PAGE_DOWN    = 0xe01c;
+    public static final int VK_PAGE_UP      = 0xe01d;
+    public static final int VK_ENTER        = 0xe01e;
+    public static final int VK_BACK_TAB     = 0xe01f;
+    public static final int VK_END          = 0xe020;
+
+// Unicode safe area... END
 
     public static final int VK_COMMA          = 0x2C;
 

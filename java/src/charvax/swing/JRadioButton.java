@@ -19,7 +19,11 @@
 
 package charvax.swing;
 
-import charva.awt.*;
+import charva.awt.Dimension;
+import charva.awt.EventQueue;
+import charva.awt.Insets;
+import charva.awt.Point;
+import charva.awt.Toolkit;
 import charva.awt.event.ItemEvent;
 import charva.awt.event.KeyEvent;
 
@@ -94,20 +98,29 @@ public class JRadioButton
 
         /* Get the absolute origin of this component.
          */
-        Point origin = getLocationOnScreen();
         Insets insets = super.getInsets();
+        Point origin = getLocationOnScreen().addOffset(insets.left, insets.top);
 
         Toolkit term = Toolkit.getDefaultToolkit();
 
-        term.setCursor(origin.addOffset(insets.left, insets.top));
+        term.setCursor(origin);
         if (super.isSelected())
             valstring = "(*) ";
         else
             valstring = "( ) ";
 
         int colorpair = getCursesColor();
-        int attribute = super._enabled ? Toolkit.A_BOLD : 0;
-        term.addString(valstring + super.getLabelString(), attribute, colorpair);
+        term.addString(valstring, _enabled ? Toolkit.A_BOLD : 0, colorpair);
+        term.addString(super.getLabelString(), 0, colorpair);
+
+        if (super.getMnemonic() > 0) {
+            int mnemonicPos = super.getLabelString().indexOf((char) super.getMnemonic());
+            if (mnemonicPos != -1) {
+                term.setCursor(origin.addOffset(4 + mnemonicPos, 0));
+                term.addChar(super.getMnemonic(),
+                        Toolkit.A_UNDERLINE | Toolkit.A_BOLD, colorpair);
+            }
+        }
     }
 
     public void processKeyEvent(KeyEvent ke_) {
@@ -166,7 +179,7 @@ public class JRadioButton
 
     public String toString() {
         return "JRadioButton location=" + getLocation() +
-                " label=\"" + getLabel() +
+                " label=\"" + getText() +
                 "\" actionCommand=\"" + getActionCommand() +
                 "\" selected=" + isSelected();
     }

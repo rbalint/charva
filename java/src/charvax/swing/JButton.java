@@ -123,7 +123,7 @@ public class JButton
                 if (mnemonicPos != -1) {
                     term.setCursor(origin.addOffset(1 + mnemonicPos, 0));
                     term.addChar(super.getMnemonic(),
-                            Toolkit.A_UNDERLINE | Toolkit.A_REVERSE, colorpair);
+                            Toolkit.A_UNDERLINE | Toolkit.A_REVERSE | Toolkit.A_BOLD, colorpair);
                 }
             }
         } else {
@@ -183,7 +183,7 @@ public class JButton
 
     public String toString() {
         return "JButton location=" + getLocation() +
-                " label=\"" + getLabel() +
+                " label=\"" + getText() +
                 "\" actionCommand=\"" + getActionCommand() + "\"";
     }
 

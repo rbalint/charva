@@ -3,7 +3,7 @@ package charva.awt;
 import java.util.HashMap;
 
 /**
- * Emulates {@java.awt.CardLayout}.
+ * Emulates {@link java.awt.CardLayout}.
  * @author lapo@lapo.it
  */
 public class CardLayout implements LayoutManager2 {

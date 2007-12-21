@@ -137,7 +137,6 @@ public class ButtonGroup
             if (source != b || statechange != ItemEvent.SELECTED) {
                 if (b.isSelected()) {
                     b._selected = false;
-                    b.setEnabled(true);
                 }
             }
         }

@@ -64,7 +64,7 @@ public class CardLayout implements LayoutManager2 {
      * If no such component exists, then nothing happens.
      * @param     container   the parent container in which to do the layout
      * @param     index    the component index
-     * @see       charva.awt.CardLayout#addLayoutComponent(java.awt.Component, java.lang.Object)
+     * @see       #addLayoutComponent(Component, Object)
      */
     public void show(Container container, int index) {
         if ((index < 0) || (index >= max) || (index == current))
@@ -86,7 +86,7 @@ public class CardLayout implements LayoutManager2 {
      * If no such component exists, then nothing happens.
      * @param     container   the parent container in which to do the layout
      * @param     name     the component name
-     * @see       charva.awt.CardLayout#addLayoutComponent(java.awt.Component, java.lang.Object)
+     * @see       #addLayoutComponent(Component, Object)
      */
     public void show(Container container, String name) {
         Integer val = (Integer) names.get(name);
@@ -97,7 +97,7 @@ public class CardLayout implements LayoutManager2 {
     /**
      * Flips to the first card of the container.
      * @param     container   the parent container in which to do the layout
-     * @see       charva.awt.CardLayout#last
+     * @see       #last(Container)
      */
     public void first(Container container) {
         show(container, 0);
@@ -106,7 +106,7 @@ public class CardLayout implements LayoutManager2 {
     /**
      * Flips to the last card of the container.
      * @param     container   the parent container in which to do the layout
-     * @see       charva.awt.CardLayout#first
+     * @see       #first(Container)
      */
     public void last(Container container) {
         show(container, max - 1);

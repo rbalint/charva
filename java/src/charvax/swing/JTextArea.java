@@ -494,7 +494,7 @@ public class JTextArea
                             int j;
                             for (j = 0; j < _columns; j++) {
                                 char tmpchr = super._document.charAt(i - j);
-                                if (tmpchr == ' ' || tmpchr == '\t') {
+                                if (Character.isWhitespace(tmpchr)) {
                                     deleteEOL(term, col - j, row, colorpair);
                                     col = 0;
                                     row++;
@@ -506,7 +506,7 @@ public class JTextArea
                                 }
                             }
                             if (j == _columns) {	// the word was too long
-                                if (chr == ' ' || chr == '\n' || chr == '\t') {
+                                if (Character.isWhitespace(chr)) {
                                     col = 0;
                                     row++;
                                     if (row >= _rows)

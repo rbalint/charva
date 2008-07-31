@@ -242,7 +242,8 @@ public class JComboBox
 
         int colorpair = getCursesColor();
         term.setCursor(origin);
-        String selectedItem = (String) _model.getSelectedItem();
+        Object selectedObj = _model.getSelectedItem();
+        String selectedItem = (selectedObj == null) ? null : selectedObj.toString();
         StringBuffer buf = new StringBuffer();
         for (int i = 0; i < _columns + 1; i++)
             buf.append(' ');

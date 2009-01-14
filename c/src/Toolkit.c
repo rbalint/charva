@@ -53,7 +53,8 @@ static void my_move(int y_, int x_);
 static void my_addch(int chr_);
 static void my_addch_with_clip(int chr_);
 static int is_special_drawing(int chr_);
-static int my_readkey();
+static int my_readkey_generic();
+static int translate_curses_to_charva(int action_code);
 
 //************************************************************************
 // LOCAL VARIABLES
@@ -182,7 +183,12 @@ JNIEXPORT void JNICALL Java_charva_awt_Toolkit_init
 
     initscr();
     keypad(stdscr, TRUE);   // enable keyboard mapping
+#if (defined _PDCURSES_)
+    // In PDCurses, "timeout()" is a no-op, so we are forced to use "nodelay()".
+    nodelay(stdscr,TRUE);
+#else
     timeout(100);           // wait up to 100msec for input
+#endif
     noecho();               /* don't echo input */
     raw();
     nonl();
@@ -206,54 +212,161 @@ JNIEXPORT void JNICALL Java_charva_awt_Toolkit_init
     Java_charva_awt_Toolkit_resetClipRect(env, jo);
 }
 
-
-/* 
- * read a key as UTF-8 and return unicode character 
- * Works with one and two bytes characters only.
+/*
+ * This function get action_code (getchar>255) and remap it to charva value
+ * of action key constant.
+ * Change here must be mirrored into charva.awt.event.KeyEvent file.
  */
-static int my_readkey()
+static int translate_curses_to_charva(int action_code)
 {
-    int utf[6] = {0,0,0,0,0,0};
-    utf[0] = getch();
-    int c = 0;
+    int c = -1;
+       switch ( action_code )
+       {
+        case KEY_DOWN:       { c = 0xe000; break; } // charva VK_DOWN
+        case KEY_UP:         { c = 0xe001; break; } // charva VK_UP
+        case KEY_LEFT:       { c = 0xe002; break; } // charva VK_LEFT
+        case KEY_RIGHT:      { c = 0xe003; break; } // charva VK_RIGHT
+        case KEY_HOME:       { c = 0xe004; break; } // charva VK_HOME
+        case KEY_BACKSPACE:  { c = 0xe005; break; } // charva VK_BACK_SPACE
+        case KEY_F(1):       { c = 0xe006; break; } // charva VK_F1
+        case KEY_F(2):       { c = 0xe007; break; } // charva VK_F2
+        case KEY_F(3):       { c = 0xe008; break; } // charva VK_F3
+        case KEY_F(4):       { c = 0xe009; break; } // charva VK_F4
+        case KEY_F(5):       { c = 0xe00a; break; } // charva VK_F5
+        case KEY_F(6):       { c = 0xe00b; break; } // charva VK_F6
+        case KEY_F(7):       { c = 0xe00c; break; } // charva VK_F7
+        case KEY_F(8):       { c = 0xe00d; break; } // charva VK_F8
+        case KEY_F(9):       { c = 0xe00e; break; } // charva VK_F9
+        case KEY_F(10):      { c = 0xe00f; break; } // charva VK_F10
+        case KEY_F(11):      { c = 0xe010; break; } // charva VK_F11
+        case KEY_F(12):      { c = 0xe011; break; } // charva VK_F12
+        case KEY_F(13):      { c = 0xe012; break; } // charva VK_F13
+        case KEY_F(14):      { c = 0xe013; break; } // charva VK_F14
+        case KEY_F(15):      { c = 0xe014; break; } // charva VK_F15
+        case KEY_F(16):      { c = 0xe015; break; } // charva VK_F16
+        case KEY_F(17):      { c = 0xe016; break; } // charva VK_F17
+        case KEY_F(18):      { c = 0xe017; break; } // charva VK_F18
+        case KEY_F(19):      { c = 0xe018; break; } // charva VK_F19
+        case KEY_F(20):      { c = 0xe019; break; } // charva VK_F20
+        case KEY_DC:         { c = 0xe01a; break; } // charva VK_DELETE
+        case KEY_IC:         { c = 0xe01b; break; } // charva VK_INSERT
+        case KEY_PPAGE:      { c = 0xe01c; break; } // charva VK_PAGE_DOWN
+        case KEY_NPAGE:      { c = 0xe01d; break; } // charva VK_PAGE_UP
+        case KEY_ENTER:      { c = 0xe01e; break; } // charva VK_ENTER
+        case KEY_BTAB:       { c = 0xe01f; break; } // charva VK_BACK_TAB
+        case KEY_END:        { c = 0xe020; break; } // charva VK_END
+       }
+       return c;
+}
 
-    if (utf[0] == -1) return -1;         // error
-
-    if (utf[0] == 0631) return 0631;     // mouse event
-
-    if ( (utf[0] & 0x80) == 0 ) {
-        //0xxxxxxxx (1 byte UTF-8)
-        c = utf[0];
-    }
-    else if ( (utf[0] & 0xe0) == 0xc0 ) {
-        // 110xxxxx 10xxxxxx ( 2 byte UTF-8 )
-        utf[1] = getch();
-        if (utf[1] == -1) return -1;
-        c = (utf[0] & 0x1f) * 0x40 + (utf[1] & 0x3f);
-    }
-    else if ( (utf[0] & 0xf8) == 0xf0 ) {
-        // 1110xxxx 10xxxxxx 10xxxxxx ( 3 byte UTF-8 )
-        // cannot be tested = not supported :-(
-        // must be similar to 2 byte encoding
-    }
-    else if ( (utf[0] & 0xf0) == 0xf0 ) {
-        // 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx( 4 byte UTF-8 )
-        // cannot be tested = not supported :-(
-        // must be similar to 2 byte encoding
-    }
-    else if ( (utf[0] & 0xfc) == 0xf8 ) {
-        // 111110xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx( 5 byte UTF-8 )
-        // cannot be tested = not supported :-(
-        // must be similar to 2 byte encoding
-    }
-    if ( (utf[0] & 0xfe) == 0xfc ) {
-        // 1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx ( 6 byte UTF-8 )
-        // cannot be tested = not supported :-(
-        // must be similar to 2 byte encoding
-    }
-
+/*
+ * read a key and return unicode character
+ * repeat getchar in UTF character is detected
+ */
+static int my_readkey_generic()
+{
+   wchar_t c = 0;
+   unsigned int value = getch();
+   if (value==-1)
+   {
+     c = -1;
+   }
+   else
+   if (value>255) // only special keys are returned this way
+   { // now we translate CURSES keys to Unicode-Safe JAVA location
+     c = translate_curses_to_charva( value );
+   }
+   else
+   if (MB_CUR_MAX==1) // single byte character set, for example ISO-8859-x,
+   {
+     char bytes[6] = {0,0,0,0,0,0};
+     bytes[0] = value;
+     mbtowc(&c,bytes,1); // multibyte to widechar for current charset
+   }
+   else // multibyte character set
+   if ( (value & 0x80) == 0 )
+   { //0xxxxxxxx (1 byte UTF-8)
+     char bytes[6] = {0,0,0,0,0,0};
+     bytes[0] = value;
+     mbtowc(&c,bytes,1); // multibyte to widechar for current charset
+   }
+   else
+   if ( (value & 0xC0) == 0xC0 )
+   { //110xxxxx 10xxxxxx ( 2 byte UTF-8 )
+     char bytes[6] = {0,0,0,0,0,0};
+     bytes[0] = value;
+     bytes[1] = getch();
+     if (bytes[1]==-1) return -1;
+     mbtowc(&c,bytes,2); // multibyte to widechar for current charset
+   }
+   else
+   if ( (value & 0xC0) == 0xC0 )
+   { //110xxxxx 10xxxxxx ( 2 byte UTF-8 )
+     char bytes[6] = {0,0,0,0,0,0};
+     bytes[0] = value;
+     bytes[1] = getch();
+     if (bytes[1]==-1) return -1;
+     mbtowc(&c,bytes,2); // multibyte to widechar for current charset
+   }
+   else
+   if ( (value & 0x70) == 0x70 )
+   { //1110xxxx 10xxxxxx 10xxxxxx ( 3 byte UTF-8 )
+     char bytes[6] = {0,0,0,0,0,0};
+     bytes[0] = value;
+     bytes[1] = getch();
+     if (bytes[1]==-1) return -1;
+     bytes[2] = getch();
+     if (bytes[2]==-1) return -1;
+     mbtowc(&c,bytes,3); // multibyte to widechar for current charset
+   }
+   else
+   if ( (value & 0xf0) == 0xf0 )
+   { //11110xxx 10xxxxxx 10xxxxxx 10xxxxxx( 4 byte UTF-8 )
+     char bytes[6] = {0,0,0,0,0,0};
+     bytes[0] = value;
+     bytes[1] = getch();
+     if (bytes[1]==-1) return -1;
+     bytes[2] = getch();
+     if (bytes[2]==-1) return -1;
+     bytes[3] = getch();
+     if (bytes[3]==-1) return -1;
+     mbtowc(&c,bytes,4); // multibyte to widechar for current charset
+   }
+   else
+   if ( (value & 0xf8) == 0xf8 )
+   { //111110xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx( 5 byte UTF-8 )
+     char bytes[6] = {0,0,0,0,0,0};
+     bytes[0] = value;
+     bytes[1] = getch();
+     if (bytes[1]==-1) return -1;
+     bytes[2] = getch();
+     if (bytes[2]==-1) return -1;
+     bytes[3] = getch();
+     if (bytes[3]==-1) return -1;
+     bytes[4] = getch();
+     if (bytes[4]==-1) return -1;
+     mbtowc(&c,bytes,5); // multibyte to widechar for current charset
+   }
+   else
+   if ( (value & 0xfc) == 0xfc )
+   { //1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx ( 6 byte UTF-8 )
+     char bytes[6] = {0,0,0,0,0,0};
+     bytes[0] = value;
+     bytes[1] = getch();
+     if (bytes[1]==-1) return -1;
+     bytes[2] = getch();
+     if (bytes[2]==-1) return -1;
+     bytes[3] = getch();
+     if (bytes[3]==-1) return -1;
+     bytes[4] = getch();
+     if (bytes[4]==-1) return -1;
+     bytes[5] = getch();
+     if (bytes[5]==-1) return -1;
+     mbtowc(&c,bytes,6); // multibyte to widechar for current charset
+   }
    return c;
 }
+
 
 // Returns -1 if there was no character to read.
 // Otherwise returns the character that was read.
@@ -262,22 +375,13 @@ JNIEXPORT jint JNICALL Java_charva_awt_Toolkit_readKey
 {
     jint c;	// defined as a long for Linux.
 
-try_again:
-#if (defined _USE_NCURSESW_)
-    c = (jint) my_readkey();
-#else
-    c = (jint) getch();
-#endif
+ c = (jint) my_readkey_generic();
 
- // THIS HAS ALL CHANGED: getch() is now called from the event-dispatching thread!!! (November 2004)
-    // There are two known scenarios in which getch() returns ERR.
-    // 1. The user resizes his PuTTY window (in which case errno == 0).
-    // 2. The user closes his Telnet/SSH session (errno == EINTR).
-    //if (c == ERR && errno == 0) {
-	//    // The window has been resized.
-	//    Java_charva_awt_Toolkit_resetClipRect(env, jo);
-	//    goto try_again;
-    //}
+#if (defined _PDCURSES_)
+    // PDCurses returns 0 if there was no key to read.
+    if (c == 0)
+        c = -1;
+#endif
 
     return c;
 }
@@ -812,24 +916,31 @@ JNIEXPORT jstring JNICALL Java_charva_awt_Toolkit_getTtyName
  */
 static void my_addch(int chr_)
 {
-#if (defined _USE_NCURSESW_)
-    if ( is_special_drawing(chr_) )
-    {  // for special chars must be used addch(), widechar does not work
-       // better way is look for other way of drawing of box in unicode 
+   if ( is_special_drawing(chr_) )
+    { // we can display simply way
        addch(chr_);
     }
     else
     {
-       // use method for output unicode characters
-       // does exist better way how to display ONE wide character?
-       wchar_t buff_wcs[2];  // widechar
-       buff_wcs[0] = chr_;   // unicode value
-       buff_wcs[1] = 0x0000; // end of string
-       addwstr(buff_wcs); // display wide string at curren position
-    }
+      wchar_t wc = chr_;  // widechar unicode from java
+      unsigned char bytes[8]; //multiple chars
+      int count = wctomb(bytes,wc); // converts unicode to multibyte
+      if (count==1)
+      { // for one byte character we use classical way
+        addch( bytes[0] );
+      }
+      else
+      { // for more characters we must use unicode/widechar output
+#if (defined _USE_NCURSESW_)
+         wchar_t buff_wcs[2];  // widechar
+         buff_wcs[0] = chr_;   // unicode value
+         buff_wcs[1] = 0x0000; // end of string
+         addwstr(buff_wcs); // display wide string at current position
 #else
-    addch(chr_);
+         addch( '?' );  // we cannot use multibyte without widecurses
 #endif
+      }
+    }
     cursorx++;
 }
 

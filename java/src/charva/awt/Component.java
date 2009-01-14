@@ -80,7 +80,7 @@ public abstract class Component {
     public void show() {
         if (!_visible) {
             _visible = true;
-            repaint();	// post a PaintEvent
+            repaint();    // post a PaintEvent
         }
     }
 
@@ -105,7 +105,7 @@ public abstract class Component {
                 }
             }
 
-            repaint();	// post a PaintEvent
+            repaint();    // post a PaintEvent
         }
     }
 
@@ -173,7 +173,8 @@ public abstract class Component {
         Container parent = getParent();
         if (parent == null) {
             throw new IllegalComponentStateException("cannot get component location " +
-                    "before it has been added to a container");
+                    "before it has been added to a container: component= " +
+                    this.toString());
         }
 
         return parent.getLocationOnScreen().addOffset(_origin);
@@ -193,16 +194,16 @@ public abstract class Component {
         return new Rectangle(_origin, getSize());
     }
 
-    public void setBounds( Rectangle bounds ) {
+    public void setBounds(Rectangle bounds) {
         setLocation(bounds.getLeft(), bounds.getTop());
     }
 
-    public void setBounds( int top_, int left_, int bottom_, int right_) {
-        setLocation(left_, top_ );
+    public void setBounds(int top_, int left_, int bottom_, int right_) {
+        setLocation(left_, top_);
     }
 
     public void setBounds(Point topleft_, Dimension size_) {
-        setLocation(topleft_ );
+        setLocation(topleft_);
     }
 
     /**
@@ -257,8 +258,8 @@ public abstract class Component {
     public void addKeyListener(KeyListener kl_) {
         if (_keyListeners == null)
             _keyListeners = new Vector();
-        if ( ! _keyListeners.contains(kl_)) {
-           _keyListeners.add(kl_);
+        if (! _keyListeners.contains(kl_)) {
+            _keyListeners.add(kl_);
         }
     }
 
@@ -268,8 +269,19 @@ public abstract class Component {
     public void addFocusListener(FocusListener fl_) {
         if (_focusListeners == null)
             _focusListeners = new Vector();
-        if ( ! _focusListeners.contains(fl_)) {
+        if (! _focusListeners.contains(fl_)) {
             _focusListeners.add(fl_);
+        }
+    }
+
+    /**
+     * Register a MouseListener object for this component.
+     */
+    public void addMouseListener(MouseListener fl_) {
+        if (_mouseListeners == null)
+            _mouseListeners = new Vector();
+        if (! _mouseListeners.contains(fl_)) {
+            _mouseListeners.add(fl_);
         }
     }
 
@@ -307,14 +319,14 @@ public abstract class Component {
     /**
      * Invoke all the KeyListener callbacks that may have been registered
      * for this component. The KeyListener objects may modify the
-     * keycodes, and can also set the "consumed" flag.
+     * keycodes, and can also set the "consumed" flag. The KeyListeners are
+     * invoked in last to first order.
      */
     public void processKeyEvent(KeyEvent ke_) {
         if (_keyListeners != null) {
-            for (Enumeration e = _keyListeners.elements();
-                 e.hasMoreElements();) {
+            for (int i = _keyListeners.size() - 1; i >= 0; i--) {
 
-                KeyListener kl = (KeyListener) e.nextElement();
+                KeyListener kl = (KeyListener) _keyListeners.get(i);
                 if (ke_.getID() == AWTEvent.KEY_PRESSED)
                     kl.keyPressed(ke_);
                 else if (ke_.getID() == AWTEvent.KEY_TYPED)
@@ -332,7 +344,27 @@ public abstract class Component {
      */
     public void processMouseEvent(MouseEvent e) {
 
-        // The default for a left-button-press is to request the focus;
+        /* First invoke all the MouseListeners that have been registered for this component.
+         * If any component sets the "consumed" flag, the method returns. The MouseListeners
+         * are invoked in last-to-first order.
+         */
+        if (_mouseListeners != null) {
+            for (int i = _mouseListeners.size() - 1; i >= 0; i--) {
+
+                MouseListener ml = (MouseListener) _mouseListeners.get(i);
+                if (e.getModifiers() == MouseEvent.MOUSE_PRESSED)
+                    ml.mousePressed(e);
+                else if (e.getModifiers() == MouseEvent.MOUSE_RELEASED)
+                    ml.mouseReleased(e);
+                else if (e.getModifiers() == MouseEvent.MOUSE_CLICKED)
+                    ml.mouseClicked(e);
+
+                if (e.isConsumed())
+                    return;
+            }
+        }
+
+        // The default for a left-mouse-button-press is to request the focus;
         // this is overridden by components such as buttons.
         if (e.getButton() == MouseEvent.BUTTON1 &&
                 e.getModifiers() == MouseEvent.MOUSE_PRESSED &&
@@ -346,7 +378,7 @@ public abstract class Component {
      * for this component.
      */
     public void processFocusEvent(FocusEvent fe_) {
-        LOG.debug( "processFocusEvent:" + this.toString() + " ev:" + fe_.toString() );
+        LOG.debug("processFocusEvent:" + this.toString() + " ev:" + fe_.toString());
         if (_focusListeners != null) {
             for (Enumeration e = _focusListeners.elements();
                  e.hasMoreElements();) {
@@ -384,6 +416,22 @@ public abstract class Component {
     }
 
     /**
+     * Transfers the focus to the next component, as though this Component were
+     * the focus owner.
+     */
+    public void transferFocus() {
+        getParent().nextFocus();
+    }
+
+    /**
+     * Transfers the focus to the previous component, as though this Component
+     * were the focus owner.
+     */
+    public void transferFocusBackward() {
+        getParent().previousFocus();
+    }
+
+    /**
      * This method should be invoked by all subclasses of Component
      * which override this method; because this method generates the
      * FOCUS_GAINED event when the component gains the keyboard focus.
@@ -397,38 +445,36 @@ public abstract class Component {
         Component currentFocus = ancestor.getCurrentFocus();
         Window sourcewin = Toolkit.getDefaultToolkit().getTopWindow();
         Component currentFocusX = sourcewin.getCurrentFocus();
-     /*
-        LOG.debug( "requestFocus1: " + toString() );
-        LOG.debug( "currentFocus2: " + currentFocusX.toString() );
-      */
+        /*
+          LOG.debug( "requestFocus1: " + toString() );
+          LOG.debug( "currentFocus2: " + currentFocusX.toString() );
+        */
         if (currentFocus != this ||
-            ( currentFocusX == this && ! _hadFocus )) {
+                (currentFocusX == this && ! _hadFocus)) {
             _hadFocus = true;
             EventQueue evtQueue =
                     Toolkit.getDefaultToolkit().getSystemEventQueue();
             FocusEvent evt;
             FocusEvent lastEvt = Toolkit.getDefaultToolkit().getLastFocusEvent();
 
-            if ( lastEvt != null ) {
-                currentFocus = (Component)lastEvt.getSource();
-                if ( currentFocus != null &&
-                     currentFocus.getAncestorWindow() != null &&
-                     currentFocus.getAncestorWindow().isEnabled() &&
-                     currentFocus.getAncestorWindow() != ancestor ) {
-                     temporary = true;
-                }
-                else {
-                     temporary = false;
+            if (lastEvt != null) {
+                currentFocus = (Component) lastEvt.getSource();
+                if (currentFocus != null &&
+                        currentFocus.getAncestorWindow() != null &&
+                        currentFocus.getAncestorWindow().isEnabled() &&
+                        currentFocus.getAncestorWindow() != ancestor) {
+                    temporary = true;
+                } else {
+                    temporary = false;
                 }
                 evt = new FocusEvent(AWTEvent.FOCUS_LOST, currentFocus, temporary, this);
                 evtQueue.postEvent(evt);
                 //System.err.println( "DisparoFocusLost: " + currentFocus.toString() + " Window:" + currentFocus.getAncestorWindow().toString() + " //" + currentFocus.getAncestorWindow().isValid() );
-            }
-            else {
+            } else {
                 currentFocus = null;
             }
 
-            evt = new FocusEvent(AWTEvent.FOCUS_GAINED, this,  temporary, currentFocus);
+            evt = new FocusEvent(AWTEvent.FOCUS_GAINED, this, temporary, currentFocus);
             evtQueue.postEvent(evt);
             //System.err.println( "DisparoFocusGained: " + this.toString() + " Window:" + ancestor.toString() );
 
@@ -438,6 +484,16 @@ public abstract class Component {
 //	    requestSync();
             repaint();
         }
+    }
+
+    /**
+     * This is provided for compatibility with Swing
+     *
+     * @return true, always.
+     */
+    public boolean requestFocusInWindow() {
+        requestFocus();
+        return true;
     }
 
     /**
@@ -645,6 +701,14 @@ public abstract class Component {
         return _name;
     }
 
+    public Font getFont() {
+        return _font;
+    }
+
+    public void setFont(Font font) {
+        _font = font;
+    }
+
     /**
      * Compute the component's ncurses color-pair from its foreground
      * and background colors. If either color is null, it means that the
@@ -712,6 +776,11 @@ public abstract class Component {
     protected Vector _focusListeners = null;
 
     /**
+     * A list of MouseListeners registered for this component.
+     */
+    protected Vector _mouseListeners = null;
+
+    /**
      * the X-alignment of this component
      */
     protected float _alignmentX = LEFT_ALIGNMENT;
@@ -748,6 +817,8 @@ public abstract class Component {
      * recomputed.
      */
     protected int _cursesColor = 0;
+
+    protected Font _font = new Font("plain", Font.PLAIN, 1);
 
     public static final float TOP_ALIGNMENT = (float) 0.0;
     public static final float CENTER_ALIGNMENT = (float) 0.5;

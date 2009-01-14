@@ -20,6 +20,8 @@
 package charvax.swing;
 
 import charva.awt.EventQueue;
+import charva.awt.Component;
+import charva.awt.Window;
 
 /**
  * A collection of utility methods for Swing.
@@ -32,5 +34,23 @@ public class SwingUtilities {
      */
     public static void invokeLater(Runnable runnable) {
         EventQueue.invokeLater(runnable);
+    }
+
+    /**
+     * Returns the first Window ancestor of c, or null if c is not contained inside a Window.
+     *
+     * @param c
+     * @return the first Window ancestor of c, or null if c is not contained inside a Window.
+     */
+    public static Window windowForComponent(Component c) {
+        return c.getAncestorWindow();
+    }
+
+    /**
+     * Returns true if the current thread is the event dispatching thread.
+     * @return true if the current thread is the event dispatching thread.
+     */
+    public static boolean isEventDispatchThread() {
+        return ("event dispatcher".equals(Thread.currentThread().getName()));
     }
 }

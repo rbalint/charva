@@ -19,15 +19,15 @@
 
 package charvax.swing;
 
-import java.util.Enumeration;
-import java.util.Vector;
-
 import charva.awt.Container;
 import charva.awt.EventQueue;
 import charva.awt.ItemSelectable;
 import charva.awt.Toolkit;
 import charva.awt.Window;
 import charva.awt.event.*;
+
+import java.util.Enumeration;
+import java.util.Vector;
 
 /**
  * This forms the base class for components that exhibit button-like

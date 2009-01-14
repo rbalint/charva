@@ -318,6 +318,7 @@ public class JTextArea
                     line = vertical_offset - viewport_height;
 
                 line = (line < 0) ? 0 : line;
+
             } else {
                 if (line < vertical_offset + viewport_height - 1)
                     line = vertical_offset + viewport_height - 1;
@@ -329,6 +330,7 @@ public class JTextArea
                         line;
             }
             setCaretPosition(getLineStartOffset(line));
+
         } else if (key == KeyEvent.VK_UP && line > 0) {
             int column = caret - getLineStartOffset(line);
             int prevlineStart = getLineStartOffset(line - 1);
@@ -337,6 +339,7 @@ public class JTextArea
                 column = prevlineEnd - prevlineStart;
             }
             setCaretPosition(prevlineStart + column);
+
         } else if (key == KeyEvent.VK_DOWN &&
                 line < getLineCount() - 1) {
             int column = caret - getLineStartOffset(line);
@@ -346,16 +349,21 @@ public class JTextArea
                 column = nextlineEnd - nextlineStart;
             }
             setCaretPosition(nextlineStart + column);
-        } else if (super.isEditable() == false) {
+
+        } else if (!super.isEditable()) {
             Toolkit.getDefaultToolkit().beep();
-        } else if (key >= ' ' && key <= 0177) {
-            char[] arry = {(char) key};
+
+        } else if (!ke_.isActionKey()) {
+            char[] arry = {ke_.getKeyChar()};
             insert(new String(arry), caret);
+
         } else if (key == KeyEvent.VK_ENTER) {
             char[] arry = {'\n'};
             insert(new String(arry), caret);
+
         } else if (key == KeyEvent.VK_BACK_SPACE && caret > 0) {
             replaceRange("", caret - 1, caret);
+
         } else if (key == KeyEvent.VK_DELETE &&
                 caret < getDocument().length() - 1) {
             replaceRange("", caret, caret + 1);
@@ -364,7 +372,7 @@ public class JTextArea
         /* If this JTextArea is contained in a JViewport, let the JViewport
          * do the drawing, after setting the clip rectangle.
          */
-        if ((getParent() instanceof JViewport) == false) {
+        if (!(getParent() instanceof JViewport)) {
             draw();
             requestFocus();
             super.requestSync();

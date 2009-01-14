@@ -43,10 +43,21 @@ public class Font {
     }
 
     /**
-     * Returns the style of this font.
+     * Returns the style of this font (Font.PLAIN or Font.BOLD).
      */
     public int getStyle() {
         return _style;
+    }
+
+    /**
+     * Creates a new <code>Font</code> object by replicating the current
+     * <code>Font</code> object and applying a new style to it.
+     *
+     * @param style the style for the new <code>Font</code>
+     * @return a new <code>Font</code> object.
+     */
+    public Font deriveFont(int style) {
+        return new Font(_name, style, _size);
     }
 
     //====================================================================

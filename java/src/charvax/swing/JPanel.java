@@ -86,7 +86,7 @@ public class JPanel
     }
 
     public String toString() {
-        return "JPanel origin=" + _origin + " size=" + _size;
+        return "JPanel name=[" + getName() + "] origin=" + _origin + " size=" + _size;
     }
 
     public void debug(int level_) {

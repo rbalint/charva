@@ -24,6 +24,7 @@ import charva.awt.Insets;
 import charva.awt.Point;
 import charvax.swing.border.Border;
 
+
 /**
  * The base class for charva.swing components. JComponent provides a
  * border property that implicitly defines the component's insets.

@@ -28,5 +28,12 @@ public interface WindowListener
     extends EventListener
 {
     public void windowClosing(WindowEvent evt_);
+
     public void windowOpened(WindowEvent evt_);
+
+    /**
+     * This is provided for compatibility with Swing
+     * @param e the WindowEvent
+     */
+    public void windowActivated(WindowEvent e);
 }

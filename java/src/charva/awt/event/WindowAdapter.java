@@ -28,4 +28,8 @@ public class WindowAdapter
     public void windowClosing(WindowEvent evt_) {}
 
     public void windowOpened(WindowEvent evt_) {}
+
+    public void windowActivated(WindowEvent e) {
+        //
+    }
 }

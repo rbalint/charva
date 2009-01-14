@@ -18,25 +18,30 @@
  */
 
 package charva.awt.event;
+
 import charva.awt.*;
 
 /**
  * This is the superclass of KeyEvent and MouseEvent.
  */
 public class InputEvent
-    extends AWTEvent
-{
+        extends AWTEvent {
+
     public InputEvent(Component source_, int id_) {
-	super(source_, id_);
+        super(source_, id_);
     }
 
-    /** 
+    /**
      * Provides a way to flag the event as having been consumed,
      * so that it never reaches its destination component.
      */
-    public void consume() { _consumed = true; }
+    public void consume() {
+        _consumed = true;
+    }
 
-    public boolean isConsumed() { return _consumed; }
+    public boolean isConsumed() {
+        return _consumed;
+    }
 
     //====================================================================
     // INSTANCE VARIABLES

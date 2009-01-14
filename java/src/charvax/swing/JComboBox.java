@@ -188,6 +188,29 @@ public class JComboBox
     }
 
     /**
+     * Returns the first item in the list that matches the given item.
+     * The result is not always defined if the <code>JComboBox</code>
+     * allows selected items that are not in the list.
+     * Returns -1 if there is no selected item or if the user specified
+     * an item which is not in the list.
+     *
+     * @return an integer specifying the currently selected list item,
+     *         where 0 specifies the first item in the list;
+     *         or -1 if no item is selected or if the currently selected
+     *         item is not in the list
+     */
+    public int getSelectedIndex() {
+        Object selectedItem = _model.getSelectedItem();
+
+        for (int i = 0; i < _model.getSize(); i++) {
+            Object obj = _model.getElementAt(i);
+            if (obj != null && obj.equals(selectedItem))
+                return i;
+        }
+        return -1;
+    }
+
+    /**
      * Sets the selected item in the JComboBox by specifying
      * the index in the list.
      */
@@ -430,7 +453,7 @@ public class JComboBox
 
     private ComboBoxModel _model;
 
-    private int _columns = 3;	// initial width
+    private int _columns = 3;    // initial width
 
     /**
      * The default value of 0 indicates that there is no limit on the

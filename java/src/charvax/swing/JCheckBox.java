@@ -164,7 +164,7 @@ public class JCheckBox
 
     public String toString() {
         return "JCheckBox location=" + getLocation() +
-                " label=\"" + getLabel() +
+                " label=\"" + getText() +
                 "\" actionCommand=\"" + getActionCommand() +
                 "\" selected=" + isSelected();
     }

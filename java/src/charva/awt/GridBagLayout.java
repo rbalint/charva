@@ -28,6 +28,7 @@ import java.util.Vector;
  */
 public class GridBagLayout
         implements LayoutManager2 {
+
     public GridBagLayout() {
     }
 
@@ -182,6 +183,7 @@ public class GridBagLayout
         int totalwidth = insets.left + insets.right;
         int totalheight = insets.top + insets.bottom;
 
+        _totalweighty = _totalweightx = 0.0;
         for (int i = 0; i < _columns; i++) {
             totalwidth += _calculatedColumnWidths[i];
             _totalweightx += _calculatedColumnWeights[i];
@@ -227,8 +229,11 @@ public class GridBagLayout
             }
 
             int right = left;
-            for (int i = 0; i < gbc.gridwidth; i++)
+            for (int i = 0; i < gbc.gridwidth; i++) {
                 right += _calculatedColumnWidths[gbc.gridx + i];
+                if (_totalweightx != 0.0)
+                    right += (extraColumns * _calculatedColumnWeights[gbc.gridx + i]) / _totalweightx;
+            }
 
             int top = insets.top;
             if (_totalweighty == 0.0)
@@ -242,8 +247,11 @@ public class GridBagLayout
             }
 
             int bottom = top;
-            for (int i = 0; i < gbc.gridheight; i++)
+            for (int i = 0; i < gbc.gridheight; i++) {
                 bottom += _calculatedRowHeights[gbc.gridy + i];
+                if (_totalweighty != 0.0)
+                    bottom += (extraRows * _calculatedRowWeights[gbc.gridy + i]) / _totalweighty;
+            }
 
             if (c instanceof Container) {
                 Container cont = (Container) c;
@@ -276,10 +284,9 @@ public class GridBagLayout
                 cont.doLayout();
             }
 
-
             /* Calculate the x position of the component's origin (i.e. top
-             * left corner).
-             */
+            * left corner).
+            */
             int cx = 0;
             switch (gbc.anchor) {
                 case GridBagConstraints.WEST:
@@ -343,6 +350,10 @@ public class GridBagLayout
         /* Make a copy of the constraints object passed to us, so that the
          * caller can re-use it for other components.
          */
+        if (!(constraint_ instanceof GridBagConstraints))
+            throw new IllegalArgumentException("expected constraint to be an instance of GridBagConstraints, " +
+                    "is instance of " + constraint_.getClass().getName());
+
         GridBagConstraints constraint = (GridBagConstraints) constraint_;
         GridBagConstraints newc = new GridBagConstraints();
         newc.gridx = constraint.gridx;

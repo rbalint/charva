@@ -825,7 +825,7 @@ public class JFileChooser
             return _directory;
         }
 
-        private File _parent;
+        private File _parent; //TODO: it hides a field from Component; rename?
         private JButton _okButton;
         private JButton _cancelButton;
         private JTextField _dirnameField;

@@ -19,11 +19,7 @@
 
 package charvax.swing;
 
-import charva.awt.Dimension;
-import charva.awt.EventQueue;
-import charva.awt.Insets;
-import charva.awt.Point;
-import charva.awt.Toolkit;
+import charva.awt.*;
 import charva.awt.event.ItemEvent;
 import charva.awt.event.KeyEvent;
 

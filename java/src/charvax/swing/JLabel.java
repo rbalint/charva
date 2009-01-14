@@ -19,12 +19,10 @@
 
 package charvax.swing;
 
-import charva.awt.Dimension;
-import charva.awt.Font;
-import charva.awt.Insets;
-import charva.awt.Point;
-import charva.awt.Toolkit;
+import charva.awt.*;
 import charva.awt.event.KeyEvent;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * A display area for a short text string.  A label cannot react to keyboard
@@ -80,10 +78,6 @@ public class JLabel
         // Draw the border if it exists
         super.draw();
 
-        int attrib = 0;
-        if (_bold)
-            attrib |= Toolkit.A_BOLD;
-
         /* Get the absolute origin of this component.
          */
         Point origin = getLocationOnScreen();
@@ -103,7 +97,8 @@ public class JLabel
             buf.setLength(_width);	// truncate
 
         int colorpair = getCursesColor();
-        term.addString(buf.toString(), attrib, colorpair);
+        int attribute = (getFont().getStyle() == Font.BOLD) ? Toolkit.A_BOLD : Toolkit.A_NORMAL;
+        term.addString(buf.toString(), attribute, colorpair);
     }
 
     /**
@@ -174,16 +169,10 @@ public class JLabel
         return "JLabel: [" + getText() + "]";
     }
 
-    public void setFont(Font font_) {
-        _bold = ((font_.getStyle() & Font.BOLD) != 0);
-    }
-
     //====================================================================
     // INSTANCE VARIABLES
 
     private String _labeltext;
     private int _width;
-
-    protected boolean _bold = false;
-
+    private static final Log LOG = LogFactory.getLog(JLabel.class);
 }

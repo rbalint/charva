@@ -23,7 +23,6 @@ import charva.awt.*;
 import charva.awt.event.*;
 import charvax.swing.text.JTextComponent;
 
-import java.util.Enumeration;
 import java.util.Vector;
 
 /**
@@ -35,11 +34,9 @@ import java.util.Vector;
 
 /**
  * Support for
-    public void setBounds( Rectangle bounds )
-    public void setBounds( int top_, int left_, int bottom_, int right_)
-    public void setBounds(Point topleft_, Dimension size_)
- *
- *
+ * public void setBounds( Rectangle bounds )
+ * public void setBounds( int top_, int left_, int bottom_, int right_)
+ * public void setBounds(Point topleft_, Dimension size_)
  */
 public class JTextField
         extends JTextComponent {
@@ -95,20 +92,20 @@ public class JTextField
         super.invalidate();
     }
 
-    public void setBounds( Rectangle bounds ) {
+    public void setBounds(Rectangle bounds) {
         super.setBounds(bounds);
-        setColumns(bounds.getRight() - bounds.getLeft() + 1 );
+        setColumns(bounds.getRight() - bounds.getLeft() + 1);
 
     }
 
-    public void setBounds( int top_, int left_, int bottom_, int right_) {
-        super.setBounds(top_,left_,bottom_, right_);
-        setColumns( right_ -  left_ + 1);
+    public void setBounds(int top_, int left_, int bottom_, int right_) {
+        super.setBounds(top_, left_, bottom_, right_);
+        setColumns(right_ - left_ + 1);
     }
 
     public void setBounds(Point topleft_, Dimension size_) {
         super.setBounds(topleft_, size_);
-        setColumns( size_.width );
+        setColumns(size_.width);
     }
 
     /**
@@ -243,11 +240,11 @@ public class JTextField
          */
         if (!ke_.isActionKey() && (ke_.getID() == KeyEvent.KEY_TYPED)) {
 
-            /* If it is a control character, ignore it.
-             * @todo Do something more useful with control chars.
+            /* It is a control-character or a printable character. If it is not a control character,
+             * insert it into the text buffer.
              */
             if (key >= ' ') {
-                super._document.insert(super._caretPosition, (char) key);
+                super._document.insert(super._caretPosition, ke_.getKeyChar());
                 super._caretPosition++;
                 if (super._caretPosition - _offset > _columns)
                     _offset++;
@@ -260,21 +257,26 @@ public class JTextField
                 super._caretPosition--;
                 if (super._caretPosition < _offset)
                     _offset--;
+
             } else if (key == KeyEvent.VK_RIGHT && super._caretPosition < super._document.length()) {
                 super._caretPosition++;
                 if (super._caretPosition - _offset > _columns)
                     _offset++;
+
             } else if (key == KeyEvent.VK_BACK_SPACE && super._caretPosition > 0) {
                 super._caretPosition--;
                 super._document.deleteCharAt(super._caretPosition);
                 if (super._caretPosition < _offset)
                     _offset--;
+
             } else if (key == KeyEvent.VK_DELETE &&
                     super._caretPosition >= 0 && super._caretPosition < super._document.length()) {
                 super._document.deleteCharAt(super._caretPosition);
+
             } else if (key == KeyEvent.VK_HOME) {
                 super._caretPosition = 0;
                 _offset = 0;
+
             } else if (key == KeyEvent.VK_END) {
                 super._caretPosition = super._document.length();
                 if (super._document.length() > _columns)
@@ -286,7 +288,7 @@ public class JTextField
             /* Post an action event if ENTER was pressed.
              */
             else if (key == KeyEvent.VK_ENTER) {
-                ActionEvent ae = new ActionEvent(this, _actionCommand);
+                ActionEvent ae = new ActionEvent(this, getActionCommand());
                 Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(ae);
             }
         }
@@ -302,6 +304,8 @@ public class JTextField
      */
     public void processMouseEvent(MouseEvent e_) {
         super.processMouseEvent(e_);
+        if (e_.isConsumed())
+            return;
 
         if (e_.getButton() == MouseEvent.BUTTON1 &&
                 e_.getModifiers() == MouseEvent.MOUSE_CLICKED &&
@@ -318,7 +322,7 @@ public class JTextField
             int new_caret = _offset + (x - origin.x);
             super._caretPosition =
                     (new_caret < super._document.length()) ?
-                    new_caret : super._document.length();
+                            new_caret : super._document.length();
             repaint();
         }
     }
@@ -355,17 +359,20 @@ public class JTextField
 
     /**
      * Invoke all the ActionListener callbacks that may have been registered
-     * for this component.
+     * for this component. The listener list is processed in last to first order.
      */
     public void postActionEvent(ActionEvent ae_) {
         if (_actionListeners != null) {
-            for (Enumeration e = _actionListeners.elements();
-                 e.hasMoreElements();) {
-
-                ActionListener al = (ActionListener) e.nextElement();
+            for (int i = _actionListeners.size() - 1; i >= 0; i--) {
+                ActionListener al = (ActionListener) _actionListeners.get(i);
                 al.actionPerformed(ae_);
             }
         }
+    }
+
+    public void fireActionPerformed() {
+        ActionEvent ae = new ActionEvent(this, getActionCommand());
+        postActionEvent(ae);
     }
 
     /**
@@ -396,7 +403,7 @@ public class JTextField
     public String toString() {
         return "JTextField location=" + getLocation() +
                 " text=\"" + super._document + "\"" +
-                " actionCommand=\"" + _actionCommand + "\"";
+                " actionCommand=\"" + getActionCommand() + "\"";
     }
 
     public void debug(int level_) {

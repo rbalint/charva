@@ -229,27 +229,39 @@
 <td>
 
 In some applications a full-fledged bit-mapped graphical user interface is
-not feasible or appropriate. For example, you may be using
-<a href="http://www.symbol.com/products/mobile_computers/mobile_stationaryvmt_vrc_6900.html">
-    ruggedized mobile computers</a> that only have an ASCII display; or you may need
-to develop an administrative interface for a remote server or firewall, and
-you don't have enough bandwidth for X Windows or
-<a href="http://www.uk.research.att.com/archive/vnc/index.html">the
-    VNC protocol</a>. In such cases, CHARVA may be your solution.
+not feasible or appropriate. If you find yourself in one of the following situations,
+Charva may be your solution:
+<ul>
+    <li>You may be using
+        <a href="http://www.symbol.com/product.php?productID=869">
+            ruggedized mobile computers</a> that only have an ASCII display. </li><br/>
+
+    <li>You may need to develop an administrative interface for a remote server or firewall, and
+        you don't have enough bandwidth for X Windows or
+        <a href="http://www.realvnc.com/howitworks.html">the VNC protocol</a>.</li><br/>
+
+    <li>You may have an existing application that is based on a large number of text terminals
+        (distributed throughout the country or the world), and you want to avoid or postpone the expense
+        and disruption of
+        (a) replacing them all with PCs or graphical workstations, and
+        (b) retraining all the users in the use of
+        a new graphical application interface.</li>
+</ul>
+
 <p>
     CHARVA is a Java framework for presenting a &quot;graphical&quot; user interface,
     composed of elements such as windows, dialogs, menus, textfields and buttons,
     on a traditional character-cell ASCII terminal. It has an API based on
     that of &quot;Swing&quot; (a.k.a. the Java Foundation Classes). Programmers familiar
     with AWT and Swing will find programming CHARVA straightforward.
-    User interfaces can be designed on WYSIWYG IDEs such as Borland JBuilder
+    User interfaces can be designed on a WYSIWYG IDE,
     and then easily converted to CHARVA merely by changing the &quot;import&quot; statements
     to import the &quot;charva.awt and &quot;charvax.swing&quot; packages instead of the
     standard &quot;java.awt&quot; and &quot;javax.swing&quot; packages.</p>
 
 <p>
     CHARVA was designed to bring the power and flexibility of Java to applications
-    on Linux/Unix systems (and has also been ported to Windows). ASCII
+    on Linux/Unix systems (and has also been ported to MS Windows). ASCII
     terminal-based applications can now benefit from Java features such as
     object orientation, multithreading, automatic garbage-collection, and a
     vast range of libraries such as:</p>
@@ -272,15 +284,10 @@ you don't have enough bandwidth for X Windows or
 </ul>
 
 <p>
-    CHARVA now also has mouse support on terminal-emulators that report mouse
-    events, such as <a href="http://invisible-island.net/xterm/">&quot;xterm&quot;</a> and
-    <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">&quot;PuTTY&quot;</a></p>
-
-<p>
     Here are some <b>benefits</b> of CHARVA:
 <ul>
-    <li>The Total Cost of Ownership (TCO) of an ASCII terminal is considerably
-        lower than that of a PC. TCO refers to the total cost of acquiring,
+    <li>The Total Cost of Ownership (TCO) of an ASCII terminal or thin-client is considerably
+        lower than that of a desktop PC. TCO refers to the total cost of acquiring,
         deploying and maintaining equipment; in the case of a PC running MS-Windows and
         configured as a GUI workstation, the ongoing maintenance cost (including
         protecting the PC against viruses!) is considerable. For many applications
@@ -292,26 +299,26 @@ you don't have enough bandwidth for X Windows or
         You can use a single Linux computer to serve many dozens of ASCII terminals / terminal-emulators,
         each running its own instance of the same application. The Linux computer
         can handle the user interface logic and communicate (using standard protocols
-        such as HTTP, HTTPS or RMI) via a network (LAN or WAN) with an Application
+        such as HTTP, HTTPS, RMI or SOAP) via a network (LAN or WAN) with an Application
         Server, which handles the business logic.<br>
 
         <img src="images/architecture.gif" alt="Architecture">
         <br>
         So instead of having to download a new version of the application to each
-        workstation, you download only <i>one</i> copy of the new version (to the
-        Linux front-end server).</li><br>
+        workstation every time the application changes, you download only <i>one</i> copy of the
+        new version (to the Linux front-end server).</li><br>
 
     <li>The memory footprint and CPU usage of the CHARVA framework are
         <em>considerably</em> less than those of Swing. Provided you are using a terminal
         with a high bit-rate (or a PC-based terminal-emulator such as
         <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a> on a LAN), the response
         of CHARVA is <i>much</i> crisper than that of Swing. A single Linux
-        computer can support dozens of ASCII terminals running CHARVA-based
-        applications.</li><br>
+        server can support many dozen ASCII terminals running CHARVA-based applications.</li><br>
 
     <li>CHARVA uses a standard, flexible and powerful API which is already familiar
         to most Java programmers, thus enabling you to be productive without any
-        delay.</li><br>
+        delay. And because CHARVA applications are less complex than browser-based applications with
+        equivalent functionality, they are faster to develop and cost less to maintain.</li><br>
 
     <li>CHARVA is licensed with the
         <a href="http://www.gnu.org/copyleft/lesser.html">GNU Lesser General Public License</a>,
@@ -335,7 +342,8 @@ you don't have enough bandwidth for X Windows or
     any platform that supports both Java and ncurses.</p>
 
 <p>
-    CHARVA has been ported to the following operating systems and environments:</p>
+    Although developed primarily on Linux, CHARVA has also been ported to the following operating systems
+    and environments:</p>
 <ul>
     <li>HP-UX</li>
     <li>MS-Windows, using the
@@ -356,13 +364,11 @@ you don't have enough bandwidth for X Windows or
     <li><a href="http://www.vizaginfo.com/comp/beos/beintro.htm">BeOS</a></li>
 
 </ul>
-(OS-specific Makefiles are provided in the download tarball).
+(OS-specific Makefiles are provided in the download zipfile).
 
-<p>Charva has support for UTF-8 characters, so it can handle East European
-    character sets (e.g. Hungarian and Czech.).</p>
 
 <p>
-    Many developers <a href="Applications.html">have used CHARVA in their
+    Many developers around the world <a href="Applications.html">have used CHARVA in their
     applications</a>, and have reported that it is reliable and stable.
 </p>
 </td>
@@ -373,6 +379,6 @@ you don't have enough bandwidth for X Windows or
 </tr>
 </table>
 <hr>
-<i>Last updated: 10 September, 2006</i>
+<i>Last updated: 16 May, 2007</i>
 </body>
 </html>

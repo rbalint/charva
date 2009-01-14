@@ -214,14 +214,14 @@ public class JScrollPane
         // Now do the up/down scrolling
         if (limit.y < viewport.getTop() &&
                 (direction == ScrollEvent.DOWN ||
-                direction == ScrollEvent.DOWN_LEFT ||
-                direction == ScrollEvent.DOWN_RIGHT)) {
+                        direction == ScrollEvent.DOWN_LEFT ||
+                        direction == ScrollEvent.DOWN_RIGHT)) {
 
             viewPosition.y += (viewport.getTop() - limit.y);
         } else if (limit.y > viewport.getBottom() &&
                 (direction == ScrollEvent.UP ||
-                direction == ScrollEvent.UP_LEFT ||
-                direction == ScrollEvent.UP_RIGHT)) {
+                        direction == ScrollEvent.UP_LEFT ||
+                        direction == ScrollEvent.UP_RIGHT)) {
 
             viewPosition.y -= (limit.y - viewport.getBottom());
         }
@@ -263,8 +263,11 @@ public class JScrollPane
 
         Toolkit term = Toolkit.getDefaultToolkit();
         int colorpair = getCursesColor();
-        Dimension size = minimumSize();
 
+        // this doesn't work because minimumSize() may be bigger than the available viewport.
+        // (bugfix by Balazs Poka)
+//        Dimension size = minimumSize();
+        Dimension size = getSize();
         if (_border != null) {
 
             _border.paintBorder(this,
@@ -309,7 +312,7 @@ public class JScrollPane
 
             int scrollbar_offset =
                     (-1 * viewPosition.y * extentSize.height)
-                    / childSize.height;
+                            / childSize.height;
 
             for (int i = 0; i < extentSize.height; i++) {
 
@@ -317,7 +320,7 @@ public class JScrollPane
                         borderInsets.top + i));
                 if (i >= scrollbar_offset &&
                         i < scrollbar_offset + scrollbar_height) {
-                    term.addChar(Toolkit.ACS_CKBOARD, 0, colorpair);
+                    term.addChar('+', 0, colorpair);
                 }
             }
         }
@@ -334,7 +337,7 @@ public class JScrollPane
 
             int scrollbar_offset =
                     (-1 * viewPosition.x * extentSize.width)
-                    / childSize.width;
+                            / childSize.width;
 
             for (int i = 0; i < extentSize.width; i++) {
 
@@ -342,7 +345,7 @@ public class JScrollPane
                         borderInsets.top + extentSize.height));
                 if (i >= scrollbar_offset &&
                         i < scrollbar_offset + scrollbar_width) {
-                    term.addChar(Toolkit.ACS_CKBOARD, 0, colorpair);
+                    term.addChar('+', 0, colorpair);
                 }
             }
         }

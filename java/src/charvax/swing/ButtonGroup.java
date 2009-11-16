@@ -134,7 +134,7 @@ public class ButtonGroup
         for (Enumeration e = _buttons.elements(); e.hasMoreElements();) {
 
             AbstractButton b = (AbstractButton) e.nextElement();
-            if (source != b || statechange != ItemEvent.SELECTED) {
+            if (source != b && statechange == ItemEvent.SELECTED) {
                 if (b.isSelected()) {
                     b._selected = false;
                 }

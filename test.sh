@@ -18,6 +18,10 @@ case $1 in
     echo "Running the Swing version of the tutorial"
     RUN_CLASS=tutorial.java.Tutorial
     ;;
+  "charva-swing")
+    TEST_OPTS="${TEST_OPTS} -Dawt.toolkit=charva.awt.Toolkit"
+    RUN_CLASS=tutorial.java.Tutorial
+    ;;
   *)
     RUN_CLASS=tutorial.charva.Tutorial
 esac
@@ -35,7 +39,7 @@ export LD_LIBRARY_PATH=c/lib
 
 # Uncomment the next line to log keystrokes and mouse-clicks, and 
 # to debug key-mappings (the logfile in this case is $HOME/script.charva).
-TEST_OPTS="-Dcharva.script.record=${HOME}/script.charva"
+TEST_OPTS="${TEST_OPTS} -Dcharva.script.record=${HOME}/script.charva"
 
 # Uncomment the following line to play back a script that was previously
 # recorded using "charva.script.record".

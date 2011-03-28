@@ -19,6 +19,8 @@
 
 package charva.awt;
 
+import java.awt.Dimension;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

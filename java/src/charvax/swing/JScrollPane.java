@@ -19,6 +19,8 @@
 
 package charvax.swing;
 
+import java.awt.Dimension;
+
 import charva.awt.*;
 import charva.awt.event.ScrollEvent;
 import charva.awt.event.ScrollListener;

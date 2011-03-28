@@ -28,6 +28,7 @@ import charvax.swing.event.TableModelListener;
 import charvax.swing.table.DefaultTableModel;
 import charvax.swing.table.TableModel;
 
+import java.awt.Dimension;
 import java.util.Enumeration;
 import java.util.Vector;
 

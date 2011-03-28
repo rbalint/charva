@@ -1,5 +1,7 @@
 package example.charva;
 
+import java.awt.Dimension;
+
 import charva.awt.*;
 import charvax.swing.*;
 import charvax.swing.border.*;

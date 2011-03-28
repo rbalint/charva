@@ -29,6 +29,8 @@
 
 package charvax.swing;
 
+import java.awt.Dimension;
+
 import charva.awt.*;
 import charva.awt.event.ItemEvent;
 import charva.awt.event.KeyEvent;

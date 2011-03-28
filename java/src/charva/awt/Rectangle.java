@@ -19,6 +19,8 @@
 
 package charva.awt;
 
+import java.awt.Dimension;
+
 
 /**
  * The Rectangle class respresents a rectangular area of the screen; the

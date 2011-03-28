@@ -19,6 +19,8 @@
 
 package charva.awt;
 
+import java.awt.Dimension;
+
 import charva.awt.event.*;
 
 /** 

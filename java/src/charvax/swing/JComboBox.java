@@ -39,6 +39,7 @@ import charvax.swing.border.LineBorder;
 import charvax.swing.event.ListSelectionEvent;
 import charvax.swing.event.ListSelectionListener;
 
+import java.awt.Dimension;
 import java.util.Enumeration;
 import java.util.Vector;
 

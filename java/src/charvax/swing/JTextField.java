@@ -23,6 +23,7 @@ import charva.awt.*;
 import charva.awt.event.*;
 import charvax.swing.text.JTextComponent;
 
+import java.awt.Dimension;
 import java.util.Vector;
 
 /**

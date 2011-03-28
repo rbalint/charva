@@ -36,6 +36,7 @@ import charva.awt.event.KeyEvent;
 import charva.awt.event.MouseEvent;
 import charva.awt.event.FocusEvent;
 
+import java.awt.Dimension;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
@@ -63,6 +64,10 @@ public class Toolkit {
 
     private static final Log LOG = LogFactory.getLog(Toolkit.class);
 
+    /**
+     * The constructor can only be called by the getDefaultToolkit() method,
+     * making this an example of the Singleton pattern.
+     */
     public Toolkit() {
         _evtQueue = EventQueue.getInstance();
 

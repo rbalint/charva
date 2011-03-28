@@ -19,6 +19,8 @@
 
 package charvax.swing;
 
+import java.awt.Dimension;
+
 import charva.awt.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

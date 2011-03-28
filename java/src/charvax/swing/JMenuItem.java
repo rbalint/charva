@@ -19,7 +19,7 @@
 
 package charvax.swing;
 
-import charva.awt.Dimension;
+import java.awt.Dimension;
 import charva.awt.Point;
 import charva.awt.Toolkit;
 

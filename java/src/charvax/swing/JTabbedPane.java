@@ -34,6 +34,7 @@ import charva.awt.*;
 import charva.awt.event.ActionEvent;
 import charva.awt.event.ActionListener;
 
+import java.awt.Dimension;
 import java.util.Enumeration;
 import java.util.Vector;
 

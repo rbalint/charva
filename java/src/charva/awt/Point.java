@@ -19,6 +19,8 @@
 
 package charva.awt;
 
+import java.awt.Dimension;
+
 /**
  * Represents a point in (x,y) coordinate space, with integer precision.
  */

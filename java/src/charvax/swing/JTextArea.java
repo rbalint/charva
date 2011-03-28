@@ -25,6 +25,7 @@ import charva.awt.event.MouseEvent;
 import charva.awt.event.ScrollEvent;
 import charva.awt.event.ScrollListener;
 
+import java.awt.Dimension;
 import java.util.Enumeration;
 import java.util.Vector;
 

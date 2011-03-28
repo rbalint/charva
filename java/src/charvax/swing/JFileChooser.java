@@ -41,6 +41,7 @@ import charvax.swing.event.ListSelectionEvent;
 import charvax.swing.event.ListSelectionListener;
 import charvax.swing.filechooser.FileFilter;
 
+import java.awt.Dimension;
 import java.io.File;
 import java.util.*;
 

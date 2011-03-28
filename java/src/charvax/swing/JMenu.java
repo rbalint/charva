@@ -23,6 +23,7 @@ import charva.awt.*;
 import charva.awt.event.ActionEvent;
 import charva.awt.event.KeyEvent;
 
+import java.awt.Dimension;
 import java.lang.ref.WeakReference;
 import java.util.Enumeration;
 import java.util.Vector;

@@ -1,5 +1,7 @@
 package tutorial.charva;
 
+import java.awt.Dimension;
+
 import charvax.swing.*;
 import charvax.swing.border.EmptyBorder;
 import charvax.swing.border.TitledBorder;

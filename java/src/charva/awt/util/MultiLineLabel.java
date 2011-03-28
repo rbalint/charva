@@ -22,6 +22,7 @@ package charva.awt.util;
 import charva.awt.*;
 import charva.awt.event.*;
 
+import java.awt.Dimension;
 import java.util.Enumeration;
 import java.util.Vector;
 

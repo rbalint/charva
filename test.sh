@@ -13,12 +13,14 @@ then
     exit
 fi
 
-if [ "$1" = "swing" ]; then
+case $1 in
+  "swing")
     echo "Running the Swing version of the tutorial"
-    ${JAVA_HOME}/bin/java  -cp "test/classes" tutorial.java.Tutorial
-    exit
-fi
-
+    RUN_CLASS=tutorial.java.Tutorial
+    ;;
+  *)
+    RUN_CLASS=tutorial.charva.Tutorial
+esac
 
 if [ "$TERM" = "dumb" ]; then
     echo "The TERM environment variable is not set!"
@@ -60,5 +62,5 @@ TEST_OPTS="${TEST_OPTS} -Dcharva.color=1"
 ${JAVA_HOME}/bin/java \
     ${TEST_OPTS} \
     -cp ".:java/classes:test/classes:java/lib/commons-logging.jar:java/lib/log4j-1.2.8.jar" \
-    tutorial.charva.Tutorial 2> $HOME/charva.log
+    ${RUN_CLASS} 2> $HOME/charva.log
 stty sane

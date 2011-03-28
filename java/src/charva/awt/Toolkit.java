@@ -63,11 +63,7 @@ public class Toolkit {
 
     private static final Log LOG = LogFactory.getLog(Toolkit.class);
 
-    /**
-     * The constructor can only be called by the getDefaultToolkit() method,
-     * making this an example of the Singleton pattern.
-     */
-    private Toolkit() {
+    public Toolkit() {
         _evtQueue = EventQueue.getInstance();
 
         /* If the terminal is capable of handling colors, initialize the

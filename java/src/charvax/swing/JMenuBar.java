@@ -20,6 +20,7 @@
 package charvax.swing;
 
 import java.awt.Dimension;
+import java.awt.Point;
 
 import charva.awt.*;
 import charva.awt.event.KeyEvent;
@@ -261,7 +262,8 @@ public class JMenuBar
         for (int i = 0; i < getMenuCount(); i++) {
             JMenu menu = getMenu(i);
             if (menu == menu_) {
-                return origin.addOffset(offset, 1);
+            	origin.translate(offset, 1);
+            	return origin;
             }
             String menutext = menu.getText();
             offset += menutext.length() + 1;

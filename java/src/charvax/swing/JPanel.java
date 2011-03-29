@@ -19,6 +19,8 @@
 
 package charvax.swing;
 
+import java.awt.Point;
+
 import charva.awt.*;
 import charvax.swing.border.Border;
 

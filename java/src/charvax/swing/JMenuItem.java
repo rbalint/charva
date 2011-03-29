@@ -20,7 +20,7 @@
 package charvax.swing;
 
 import java.awt.Dimension;
-import charva.awt.Point;
+import java.awt.Point;
 import charva.awt.Toolkit;
 
 /**
@@ -81,7 +81,8 @@ public class JMenuItem
         if (super.getMnemonic() > 0) {
             int mnemonicPos = super.getText().indexOf((char) super.getMnemonic());
             if (mnemonicPos != -1) {
-                term.setCursor(origin.addOffset(1 + mnemonicPos, 0));
+                origin.translate(1 + mnemonicPos, 0);
+                term.setCursor(origin);
                 term.addChar(super.getMnemonic(), attribute | Toolkit.A_UNDERLINE, colorpair);
             }
         }

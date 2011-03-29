@@ -20,6 +20,7 @@
 package charvax.swing;
 
 import java.awt.Dimension;
+import java.awt.Point;
 
 import charva.awt.*;
 import charva.awt.event.ItemEvent;
@@ -98,7 +99,7 @@ public class JCheckBox
 
         Toolkit term = Toolkit.getDefaultToolkit();
 
-        term.setCursor(origin.addOffset(insets.left, insets.top));
+        term.setCursor(new Point (origin.x + insets.left, origin.y + insets.top));
         if (super.isSelected())
             valstring = "[*] ";
         else
@@ -161,7 +162,7 @@ public class JCheckBox
          */
         Point origin = getLocationOnScreen();
         Insets insets = super.getInsets();
-        Toolkit.getDefaultToolkit().setCursor(origin.addOffset(1 + insets.left, 0 + insets.top));
+        Toolkit.getDefaultToolkit().setCursor(new Point (origin.x + 1 + insets.left, origin.y + insets.top));
     }
 
     public String toString() {

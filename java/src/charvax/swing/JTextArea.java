@@ -26,6 +26,7 @@ import charva.awt.event.ScrollEvent;
 import charva.awt.event.ScrollListener;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -465,7 +466,7 @@ public class JTextArea
                         row++;
                         if (row >= _rows)
                             _rows++;
-                        term.setCursor(origin.addOffset(col, row));
+                        term.setCursor(new Point(origin.x + col, origin.y + row));
                     } else {
                         term.addChar(chr, 0, colorpair);
                         col++;
@@ -477,7 +478,7 @@ public class JTextArea
                             row++;
                             if (row >= _rows)
                                 _rows++;
-                            term.setCursor(origin.addOffset(col, row));
+                            term.setCursor(new Point(origin.x + col, origin.y + row));
                         } else {
                             term.addChar(chr, 0, colorpair);
                             col++;
@@ -489,7 +490,7 @@ public class JTextArea
                             row++;
                             if (row >= _rows)
                                 _rows++;
-                            term.setCursor(origin.addOffset(col, row));
+                            term.setCursor(new Point(origin.x + col, origin.y + row));
                             if (chr != '\n')    // thanks to Chris Rogers for this
                                 term.addChar(chr, 0, colorpair);
                         } else {
@@ -506,7 +507,7 @@ public class JTextArea
                                     if (row >= _rows)
                                         _rows++;
                                     i -= j;
-                                    term.setCursor(origin.addOffset(col, row));
+                                    term.setCursor(new Point(origin.x + col, origin.y + row));
                                     break;
                                 }
                             }
@@ -516,7 +517,7 @@ public class JTextArea
                                     row++;
                                     if (row >= _rows)
                                         _rows++;
-                                    term.setCursor(origin.addOffset(col, row));
+                                    term.setCursor(new Point(origin.x + col, origin.y + row));
                                 }
                             }
                         }
@@ -558,7 +559,7 @@ public class JTextArea
         /* Get the absolute origin of this component.
          */
         Point origin = getLocationOnScreen();
-        Toolkit.getDefaultToolkit().setCursor(origin.addOffset(_caret));
+        Toolkit.getDefaultToolkit().setCursor(new Point(origin.x + _caret.x, origin.y + _caret.y));
     }
 
     /**
@@ -617,7 +618,7 @@ public class JTextArea
      */
     private void deleteEOL(Toolkit term_, int col_, int row_, int colorpair_) {
         Point origin = getLocationOnScreen();
-        term_.setCursor(origin.addOffset(col_, row_));
+        term_.setCursor(new Point(origin.x + col_, origin.y + row_));
         for (int i = col_; i < _columns; i++)
             term_.addChar(' ', 0, colorpair_);
     }

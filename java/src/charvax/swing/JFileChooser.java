@@ -42,6 +42,7 @@ import charvax.swing.event.ListSelectionListener;
 import charvax.swing.filechooser.FileFilter;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.io.File;
 import java.util.*;
 
@@ -536,8 +537,10 @@ public class JFileChooser
         private void _doNewDirectoryAction() {
             JFileChooser.NewDirDialog dlg =
                     new NewDirDialog(this, _currentDirectory);
+            Point location = getLocation();
 
-            dlg.setLocation(getLocation().addOffset(2, 2));
+            location.translate(2, 2);
+            dlg.setLocation(location);
             dlg.show();
             File newdir = dlg.getDirectory();
             if (newdir != null)

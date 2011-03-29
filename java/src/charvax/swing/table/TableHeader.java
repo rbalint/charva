@@ -21,7 +21,7 @@ package charvax.swing.table;
 
 import charva.awt.Component;
 import java.awt.Dimension;
-import charva.awt.Point;
+import java.awt.Point;
 import charva.awt.Toolkit;
 
 /**
@@ -72,7 +72,7 @@ public class TableHeader
         int x = 1;
         int attr = Toolkit.A_BOLD;
         for (int i = 0; i < columns; i++) {
-            term.setCursor(origin.addOffset(x, 0));
+            term.setCursor(new Point(origin.x + x, origin.y));
             term.addChar(' ', attr, colorpair);
             term.addString(_model.getColumnName(i), attr, colorpair);
             term.addChar(' ', attr, colorpair);
@@ -83,7 +83,7 @@ public class TableHeader
          */
         x = getColumnWidth(0) + 1;
         for (int i = 0; i < columns - 1; i++) {
-            term.setCursor(origin.addOffset(x, 0));
+            term.setCursor(new Point(origin.x + x, origin.y));
             term.addChar(Toolkit.ACS_TTEE, 0, colorpair);	    // top tee
             x += getColumnWidth(i + 1) + 1;
         }

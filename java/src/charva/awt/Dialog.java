@@ -20,6 +20,7 @@
 package charva.awt;
 
 import java.awt.Dimension;
+import java.awt.Point;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -81,14 +82,14 @@ public class Dialog
         _term.blankBox(_origin, _size, colorpair);
         int boxwidth = _size.width - 2;
         int boxheight = _size.height - 2;
-        _term.drawBox(_origin.addOffset(1, 1),
+        _term.drawBox(new Point(_origin.x + 1,_origin.y + 1),
                 new Dimension(boxwidth, boxheight),
                 colorpair);
 
         /* Draw the title into the enclosing frame.
          */
         if (_title != null && _title.length() != 0) {
-            _term.setCursor(_origin.addOffset(2, 1));
+            _term.setCursor(new Point(_origin.x + 2,_origin.y + 1));
             _term.addChar(' ', 0, colorpair);
             _term.addString(_title, 0, colorpair);
             _term.addChar(' ', 0, colorpair);

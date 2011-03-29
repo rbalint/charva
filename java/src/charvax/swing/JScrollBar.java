@@ -21,7 +21,7 @@ package charvax.swing;
 
 import charva.awt.Adjustable;
 import java.awt.Dimension;
-import charva.awt.Point;
+import java.awt.Point;
 import charva.awt.Toolkit;
 import charva.awt.event.AdjustmentEvent;
 import charva.awt.event.AdjustmentListener;
@@ -187,28 +187,28 @@ public class JScrollBar
                 term.setCursor(origin);
                 term.addChar('^', Toolkit.A_REVERSE, colorpair);
                 for (int k = 1; k < _length - 1; k++) {
-                    term.setCursor(origin.addOffset(0, k));
+                    term.setCursor(new Point (origin.x, origin.y + k));
                     term.addChar(Toolkit.ACS_CKBOARD, 0, colorpair);
                 }
-                term.setCursor(origin.addOffset(0, _length - 1));
+                term.setCursor(new Point (origin.x, origin.y + _length - 1));
                 term.addChar('v', Toolkit.A_REVERSE, colorpair);
 
                 for (int i = 0; i < visible; i++) {
-                    term.setCursor(origin.addOffset(0, 1 + offset + i));
+                    term.setCursor(new Point (origin.x, origin.y + 1 + offset + i));
                     term.addChar(' ', Toolkit.A_REVERSE, colorpair);
                 }
             } else {
                 term.setCursor(origin);
                 term.addChar('<', Toolkit.A_REVERSE, colorpair);
                 for (int k = 1; k < _length - 1; k++) {
-                    term.setCursor(origin.addOffset(k, 0));
+                    term.setCursor(new Point(origin.x + k, origin.y));
                     term.addChar(Toolkit.ACS_CKBOARD, 0, colorpair);
                 }
-                term.setCursor(origin.addOffset(_length - 1, 0));
+                term.setCursor(new Point(origin.x + _length - 1, origin.y));
                 term.addChar('>', Toolkit.A_REVERSE, colorpair);
 
                 for (int i = 0; i < visible; i++) {
-                    term.setCursor(origin.addOffset(1 + offset + i, 0));
+                    term.setCursor(new Point(origin.x + 1 + offset + i, origin.y));
                     term.addChar(' ', Toolkit.A_REVERSE, colorpair);
                 }
             }
@@ -273,7 +273,8 @@ public class JScrollBar
          */
         Point origin = getLocationOnScreen();
         int offset = _value * (_length - 2) / _maximum;
-        Toolkit.getDefaultToolkit().setCursor(origin.addOffset(1 + offset, 0));
+        Toolkit.getDefaultToolkit().setCursor(new Point(origin.x + 1 + offset,
+        		origin.y));
     }
 
     /**

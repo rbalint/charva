@@ -23,6 +23,7 @@ import charva.awt.*;
 import charvax.swing.*;
 import charva.awt.event.*;
 
+import java.awt.Point;
 import java.util.TimeZone;
 import java.util.Calendar;
 import java.util.GregorianCalendar;

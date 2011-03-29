@@ -19,6 +19,8 @@
 
 package charvax.swing.border;
 
+import java.awt.Point;
+
 import charva.awt.*;
 
 /**
@@ -144,7 +146,7 @@ public class TitledBorder
         Toolkit term = Toolkit.getDefaultToolkit();
         if (_title.length() != 0) {
             Point origin = new Point(x_, y_);
-            term.setCursor(origin.addOffset(1, 0));
+            term.setCursor(new Point(origin.x + 1, origin.y));
             term.addChar(' ', 0, colorpair);
             term.addString(_title, 0, colorpair);
             term.addChar(' ', 0, colorpair);

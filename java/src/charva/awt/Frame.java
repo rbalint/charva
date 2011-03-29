@@ -19,6 +19,8 @@
 
 package charva.awt;
 
+import java.awt.Point;
+
 /**
  * A Frame is a top-level window with a title and a border.
  */
@@ -62,7 +64,7 @@ public class Frame
         /* Draw the title into the enclosing frame.
          */
         if (_title.equals("") == false) {
-            _term.setCursor(_origin.addOffset(1, 0));
+            _term.setCursor(new Point(_origin.x + 1, _origin.y));
             _term.addChar(' ', 0, colorpair);
             _term.addString(_title, 0, colorpair);
             _term.addChar(' ', 0, colorpair);

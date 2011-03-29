@@ -24,6 +24,7 @@ import charva.awt.event.ActionEvent;
 import charva.awt.event.KeyEvent;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.lang.ref.WeakReference;
 import java.util.Enumeration;
 import java.util.Vector;
@@ -147,7 +148,8 @@ public class JMenu
             if (super.getMnemonic() > 0) {
                 int mnemonicPos = super.getText().indexOf((char) super.getMnemonic());
                 if (mnemonicPos != -1) {
-                    term.setCursor(origin.addOffset(mnemonicPos + 1, 0));
+                	origin.translate(mnemonicPos + 1, 0);
+                    term.setCursor(origin);
                     term.addChar(super.getMnemonic(), attribute | Toolkit.A_UNDERLINE, colorpair);
                 }
             }
@@ -249,9 +251,11 @@ public class JMenu
             if (p.x + parentwidth + _popup.getWidth() <
                     term.getScreenColumns()) {
 
-                _popup.setLocation(p.addOffset(parentwidth - 1, verticalOffset));
+                p.translate(parentwidth - 1, verticalOffset);
+            	_popup.setLocation(p);
             } else {
-                _popup.setLocation(p.addOffset(-_popup.getWidth() + 1, verticalOffset));
+            	p.translate(-_popup.getWidth() + 1, verticalOffset);
+            	_popup.setLocation(p);
             }
         } else {
             JMenuBar parentMenuBar = (JMenuBar) getParent();

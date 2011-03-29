@@ -21,6 +21,7 @@ package charva.awt;
 
 import charva.awt.event.*;
 
+import java.awt.Point;
 import java.io.File;
 import java.util.Enumeration;
 import java.util.Vector;

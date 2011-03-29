@@ -20,6 +20,7 @@
 package charvax.swing;
 
 import java.awt.Dimension;
+import java.awt.Point;
 
 import charva.awt.*;
 import charva.awt.event.ActionEvent;
@@ -548,17 +549,20 @@ public class JOptionPane {
             if (_ownerComponent != null) {
                 Point ownerOrigin = _ownerComponent.getLocationOnScreen();
                 Dimension ownerSize = _ownerComponent.getSize();
-                Point ownerCenter = ownerOrigin.addOffset(ownerSize.width / 2, ownerSize.height / 2);
-                setLocation(ownerCenter.addOffset(-ourSize.width / 2, -ourSize.height / 2));
+                /* Position dialog's center to parent's center */
+                ownerOrigin.translate((ownerSize.width - ourSize.width) / 2,
+                		(ownerSize.height - ourSize.height) / 2);
+                setLocation(ownerOrigin);
             } else {
                 /* The parent component was not specified. Center this
                  * dialog box in the middle of the screen.
                  */
                 Dimension screensize =
                         Toolkit.getDefaultToolkit().getScreenSize();
-                Point screenCenter = new Point(screensize.width / 2,
-                        screensize.height / 2);
-                setLocation(screenCenter.addOffset(-ourSize.width / 2, -ourSize.height / 2));
+                Point rightUpperCorner = new Point(
+                		(screensize.width - ourSize.width) / 2,
+                        (screensize.height - ourSize.height) / 2);
+                setLocation(rightUpperCorner);
             }
 
             // Add a KeyListener in case one or more accelerators were set.

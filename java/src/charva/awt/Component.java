@@ -43,6 +43,7 @@ package charva.awt;
 import charva.awt.event.*;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.lang.ref.WeakReference;
 import java.util.Enumeration;
 import java.util.Vector;
@@ -161,13 +162,16 @@ public abstract class Component {
      */
     public Point getLocationOnScreen() {
         Container parent = getParent();
+        Point location;
         if (parent == null) {
             throw new IllegalComponentStateException("cannot get component location " +
                     "before it has been added to a container: component= " +
                     this.toString());
         }
 
-        return parent.getLocationOnScreen().addOffset(_origin);
+        location = parent.getLocationOnScreen();
+        location.translate(_origin.x, _origin.y);
+        return location;
     }
 
     public abstract Dimension getSize();

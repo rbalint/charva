@@ -40,6 +40,7 @@ import charvax.swing.event.ListSelectionEvent;
 import charvax.swing.event.ListSelectionListener;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -278,7 +279,7 @@ public class JComboBox
                 super.isEnabled() ? Toolkit.A_REVERSE : Toolkit.A_NORMAL;
 
         term.addString(buf.toString(), attribute, colorpair);
-        term.setCursor(origin.addOffset(_columns + 1, 0));
+        term.setCursor(new Point (origin.x + _columns + 1, origin.y));
         term.addChar(Toolkit.ACS_DIAMOND, attribute, colorpair);
     }
 
@@ -417,7 +418,7 @@ public class JComboBox
          */
         Point origin = getLocationOnScreen();
         Insets insets = super.getInsets();
-        Toolkit.getDefaultToolkit().setCursor(origin.addOffset(insets.left, insets.top));
+        Toolkit.getDefaultToolkit().setCursor(new Point(origin.x + insets.left, origin.y + insets.top));
     }
 
     /**

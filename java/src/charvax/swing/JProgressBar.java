@@ -21,7 +21,7 @@ package charvax.swing;
 
 import java.awt.Dimension;
 import charva.awt.Insets;
-import charva.awt.Point;
+import java.awt.Point;
 import charva.awt.Toolkit;
 import charva.awt.event.KeyEvent;
 
@@ -134,26 +134,26 @@ public class JProgressBar
 
         if (!isIndeterminate()) {
             for (int i = 0; i < offset; i++) {
-                term.setCursor(origin.addOffset(i, 0));
+                term.setCursor(new Point (origin.x + i, origin.y));
                 term.addChar(' ', Toolkit.A_REVERSE, colorpair);
             }
             for (int k = offset; k < _width; k++) {
-                term.setCursor(origin.addOffset(k, 0));
+                term.setCursor(new Point (origin.x + k, origin.y));
                 term.addChar(Toolkit.ACS_CKBOARD, 0, colorpair);
             }
         } else {
             for (int i = 0; i < _width; i++) {
-                term.setCursor(origin.addOffset(i, 0));
+                term.setCursor(new Point (origin.x + i, origin.y));
                 term.addChar(' ', 0, colorpair);
             }
-            term.setCursor(origin.addOffset(offset, 0));
+            term.setCursor(new Point (origin.x + offset, origin.y));
             term.addChar(' ', Toolkit.A_REVERSE, colorpair);
         }
 
         // Display the progress string if required
         if (isStringPainted()) {
             offset = (getSize().width - _string.length()) / 2;
-            term.setCursor(origin.addOffset(offset, 0));
+            term.setCursor(new Point (origin.x + offset, origin.y));
             term.addString(_string, 0, colorpair);
         }
     }

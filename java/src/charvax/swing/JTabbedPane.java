@@ -35,6 +35,7 @@ import charva.awt.event.ActionEvent;
 import charva.awt.event.ActionListener;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -229,7 +230,7 @@ public class JTabbedPane
          */
         Dimension size = getSize();
         term.blankBox(origin, size, colorpair);
-        term.drawBox(origin.addOffset(0, 1),
+        term.drawBox(new Point(origin.x, origin.y + 1),
                 new Dimension(size.width, size.height - 1),
                 colorpair);
 
@@ -240,7 +241,7 @@ public class JTabbedPane
         for (int i = 0; e.hasMoreElements(); i++) {
             TabButton tb = (TabButton) e.nextElement();
 
-            tb.setLocation(relative.addOffset(hoffset, 0));
+            tb.setLocation(new Point(relative.x + hoffset, relative.y));
             tb.draw();
             hoffset += tb.getWidth();
         }
@@ -400,8 +401,9 @@ public class JTabbedPane
             super.requestFocus();
             Point origin = getLocationOnScreen();
             Insets insets = super.getInsets();
+            origin.translate(2 + insets.left, 0 + insets.top);
             Toolkit.getDefaultToolkit().
-                    setCursor(origin.addOffset(2 + insets.left, 0 + insets.top));
+                    setCursor(origin);
         }
 
         public void draw() {
@@ -424,13 +426,13 @@ public class JTabbedPane
                 if (getMnemonic() > 0) {
                     int mnemonicPos = getText().indexOf((char) getMnemonic());
                     if (mnemonicPos != -1) {
-                        term.setCursor(origin.addOffset(2 + mnemonicPos, 0));
+                        term.setCursor(new Point(origin.x + 2 + mnemonicPos, origin.y));
                         term.addChar(getMnemonic(), Toolkit.A_UNDERLINE |
                                 Toolkit.A_REVERSE, colorpair);
                     }
                 }
             }
-            term.setCursor(origin.addOffset(0, 1));
+            term.setCursor(new Point(origin.x, origin.y + 1));
             if (isSelected()) {
                 term.addChar(Toolkit.ACS_LRCORNER, 0, colorpair);
                 for (int j = 0; j < getText().length() + 2; j++) {
@@ -439,10 +441,10 @@ public class JTabbedPane
                 term.addChar(Toolkit.ACS_LLCORNER, 0, colorpair);
             } else {
                 term.addChar(Toolkit.ACS_BTEE, 0, colorpair);
-                term.setCursor(origin.addOffset(getText().length() + 3, 1));
+                term.setCursor(new Point(origin.x + getText().length() + 3, origin.y + 1));
                 term.addChar(Toolkit.ACS_BTEE, 0, colorpair);
                 if (isEnabled()) {
-                    term.setCursor(origin.addOffset(1, 1));
+                    term.setCursor(new Point(origin.x + 1, origin.y + 1));
                     term.addString(_keylabel, Toolkit.A_BOLD, colorpair);
                 }
             }

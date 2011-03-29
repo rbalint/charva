@@ -20,6 +20,7 @@
 package charvax.swing;
 
 import java.awt.Dimension;
+import java.awt.Point;
 
 import charva.awt.*;
 import charva.awt.event.ScrollEvent;
@@ -163,7 +164,8 @@ public class JScrollPane
          */
         Point viewportLocation = (Point) getViewport().getLocation();
         limit.translate(viewportLocation.x, viewportLocation.y);
-        limit.translate(scrollable.getLocation());
+        Point location = scrollable.getLocation();
+        limit.translate(location.x, location.y);
 
         /* Get the bounding rectangle of the child viewport, relative to
          * the top left corner of the JScrollPane.
@@ -318,8 +320,8 @@ public class JScrollPane
 
             for (int i = 0; i < extentSize.height; i++) {
 
-                term.setCursor(origin.addOffset(borderInsets.left + extentSize.width,
-                        borderInsets.top + i));
+                term.setCursor(new Point(origin.x + borderInsets.left + extentSize.width,
+                        origin.y + borderInsets.top + i));
                 if (i >= scrollbar_offset &&
                         i < scrollbar_offset + scrollbar_height) {
                     term.addChar('+', 0, colorpair);
@@ -343,8 +345,8 @@ public class JScrollPane
 
             for (int i = 0; i < extentSize.width; i++) {
 
-                term.setCursor(origin.addOffset(borderInsets.left + i,
-                        borderInsets.top + extentSize.height));
+                term.setCursor(new Point(origin.x + borderInsets.left + i,
+                        origin.y + borderInsets.top + extentSize.height));
                 if (i >= scrollbar_offset &&
                         i < scrollbar_offset + scrollbar_width) {
                     term.addChar('+', 0, colorpair);

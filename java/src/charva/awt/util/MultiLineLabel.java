@@ -23,6 +23,7 @@ import charva.awt.*;
 import charva.awt.event.*;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -63,7 +64,7 @@ public class MultiLineLabel
         Enumeration e = _labeltext.elements();
         for (int row = 0; e.hasMoreElements(); row++) {
             String s = (String) e.nextElement();
-            term.setCursor(origin.addOffset(0, row));
+            term.setCursor(new Point(origin.x ,origin.y + row));
             term.addString(s, 0, 0);
         }
     }

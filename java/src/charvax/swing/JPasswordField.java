@@ -21,7 +21,7 @@ package charvax.swing;
 
 import charva.awt.Container;
 import charva.awt.Insets;
-import charva.awt.Point;
+import java.awt.Point;
 import charva.awt.Toolkit;
 
 /**
@@ -161,7 +161,8 @@ public class JPasswordField
 
         term.addString(displaybuf.substring(_offset, end).toString(),
                 attrib, colorpair);
-        term.setCursor(origin.addOffset(super._caretPosition - _offset, 0));
+        origin.translate(super._caretPosition - _offset, 0);
+        term.setCursor(origin);
     }
 
     /**

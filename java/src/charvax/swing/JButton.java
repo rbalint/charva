@@ -30,6 +30,7 @@
 package charvax.swing;
 
 import java.awt.Dimension;
+import java.awt.Point;
 
 import charva.awt.*;
 import charva.awt.event.ItemEvent;
@@ -123,7 +124,7 @@ public class JButton
             if (super.getMnemonic() > 0) {
                 int mnemonicPos = super.getLabelString().indexOf((char) super.getMnemonic());
                 if (mnemonicPos != -1) {
-                    term.setCursor(origin.addOffset(1 + mnemonicPos, 0));
+                    term.setCursor(new Point (origin.x + 1 + mnemonicPos, origin.y));
                     term.addChar(super.getMnemonic(),
                             Toolkit.A_UNDERLINE | Toolkit.A_REVERSE, colorpair);
                 }
@@ -180,7 +181,7 @@ public class JButton
          */
         Point origin = getLocationOnScreen();
         Insets insets = super.getInsets();
-        Toolkit.getDefaultToolkit().setCursor(origin.addOffset(1 + insets.left, 0 + insets.top));
+        Toolkit.getDefaultToolkit().setCursor(new Point (origin.x + 1 + insets.left, origin.y + insets.top));
     }
 
     public String toString() {

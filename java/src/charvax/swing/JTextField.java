@@ -24,6 +24,7 @@ import charva.awt.event.*;
 import charvax.swing.text.JTextComponent;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.util.Vector;
 
 /**
@@ -216,7 +217,7 @@ public class JTextField
 
         term.addString(super.getText().substring(_offset, end).toString(),
                 attrib, colorpair);
-        term.setCursor(origin.addOffset(super._caretPosition - _offset, 0));
+        term.setCursor(new Point (origin.x + super._caretPosition - _offset, origin.y));
     }
 
     /**
@@ -401,7 +402,8 @@ public class JTextField
         Point origin = getLocationOnScreen();
         Insets insets = super.getInsets();
         origin.translate(insets.left, insets.top);
-        Toolkit.getDefaultToolkit().setCursor(origin.addOffset(super._caretPosition - _offset, 0));
+        Toolkit.getDefaultToolkit().setCursor(new Point(
+        		origin.x + super._caretPosition - _offset, origin.y));
     }
 
     /**

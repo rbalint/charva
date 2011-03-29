@@ -21,7 +21,7 @@ package charvax.swing;
 
 import charva.awt.Component;
 import charva.awt.Insets;
-import charva.awt.Point;
+import java.awt.Point;
 import charvax.swing.border.Border;
 
 

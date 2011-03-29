@@ -37,6 +37,7 @@ import charva.awt.event.MouseEvent;
 import charva.awt.event.FocusEvent;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;

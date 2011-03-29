@@ -19,6 +19,8 @@
 
 package charva.awt.event;
 
+import java.awt.Point;
+
 import charva.awt.event.AWTEvent;
 import charva.awt.*;
 

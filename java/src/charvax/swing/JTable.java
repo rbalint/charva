@@ -29,6 +29,7 @@ import charvax.swing.table.DefaultTableModel;
 import charvax.swing.table.TableModel;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -182,7 +183,7 @@ public class JTable
         /* Ensure that the new cursor position is not off the screen (which
          * it can be if the JTable is in a JViewport).
          */
-        Point newCursor = origin.addOffset(x, _currentRow + 1);
+        Point newCursor = new Point(origin.x + x, origin.y + _currentRow + 1);
         if (newCursor.x < 0)
             newCursor.x = 0;
         if (newCursor.y < 0)
@@ -211,7 +212,7 @@ public class JTable
         int x = 1;
         int attr = Toolkit.A_BOLD;
         for (int i = 0; i < columns; i++) {
-            term.setCursor(origin.addOffset(x, 0));
+            term.setCursor(new Point(origin.x + x, origin.y));
             term.addChar(' ', attr, colorpair);
             term.addString(_model.getColumnName(i), attr, colorpair);
             term.addChar(' ', attr, colorpair);
@@ -223,11 +224,11 @@ public class JTable
         if (_model.getColumnCount() != 0) {
             x = getColumnWidth(0) + 1;
             for (int i = 0; i < columns - 1; i++) {
-                term.setCursor(origin.addOffset(x, 0));
+                term.setCursor(new Point(origin.x + x, origin.y));
                 term.addChar(Toolkit.ACS_TTEE, 0, colorpair);        // top tee
-                term.setCursor(origin.addOffset(x, 1));
+                term.setCursor(new Point(origin.x + x, origin.y + 1));
                 term.addVerticalLine(rows, 0, colorpair);
-                term.setCursor(origin.addOffset(x, rows + 1));
+                term.setCursor(new Point(origin.x + x, origin.y + rows + 1));
                 term.addChar(Toolkit.ACS_BTEE, 0, colorpair);        // bottom tee
                 x += getColumnWidth(i + 1) + 1;
             }
@@ -238,7 +239,7 @@ public class JTable
         x = 1;
         for (int column = 0; column < columns; column++) {
             for (int row = 0; row < rows; row++) {
-                term.setCursor(origin.addOffset(x, row + 1));
+                term.setCursor(new Point(origin.x + x, origin.y + row + 1));
                 Object value = _model.getValueAt(row, column);
 
                 /* Show the currently SELECTED rows and columns in reverse video

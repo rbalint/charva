@@ -38,6 +38,7 @@ import charva.awt.event.ScrollListener;
 import charvax.swing.event.ListSelectionListener;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Vector;
@@ -402,8 +403,8 @@ public class JList
          */
         Point origin = getLocationOnScreen();
         Insets insets = super.getInsets();
-        origin.translate(insets.left, insets.top);
-        Toolkit.getDefaultToolkit().setCursor(origin.addOffset(0, _currentRow));
+        origin.translate(insets.left, insets.top + _currentRow);
+        Toolkit.getDefaultToolkit().setCursor(origin);
     }
 
     /**

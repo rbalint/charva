@@ -44,6 +44,7 @@ import charva.awt.event.*;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.lang.ref.WeakReference;
 import java.util.Enumeration;
 import java.util.Vector;
@@ -189,7 +190,7 @@ public abstract class Component {
     }
 
     public void setBounds(Rectangle bounds) {
-        setLocation(bounds.getLeft(), bounds.getTop());
+        setLocation(bounds.x, bounds.y);
     }
 
     public void setBounds(int top_, int left_, int bottom_, int right_) {

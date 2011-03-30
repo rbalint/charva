@@ -38,6 +38,7 @@ import charva.awt.event.FocusEvent;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
@@ -533,8 +534,8 @@ public class Toolkit {
      * Set a clipping rectangle.
      */
     public void setClipRect(Rectangle clip_) {
-        setClipRectNative(clip_.getLeft(), clip_.getTop(),
-                clip_.getRight(), clip_.getBottom());
+        setClipRectNative(clip_.x, clip_.y,
+                clip_.x + clip_.width, clip_.y + clip_.height);
     }
 
     /**

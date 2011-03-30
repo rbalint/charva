@@ -21,6 +21,7 @@ package charvax.swing;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Rectangle;
 
 import charva.awt.*;
 import charvax.swing.table.TableHeader;

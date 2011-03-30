@@ -27,6 +27,7 @@ import charva.awt.event.ScrollListener;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -87,8 +88,8 @@ public class JTextArea
 
     public void setBounds( Rectangle bounds ) {
         super.setBounds(bounds);
-        setColumns(bounds.getRight() - bounds.getLeft() + 1 );
-        setRows(bounds.getBottom() - bounds.getTop() + 1 );
+        setColumns(bounds.width + 1 );
+        setRows(bounds.height + 1 );
     }
 
     public void setBounds( int top_, int left_, int bottom_, int right_) {

@@ -25,6 +25,7 @@ import charvax.swing.text.JTextComponent;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.Vector;
 
 /**
@@ -96,7 +97,7 @@ public class JTextField
 
     public void setBounds(Rectangle bounds) {
         super.setBounds(bounds);
-        setColumns(bounds.getRight() - bounds.getLeft() + 1);
+        setColumns(bounds.width + 1);
 
     }
 

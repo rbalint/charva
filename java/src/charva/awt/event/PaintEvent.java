@@ -19,6 +19,8 @@
 
 package charva.awt.event;
 
+import java.awt.Rectangle;
+
 import charva.awt.event.AWTEvent;
 import charva.awt.*;
 

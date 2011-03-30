@@ -21,6 +21,7 @@ package charvax.swing;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Rectangle;
 
 import charva.awt.*;
 import charva.awt.event.ScrollEvent;
@@ -182,52 +183,52 @@ public class JScrollPane
          * doesn't need to be scrolled.
          * First do the left/right scrolling.
          */
-        if (limit.x > viewport.getRight()) {
+        if (limit.x > viewport.x + viewport.width) {
             if ((direction == ScrollEvent.LEFT ||
                     direction == ScrollEvent.UP_LEFT ||
                     direction == ScrollEvent.DOWN_LEFT)) {
 
-                viewPosition.x -= (limit.x - viewport.getRight());
+                viewPosition.x -= (limit.x - viewport.x + viewport.width);
                 if (_headerViewport != null)
-                    headerPosition.x -= (limit.x - viewport.getRight());
+                    headerPosition.x -= (limit.x - viewport.x + viewport.width);
             } else if (direction == ScrollEvent.RIGHT ||
                     direction == ScrollEvent.UP_RIGHT ||
                     direction == ScrollEvent.DOWN_RIGHT) {
 
-                viewPosition.x += (viewport.getLeft() - limit.x);
+                viewPosition.x += (viewport.x - limit.x);
                 if (_headerViewport != null)
-                    headerPosition.x += (viewport.getLeft() - limit.x);
+                    headerPosition.x += (viewport.x - limit.x);
             }
-        } else if (limit.x < viewport.getLeft()) {
+        } else if (limit.x < viewport.x) {
             if (direction == ScrollEvent.RIGHT ||
                     direction == ScrollEvent.UP_RIGHT ||
                     direction == ScrollEvent.DOWN_RIGHT) {
 
-                viewPosition.x += (viewport.getLeft() - limit.x);
+                viewPosition.x += (viewport.x - limit.x);
                 if (_headerViewport != null)
-                    headerPosition.x += (viewport.getLeft() - limit.x);
+                    headerPosition.x += (viewport.x - limit.x);
             } else if (direction == ScrollEvent.LEFT ||
                     direction == ScrollEvent.UP_LEFT ||
                     direction == ScrollEvent.DOWN_LEFT) {
-                viewPosition.x -= (limit.x - viewport.getRight());
+                viewPosition.x -= (limit.x - viewport.x + viewport.width);
                 if (_headerViewport != null)
-                    headerPosition.x -= (limit.x - viewport.getRight());
+                    headerPosition.x -= (limit.x - viewport.x + viewport.width);
             }
         }
 
         // Now do the up/down scrolling
-        if (limit.y < viewport.getTop() &&
+        if (limit.y < viewport.y &&
                 (direction == ScrollEvent.DOWN ||
                         direction == ScrollEvent.DOWN_LEFT ||
                         direction == ScrollEvent.DOWN_RIGHT)) {
 
-            viewPosition.y += (viewport.getTop() - limit.y);
-        } else if (limit.y > viewport.getBottom() &&
+            viewPosition.y += (viewport.y - limit.y);
+        } else if (limit.y > viewport.y + viewport.height &&
                 (direction == ScrollEvent.UP ||
                         direction == ScrollEvent.UP_LEFT ||
                         direction == ScrollEvent.UP_RIGHT)) {
 
-            viewPosition.y -= (limit.y - viewport.getBottom());
+            viewPosition.y -= (limit.y - viewport.y + viewport.height);
         }
 
         _childViewport.setViewPosition(viewPosition);

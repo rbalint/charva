@@ -20,6 +20,7 @@
 package charvax.swing;
 
 import java.awt.Dimension;
+import java.awt.Rectangle;
 
 import charva.awt.*;
 import org.apache.commons.logging.Log;
@@ -79,8 +80,8 @@ public class JDialog
     public void setLocationRelativeTo(Component component_) {
         Dimension size = super.getSize();		// our own size
         Rectangle bounds = component_.getBounds();	// bounds of component
-        int x = ((bounds.getLeft() + bounds.getRight()) / 2) - (size.width / 2);
-        int y = ((bounds.getTop() + bounds.getBottom()) / 2) - (size.height / 2);
+        int x = ((bounds.x + bounds.x + bounds.width) / 2) - (size.width / 2);
+        int y = ((bounds.y + bounds.y + bounds.height) / 2) - (size.height / 2);
         super.setLocation(x, y);
     }
 

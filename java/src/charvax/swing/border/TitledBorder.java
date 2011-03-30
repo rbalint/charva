@@ -19,6 +19,7 @@
 
 package charvax.swing.border;
 
+import java.awt.Font;
 import java.awt.Point;
 
 import charva.awt.*;

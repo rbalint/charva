@@ -24,6 +24,7 @@ import charva.awt.event.*;
 import charvax.swing.text.JTextComponent;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.Vector;

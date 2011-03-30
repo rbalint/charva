@@ -43,6 +43,7 @@ package charva.awt;
 import charva.awt.event.*;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.lang.ref.WeakReference;

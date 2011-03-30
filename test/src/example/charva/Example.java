@@ -3,6 +3,8 @@
 
 package example.charva;
 
+import java.awt.Font;
+
 import charva.awt.*;
 import charva.awt.event.*;
 import charvax.swing.*;

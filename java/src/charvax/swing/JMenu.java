@@ -23,6 +23,7 @@ import charva.awt.*;
 import charva.awt.event.ActionEvent;
 import charva.awt.event.KeyEvent;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.lang.ref.WeakReference;

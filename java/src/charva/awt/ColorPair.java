@@ -19,6 +19,8 @@
 
 package charva.awt;
 
+import java.awt.Color;
+
 /**
  * This class is used to represent a color-pair (a combination
  * of a foreground color and a background color).
@@ -30,8 +32,8 @@ public class ColorPair {
      * Color class.
      */
     public ColorPair(Color foreground_, Color background_) {
-        _foreground = foreground_.getCursesColor();
-        _background = background_.getCursesColor();
+        _foreground = charva.awt.Toolkit.getCursesColor(foreground_);
+        _background = charva.awt.Toolkit.getCursesColor(background_);
     }
 
     /**
@@ -77,8 +79,8 @@ public class ColorPair {
      * Return a string representation of this object.
      */
     public String toString() {
-        return ("fgnd=" + Color.getColorName(_foreground) +
-                ", bkgnd=" + Color.getColorName(_background));
+        return ("fgnd=" + Toolkit.getColorName(_foreground) +
+                ", bkgnd=" + Toolkit.getColorName(_background));
     }
 
     //====================================================================

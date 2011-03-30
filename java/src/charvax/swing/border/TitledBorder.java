@@ -19,6 +19,7 @@
 
 package charvax.swing.border;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Point;
 
@@ -143,7 +144,7 @@ public class TitledBorder
         if (_titleColor == null)
             _titleColor = component_.getForeground();
 
-        int colorpair = Color.getCursesColor(_titleColor, background);
+        int colorpair = Toolkit.getCursesColor(_titleColor, background);
         Toolkit term = Toolkit.getDefaultToolkit();
         if (_title.length() != 0) {
             Point origin = new Point(x_, y_);

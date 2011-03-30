@@ -36,6 +36,7 @@ import charva.awt.event.KeyEvent;
 import charva.awt.event.MouseEvent;
 import charva.awt.event.FocusEvent;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -737,6 +738,89 @@ public class Toolkit {
     public static Color getDefaultBackground() {
         return _defaultBackground;
     }
+
+	/**
+	 * Convert the Color object to an integer value compatible with the ncurses
+	 * library.
+	 */
+	public static int getCursesColor(Color color) {
+		if (color.getRed() != 0) {
+			if (color.getGreen() != 0) {
+				if (color.getBlue() != 0)
+					return Toolkit.WHITE;
+				else
+					return Toolkit.YELLOW;
+			} else {
+				if (color.getBlue() != 0)
+					return Toolkit.MAGENTA;
+				else
+					return Toolkit.RED;
+			}
+		} else {
+			if (color.getGreen() != 0) {
+				if (color.getBlue() != 0)
+					return Toolkit.CYAN;
+				else
+					return Toolkit.GREEN;
+			} else {
+				if (color.getBlue() != 0)
+					return Toolkit.BLUE;
+				else
+					return Toolkit.BLACK;
+			}
+		}
+	}
+
+	/**
+	 * Compute the ncurses color-pair number corresponding to the specified
+	 * foreground and background color.
+	 */
+	public static int getCursesColor(Color foreground_, Color background_) {
+		if (!Toolkit.isColorEnabled)
+			return 0;
+
+		/*
+		 * The default colors (in case an exception occurs) are white on black.
+		 */
+		int curses_color_pair = 0;
+		try {
+			Toolkit toolkit = Toolkit.getDefaultToolkit();
+
+			// if the terminal is capable of colors
+			if (toolkit.hasColors()) {
+				ColorPair color_pair = new ColorPair(foreground_, background_);
+				curses_color_pair = toolkit.getColorPairIndex(color_pair);
+			}
+		} catch (TerminfoCapabilityException e) {
+			LOG.warn("can't set color pair: foreground " + foreground_
+					+ " background " + background_);
+		}
+		return curses_color_pair;
+	}
+
+	/**
+	 * Convert an ncurses color value to a color name.
+	 */
+	public static String getColorName(int colorval_) {
+		if (colorval_ == Toolkit.BLACK)
+			return "black";
+		else if (colorval_ == Toolkit.RED)
+			return "red";
+		else if (colorval_ == Toolkit.GREEN)
+			return "green";
+		else if (colorval_ == Toolkit.YELLOW)
+			return "yellow";
+		else if (colorval_ == Toolkit.BLUE)
+			return "blue";
+		else if (colorval_ == Toolkit.MAGENTA)
+			return "magenta";
+		else if (colorval_ == Toolkit.CYAN)
+			return "cyan";
+		else if (colorval_ == Toolkit.WHITE)
+			return "white";
+		else
+			return "UNKNOWN";
+	}
 
     /**
      * Trigger garbage collection. This method can be called inside an

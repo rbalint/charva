@@ -19,6 +19,7 @@
 
 package charvax.swing;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 import charva.awt.*;

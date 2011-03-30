@@ -9,6 +9,8 @@
 
 package tutorial.charva;
 
+import java.awt.Color;
+
 import charva.awt.*;
 import charva.awt.event.*;
 import charvax.swing.*;

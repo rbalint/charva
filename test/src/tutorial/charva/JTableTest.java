@@ -1,5 +1,6 @@
 package tutorial.charva;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 import charvax.swing.*;

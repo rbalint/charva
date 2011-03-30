@@ -19,7 +19,7 @@
 
 package charvax.swing.border;
 
-import charva.awt.Color;
+import java.awt.Color;
 import charva.awt.Component;
 import charva.awt.Insets;
 import charva.awt.Toolkit;
@@ -68,7 +68,7 @@ public class LineBorder
         if (_lineColor == null)
             _lineColor = component_.getForeground();
 
-        int curses_colorpair = Color.getCursesColor(_lineColor, background);
+        int curses_colorpair = Toolkit.getCursesColor(_lineColor, background);
 
         Toolkit term = Toolkit.getDefaultToolkit();
         term.drawBoxNative(x_, y_,

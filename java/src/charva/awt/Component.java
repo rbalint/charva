@@ -42,6 +42,7 @@ package charva.awt;
 
 import charva.awt.event.*;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
@@ -716,7 +717,7 @@ public abstract class Component {
         if (_foreground == null || _background == null)
             return;
 
-        _cursesColor = Color.getCursesColor(_foreground, _background);
+        _cursesColor = Toolkit.getCursesColor(_foreground, _background);
     }
 
     public int getCursesColor() {

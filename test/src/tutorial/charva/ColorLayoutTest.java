@@ -7,7 +7,7 @@ import charva.awt.event.ActionListener;
 import charva.awt.event.KeyEvent;
 import charva.awt.event.ActionEvent;
 import charva.awt.Frame;
-import charva.awt.Color;
+import java.awt.Color;
 import charva.awt.Container;
 import charva.awt.BorderLayout;
 

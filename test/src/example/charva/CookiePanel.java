@@ -1,5 +1,6 @@
 package example.charva;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 import charva.awt.*;

@@ -19,7 +19,7 @@
 
 package charvax.swing;
 
-import charva.awt.Color;
+import java.awt.Color;
 import charvax.swing.border.Border;
 import charvax.swing.border.LineBorder;
 import charvax.swing.border.TitledBorder;

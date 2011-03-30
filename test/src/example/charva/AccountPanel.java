@@ -6,6 +6,7 @@ import charvax.swing.border.*;
 import charva.awt.event.*;
 import charvax.swing.table.*;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.util.*;
 

@@ -20,7 +20,7 @@
 package charvax.swing;
 
 import charva.awt.*;
-import charva.awt.event.ActionEvent;
+import java.awt.event.ActionEvent;
 import charva.awt.event.KeyEvent;
 
 import java.awt.Color;

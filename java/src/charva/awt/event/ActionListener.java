@@ -19,6 +19,8 @@
 
 package charva.awt.event;
 
+import java.awt.event.ActionEvent;
+
 /**
  * The listener interface for receiving action events.
  */

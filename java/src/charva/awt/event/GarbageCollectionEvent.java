@@ -19,7 +19,7 @@
 
 package charva.awt.event;
 
-import charva.awt.event.AWTEvent;
+import java.awt.AWTEvent;
 import charva.awt.*;
 
 /**
@@ -35,6 +35,8 @@ public class GarbageCollectionEvent
     extends AWTEvent
 {
     public GarbageCollectionEvent(Component source_) {
-	super(source_, AWTEvent.GARBAGE_COLLECTION);
+	super(source_, GARBAGE_COLLECTION);
     }
+
+    public static final int GARBAGE_COLLECTION = 2001;
 }

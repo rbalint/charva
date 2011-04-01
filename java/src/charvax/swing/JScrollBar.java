@@ -23,7 +23,7 @@ import charva.awt.Adjustable;
 import java.awt.Dimension;
 import java.awt.Point;
 import charva.awt.Toolkit;
-import charva.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentEvent;
 import charva.awt.event.AdjustmentListener;
 import charva.awt.event.KeyEvent;
 
@@ -245,7 +245,9 @@ public class JScrollBar
             int newvalue = _value - _blockIncrement;
             setValue(newvalue);
 
-            AdjustmentEvent ae = new AdjustmentEvent(this, _value);
+            charva.awt.event.AdjustmentEvent ae = 
+            	new charva.awt.event.AdjustmentEvent(this,
+            			AdjustmentEvent.ADJUSTMENT_VALUE_CHANGED, _value);
             Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(ae);
         }
 
@@ -259,7 +261,9 @@ public class JScrollBar
             int newvalue = _value + _blockIncrement;
             setValue(newvalue);
 
-            AdjustmentEvent ae = new AdjustmentEvent(this, _value);
+            charva.awt.event.AdjustmentEvent ae = 
+            	new charva.awt.event.AdjustmentEvent(this,
+            			AdjustmentEvent.ADJUSTMENT_VALUE_CHANGED, _value);
             Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(ae);
         }
     }
@@ -292,7 +296,7 @@ public class JScrollBar
         _adjustmentListeners.remove(listener_);
     }
 
-    public void processAdjustmentEvent(AdjustmentEvent evt_) {
+    public void processAdjustmentEvent(charva.awt.event.AdjustmentEvent evt_) {
         if (_adjustmentListeners != null) {
             for (Enumeration e = _adjustmentListeners.elements();
                  e.hasMoreElements();) {

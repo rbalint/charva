@@ -10,6 +10,7 @@
 package tutorial.charva;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 
 import charva.awt.*;
 import charva.awt.event.*;

@@ -19,6 +19,8 @@
 
 package charva.awt.event;
 
+import java.awt.AWTEvent;
+
 import charva.awt.*;
 
 /**
@@ -27,10 +29,10 @@ import charva.awt.*;
 public class MouseEvent
         extends InputEvent {
 
-    public MouseEvent(Component source_, int modifiers_,
+    public MouseEvent(Component source_, int id, int modifiers_,
                       int x_, int y_, int clickcount_, int button_) {
 
-        super(source_, AWTEvent.MOUSE_EVENT);
+        super(source_, id);
         modifiers = modifiers_;
         x = x_;
         y = y_;
@@ -89,7 +91,7 @@ public class MouseEvent
     public static final int BUTTON3 = 3;
 
     // Modifiers
-    public static final int MOUSE_PRESSED = 100;
-    public static final int MOUSE_RELEASED = 101;
-    public static final int MOUSE_CLICKED = 102;
+    public static final int MOUSE_PRESSED = 2001;
+    public static final int MOUSE_RELEASED = 2002;
+    public static final int MOUSE_CLICKED = 2003;
 }

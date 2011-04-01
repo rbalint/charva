@@ -19,7 +19,7 @@
 
 package charva.awt.event;
 
-import charva.awt.event.AWTEvent;
+import java.awt.AWTEvent;
 import charva.awt.*;
 
 /**
@@ -36,7 +36,7 @@ public class ItemEvent
      * selected or deselected.
      */
     public ItemEvent(Component source_, Object item_, int statechange_) {
-	super(source_, AWTEvent.ITEM_STATE_CHANGED);
+	super(source_, java.awt.event.ItemEvent.ITEM_STATE_CHANGED);
 	_item = item_;
 	_statechange = statechange_;
     }
@@ -65,7 +65,7 @@ public class ItemEvent
     /** The item affected by the event. */
     private Object _item;
 
-    public static final int SELECTED = 100;
-    public static final int DESELECTED = 101;
+    public static final int SELECTED = 2001;
+    public static final int DESELECTED = 2002;
 
 }

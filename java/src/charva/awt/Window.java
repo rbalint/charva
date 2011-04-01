@@ -22,6 +22,7 @@ package charva.awt;
 import charva.awt.event.*;
 
 import java.awt.Point;
+import java.awt.AWTEvent;
 import java.io.File;
 import java.util.Enumeration;
 import java.util.Vector;
@@ -87,7 +88,7 @@ public class Window
      * Process window events occurring on this window by dispatching them
      * to any registered WindowListener objects.
      */
-    protected void processWindowEvent(WindowEvent evt_) {
+    protected void processWindowEvent(charva.awt.event.WindowEvent evt_) {
         if (_windowListeners == null)
             return;
 
@@ -96,11 +97,11 @@ public class Window
             WindowListener wl = (WindowListener) e.nextElement();
             switch (evt_.getID()) {
 
-                case AWTEvent.WINDOW_CLOSING:
+                case java.awt.event.WindowEvent.WINDOW_CLOSING:
                     wl.windowClosing(evt_);
                     break;
 
-                case AWTEvent.WINDOW_OPENED:
+                case java.awt.event.WindowEvent.WINDOW_OPENED:
                     wl.windowOpened(evt_);
                     break;
             }
@@ -146,7 +147,7 @@ public class Window
 
         this.draw();
 
-        WindowEvent we = new WindowEvent(this, AWTEvent.WINDOW_OPENED);
+        WindowEvent we = new WindowEvent(this, java.awt.event.WindowEvent.WINDOW_OPENED);
         _term.getSystemEventQueue().postEvent(we);
 
         /* Rather than call Toolkit.sync() directly here, we put a SyncEvent
@@ -272,7 +273,7 @@ public class Window
              * process the WindowEvent, we must check if it was a
              * WINDOW_CLOSING event sent to this window.
              */
-            if (we.getID() == AWTEvent.WINDOW_CLOSING) {
+            if (we.getID() == java.awt.event.WindowEvent.WINDOW_CLOSING) {
 
                 we.getWindow()._windowClosed = true;
 
@@ -334,7 +335,7 @@ public class Window
         }
 
         _visible = false;
-        WindowEvent we = new WindowEvent(this, AWTEvent.WINDOW_CLOSING);
+        WindowEvent we = new WindowEvent(this, java.awt.event.WindowEvent.WINDOW_CLOSING);
         _term.getSystemEventQueue().postEvent(we);
     }
 

@@ -23,6 +23,8 @@ import charva.awt.*;
 import charva.awt.event.*;
 import charvax.swing.text.JTextComponent;
 
+import java.awt.AWTEvent;
+import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
@@ -298,7 +300,8 @@ public class JTextField
             /* Post an action event if ENTER was pressed.
              */
             else if (key == KeyEvent.VK_ENTER) {
-                ActionEvent ae = new ActionEvent(this, getActionCommand());
+                ActionEvent ae = new ActionEvent(this,
+                		ActionEvent.ACTION_PERFORMED, getActionCommand());
                 Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(ae);
             }
         }
@@ -381,7 +384,8 @@ public class JTextField
     }
 
     public void fireActionPerformed() {
-        ActionEvent ae = new ActionEvent(this, getActionCommand());
+        ActionEvent ae = new ActionEvent(this, ActionEvent.ACTION_PERFORMED,
+        		getActionCommand());
         postActionEvent(ae);
     }
 

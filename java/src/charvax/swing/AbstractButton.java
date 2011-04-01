@@ -25,6 +25,8 @@ import charva.awt.Toolkit;
 import charva.awt.Window;
 import charva.awt.event.*;
 
+import java.awt.AWTEvent;
+import java.awt.event.ActionEvent;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -184,7 +186,7 @@ public abstract class AbstractButton
                     super.isEnabled()) {
 
                 EventQueue queue = Toolkit.getDefaultToolkit().getSystemEventQueue();
-                queue.postEvent(new ActionEvent(this, getActionCommand()));
+                queue.postEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, getActionCommand()));
                 key_event.consume();
             }
         } else if (evt_ instanceof ActionEvent)

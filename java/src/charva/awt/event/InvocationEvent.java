@@ -20,6 +20,7 @@
 package charva.awt.event;
 
 import charva.awt.*;
+import java.awt.AWTEvent;
 
 /**
  * An event which executes the <code>run()</code> method on a 
@@ -54,7 +55,7 @@ public class InvocationEvent
      */
     public InvocationEvent(Object source_, Runnable runnable_, 
 	    Object notifier_) {
-	super(source_, AWTEvent.INVOCATION_EVENT);
+	super(source_, java.awt.event.InvocationEvent.INVOCATION_DEFAULT);
 	_runnable = runnable_;
 	_notifier = notifier_;
     }

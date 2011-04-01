@@ -19,7 +19,7 @@
 
 package charva.awt;
 
-import charva.awt.event.AWTEvent;
+import java.awt.AWTEvent;
 import charva.awt.event.FocusEvent;
 import charva.awt.event.InvocationEvent;
 import charva.awt.event.SyncEvent;
@@ -64,7 +64,7 @@ public class EventQueue {
     }
 
     public synchronized void postEvent(AWTEvent evt_) {
-        if (evt_.getID() == AWTEvent.FOCUS_GAINED) {
+        if (evt_.getID() == java.awt.event.FocusEvent.FOCUS_GAINED) {
             Toolkit.getDefaultToolkit().setLastFocusEvent((FocusEvent) evt_);
         }
         addLast(evt_);

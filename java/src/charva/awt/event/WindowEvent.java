@@ -19,6 +19,8 @@
 
 package charva.awt.event;
 
+import java.awt.AWTEvent;
+
 import charva.awt.*;
 
 /**
@@ -37,8 +39,8 @@ public class WindowEvent
 
 	/* Only two valid ID's at this stage...
 	 */
-	if (id_ != AWTEvent.WINDOW_CLOSING &&
-		id_ != AWTEvent.WINDOW_OPENED) {
+	if (id_ != java.awt.event.WindowEvent.WINDOW_CLOSING &&
+		id_ != java.awt.event.WindowEvent.WINDOW_OPENED) {
 
 	    throw new IllegalArgumentException(
 		"Invalid WindowEvent type");

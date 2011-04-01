@@ -19,7 +19,7 @@
 
 package charva.awt.event;
 
-import charva.awt.event.AWTEvent;
+import java.awt.AWTEvent;
 import charva.awt.*;
 
 /**
@@ -33,8 +33,8 @@ public class AdjustmentEvent
      * @param source_ The component to which the event must be delivered.
      * @param value_ The value of the adjustable component.
      */
-    public AdjustmentEvent(Component source_, int value_) {
-	super(source_, AWTEvent.ADJUSTMENT_EVENT);
+    public AdjustmentEvent(Component source_, int id, int value_) {
+	super(source_, id);
 	_value = value_;
     }
 

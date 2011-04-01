@@ -23,7 +23,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 
 import charva.awt.*;
-import charva.awt.event.ActionEvent;
+import java.awt.event.ActionEvent;
 import charva.awt.event.ActionListener;
 import charva.awt.event.KeyEvent;
 import charva.awt.event.KeyListener;

@@ -21,7 +21,7 @@ package charva.awt.event;
 
 import java.awt.Rectangle;
 
-import charva.awt.event.AWTEvent;
+import java.awt.AWTEvent;
 import charva.awt.*;
 
 /**
@@ -33,8 +33,8 @@ public class PaintEvent
 {
     Rectangle _updateRect;
 
-    public PaintEvent(Component source_, Rectangle rect_) {
-	super(source_, AWTEvent.PAINT_EVENT);
+    public PaintEvent(Component source_, int id, Rectangle rect_) {
+	super(source_, id);
 	_updateRect = rect_;
     }
 

@@ -19,7 +19,7 @@
 
 package charva.awt;
 
-import charva.awt.event.AWTEvent;
+import java.awt.AWTEvent;
 import charva.awt.event.GarbageCollectionEvent;
 import charva.awt.event.SyncEvent;
 import org.apache.commons.logging.Log;

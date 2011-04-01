@@ -19,7 +19,7 @@
 
 package charva.awt.event;
 
-import charva.awt.event.AWTEvent;
+import java.awt.AWTEvent;
 import charva.awt.*;
 
 /**
@@ -31,7 +31,9 @@ public class SyncEvent
 {
 
     public SyncEvent(Component source_) {
-	super(source_, AWTEvent.SYNC_EVENT);
+	super(source_, SYNC_EVENT);
     }
+
+    public static final int SYNC_EVENT = 2001;
 
 }

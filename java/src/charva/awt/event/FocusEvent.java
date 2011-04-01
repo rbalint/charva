@@ -19,6 +19,8 @@
 
 package charva.awt.event;
 
+import java.awt.AWTEvent;
+
 import charva.awt.*;
 
 /**
@@ -62,6 +64,6 @@ public class FocusEvent
 
     public String toString() {
 	return ("FocusEvent: source=[" + getSource() + "] id=" + 
-	    ((getID() == FOCUS_LOST) ? "FOCUS_LOST" : "FOCUS_GAINED") + " temp=" + temporary + " opposite=[" + ((opposite != null) ? opposite.toString() : "NULL" ) + "]");
+	    ((getID() == java.awt.event.FocusEvent.FOCUS_LOST) ? "FOCUS_LOST" : "FOCUS_GAINED") + " temp=" + temporary + " opposite=[" + ((opposite != null) ? opposite.toString() : "NULL" ) + "]");
     }
 }

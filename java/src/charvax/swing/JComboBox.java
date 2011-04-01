@@ -39,6 +39,8 @@ import charvax.swing.border.LineBorder;
 import charvax.swing.event.ListSelectionEvent;
 import charvax.swing.event.ListSelectionListener;
 
+import java.awt.AWTEvent;
+import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.Enumeration;
@@ -406,7 +408,7 @@ public class JComboBox
         if (selectedItem != null)
             _model.setSelectedItem(selectedItem);
 
-        evtqueue.postEvent(new ActionEvent(this, _model.getSelectedItem().toString()));
+        evtqueue.postEvent(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, _model.getSelectedItem().toString()));
     }
 
     public void requestFocus() {

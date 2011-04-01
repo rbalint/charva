@@ -21,7 +21,7 @@ package charvax.swing;
 
 import charva.awt.Component;
 import charva.awt.Toolkit;
-import charva.awt.event.ActionEvent;
+import java.awt.event.ActionEvent;
 import charva.awt.event.KeyEvent;
 
 import java.util.Vector;
@@ -190,7 +190,8 @@ public class JPopupMenu
             } else if (!menu.getPopupMenu().wasCancelled())
                 hide();
         } else {
-            ActionEvent evt = new ActionEvent(item_, item_.getActionCommand());
+            ActionEvent evt = new ActionEvent(item_,
+            		ActionEvent.ACTION_PERFORMED, item_.getActionCommand());
             Toolkit term = Toolkit.getDefaultToolkit();
             term.getSystemEventQueue().postEvent(evt);
             hide();

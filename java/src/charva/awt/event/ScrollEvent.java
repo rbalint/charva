@@ -21,7 +21,7 @@ package charva.awt.event;
 
 import java.awt.Point;
 
-import charva.awt.event.AWTEvent;
+import java.awt.AWTEvent;
 import charva.awt.*;
 
 /**
@@ -42,9 +42,8 @@ public class ScrollEvent
      *                   For examplem, if direction_ is LEFT, the limit_ is the rightmost
      *                   column that must appear in the viewport.
      */
-    public ScrollEvent(Component source_, int direction_, Point limit_) {
-        super(source_, AWTEvent.SCROLL_EVENT);
-        _direction = direction_;
+    public ScrollEvent(Component source_, int id, Point limit_) {
+        super(source_, id);
         _limit = limit_;
     }
 
@@ -53,7 +52,7 @@ public class ScrollEvent
     }
 
     public int getDirection() {
-        return _direction;
+        return id;
     }
 
     public Point getLimit() {
@@ -63,15 +62,14 @@ public class ScrollEvent
     //====================================================================
     // INSTANCE VARIABLES
 
-    private int _direction;
     private Point _limit;
 
-    public static final int LEFT = 100;
-    public static final int RIGHT = 101;
-    public static final int UP = 102;
-    public static final int DOWN = 103;
-    public static final int UP_LEFT = 104;
-    public static final int UP_RIGHT = 105;
-    public static final int DOWN_LEFT = 106;
-    public static final int DOWN_RIGHT = 107;
+    public static final int LEFT = 2001;
+    public static final int RIGHT = 2002;
+    public static final int UP = 2003;
+    public static final int DOWN = 2004;
+    public static final int UP_LEFT = 2005;
+    public static final int UP_RIGHT = 2006;
+    public static final int DOWN_LEFT = 2007;
+    public static final int DOWN_RIGHT = 2008;
 }

@@ -30,7 +30,7 @@
 
 package charva.awt;
 
-import charva.awt.event.AWTEvent;
+import java.awt.AWTEvent;
 import charva.awt.event.GarbageCollectionEvent;
 import charva.awt.event.KeyEvent;
 import charva.awt.event.MouseEvent;
@@ -173,7 +173,7 @@ public class Toolkit {
      *             key as defined in the "VK_*" values.
      */
     public void fireKeystroke(int key_, Component source_) {
-        int id = Toolkit.isActionKey(key_) ? AWTEvent.KEY_PRESSED : AWTEvent.KEY_TYPED;
+        int id = Toolkit.isActionKey(key_) ? java.awt.event.KeyEvent.KEY_PRESSED : java.awt.event.KeyEvent.KEY_TYPED;
         _evtQueue.postEvent(new KeyEvent(key_, id, source_));
     }
 
@@ -198,60 +198,67 @@ public class Toolkit {
         int y = mouse_info.y;
         int button = 0;
         int modifiers = 0;
+        int actionID = 0;
         switch (mouse_info.button) {
             case BUTTON1_PRESSED:
                 button = MouseEvent.BUTTON1;
                 modifiers = MouseEvent.MOUSE_PRESSED;
+                actionID = java.awt.event.MouseEvent.MOUSE_PRESSED;
                 break;
             case BUTTON1_RELEASED:
                 button = MouseEvent.BUTTON1;
                 modifiers = MouseEvent.MOUSE_RELEASED;
+                actionID = java.awt.event.MouseEvent.MOUSE_RELEASED;
                 break;
             case BUTTON2_PRESSED:
                 button = MouseEvent.BUTTON2;
                 modifiers = MouseEvent.MOUSE_PRESSED;
+                actionID = java.awt.event.MouseEvent.MOUSE_PRESSED;
                 break;
             case BUTTON2_RELEASED:
                 button = MouseEvent.BUTTON2;
                 modifiers = MouseEvent.MOUSE_RELEASED;
+                actionID = java.awt.event.MouseEvent.MOUSE_RELEASED;
                 break;
             case BUTTON3_PRESSED:
                 button = MouseEvent.BUTTON3;
                 modifiers = MouseEvent.MOUSE_PRESSED;
+                actionID = java.awt.event.MouseEvent.MOUSE_PRESSED;
                 break;
             case BUTTON3_RELEASED:
                 button = MouseEvent.BUTTON3;
                 modifiers = MouseEvent.MOUSE_RELEASED;
+                actionID = java.awt.event.MouseEvent.MOUSE_RELEASED;
                 break;
         }
 
         // If the mouse has been pressed outside the top-level window
         if (!top_window.contains(x, y)) {
-            if (modifiers == MouseEvent.MOUSE_PRESSED)
+            if (actionID == java.awt.event.MouseEvent.MOUSE_PRESSED)
                 beep();
             return;
         }
 
-        if (modifiers == MouseEvent.MOUSE_PRESSED)
+        if (actionID == java.awt.event.MouseEvent.MOUSE_PRESSED)
             _lastMousePressTime = System.currentTimeMillis();
 
         Component component =
                 top_window.getComponentAt(x - origin.x, y - origin.y);
 
         if (component != null) {
-            _evtQueue.postEvent(new MouseEvent(component, modifiers, x, y, 0, button));
+            _evtQueue.postEvent(new MouseEvent(component, java.awt.event.MouseEvent.MOUSE_PRESSED, modifiers, x, y, 0, button));
 
             // If this is a button-release within 400 msec of the corresponding
             // button-press.
             long current_time = System.currentTimeMillis();
-            if (modifiers == MouseEvent.MOUSE_RELEASED &&
+            if (actionID == MouseEvent.MOUSE_RELEASED &&
                     current_time - _lastMousePressTime < 400L) {
 
-                _evtQueue.postEvent(new MouseEvent(component, MouseEvent.MOUSE_CLICKED, x, y, 1, button));
+                _evtQueue.postEvent(new MouseEvent(component, java.awt.event.MouseEvent.MOUSE_CLICKED, MouseEvent.MOUSE_CLICKED, x, y, 1, button));
 
                 // Check for a double-click.
                 if (current_time - _lastMouseClickTime < 500L) {
-                    _evtQueue.postEvent(new MouseEvent(component, MouseEvent.MOUSE_CLICKED, x, y, 2, button));
+                    _evtQueue.postEvent(new MouseEvent(component, java.awt.event.MouseEvent.MOUSE_CLICKED, MouseEvent.MOUSE_CLICKED, x, y, 2, button));
                 }
                 _lastMouseClickTime = current_time;
             }

@@ -42,6 +42,7 @@ package charva.awt;
 
 import charva.awt.event.*;
 
+import java.awt.AWTEvent;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -324,9 +325,9 @@ public abstract class Component {
             for (int i = _keyListeners.size() - 1; i >= 0; i--) {
 
                 KeyListener kl = (KeyListener) _keyListeners.get(i);
-                if (ke_.getID() == AWTEvent.KEY_PRESSED)
+                if (ke_.getID() == java.awt.event.KeyEvent.KEY_PRESSED)
                     kl.keyPressed(ke_);
-                else if (ke_.getID() == AWTEvent.KEY_TYPED)
+                else if (ke_.getID() == java.awt.event.KeyEvent.KEY_TYPED)
                     kl.keyTyped(ke_);
 
                 if (ke_.isConsumed())
@@ -381,7 +382,7 @@ public abstract class Component {
                  e.hasMoreElements();) {
 
                 FocusListener fl = (FocusListener) e.nextElement();
-                if (fe_.getID() == AWTEvent.FOCUS_GAINED)
+                if (fe_.getID() == java.awt.event.FocusEvent.FOCUS_GAINED)
                     fl.focusGained(fe_);
                 else
                     fl.focusLost(fe_);
@@ -464,14 +465,14 @@ public abstract class Component {
                 } else {
                     temporary = false;
                 }
-                evt = new FocusEvent(AWTEvent.FOCUS_LOST, currentFocus, temporary, this);
+                evt = new FocusEvent(java.awt.event.FocusEvent.FOCUS_LOST, currentFocus, temporary, this);
                 evtQueue.postEvent(evt);
                 //System.err.println( "DisparoFocusLost: " + currentFocus.toString() + " Window:" + currentFocus.getAncestorWindow().toString() + " //" + currentFocus.getAncestorWindow().isValid() );
             } else {
                 currentFocus = null;
             }
 
-            evt = new FocusEvent(AWTEvent.FOCUS_GAINED, this, temporary, currentFocus);
+            evt = new FocusEvent(java.awt.event.FocusEvent.FOCUS_GAINED, this, temporary, currentFocus);
             evtQueue.postEvent(evt);
             //System.err.println( "DisparoFocusGained: " + this.toString() + " Window:" + ancestor.toString() );
 
@@ -656,7 +657,7 @@ public abstract class Component {
         if (!isDisplayed())
             return;
 
-        PaintEvent evt = new PaintEvent(this, getBounds());
+        PaintEvent evt = new PaintEvent(this, java.awt.event.PaintEvent.UPDATE, getBounds());
         EventQueue queue = Toolkit.getDefaultToolkit().getSystemEventQueue();
         queue.postEvent(evt);
     }

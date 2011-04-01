@@ -19,7 +19,7 @@
 
 package charva.awt;
 
-import charva.awt.event.AWTEvent;
+import java.awt.AWTEvent;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

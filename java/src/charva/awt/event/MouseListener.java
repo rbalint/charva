@@ -1,5 +1,7 @@
 package charva.awt.event;
 
+import java.util.EventListener;
+
 /**
  * The class that is interested in processing a mouse event
  * implements this interface or subclasses the MouseAdapter class.

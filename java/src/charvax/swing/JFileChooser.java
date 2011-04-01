@@ -34,7 +34,7 @@ package charvax.swing;
 
 import charva.awt.*;
 import charva.awt.event.*;
-import charva.awt.event.EventListener;
+import java.util.EventListener;
 import charvax.swing.border.EmptyBorder;
 import charvax.swing.border.TitledBorder;
 import charvax.swing.event.ListSelectionEvent;

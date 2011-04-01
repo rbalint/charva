@@ -19,7 +19,7 @@
 
 package charva.awt.event;
 
-import charva.awt.event.EventListener;
+import java.util.EventListener;
 
 /**
  * The listener interface for ItemEvents.

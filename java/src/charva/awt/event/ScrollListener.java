@@ -19,6 +19,8 @@
 
 package charva.awt.event;
 
+import java.util.EventListener;
+
 /**
  * The listener interface for receiving ScrollEvents.
  */

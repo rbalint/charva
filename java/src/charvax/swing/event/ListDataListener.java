@@ -19,7 +19,7 @@
 
 package charvax.swing.event;
 
-import charva.awt.event.EventListener;
+import java.util.EventListener;
 
 /**
  * Classes that need to be notified of changes in the contents of a list 

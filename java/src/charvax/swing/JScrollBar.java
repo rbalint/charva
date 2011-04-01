@@ -19,12 +19,12 @@
 
 package charvax.swing;
 
-import charva.awt.Adjustable;
+import java.awt.Adjustable;
 import java.awt.Dimension;
 import java.awt.Point;
 import charva.awt.Toolkit;
 import java.awt.event.AdjustmentEvent;
-import charva.awt.event.AdjustmentListener;
+import java.awt.event.AdjustmentListener;
 import charva.awt.event.KeyEvent;
 
 import java.util.Enumeration;
@@ -245,9 +245,10 @@ public class JScrollBar
             int newvalue = _value - _blockIncrement;
             setValue(newvalue);
 
-            charva.awt.event.AdjustmentEvent ae = 
-            	new charva.awt.event.AdjustmentEvent(this,
-            			AdjustmentEvent.ADJUSTMENT_VALUE_CHANGED, _value);
+            AdjustmentEvent ae = 
+            	new AdjustmentEvent(this,
+            			AdjustmentEvent.ADJUSTMENT_VALUE_CHANGED,
+            			AdjustmentEvent.BLOCK_DECREMENT, _value);
             Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(ae);
         }
 
@@ -261,9 +262,10 @@ public class JScrollBar
             int newvalue = _value + _blockIncrement;
             setValue(newvalue);
 
-            charva.awt.event.AdjustmentEvent ae = 
-            	new charva.awt.event.AdjustmentEvent(this,
-            			AdjustmentEvent.ADJUSTMENT_VALUE_CHANGED, _value);
+            AdjustmentEvent ae = 
+            	new AdjustmentEvent(this,
+            			AdjustmentEvent.ADJUSTMENT_VALUE_CHANGED,
+            			AdjustmentEvent.BLOCK_INCREMENT, _value);
             Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(ae);
         }
     }
@@ -296,7 +298,7 @@ public class JScrollBar
         _adjustmentListeners.remove(listener_);
     }
 
-    public void processAdjustmentEvent(charva.awt.event.AdjustmentEvent evt_) {
+    public void processAdjustmentEvent(AdjustmentEvent evt_) {
         if (_adjustmentListeners != null) {
             for (Enumeration e = _adjustmentListeners.elements();
                  e.hasMoreElements();) {
@@ -371,4 +373,16 @@ public class JScrollBar
      * A list of AdjustmentListeners registered for this component.
      */
     protected Vector _adjustmentListeners = null;
+
+	@Override
+	public int getUnitIncrement() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setUnitIncrement(int u) {
+		// TODO Auto-generated method stub
+		
+	}
 }

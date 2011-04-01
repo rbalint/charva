@@ -20,9 +20,12 @@
 package charva.awt;
 
 import charva.awt.event.*;
+import charvax.swing.JScrollBar;
 
+import java.awt.Adjustable;
 import java.awt.Point;
 import java.awt.AWTEvent;
+import java.awt.event.AdjustmentEvent;
 import java.io.File;
 import java.util.Enumeration;
 import java.util.Vector;
@@ -217,7 +220,8 @@ public class Window
         Object source = evt_.getSource();
 
         if (evt_ instanceof AdjustmentEvent)
-            ((Adjustable) source).processAdjustmentEvent((AdjustmentEvent) evt_);
+        	/* TODO Revise this cast */
+            ((JScrollBar) source).processAdjustmentEvent((AdjustmentEvent) evt_);
 
         else if (evt_ instanceof ScrollEvent) {
             ((Scrollable) source).processScrollEvent((ScrollEvent) evt_);

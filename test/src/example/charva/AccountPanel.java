@@ -77,14 +77,14 @@ public class AccountPanel extends JPanel {
         jLabel4.setText("Full name: ");
         jTextFieldFullname.setColumns(20);
         addButton.setText("Add");
-        addButton.addActionListener(new charva.awt.event.ActionListener() {
+        addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 addButton_actionPerformed(e);
             }
         });
         jPanel1.setLayout(gridBagLayout2);
         deleteButton.setText("Delete");
-        deleteButton.addActionListener(new charva.awt.event.ActionListener() {
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 deleteButton_actionPerformed(e);
             }

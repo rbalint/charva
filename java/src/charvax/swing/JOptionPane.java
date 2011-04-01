@@ -24,7 +24,7 @@ import java.awt.Point;
 
 import charva.awt.*;
 import java.awt.event.ActionEvent;
-import charva.awt.event.ActionListener;
+import java.awt.event.ActionListener;
 import charva.awt.event.KeyEvent;
 import charva.awt.event.KeyListener;
 import charvax.swing.border.EmptyBorder;

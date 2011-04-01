@@ -32,7 +32,7 @@ package charvax.swing;
 
 import charva.awt.*;
 import java.awt.event.ActionEvent;
-import charva.awt.event.ActionListener;
+import java.awt.event.ActionListener;
 
 import java.awt.Dimension;
 import java.awt.Point;

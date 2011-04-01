@@ -50,7 +50,7 @@ public class AppFrame extends JFrame {
     }
     private void jbInit() throws Exception {
         cancelButton.setText("Cancel");
-        cancelButton.addActionListener(new charva.awt.event.ActionListener() {
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 cancelButton_actionPerformed(e);
             }
@@ -64,7 +64,7 @@ public class AppFrame extends JFrame {
         optionMenu.setText("Options");
         helpMenu.setText("Help");
         exitMenuItem.setText("Exit");
-        exitMenuItem.addActionListener(new charva.awt.event.ActionListener() {
+        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 exitMenuItem_actionPerformed(e);
             }

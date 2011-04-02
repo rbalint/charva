@@ -31,8 +31,11 @@ public class KeyEvent
 
     private int _keyCode;
 
-    public KeyEvent(int key_, int id_, Component source_) {
+	private int modifiers;
+
+    public KeyEvent(Component source_, int id_, long when, int modifiers, int key_) {
         super(source_, id_);
+        this.modifiers = modifiers;
         _keyCode = key_;
     }
 
@@ -44,6 +47,9 @@ public class KeyEvent
     	consumed = true;
     }
 	
+    public int getModifiers() {
+    	return this.modifiers;
+    }
     /**
      * Returns the integer keyCode associated with the key in this event.
      *
@@ -105,10 +111,10 @@ public class KeyEvent
      * KEY_PRESSED events that don't map to a valid character
      * cause the keyPressed() method to return this value.
      */
-    public static final char CHAR_UNDEFINED = (char) -1;
+    public static final char CHAR_UNDEFINED = java.awt.event.KeyEvent.VK_UNDEFINED;
 
-    public static final int VK_UNDEFINED = -1;
-    public static final int VK_ESCAPE = 0x1b;
+    public static final int VK_UNDEFINED = java.awt.event.KeyEvent.VK_UNDEFINED;
+    public static final int VK_ESCAPE = java.awt.event.KeyEvent.VK_ESCAPE;
 
 // Reallocated to unicode safe area.
 
@@ -148,98 +154,97 @@ public class KeyEvent
 
 // Unicode safe area... Unicode Private Use Area on 0xE000 position
 
-    public static final int VK_DOWN         = 0xe000;
-    public static final int VK_UP           = 0xe001;
-    public static final int VK_LEFT         = 0xe002;
-    public static final int VK_RIGHT        = 0xe003;
-    public static final int VK_HOME         = 0xe004;
-    public static final int VK_BACK_SPACE   = 0xe005;
-    public static final int VK_F1           = 0xe006;
-    public static final int VK_F2           = 0xe007;
-    public static final int VK_F3           = 0xe008;
-    public static final int VK_F4           = 0xe009;
-    public static final int VK_F5           = 0xe00a;
-    public static final int VK_F6           = 0xe00b;
-    public static final int VK_F7           = 0xe00c;
-    public static final int VK_F8           = 0xe00d;
-    public static final int VK_F9           = 0xe00e;
-    public static final int VK_F10          = 0xe00f;
-    public static final int VK_F11          = 0xe010;
-    public static final int VK_F12          = 0xe011;
-    public static final int VK_F13          = 0xe012;
-    public static final int VK_F14          = 0xe013;
-    public static final int VK_F15          = 0xe014;
-    public static final int VK_F16          = 0xe015;
-    public static final int VK_F17          = 0xe016;
-    public static final int VK_F18          = 0xe017;
-    public static final int VK_F19          = 0xe018;
-    public static final int VK_F20          = 0xe019;
-    public static final int VK_DELETE       = 0xe01a;
-    public static final int VK_INSERT       = 0xe01b;
-    public static final int VK_PAGE_DOWN    = 0xe01c;
-    public static final int VK_PAGE_UP      = 0xe01d;
-    public static final int VK_ENTER        = 0xe01e;
-    public static final int VK_BACK_TAB     = 0xe01f;
-    public static final int VK_END          = 0xe020;
+    public static final int VK_DOWN         = java.awt.event.KeyEvent.VK_DOWN;
+    public static final int VK_UP           = java.awt.event.KeyEvent.VK_UP;
+    public static final int VK_LEFT         = java.awt.event.KeyEvent.VK_LEFT;
+    public static final int VK_RIGHT        = java.awt.event.KeyEvent.VK_RIGHT;
+    public static final int VK_HOME         = java.awt.event.KeyEvent.VK_HOME;
+    public static final int VK_BACK_SPACE   = java.awt.event.KeyEvent.VK_BACK_SPACE;
+    public static final int VK_F1           = java.awt.event.KeyEvent.VK_F1;
+    public static final int VK_F2           = java.awt.event.KeyEvent.VK_F2;
+    public static final int VK_F3           = java.awt.event.KeyEvent.VK_F3;
+    public static final int VK_F4           = java.awt.event.KeyEvent.VK_F4;
+    public static final int VK_F5           = java.awt.event.KeyEvent.VK_F5;
+    public static final int VK_F6           = java.awt.event.KeyEvent.VK_F6;
+    public static final int VK_F7           = java.awt.event.KeyEvent.VK_F7;
+    public static final int VK_F8           = java.awt.event.KeyEvent.VK_F8;
+    public static final int VK_F9           = java.awt.event.KeyEvent.VK_F9;
+    public static final int VK_F10          = java.awt.event.KeyEvent.VK_F10;
+    public static final int VK_F11          = java.awt.event.KeyEvent.VK_F11;
+    public static final int VK_F12          = java.awt.event.KeyEvent.VK_F12;
+    public static final int VK_F13          = java.awt.event.KeyEvent.VK_F13;
+    public static final int VK_F14          = java.awt.event.KeyEvent.VK_F14;
+    public static final int VK_F15          = java.awt.event.KeyEvent.VK_F15;
+    public static final int VK_F16          = java.awt.event.KeyEvent.VK_F16;
+    public static final int VK_F17          = java.awt.event.KeyEvent.VK_F17;
+    public static final int VK_F18          = java.awt.event.KeyEvent.VK_F18;
+    public static final int VK_F19          = java.awt.event.KeyEvent.VK_F19;
+    public static final int VK_F20          = java.awt.event.KeyEvent.VK_F20;
+    public static final int VK_DELETE       = java.awt.event.KeyEvent.VK_DELETE;
+    public static final int VK_INSERT       = java.awt.event.KeyEvent.VK_INSERT;
+    public static final int VK_PAGE_DOWN    = java.awt.event.KeyEvent.VK_PAGE_DOWN;
+    public static final int VK_PAGE_UP      = java.awt.event.KeyEvent.VK_PAGE_UP;
+    public static final int VK_ENTER        = java.awt.event.KeyEvent.VK_ENTER;
+    public static final int VK_END          = java.awt.event.KeyEvent.VK_END;
 
 // Unicode safe area... END
 
-    public static final int VK_COMMA          = 0x2C;
+    public static final int VK_COMMA          = java.awt.event.KeyEvent.VK_COMMA;
 
     /**
      * Constant for the "-" key.
      * @since 1.2
      */
-    public static final int VK_MINUS          = 0x2D;
+    public static final int VK_MINUS          = java.awt.event.KeyEvent.VK_MINUS;
 
-    public static final int VK_PERIOD         = 0x2E;
-    public static final int VK_SLASH          = 0x2F;
+    public static final int VK_PERIOD         = java.awt.event.KeyEvent.VK_PERIOD;
+    public static final int VK_SLASH          = java.awt.event.KeyEvent.VK_SLASH;
 
     /** VK_0 thru VK_9 are the same as ASCII '0' thru '9' (0x30 - 0x39) */
-    public static final int VK_0              = 0x30;
-    public static final int VK_1              = 0x31;
-    public static final int VK_2              = 0x32;
-    public static final int VK_3              = 0x33;
-    public static final int VK_4              = 0x34;
-    public static final int VK_5              = 0x35;
-    public static final int VK_6              = 0x36;
-    public static final int VK_7              = 0x37;
-    public static final int VK_8              = 0x38;
-    public static final int VK_9              = 0x39;
+    public static final int VK_0              = java.awt.event.KeyEvent.VK_0;
+    public static final int VK_1              = java.awt.event.KeyEvent.VK_1;
+    public static final int VK_2              = java.awt.event.KeyEvent.VK_2;
+    public static final int VK_3              = java.awt.event.KeyEvent.VK_3;
+    public static final int VK_4              = java.awt.event.KeyEvent.VK_4;
+    public static final int VK_5              = java.awt.event.KeyEvent.VK_5;
+    public static final int VK_6              = java.awt.event.KeyEvent.VK_6;
+    public static final int VK_7              = java.awt.event.KeyEvent.VK_7;
+    public static final int VK_8              = java.awt.event.KeyEvent.VK_8;
+    public static final int VK_9              = java.awt.event.KeyEvent.VK_9;
 
-    public static final int VK_SEMICOLON      = 0x3B;
-    public static final int VK_EQUALS         = 0x3D;
+    public static final int VK_SEMICOLON      = java.awt.event.KeyEvent.VK_SEMICOLON;
+    public static final int VK_EQUALS         = java.awt.event.KeyEvent.VK_EQUALS;
 
     /** VK_A thru VK_Z are the same as ASCII 'A' thru 'Z' (0x41 - 0x5A) */
-    public static final int VK_A              = 0x41;
-    public static final int VK_B              = 0x42;
-    public static final int VK_C              = 0x43;
-    public static final int VK_D              = 0x44;
-    public static final int VK_E              = 0x45;
-    public static final int VK_F              = 0x46;
-    public static final int VK_G              = 0x47;
-    public static final int VK_H              = 0x48;
-    public static final int VK_I              = 0x49;
-    public static final int VK_J              = 0x4A;
-    public static final int VK_K              = 0x4B;
-    public static final int VK_L              = 0x4C;
-    public static final int VK_M              = 0x4D;
-    public static final int VK_N              = 0x4E;
-    public static final int VK_O              = 0x4F;
-    public static final int VK_P              = 0x50;
-    public static final int VK_Q              = 0x51;
-    public static final int VK_R              = 0x52;
-    public static final int VK_S              = 0x53;
-    public static final int VK_T              = 0x54;
-    public static final int VK_U              = 0x55;
-    public static final int VK_V              = 0x56;
-    public static final int VK_W              = 0x57;
-    public static final int VK_X              = 0x58;
-    public static final int VK_Y              = 0x59;
-    public static final int VK_Z              = 0x5A;
+    public static final int VK_A              = java.awt.event.KeyEvent.VK_A;
+    public static final int VK_B              = java.awt.event.KeyEvent.VK_B;
+    public static final int VK_C              = java.awt.event.KeyEvent.VK_C;
+    public static final int VK_D              = java.awt.event.KeyEvent.VK_D;
+    public static final int VK_E              = java.awt.event.KeyEvent.VK_E;
+    public static final int VK_F              = java.awt.event.KeyEvent.VK_F;
+    public static final int VK_G              = java.awt.event.KeyEvent.VK_G;
+    public static final int VK_H              = java.awt.event.KeyEvent.VK_H;
+    public static final int VK_I              = java.awt.event.KeyEvent.VK_I;
+    public static final int VK_J              = java.awt.event.KeyEvent.VK_J;
+    public static final int VK_K              = java.awt.event.KeyEvent.VK_K;
+    public static final int VK_L              = java.awt.event.KeyEvent.VK_L;
+    public static final int VK_M              = java.awt.event.KeyEvent.VK_M;
+    public static final int VK_N              = java.awt.event.KeyEvent.VK_N;
+    public static final int VK_O              = java.awt.event.KeyEvent.VK_O;
+    public static final int VK_P              = java.awt.event.KeyEvent.VK_P;
+    public static final int VK_Q              = java.awt.event.KeyEvent.VK_Q;
+    public static final int VK_R              = java.awt.event.KeyEvent.VK_R;
+    public static final int VK_S              = java.awt.event.KeyEvent.VK_S;
+    public static final int VK_T              = java.awt.event.KeyEvent.VK_T;
+    public static final int VK_U              = java.awt.event.KeyEvent.VK_U;
+    public static final int VK_V              = java.awt.event.KeyEvent.VK_V;
+    public static final int VK_W              = java.awt.event.KeyEvent.VK_W;
+    public static final int VK_X              = java.awt.event.KeyEvent.VK_X;
+    public static final int VK_Y              = java.awt.event.KeyEvent.VK_Y;
+    public static final int VK_Z              = java.awt.event.KeyEvent.VK_Z;
 
-    public static final int VK_OPEN_BRACKET   = 0x5B;
-    public static final int VK_BACK_SLASH     = 0x5C;
-    public static final int VK_CLOSE_BRACKET  = 0x5D;
+    public static final int VK_OPEN_BRACKET   = java.awt.event.KeyEvent.VK_OPEN_BRACKET;
+    public static final int VK_BACK_SLASH     = java.awt.event.KeyEvent.VK_BACK_SLASH;
+    public static final int VK_CLOSE_BRACKET  = java.awt.event.KeyEvent.VK_CLOSE_BRACKET;
     
 }

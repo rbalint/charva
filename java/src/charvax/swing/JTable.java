@@ -30,6 +30,7 @@ import charvax.swing.table.TableModel;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.event.InputEvent;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -289,10 +290,11 @@ public class JTable
         EventQueue evtqueue = term.getSystemEventQueue();
         int key = ke_.getKeyCode();
         if (key == '\t') {
-            getParent().nextFocus();
-            return;
-        } else if (key == KeyEvent.VK_BACK_TAB) {
-            getParent().previousFocus();
+        	if ((ke_.getModifiers() & InputEvent.SHIFT_MASK) == 0) {
+        		getParent().nextFocus();
+        	} else {
+                getParent().previousFocus();
+        	}
             return;
         }
 

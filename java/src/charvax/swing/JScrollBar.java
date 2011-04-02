@@ -25,6 +25,8 @@ import java.awt.Point;
 import charva.awt.Toolkit;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
+import java.awt.event.InputEvent;
+
 import charva.awt.event.KeyEvent;
 
 import java.util.Enumeration;
@@ -227,11 +229,12 @@ public class JScrollBar
             return;
 
         int key = ke_.getKeyCode();
-        if (key == '\t') {
-            getParent().nextFocus();
-            return;
-        } else if (key == KeyEvent.VK_BACK_TAB) {
-            getParent().previousFocus();
+        if (key == '\t'){
+        	if ((ke_.getModifiers() & InputEvent.SHIFT_MASK) == 0) {
+        		getParent().nextFocus();
+        	} else {
+                getParent().previousFocus();
+        	}
             return;
         }
 

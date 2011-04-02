@@ -42,6 +42,7 @@ import charvax.swing.event.ListSelectionListener;
 import java.awt.AWTEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Point;
@@ -362,11 +363,12 @@ public class JComboBox
 
         int key = ke_.getKeyCode();
         if (key == '\t') {
-            getParent().nextFocus();
-            return;
-        } else if (key == KeyEvent.VK_BACK_TAB) {
-            getParent().previousFocus();
-            return;
+        	if ((ke_.getModifiers() & InputEvent.SHIFT_MASK) == 0) {
+        		getParent().nextFocus();
+        	} else {
+                getParent().previousFocus();
+        	}
+        	return;
         } else if (key == KeyEvent.VK_ENTER) {
             _activate();
         }

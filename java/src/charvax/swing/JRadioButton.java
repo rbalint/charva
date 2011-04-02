@@ -22,6 +22,7 @@ package charvax.swing;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Point;
+import java.awt.event.InputEvent;
 
 import charva.awt.*;
 import charva.awt.event.ItemEvent;
@@ -129,11 +130,11 @@ public class JRadioButton
         int key = ke_.getKeyCode();
         switch (key) {
             case '\t':
-                getParent().nextFocus();
-                return;
-
-            case KeyEvent.VK_BACK_TAB:
-                getParent().previousFocus();
+            	if ((ke_.getModifiers() & InputEvent.SHIFT_MASK) == 0) {
+            		getParent().nextFocus();
+            	} else {
+                    getParent().previousFocus();
+            	}
                 return;
 
                 /* Set the button's state to SELECTED on ENTER.

@@ -40,6 +40,7 @@ import charvax.swing.event.ListSelectionListener;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Point;
+import java.awt.event.InputEvent;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Vector;
@@ -484,12 +485,12 @@ public class JList
         int key = ke_.getKeyCode();
         switch (key) {
             case '\t':
-                getParent().nextFocus();
-                return;
-
-            case KeyEvent.VK_BACK_TAB:
-                getParent().previousFocus();
-                return;
+            	if ((ke_.getModifiers() & InputEvent.SHIFT_MASK) == 0) {
+            		getParent().nextFocus();
+            	} else {
+                    getParent().previousFocus();
+            	}
+            	return;
 
             case KeyEvent.VK_DOWN:
                 /* If we are already at the bottom of the list, ignore

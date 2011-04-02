@@ -40,6 +40,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.InputEvent;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
@@ -173,8 +174,14 @@ public class Toolkit {
      *             key as defined in the "VK_*" values.
      */
     public void fireKeystroke(int key_, Component source_) {
-        int id = Toolkit.isActionKey(key_) ? java.awt.event.KeyEvent.KEY_PRESSED : java.awt.event.KeyEvent.KEY_TYPED;
-        _evtQueue.postEvent(new KeyEvent(key_, id, source_));
+        int modifiers = 0;
+        int key = key_;
+    	int id = Toolkit.isActionKey(key_) ? java.awt.event.KeyEvent.KEY_PRESSED : java.awt.event.KeyEvent.KEY_TYPED;
+        if (key_ == VK_BACK_TAB) {
+        	key = '\t';
+        	modifiers |= InputEvent.SHIFT_MASK;
+        }
+        _evtQueue.postEvent(new KeyEvent(source_, id, System.currentTimeMillis(), modifiers, key));
     }
 
     public FocusEvent getLastFocusEvent() {
@@ -397,9 +404,6 @@ public class Toolkit {
                     break;
                 case KeyEvent.VK_ENTER:
                     buf.append("VK_ENTER");
-                    break;
-                case KeyEvent.VK_BACK_TAB:
-                    buf.append("VK_BACK_TAB");
                     break;
                 case KeyEvent.VK_END:
                     buf.append("VK_END");
@@ -886,40 +890,40 @@ public class Toolkit {
      */
     public static boolean isActionKey(int _key) {
         switch (_key) {
-            case charva.awt.event.KeyEvent.VK_ESCAPE:
-            case charva.awt.event.KeyEvent.VK_DOWN:
-            case charva.awt.event.KeyEvent.VK_UP:
-            case charva.awt.event.KeyEvent.VK_LEFT:
-            case charva.awt.event.KeyEvent.VK_RIGHT:
-            case charva.awt.event.KeyEvent.VK_BACK_SPACE:
-            case charva.awt.event.KeyEvent.VK_F1:
-            case charva.awt.event.KeyEvent.VK_F2:
-            case charva.awt.event.KeyEvent.VK_F3:
-            case charva.awt.event.KeyEvent.VK_F4:
-            case charva.awt.event.KeyEvent.VK_F5:
-            case charva.awt.event.KeyEvent.VK_F6:
-            case charva.awt.event.KeyEvent.VK_F7:
-            case charva.awt.event.KeyEvent.VK_F8:
-            case charva.awt.event.KeyEvent.VK_F9:
-            case charva.awt.event.KeyEvent.VK_F10:
-            case charva.awt.event.KeyEvent.VK_F11:
-            case charva.awt.event.KeyEvent.VK_F12:
-            case charva.awt.event.KeyEvent.VK_F13:
-            case charva.awt.event.KeyEvent.VK_F14:
-            case charva.awt.event.KeyEvent.VK_F15:
-            case charva.awt.event.KeyEvent.VK_F16:
-            case charva.awt.event.KeyEvent.VK_F17:
-            case charva.awt.event.KeyEvent.VK_F18:
-            case charva.awt.event.KeyEvent.VK_F19:
-            case charva.awt.event.KeyEvent.VK_F20:
-            case charva.awt.event.KeyEvent.VK_DELETE:
-            case charva.awt.event.KeyEvent.VK_INSERT:
-            case charva.awt.event.KeyEvent.VK_PAGE_DOWN:
-            case charva.awt.event.KeyEvent.VK_PAGE_UP:
-            case charva.awt.event.KeyEvent.VK_ENTER:
-            case charva.awt.event.KeyEvent.VK_BACK_TAB:
-            case charva.awt.event.KeyEvent.VK_HOME:
-            case charva.awt.event.KeyEvent.VK_END:
+            case KeyEvent.VK_ESCAPE:
+            case KeyEvent.VK_DOWN:
+            case KeyEvent.VK_UP:
+            case KeyEvent.VK_LEFT:
+            case KeyEvent.VK_RIGHT:
+            case KeyEvent.VK_BACK_SPACE:
+            case KeyEvent.VK_F1:
+            case KeyEvent.VK_F2:
+            case KeyEvent.VK_F3:
+            case KeyEvent.VK_F4:
+            case KeyEvent.VK_F5:
+            case KeyEvent.VK_F6:
+            case KeyEvent.VK_F7:
+            case KeyEvent.VK_F8:
+            case KeyEvent.VK_F9:
+            case KeyEvent.VK_F10:
+            case KeyEvent.VK_F11:
+            case KeyEvent.VK_F12:
+            case KeyEvent.VK_F13:
+            case KeyEvent.VK_F14:
+            case KeyEvent.VK_F15:
+            case KeyEvent.VK_F16:
+            case KeyEvent.VK_F17:
+            case KeyEvent.VK_F18:
+            case KeyEvent.VK_F19:
+            case KeyEvent.VK_F20:
+            case KeyEvent.VK_DELETE:
+            case KeyEvent.VK_INSERT:
+            case KeyEvent.VK_PAGE_DOWN:
+            case KeyEvent.VK_PAGE_UP:
+            case KeyEvent.VK_ENTER:
+            case Toolkit.VK_BACK_TAB:
+            case KeyEvent.VK_HOME:
+            case KeyEvent.VK_END:
                 return true;
             default:
                 return false;
@@ -1045,6 +1049,9 @@ public class Toolkit {
     public static Color _defaultBackground = Color.black;
 
     public static final int KEY_MOUSE = 0631;
+    
+    /* KeyEvent does not have define VK_BACK_TAB  ncurses reports to us */
+    public static final int VK_BACK_TAB = 0xe01f; 
 
     public static final int BUTTON1_RELEASED = 000001;
     public static final int BUTTON1_PRESSED = 000002;

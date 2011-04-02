@@ -21,6 +21,7 @@ package charvax.swing;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.event.InputEvent;
 
 import charva.awt.*;
 import charva.awt.event.KeyEvent;
@@ -121,11 +122,11 @@ public class JMenuBar
 
         int key = ke_.getKeyCode();
         if (key == '\t') {
-            getParent().nextFocus();
-            ke_.consume();
-            return;
-        } else if (key == KeyEvent.VK_BACK_TAB) {
-            getParent().previousFocus();
+        	if ((ke_.getModifiers() & InputEvent.SHIFT_MASK) == 0) {
+        		getParent().nextFocus();
+        	} else {
+                getParent().previousFocus();
+        	}
             ke_.consume();
             return;
         } else if (key == KeyEvent.VK_RIGHT) {

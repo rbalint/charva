@@ -29,6 +29,7 @@ import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.InputEvent;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -292,11 +293,12 @@ public class JTextArea
         int line = getLineOfOffset(caret);
         int key = ke_.getKeyCode();
         if (key == '\t') {
-            getParent().nextFocus();
-            return;
-        } else if (key == KeyEvent.VK_BACK_TAB) {
-            getParent().previousFocus();
-            return;
+        	if ((ke_.getModifiers() & InputEvent.SHIFT_MASK) == 0) {
+        		getParent().nextFocus();
+        	} else {
+                getParent().previousFocus();
+        	}
+        return;
         } else if (key == KeyEvent.VK_LEFT && caret > 0) {
             setCaretPosition(caret - 1);
         } else if (key == KeyEvent.VK_RIGHT &&

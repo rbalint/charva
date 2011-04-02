@@ -32,6 +32,7 @@ package charvax.swing;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Point;
+import java.awt.event.InputEvent;
 
 import charva.awt.*;
 import charva.awt.event.ItemEvent;
@@ -156,11 +157,12 @@ public class JButton
 
         int key = ke_.getKeyCode();
         if (key == '\t') {
-            getParent().nextFocus();
-            return;
-        } else if (key == KeyEvent.VK_BACK_TAB) {
-            getParent().previousFocus();
-            return;
+        	if ((ke_.getModifiers() & InputEvent.SHIFT_MASK) == 0) {
+        		getParent().nextFocus();
+        	} else {
+                getParent().previousFocus();
+        	}
+        	return;
         }
 
         /* Post an ItemEvent if ENTER was pressed (but only if the

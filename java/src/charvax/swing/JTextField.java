@@ -26,6 +26,7 @@ import charvax.swing.text.JTextComponent;
 import java.awt.AWTEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Insets;
@@ -242,13 +243,14 @@ public class JTextField
             return;
 
         int key = ke_.getKeyCode();
-        if (key == '\t') {
-            getParent().nextFocus();
-            return;
-        } else if (key == KeyEvent.VK_BACK_TAB) {
-            getParent().previousFocus();
-            return;
-        }
+		if (key == '\t') {
+			if ((ke_.getModifiers() & InputEvent.SHIFT_MASK) == 0) {
+				getParent().nextFocus();
+			} else {
+				getParent().previousFocus();
+			}
+			return;
+		}
 
         /*
          */

@@ -393,7 +393,7 @@ public class JTextArea
         super.processMouseEvent(e_);
 
         if (e_.getButton() == MouseEvent.BUTTON1 &&
-                e_.getModifiers() == MouseEvent.MOUSE_CLICKED &&
+                e_.getID() == MouseEvent.MOUSE_CLICKED &&
                 this.isFocusTraversable()) {
 
             /* Get the absolute origin of this component.

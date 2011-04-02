@@ -129,7 +129,7 @@ public abstract class AbstractButton
         super.processMouseEvent(e);
 
         if (e.getButton() == MouseEvent.BUTTON1 &&
-                e.getModifiers() == MouseEvent.MOUSE_CLICKED &&
+                e.getID() == MouseEvent.MOUSE_CLICKED &&
                 this.isFocusTraversable()) {
 
             this.doClick();

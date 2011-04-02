@@ -19,13 +19,15 @@
 
 package charva.awt.event;
 
+import java.awt.AWTEvent;
+
 import charva.awt.*;
 
 /**
  * An event which indicates that a keystroke occurred in an object.
  */
 public class KeyEvent
-        extends InputEvent {
+        extends AWTEvent {
 
     private int _keyCode;
 
@@ -34,6 +36,14 @@ public class KeyEvent
         _keyCode = key_;
     }
 
+	public boolean isConsumed() {
+		return consumed;
+	}
+    
+    public void consume() {
+    	consumed = true;
+    }
+	
     /**
      * Returns the integer keyCode associated with the key in this event.
      *

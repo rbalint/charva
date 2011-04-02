@@ -27,22 +27,26 @@ import charva.awt.*;
  * An event which encapsulates information about a mouse-click.
  */
 public class MouseEvent
-        extends InputEvent {
+        extends AWTEvent {
 
-    public MouseEvent(Component source_, int id, int modifiers_,
-                      int x_, int y_, int clickcount_, int button_) {
+	/* timestamp */
+    private long when;
+    
+	public MouseEvent(Component source_, int id, long when, int modifiers,
+                      int x_, int y_, int clickcount_, boolean popup, int button_) {
 
         super(source_, id);
-        modifiers = modifiers_;
+        this.when = when;
+        this.modifiers = modifiers;
         x = x_;
         y = y_;
         clickcount = clickcount_;
         button = button_;
     }
 
-    public int getModifiers() {
+   /* public int getModifiers() {
         return modifiers;
-    }
+    }*/
 
     public int getX() {
         return x;
@@ -52,7 +56,15 @@ public class MouseEvent
         return y;
     }
 
-    public int getClickCount() {
+	public boolean isConsumed() {
+		return consumed;
+	}
+    
+    public void consume() {
+    	consumed = true;
+    }
+	
+	public int getClickCount() {
         return clickcount;
     }
 
@@ -91,7 +103,7 @@ public class MouseEvent
     public static final int BUTTON3 = 3;
 
     // Modifiers
-    public static final int MOUSE_PRESSED = 2001;
-    public static final int MOUSE_RELEASED = 2002;
-    public static final int MOUSE_CLICKED = 2003;
+    public static final int MOUSE_PRESSED = java.awt.event.MouseEvent.MOUSE_PRESSED;
+    public static final int MOUSE_RELEASED = java.awt.event.MouseEvent.MOUSE_PRESSED;
+    public static final int MOUSE_CLICKED = java.awt.event.MouseEvent.MOUSE_PRESSED;
 }

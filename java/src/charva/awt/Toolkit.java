@@ -202,32 +202,26 @@ public class Toolkit {
         switch (mouse_info.button) {
             case BUTTON1_PRESSED:
                 button = MouseEvent.BUTTON1;
-                modifiers = MouseEvent.MOUSE_PRESSED;
                 actionID = java.awt.event.MouseEvent.MOUSE_PRESSED;
                 break;
             case BUTTON1_RELEASED:
                 button = MouseEvent.BUTTON1;
-                modifiers = MouseEvent.MOUSE_RELEASED;
                 actionID = java.awt.event.MouseEvent.MOUSE_RELEASED;
                 break;
             case BUTTON2_PRESSED:
                 button = MouseEvent.BUTTON2;
-                modifiers = MouseEvent.MOUSE_PRESSED;
                 actionID = java.awt.event.MouseEvent.MOUSE_PRESSED;
                 break;
             case BUTTON2_RELEASED:
                 button = MouseEvent.BUTTON2;
-                modifiers = MouseEvent.MOUSE_RELEASED;
                 actionID = java.awt.event.MouseEvent.MOUSE_RELEASED;
                 break;
             case BUTTON3_PRESSED:
                 button = MouseEvent.BUTTON3;
-                modifiers = MouseEvent.MOUSE_PRESSED;
                 actionID = java.awt.event.MouseEvent.MOUSE_PRESSED;
                 break;
             case BUTTON3_RELEASED:
                 button = MouseEvent.BUTTON3;
-                modifiers = MouseEvent.MOUSE_RELEASED;
                 actionID = java.awt.event.MouseEvent.MOUSE_RELEASED;
                 break;
         }
@@ -245,20 +239,20 @@ public class Toolkit {
         Component component =
                 top_window.getComponentAt(x - origin.x, y - origin.y);
 
+        long current_time = System.currentTimeMillis();
         if (component != null) {
-            _evtQueue.postEvent(new MouseEvent(component, java.awt.event.MouseEvent.MOUSE_PRESSED, modifiers, x, y, 0, button));
-
+            _evtQueue.postEvent(new MouseEvent(component, java.awt.event.MouseEvent.MOUSE_PRESSED, current_time, modifiers, x, y, 0, false, button));
+ 
             // If this is a button-release within 400 msec of the corresponding
             // button-press.
-            long current_time = System.currentTimeMillis();
             if (actionID == MouseEvent.MOUSE_RELEASED &&
                     current_time - _lastMousePressTime < 400L) {
 
-                _evtQueue.postEvent(new MouseEvent(component, java.awt.event.MouseEvent.MOUSE_CLICKED, MouseEvent.MOUSE_CLICKED, x, y, 1, button));
+                _evtQueue.postEvent(new MouseEvent(component, java.awt.event.MouseEvent.MOUSE_CLICKED, current_time, modifiers, x, y, 1, false, button));
 
                 // Check for a double-click.
                 if (current_time - _lastMouseClickTime < 500L) {
-                    _evtQueue.postEvent(new MouseEvent(component, java.awt.event.MouseEvent.MOUSE_CLICKED, MouseEvent.MOUSE_CLICKED, x, y, 2, button));
+                    _evtQueue.postEvent(new MouseEvent(component, java.awt.event.MouseEvent.MOUSE_CLICKED, current_time, modifiers, x, y, 2, false, button));
                 }
                 _lastMouseClickTime = current_time;
             }

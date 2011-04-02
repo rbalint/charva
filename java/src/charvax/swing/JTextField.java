@@ -323,7 +323,7 @@ public class JTextField
             return;
 
         if (e_.getButton() == MouseEvent.BUTTON1 &&
-                e_.getModifiers() == MouseEvent.MOUSE_CLICKED &&
+                e_.getID() == MouseEvent.MOUSE_CLICKED &&
                 this.isFocusTraversable()) {
 
             int x = e_.getX();

@@ -350,11 +350,11 @@ public abstract class Component {
             for (int i = _mouseListeners.size() - 1; i >= 0; i--) {
 
                 MouseListener ml = (MouseListener) _mouseListeners.get(i);
-                if (e.getModifiers() == MouseEvent.MOUSE_PRESSED)
+                if (e.getID() == MouseEvent.MOUSE_PRESSED)
                     ml.mousePressed(e);
-                else if (e.getModifiers() == MouseEvent.MOUSE_RELEASED)
+                else if (e.getID() == MouseEvent.MOUSE_RELEASED)
                     ml.mouseReleased(e);
-                else if (e.getModifiers() == MouseEvent.MOUSE_CLICKED)
+                else if (e.getID() == MouseEvent.MOUSE_CLICKED)
                     ml.mouseClicked(e);
 
                 if (e.isConsumed())
@@ -365,7 +365,7 @@ public abstract class Component {
         // The default for a left-mouse-button-press is to request the focus;
         // this is overridden by components such as buttons.
         if (e.getButton() == MouseEvent.BUTTON1 &&
-                e.getModifiers() == MouseEvent.MOUSE_PRESSED &&
+                e.getID() == MouseEvent.MOUSE_PRESSED &&
                 this.isFocusTraversable())
 
             requestFocus();

@@ -20,7 +20,7 @@
 package charvax.swing;
 
 import java.awt.Dimension;
-import charva.awt.Insets;
+import java.awt.Insets;
 import java.awt.Point;
 import charva.awt.Toolkit;
 import charva.awt.event.KeyEvent;

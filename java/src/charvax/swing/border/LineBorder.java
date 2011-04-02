@@ -20,8 +20,9 @@
 package charvax.swing.border;
 
 import java.awt.Color;
+import java.awt.Insets;
+
 import charva.awt.Component;
-import charva.awt.Insets;
 import charva.awt.Toolkit;
 
 public class LineBorder

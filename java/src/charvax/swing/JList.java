@@ -38,6 +38,7 @@ import charva.awt.event.ScrollListener;
 import charvax.swing.event.ListSelectionListener;
 
 import java.awt.Dimension;
+import java.awt.Insets;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Enumeration;

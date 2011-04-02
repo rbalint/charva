@@ -20,7 +20,8 @@
 package charvax.swing;
 
 import charva.awt.Container;
-import charva.awt.Insets;
+
+import java.awt.Insets;
 import java.awt.Point;
 import charva.awt.Toolkit;
 

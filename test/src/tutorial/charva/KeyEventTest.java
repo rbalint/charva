@@ -1,5 +1,6 @@
 package tutorial.charva;
 
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

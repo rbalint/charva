@@ -19,8 +19,9 @@
 
 package charvax.swing.border;
 
+import java.awt.Insets;
+
 import charva.awt.Component;
-import charva.awt.Insets;
 
 public class EmptyBorder
         implements Border {

@@ -2,6 +2,7 @@ package example.charva;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Insets;
 
 import charva.awt.*;
 import charvax.swing.*;

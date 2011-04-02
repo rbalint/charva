@@ -21,6 +21,7 @@ package charvax.swing;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Insets;
 import java.awt.Point;
 
 import charva.awt.*;

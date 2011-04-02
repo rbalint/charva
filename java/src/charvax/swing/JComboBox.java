@@ -43,6 +43,7 @@ import java.awt.AWTEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Dimension;
+import java.awt.Insets;
 import java.awt.Point;
 import java.util.Enumeration;
 import java.util.Vector;

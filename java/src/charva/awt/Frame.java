@@ -19,6 +19,7 @@
 
 package charva.awt;
 
+import java.awt.Insets;
 import java.awt.Point;
 
 /**

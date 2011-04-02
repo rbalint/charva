@@ -1,5 +1,7 @@
 package example.charva;
 
+import java.awt.Insets;
+
 import charva.awt.*;
 import charvax.swing.*;
 

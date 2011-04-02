@@ -26,6 +26,7 @@ import charva.awt.event.ScrollEvent;
 import charva.awt.event.ScrollListener;
 
 import java.awt.Dimension;
+import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.Enumeration;

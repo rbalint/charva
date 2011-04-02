@@ -3,6 +3,8 @@ package tutorial.charva;
 import charvax.swing.*;
 import charvax.swing.border.EmptyBorder;
 import charvax.swing.border.TitledBorder;
+
+import java.awt.Insets;
 import java.awt.event.ActionListener;
 import charva.awt.event.KeyListener;
 import java.awt.event.ActionEvent;

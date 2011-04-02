@@ -2,6 +2,8 @@ package tutorial.charva;
 
 import charvax.swing.*;
 import charvax.swing.border.TitledBorder;
+
+import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import charva.awt.*;

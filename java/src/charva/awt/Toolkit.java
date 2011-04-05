@@ -31,7 +31,6 @@
 package charva.awt;
 
 import java.awt.AWTEvent;
-import charva.awt.event.GarbageCollectionEvent;
 import charva.awt.event.KeyEvent;
 import charva.awt.event.MouseEvent;
 import charva.awt.event.FocusEvent;
@@ -826,22 +825,6 @@ public class Toolkit {
 		else
 			return "UNKNOWN";
 	}
-
-    /**
-     * Trigger garbage collection. This method can be called inside an
-     * event handler, but the call to <code>System.gc()</code> will be
-     * made after the event handler has completed (i.e. after drawing is
-     * completed). This is a convenient, but OPTIONAL, way of ensuring
-     * that the heap does not grow too large. Some experts say that it is
-     * better not to call System.gc() explicitly from inside an application;
-     * you take your pick.
-     *
-     * @param source_ the component that triggered the garbage collection
-     *                (not important).
-     */
-    public void triggerGarbageCollection(Component source_) {
-        _evtQueue.postEvent(new GarbageCollectionEvent(source_));
-    }
 
     /**
      * Get information about a mouse event (i.e the coordinates, and which

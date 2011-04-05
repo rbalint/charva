@@ -152,17 +152,8 @@ public class Window
 
         WindowEvent we = new WindowEvent(this, java.awt.event.WindowEvent.WINDOW_OPENED);
         _term.getSystemEventQueue().postEvent(we);
-
-        /* Rather than call Toolkit.sync() directly here, we put a SyncEvent
-         * onto the SyncQueue. The SyncThread will read it off the SyncQueue
-         * and then sleep for 50msec before putting the SyncEvent onto
-         * the EventQueue, from which it will be picked up by the active
-         * Window (i.e. an instance of this class).  The active Window
-         * will then call Toolkit.sync() directly.  This slight delay speeds
-         * up the case where a window opens and then immediately opens a
-         * new window (and another...).
-         */
-        SyncQueue.getInstance().postEvent(new SyncEvent(this));
+        /* We may want to delay sync-s like in Charva 1.1.4 */
+        _term.getSystemEventQueue().postEvent(new SyncEvent(this));
 
         if (_dispatchThreadRunning)
             run();
@@ -301,23 +292,11 @@ public class Window
                     if (window != null)        // (there may be no windows left)
                         window.requestFocus();
                 }
-
-                /* Put a SyncEvent onto the SyncQueue.  The SyncThread will
-                 * sleep for 50 msec before putting it onto the EventQueue,
-                 * from which it will be picked up by the active Window
-                 * (i.e. an instance of this class), which will then call
-                 * Toolkit.sync() directly.  This is done to avoid calling
-                 * sync() after the close of a window and again after the
-                 * display of a new window which might be displayed
-                 * immediately afterwards.
-                 */
-                if (window != null)
-                    SyncQueue.getInstance().postEvent(new SyncEvent(window));
+                /* We may want to delay sync-s like in Charva 1.1.4 */
+                _term.getSystemEventQueue().postEvent(new SyncEvent(window));
             }
         }    // end if WindowEvent
-        else if (evt_ instanceof GarbageCollectionEvent) {
-            SyncQueue.getInstance().postEvent(evt_);
-        } else if (evt_ instanceof InvocationEvent) {
+        else if (evt_ instanceof InvocationEvent) {
             ((InvocationEvent) evt_).dispatch();
         } else {
             /* It is a KeyEvent, MouseEvent, ActionEvent, ItemEvent,

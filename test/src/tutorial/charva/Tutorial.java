@@ -253,8 +253,6 @@ class Tutorial
                     "Error",
                     JOptionPane.PLAIN_MESSAGE);
         }
-        // Trigger garbage-collection after every menu action.
-        Toolkit.getDefaultToolkit().triggerGarbageCollection(this);
     }
 
     /**

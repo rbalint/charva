@@ -176,6 +176,46 @@ public class Toolkit {
         int modifiers = 0;
         int key = key_;
     	int id = Toolkit.isActionKey(key_) ? java.awt.event.KeyEvent.KEY_PRESSED : java.awt.event.KeyEvent.KEY_TYPED;
+		
+    	switch (key) {
+		case VK_F1:
+			key = java.awt.event.KeyEvent.VK_F1;
+			break;
+		case VK_F2:
+			key = java.awt.event.KeyEvent.VK_F2;
+			break;
+		case VK_F3:
+			key = java.awt.event.KeyEvent.VK_F3;
+			break;
+		case VK_F4:
+			key = java.awt.event.KeyEvent.VK_F4;
+			break;
+		case VK_F5:
+			key = java.awt.event.KeyEvent.VK_F5;
+			break;
+		case VK_F6:
+			key = java.awt.event.KeyEvent.VK_F6;
+			break;
+		case VK_F7:
+			key = java.awt.event.KeyEvent.VK_F7;
+			break;
+		case VK_F8:
+			key = java.awt.event.KeyEvent.VK_F8;
+			break;
+		case VK_F9:
+			key = java.awt.event.KeyEvent.VK_F9;
+			break;
+		case VK_F10:
+			key = java.awt.event.KeyEvent.VK_F10;
+			break;
+		case VK_F11:
+			key = java.awt.event.KeyEvent.VK_F11;
+			break;
+		case VK_F12:
+			key = java.awt.event.KeyEvent.VK_F12;
+			break;
+		}
+      
         if (key_ == VK_BACK_TAB) {
         	key = '\t';
         	modifiers |= InputEvent.SHIFT_MASK;
@@ -879,18 +919,18 @@ public class Toolkit {
             case KeyEvent.VK_LEFT:
             case KeyEvent.VK_RIGHT:
             case KeyEvent.VK_BACK_SPACE:
-            case KeyEvent.VK_F1:
-            case KeyEvent.VK_F2:
-            case KeyEvent.VK_F3:
-            case KeyEvent.VK_F4:
-            case KeyEvent.VK_F5:
-            case KeyEvent.VK_F6:
-            case KeyEvent.VK_F7:
-            case KeyEvent.VK_F8:
-            case KeyEvent.VK_F9:
-            case KeyEvent.VK_F10:
-            case KeyEvent.VK_F11:
-            case KeyEvent.VK_F12:
+            case VK_F1:
+            case VK_F2:
+            case VK_F3:
+            case VK_F4:
+            case VK_F5:
+            case VK_F6:
+            case VK_F7:
+            case VK_F8:
+            case VK_F9:
+            case VK_F10:
+            case VK_F11:
+            case VK_F12:
             case KeyEvent.VK_F13:
             case KeyEvent.VK_F14:
             case KeyEvent.VK_F15:
@@ -1035,6 +1075,20 @@ public class Toolkit {
     
     /* KeyEvent does not have define VK_BACK_TAB  ncurses reports to us */
     public static final int VK_BACK_TAB = 0xe01f; 
+
+	/* F(1-12) function keys are reported to us in a Unicode safe block */
+	public static final int VK_F1 = 0xe006;
+	public static final int VK_F2 = 0xe007;
+	public static final int VK_F3 = 0xe008;
+	public static final int VK_F4 = 0xe009;
+	public static final int VK_F5 = 0xe00a;
+	public static final int VK_F6 = 0xe00b;
+	public static final int VK_F7 = 0xe00c;
+	public static final int VK_F8 = 0xe00d;
+	public static final int VK_F9 = 0xe00e;
+	public static final int VK_F10 = 0xe00f;
+	public static final int VK_F11 = 0xe010;
+	public static final int VK_F12 = 0xe011;
 
     public static final int BUTTON1_RELEASED = 000001;
     public static final int BUTTON1_PRESSED = 000002;

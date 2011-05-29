@@ -156,7 +156,16 @@ public class EventQueue {
         }
     }
 
-    //====================================================================
+    public void dispatchEvent(final AWTEvent event) {
+    	Object src = event.getSource();
+    	if (src instanceof Component) {
+            ((Component)src).dispatchEvent(event);
+        } else {
+            System.err.println("unable to dispatch event: " + event);
+        }
+    }
+
+     //====================================================================
     // INSTANCE VARIABLES
 
     private LinkedList _lowPriorityQueue = new LinkedList();

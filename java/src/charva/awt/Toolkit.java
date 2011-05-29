@@ -40,6 +40,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.InputEvent;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
@@ -84,6 +85,40 @@ public class Toolkit {
             startColors();
             _colorPairs.add(new ColorPair(_defaultForeground, _defaultBackground));
         }
+
+        Thread dispatchThread = new EventDispatchThread();
+        dispatchThread.setName("event dispatcher");
+        dispatchThread.start();
+
+        /* If "charva.script.playback" is defined, we start up
+         * a thread for playing back the script. Keys from both the
+         * script and the keyboard will cause "fireKeystroke()" to be
+         * invoked.
+         * The playback thread is started _after_ "addWindow()" is
+         * called for the first time, to make sure that _windowList
+         * is non-empty when the playback thread calls "fireKeystroke()".
+         */
+        startPlayback();
+
+
+    }
+
+    private void startPlayback() {
+        String scriptfilename;
+        if ((scriptfilename = System.getProperty("charva.script.playbackFile")) == null)
+            return;
+
+        File scriptFile = new File(scriptfilename);
+        if (!scriptFile.canRead()) {
+            LOG.warn("Cannot read script tile \"" + scriptfilename + "\"");
+            return;
+        }
+
+
+        PlaybackThread thr = new PlaybackThread(scriptFile);
+        thr.setDaemon(true);
+        thr.setName("playback thread");
+        thr.start();
     }
 
     /**

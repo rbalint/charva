@@ -41,6 +41,7 @@
 package charva.awt;
 
 import charva.awt.event.*;
+import charvax.swing.JScrollBar;
 
 import java.awt.AWTEvent;
 import java.awt.Color;
@@ -48,6 +49,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.AdjustmentEvent;
 import java.lang.ref.WeakReference;
 import java.util.Enumeration;
 import java.util.Vector;
@@ -723,6 +725,110 @@ public abstract class Component {
 
     public int getCursesColor() {
         return _cursesColor;
+    }
+
+    /**
+     * Process an event off the event queue.  This method can be extended by
+     * subclasses of Window to deal with application-specific events.
+     */
+    protected void dispatchEvent(AWTEvent evt_) {
+        Toolkit _term = Toolkit.getDefaultToolkit();
+    	Object source = evt_.getSource();
+
+        if (evt_ instanceof AdjustmentEvent)
+        	/* TODO Revise this cast */
+            ((JScrollBar) source).processAdjustmentEvent((AdjustmentEvent) evt_);
+
+        else if (evt_ instanceof ScrollEvent) {
+            ((Scrollable) source).processScrollEvent((ScrollEvent) evt_);
+            requestFocus();
+            requestSync();
+        } else if (evt_ instanceof PaintEvent) {
+
+            /* Unless the affected component is totally obscured by
+             * windows that are stacked above it, we must redraw its
+             * window and all the windows above it.
+             */
+            if (!((Component) source).isTotallyObscured()) {
+
+                Vector windowlist = _term.getWindowList();
+                synchronized (windowlist) {
+
+                    /* We have to draw the window rather than just the affected
+                     * component, because setVisible(false) may have been set on
+                     * the component.
+                     */
+                    Window ancestor = ((Component) source).getAncestorWindow();
+                    ancestor.draw();
+
+                    /* Ignore windows that are underneath the window that
+                     * contains the component that generated the PaintEvent.
+                     */
+                    Window w = null;
+                    int i;
+                    for (i = 0; i < windowlist.size(); i++) {
+                        w = (Window) windowlist.elementAt(i);
+                        if (w == ancestor)
+                            break;
+                    }
+
+                    /* Redraw all the windows _above_ the one that generated
+                     * the PaintEvent.
+                     */
+                    for (; i < windowlist.size(); i++) {
+                        w = (Window) windowlist.elementAt(i);
+                        w.draw();
+                    }
+                }
+
+                requestSync();
+            }
+        } else if (evt_ instanceof SyncEvent) {
+            _term.sync();
+        } else if (evt_ instanceof WindowEvent) {
+            WindowEvent we = (WindowEvent) evt_;
+            we.getWindow().processWindowEvent(we);
+
+            /* Now, having given the WindowListener objects a chance to
+             * process the WindowEvent, we must check if it was a
+             * WINDOW_CLOSING event sent to this window.
+             */
+            if (we.getID() == java.awt.event.WindowEvent.WINDOW_CLOSING) {
+
+                we.getWindow()._windowClosed = true;
+
+                /* Remove this window from the list of those displayed,
+                 * and blank out the screen area where the window was
+                 * displayed.
+                 */
+                _term.removeWindow(we.getWindow());
+                _term.blankBox(_origin, we.getWindow().getSize());
+
+                /* Now redraw all of the windows, from the bottom to the
+                 * top.
+                 */
+                Vector winlist = _term.getWindowList();
+                Window window = null;
+                synchronized (winlist) {
+                    for (int i = 0; i < winlist.size(); i++) {
+                        window = (Window) winlist.elementAt(i);
+                        window.draw();
+                    }
+                    if (window != null)        // (there may be no windows left)
+                        window.requestFocus();
+                }
+                /* We may want to delay sync-s like in Charva 1.1.4 */
+                _term.getSystemEventQueue().postEvent(new SyncEvent(window));
+            }
+        }    // end if WindowEvent
+        else if (evt_ instanceof InvocationEvent) {
+            ((InvocationEvent) evt_).dispatch();
+        } else {
+            /* It is a KeyEvent, MouseEvent, ActionEvent, ItemEvent,
+             * FocusEvent or a custom type of event.
+             */
+            ((Component) source).processEvent(evt_);
+        }
     }
 
     //====================================================================

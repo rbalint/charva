@@ -21,11 +21,11 @@ package charvax.swing;
 
 import charva.awt.ItemSelectable;
 import charva.awt.Toolkit;
-import charva.awt.Window;
 import charva.awt.event.*;
 
 import java.awt.AWTEvent;
 import java.awt.EventQueue;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;

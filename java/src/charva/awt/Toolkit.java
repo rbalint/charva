@@ -65,6 +65,7 @@ import java.awt.ScrollPane;
 import java.awt.Scrollbar;
 import java.awt.TextArea;
 import java.awt.TextField;
+import java.awt.Window;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.Dialog.ModalityType;
 import java.awt.datatransfer.Clipboard;
@@ -144,7 +145,6 @@ public class Toolkit extends java.awt.Toolkit {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		_evtQueue = new EventQueue();
 
         /* If the terminal is capable of handling colors, initialize the
          * color capability and the first color-pair (the default
@@ -157,9 +157,7 @@ public class Toolkit extends java.awt.Toolkit {
             _colorPairs.add(new ColorPair(_defaultForeground, _defaultBackground));
         }
 
-        Thread dispatchThread = new EventDispatchThread();
-        dispatchThread.setName("event dispatcher");
-        dispatchThread.start();
+		_evtQueue = new EventQueue();
 
         /* If "charva.script.playback" is defined, we start up
          * a thread for playing back the script. Keys from both the

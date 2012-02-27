@@ -21,8 +21,8 @@ package charvax.swing;
 
 import java.awt.Component;
 import java.awt.EventQueue;
+import java.awt.Window;
 
-import charva.awt.Window;
 
 /**
  * A collection of utility methods for Swing.

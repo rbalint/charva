@@ -31,16 +31,19 @@
 package charvax.swing;
 
 import charva.awt.*;
-import charva.awt.event.KeyEvent;
-import charva.awt.event.MouseEvent;
 import charva.awt.event.ScrollEvent;
 import charva.awt.event.ScrollListener;
+import charva.awt.event.SyncEvent;
 import charvax.swing.event.ListSelectionListener;
 
+import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Vector;
@@ -435,7 +438,7 @@ public class JList
 
         Toolkit term = Toolkit.getDefaultToolkit();
 
-        int colorpair = getCursesColor();
+        int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
         int attribute;
 
         StringBuffer blanks = new StringBuffer();
@@ -488,7 +491,7 @@ public class JList
             	if ((ke_.getModifiers() & InputEvent.SHIFT_MASK) == 0) {
             		getParent().nextFocus();
             	} else {
-                    getParent().previousFocus();
+                    getParent().transferFocusBackward();
             	}
             	return;
 
@@ -548,7 +551,7 @@ public class JList
         if ((getParent() instanceof JViewport) == false) {
             draw();
             requestFocus();
-            super.requestSync();
+            Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(new SyncEvent(this));
         }
     }
 
@@ -629,7 +632,7 @@ public class JList
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
-        System.err.println("JList origin=" + _origin +
+        System.err.println("JList origin=" + new Point(getX(), getY()) +
                 " size=" + minimumSize());
     }
 

@@ -26,8 +26,8 @@ import charva.awt.Toolkit;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 
-import charva.awt.event.KeyEvent;
 
 import java.util.Enumeration;
 import java.util.Vector;
@@ -178,9 +178,9 @@ public class JScrollBar
 
         Toolkit term = Toolkit.getDefaultToolkit();
 
-        int colorpair = getCursesColor();
+        int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
 
-        if (super._enabled) {
+        if (isEnabled()) {
             int offset = _value * (_length - 2) / _maximum;
             int visible = _extent * (_length - 2) / _maximum;
             visible = (visible == 0) ? 1 : visible;
@@ -233,7 +233,7 @@ public class JScrollBar
         	if ((ke_.getModifiers() & InputEvent.SHIFT_MASK) == 0) {
         		getParent().nextFocus();
         	} else {
-                getParent().previousFocus();
+                getParent().transferFocusBackward();
         	}
             return;
         }
@@ -315,7 +315,7 @@ public class JScrollBar
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
-        System.err.println("JScrollBar origin=" + _origin +
+        System.err.println("JScrollBar origin=" + new Point(getX(), getY()) +
                 " size=" + getSize() + " value=" + _value +
                 " extent=" + _extent + " minimum=" + _minimum +
                 " maximum=" + _maximum);

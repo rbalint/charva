@@ -22,8 +22,9 @@ package charvax.swing;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
+
 import charva.awt.Toolkit;
-import charva.awt.event.KeyEvent;
 
 /**
  * A component that displays an integer value within a bounded interval.
@@ -128,7 +129,7 @@ public class JProgressBar
 
         Toolkit term = Toolkit.getDefaultToolkit();
 
-        int colorpair = getCursesColor();
+        int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
 
         int offset = ((_value - _minimum) * _width) / _maximum;
 
@@ -181,7 +182,7 @@ public class JProgressBar
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
-        System.err.println("JProgressBar origin=" + _origin +
+        System.err.println("JProgressBar origin=" + new Point(getX(), getY()) +
                 " size=" + getSize() + " value=" + _value +
                 " minimum=" + _minimum + " maximum=" + _maximum);
     }

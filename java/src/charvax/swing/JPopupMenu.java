@@ -19,11 +19,14 @@
 
 package charvax.swing;
 
-import charva.awt.Component;
+import java.awt.Component;
+import java.awt.KeyboardFocusManager;
+
 import charva.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import charva.awt.event.KeyEvent;
+import java.awt.event.KeyEvent;
 
+import java.util.Arrays;
 import java.util.Vector;
 
 /**
@@ -71,7 +74,7 @@ public class JPopupMenu
      * is a JSeparator, it returns null.
      */
     public JMenuItem getMenuItem(int index_) {
-        Object o = super._components.elementAt(index_);
+        Object o = super.getComponent(index_);
         if (o instanceof JMenuItem)
             return (JMenuItem) o;
         else
@@ -79,15 +82,15 @@ public class JPopupMenu
     }
 
     public JMenuItem getFirstMenuItem() {
-        for (int i = 0; i < super._components.size(); i++) {
-            if (_components.elementAt(i) instanceof JMenuItem)
-                return (JMenuItem) _components.elementAt(i);
+        for (int i = 0; i < super.getComponentCount(); i++) {
+            if (getComponent(i) instanceof JMenuItem)
+                return (JMenuItem) getComponent(i);
         }
         throw new RuntimeException("A JPopupMenu should contain at least one JMenuItem");
     }
 
     public int getComponentIndex(Component c) {
-        return super._components.indexOf(c);
+        return Arrays.asList(super.getComponents()).indexOf(c);
     }
 
     public void processKeyEvent(KeyEvent e) {
@@ -95,14 +98,14 @@ public class JPopupMenu
         _leftWasPressed = false;
         _rightWasPressed = false;
 
-        if (!_visible)
+        if (!isVisible())
             return;    // the popup has already been dismissed.
 
         int key = e.getKeyCode();
         Toolkit term = Toolkit.getDefaultToolkit();
 
         if (key == KeyEvent.VK_UP) {
-            super.previousFocus();
+            transferFocusBackward();
 
         } else if (key == KeyEvent.VK_DOWN) {
             super.nextFocus();
@@ -122,13 +125,15 @@ public class JPopupMenu
             hide();
 
         } else if (key == KeyEvent.VK_ENTER) {
-            /* Pressing ENTER sends an ActionEvent. The source of the
-             * event is the menu item, not the menu; this means that the
-             * client program has to add an ActionListener to each menu
-             * item. This is inconvenient, but it's the way that the Java
-             * Swing menus do it.
-             */
-            JMenuItem item = (JMenuItem) super.getCurrentFocus();
+			/*
+			 * Pressing ENTER sends an ActionEvent. The source of the event is
+			 * the menu item, not the menu; this means that the client program
+			 * has to add an ActionListener to each menu item. This is
+			 * inconvenient, but it's the way that the Java Swing menus do it.
+			 */
+			JMenuItem item = (JMenuItem) KeyboardFocusManager
+					.getCurrentKeyboardFocusManager().getFocusOwner();
+
             _activate(item);
             e.consume();
 
@@ -143,7 +148,7 @@ public class JPopupMenu
              * key.
              */
             char keyLower = Character.toLowerCase((char) key);
-            for (int i = 0; i < super._components.size(); i++) {
+            for (int i = 0; i < super.getComponentCount(); i++) {
                 JMenuItem item = getMenuItem(i);
                 if (item != null) {
                     if (item.getMnemonic() == -1)

@@ -23,6 +23,7 @@ case $1 in
     RUN_CLASS=tutorial.java.Tutorial
     ;;
   *)
+    TEST_OPTS="${TEST_OPTS} -Dawt.toolkit=charva.awt.Toolkit"
     RUN_CLASS=tutorial.charva.Tutorial
 esac
 
@@ -61,7 +62,7 @@ TEST_OPTS="${TEST_OPTS} -Dcharva.color=1"
 # Uncomment the following line if you want to debug the application
 # using an IDE such as IntelliJ IDEA (I believe that other IDEs such
 # as NetBeans and JBuilder have the same capability).
-#TEST_OPTS="${TEST_OPTS} -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"
+TEST_OPTS="${TEST_OPTS} -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"
 
 ${JAVA_HOME}/bin/java \
     ${TEST_OPTS} \

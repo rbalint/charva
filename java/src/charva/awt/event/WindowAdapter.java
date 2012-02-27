@@ -19,6 +19,8 @@
 
 package charva.awt.event;
 
+import java.awt.event.WindowEvent;
+
 /**
  * An adapter for easy instantiation of the WindowListener interface
  */

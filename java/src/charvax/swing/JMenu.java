@@ -21,9 +21,10 @@ package charvax.swing;
 
 import charva.awt.*;
 import java.awt.event.ActionEvent;
-import charva.awt.event.KeyEvent;
+import java.awt.event.KeyEvent;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.lang.ref.WeakReference;
@@ -132,7 +133,7 @@ public class JMenu
         Point origin = getLocationOnScreen();
 
         Toolkit term = Toolkit.getDefaultToolkit();
-        int colorpair = getCursesColor();
+        int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
 
         term.setCursor(origin);
 
@@ -191,7 +192,7 @@ public class JMenu
                 }
             });
         } else if (!isTopLevelMenu()) {
-            getAncestorWindow().hide();
+            charva.awt.Toolkit.getAncestorWindow(this).hide();
         }
     }
 
@@ -265,7 +266,9 @@ public class JMenu
             _popup.setLocation(p);
         }
         // On showing the popup menu, always give focus to the first JMenuItem in it.
-        _popup.setFocus(_popup.getFirstMenuItem());
+/* TODO may not be needed
+ *         _popup.setFocus(_popup.getFirstMenuItem());
+ */
 
         _popup.show();
     }
@@ -290,7 +293,7 @@ public class JMenu
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
-        System.err.println("JMenu origin=" + _origin + " text=" + getText());
+        System.err.println("JMenu origin=" + new Point(getX(), getY()) + " text=" + getText());
     }
 
     public String toString() {

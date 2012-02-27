@@ -19,7 +19,7 @@
 
 package charvax.swing;
 
-import charva.awt.Container;
+import java.awt.Container;
 
 import java.awt.Insets;
 import java.awt.Point;
@@ -111,10 +111,10 @@ public class JPasswordField
          * component's color-pair is different than that of the
          * parent container.
          */
-        int colorpair = getCursesColor();
+        int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
         Container parent = getParent();
         Toolkit term = Toolkit.getDefaultToolkit();
-        if (parent != null && colorpair != parent.getCursesColor())
+        if (parent != null && colorpair != Toolkit.getCursesColor(parent.getForeground(), parent.getBackground()))
             term.blankBox(origin, this.getSize(), colorpair);
 
         // Draw the border if there is one.
@@ -134,7 +134,7 @@ public class JPasswordField
          * UNDERLINE attribute.
          */
         int attrib = 0;
-        if (super._enabled)
+        if (isEnabled())
             attrib |= Toolkit.A_UNDERLINE;
 
         term.setCursor(origin);
@@ -178,7 +178,7 @@ public class JPasswordField
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
-        System.err.println("JPasswordField origin=" + _origin +
+        System.err.println("JPasswordField origin=" + new Point(getX(), getY()) +
                 " size=" + getSize() + " text=" + super._document);
     }
 

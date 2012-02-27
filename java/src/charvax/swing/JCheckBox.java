@@ -20,13 +20,15 @@
 package charvax.swing;
 
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 
 import charva.awt.*;
 import charva.awt.event.ItemEvent;
-import charva.awt.event.KeyEvent;
+import charva.awt.event.SyncEvent;
 
 
 /**
@@ -107,8 +109,8 @@ public class JCheckBox
         else
             valstring = "[ ] ";
 
-        int colorpair = getCursesColor();
-        int attribute = super._enabled ? Toolkit.A_BOLD : 0;
+        int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
+        int attribute = isEnabled() ? Toolkit.A_BOLD : 0;
         term.addString(valstring + super.getLabelString(), attribute, colorpair);
     }
 
@@ -130,7 +132,7 @@ public class JCheckBox
             	if ((ke_.getModifiers() & InputEvent.SHIFT_MASK) == 0) {
             		getParent().nextFocus();
             	} else {
-                    getParent().previousFocus();
+                    getParent().transferFocusBackward();
             	}
             	return;
 
@@ -152,7 +154,7 @@ public class JCheckBox
 
         draw();
         requestFocus();
-        super.requestSync();
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(new SyncEvent(this));
     }
 
     public void requestFocus() {
@@ -177,7 +179,7 @@ public class JCheckBox
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
-        System.err.println("JCheckBox origin=" + _origin +
+        System.err.println("JCheckBox origin=" + new Point(getX(), getY()) +
                 " size=" + getSize() + " label=" + super.getText());
     }
 

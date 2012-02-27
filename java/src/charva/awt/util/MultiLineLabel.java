@@ -22,8 +22,10 @@ package charva.awt.util;
 import charva.awt.*;
 import charva.awt.event.*;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -128,7 +130,7 @@ public class MultiLineLabel
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
-        System.err.println("MultiLineLabel origin=" + _origin +
+        System.err.println("MultiLineLabel origin=" + new Point(getX(), getY()) +
                 " size=" + getSize() + " label=" + _labeltext.elementAt(0));
     }
 

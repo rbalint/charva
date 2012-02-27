@@ -1,10 +1,16 @@
 package tutorial.charva;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 import charvax.swing.*;
 import charvax.swing.border.EmptyBorder;
@@ -35,7 +41,6 @@ class JTableTest
 
     JTableTest(Frame owner_) {
         super(owner_, "JTable in a JScrollPane");
-        _insets = new Insets(3, 3, 3, 3);
         Container contentPane = getContentPane();
 
         JPanel northpan = new JPanel();
@@ -52,6 +57,10 @@ class JTableTest
         contentPane.add(_okButton, BorderLayout.SOUTH);
 
         pack();
+    }
+
+    public Insets getInsets() {
+        return new Insets(3, 3, 3, 3);
     }
 
     public void actionPerformed(ActionEvent e_) {

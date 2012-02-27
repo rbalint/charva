@@ -22,7 +22,7 @@ package charvax.swing.border;
 import java.awt.Color;
 import java.awt.Insets;
 
-import charva.awt.Component;
+import java.awt.Component;
 import charva.awt.Toolkit;
 
 public class LineBorder

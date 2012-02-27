@@ -43,7 +43,10 @@ import java.awt.AWTEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.Insets;
 import java.awt.Point;
 import java.util.Enumeration;
@@ -118,8 +121,7 @@ public class JComboBox
                 _columns = str.length();
         }
 
-        if (super.isDisplayed())
-            super.repaint();
+        super.repaint();
     }
 
     /**
@@ -270,7 +272,7 @@ public class JComboBox
 
         Toolkit term = Toolkit.getDefaultToolkit();
 
-        int colorpair = getCursesColor();
+        int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
         term.setCursor(origin);
         String selectedItem = (String) _model.getSelectedItem();
         StringBuffer buf = new StringBuffer();
@@ -366,7 +368,7 @@ public class JComboBox
         	if ((ke_.getModifiers() & InputEvent.SHIFT_MASK) == 0) {
         		getParent().nextFocus();
         	} else {
-                getParent().previousFocus();
+                getParent().transferFocusBackward();
         	}
         	return;
         } else if (key == KeyEvent.VK_ENTER) {

@@ -19,8 +19,9 @@
 
 package charvax.swing;
 
-import charva.awt.EventQueue;
-import charva.awt.Component;
+import java.awt.Component;
+import java.awt.EventQueue;
+
 import charva.awt.Window;
 
 /**
@@ -43,7 +44,7 @@ public class SwingUtilities {
      * @return the first Window ancestor of c, or null if c is not contained inside a Window.
      */
     public static Window windowForComponent(Component c) {
-        return c.getAncestorWindow();
+        return charva.awt.Toolkit.getAncestorWindow(c);
     }
 
     /**

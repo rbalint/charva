@@ -21,7 +21,7 @@ package charvax.swing.border;
 
 import java.awt.Insets;
 
-import charva.awt.Component;
+import java.awt.Component;
 
 public class CompoundBorder
         implements Border {

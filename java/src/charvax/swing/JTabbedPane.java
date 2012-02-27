@@ -34,6 +34,9 @@ import charva.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Point;
@@ -55,8 +58,7 @@ public class JTabbedPane
      * Construct a JTabbedPane.
      */
     public JTabbedPane() {
-        _insets = new Insets(2, 1, 1, 1);
-        _layoutMgr = new BorderLayout();
+        setLayout( new BorderLayout());
     }
 
     /**
@@ -93,8 +95,9 @@ public class JTabbedPane
         TabButton tb = new TabButton(title_, component_, keylabel_);
         _tabComponents.add(component_);
         // arrange for our TabButton to be in the focus list...
-        _components.add(_tabs.size(), tb);
-        tb.setParent(this);
+        add(tb, _tabs.size());
+/* TODO maybe obsolete     
+ *       tb.setParent(this);*/
         _tabs.add(tb);
         _buttongroup.add(tb);
 
@@ -106,7 +109,7 @@ public class JTabbedPane
         /* If this component is already displayed, generate a PaintEvent
          * and post it onto the queue.
          */
-        else if (isDisplayed()) {
+        else {
             repaint();
         }
     }
@@ -179,7 +182,7 @@ public class JTabbedPane
     public Dimension minimumSize() {
 
         if (super.isValid())
-            return _minimumSize;
+            return minimumSize();
 
         /* Scan through the components in each tab and determine
          * the smallest rectangle that will enclose all of them.
@@ -210,11 +213,12 @@ public class JTabbedPane
 
         /* Take into account the border and the height of the tabs.
          */
-        _minimumSize = new Dimension(width + _insets.left + _insets.right,
-                height + _insets.top + _insets.bottom);
+        Insets insets = getInsets();
+        setMinimumSize(new Dimension(width + insets.left + insets.right,
+                height + insets.top + insets.bottom));
 
-        _isValid = true;
-        return _minimumSize;
+        validate();
+        return minimumSize();
     }
 
     public void draw() {
@@ -225,7 +229,7 @@ public class JTabbedPane
 
         Toolkit term = Toolkit.getDefaultToolkit();
 
-        int colorpair = getCursesColor();
+        int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
 
         /* Draw the enclosing frame
          */
@@ -257,7 +261,7 @@ public class JTabbedPane
              * false; it doesn't make sense to make a component invisible
              * in a JTabbedPane.
              */
-            component.draw();
+            component.repaint();
         }
     }
 
@@ -286,17 +290,17 @@ public class JTabbedPane
                     // we NEED to revalidate selection
                     setSelectedIndex(0);
                 } else {
-                    this.setFocus(null);
+/* TODO disabled for now
+ *                     this.setFocus(null);
+ */
                     super.validate();
                 }
             } else {
                 setSelectedIndex(index - 1);
             }
         }
-
-        if (isDisplayed()) {
-            repaint();
-        }
+        
+        repaint();
     }
 
     /**
@@ -310,6 +314,10 @@ public class JTabbedPane
             }
         }
         return (-1);
+    }
+
+    public Insets getInsets() {
+        return new Insets(2, 1, 1, 1);
     }
 
     /**
@@ -351,8 +359,8 @@ public class JTabbedPane
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
-        System.err.print("JTabbedPane origin=" + _origin +
-                " size=" + _size +
+        System.err.print("JTabbedPane origin=" + new Point(getX(), getY()) +
+                " size=" + getSize() +
                 " _selectedIndex=" + _selectedIndex +
                 " tabtitles =");
         Enumeration e = _tabs.elements();
@@ -361,7 +369,6 @@ public class JTabbedPane
             System.err.print(" " + title + " ");
         }
         System.err.println("");
-        super.debug(level_ + 1);
     }
 
     //====================================================================
@@ -416,7 +423,7 @@ public class JTabbedPane
 
             term.setCursor(origin);
 
-            int colorpair = getCursesColor();
+            int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
             term.addChar(Toolkit.ACS_ULCORNER, 0, colorpair);
             term.addChar(' ', 0, colorpair);
             term.addString(getLabelString(), isEnabled() ? Toolkit.A_BOLD : 0,

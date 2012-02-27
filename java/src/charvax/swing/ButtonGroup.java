@@ -31,7 +31,7 @@
 
 package charvax.swing;
 
-import charva.awt.Component;
+import java.awt.Component;
 import charva.awt.event.ItemEvent;
 import charva.awt.event.ItemListener;
 

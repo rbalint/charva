@@ -19,14 +19,18 @@
 
 package charvax.swing;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Point;
 
 import charva.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import charva.awt.event.KeyEvent;
-import charva.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import charvax.swing.border.EmptyBorder;
 
 /**

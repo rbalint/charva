@@ -4,12 +4,13 @@ import charvax.swing.*;
 import charvax.swing.border.TitledBorder;
 import charvax.swing.border.LineBorder;
 import java.awt.event.ActionListener;
-import charva.awt.event.KeyEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import charva.awt.Frame;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
-import charva.awt.Container;
-import charva.awt.BorderLayout;
+import java.awt.Container;
 
 /**
  * This class is based on the MiscellaneousLayoutTest but it

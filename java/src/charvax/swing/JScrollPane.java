@@ -19,6 +19,8 @@
 
 package charvax.swing;
 
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Point;
@@ -64,7 +66,9 @@ public class JScrollPane
 
         _childViewport.setView(component_);
         add(_childViewport);
-        _childViewport.setParent(this);
+/*  TODO maybe obsolete
+ *         _childViewport.setParent(this);
+ */
 
         /* This will cause a ClassCastException if the component does
          * not implement the Scrollable interface.
@@ -84,7 +88,9 @@ public class JScrollPane
             _headerViewport = new JViewport();
             _headerViewport.setView(header);
             add(_headerViewport);
-            _headerViewport.setParent(this);
+/* TODO maybe obsolete
+ *             _headerViewport.setParent(this);
+ */
 
             _childViewport.setLocation(new Point(0, 1));
             _childViewport.setViewPosition(new Point(0, -1));
@@ -268,7 +274,7 @@ public class JScrollPane
             borderInsets = new Insets(0, 0, 0, 0);
 
         Toolkit term = Toolkit.getDefaultToolkit();
-        int colorpair = getCursesColor();
+        int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
 
         // this doesn't work because minimumSize() may be bigger than the available viewport.
         // (bugfix by Balazs Poka)
@@ -358,7 +364,7 @@ public class JScrollPane
 
         // Draw the child viewport(s) by calling the draw() method
         // of the Container class.
-        super.draw();
+        super.repaint();
     }
 
     /**
@@ -387,13 +393,12 @@ public class JScrollPane
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
-        System.err.println("JScrollPane origin=" + _origin +
+        System.err.println("JScrollPane origin=" + new Point(getX(), getY()) +
                 " size=" + getSize());
-        super.debug(level_ + 1);
     }
 
     public String toString() {
-        return ("JScrollPane origin=" + _origin + " size=" + getSize());
+        return ("JScrollPane origin=" + new Point(getX(), getY()) + " size=" + getSize());
     }
 
     /**

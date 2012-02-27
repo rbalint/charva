@@ -29,7 +29,7 @@
 
 package charvax.swing;
 
-import charva.awt.Container;
+import java.awt.Container;
 
 /**
  * A convenience container that uses a BoxLayout object as its LayoutManager.

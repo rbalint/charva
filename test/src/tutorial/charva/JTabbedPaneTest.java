@@ -4,11 +4,15 @@ import charvax.swing.*;
 import charvax.swing.border.EmptyBorder;
 import charvax.swing.border.TitledBorder;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.Insets;
+import java.awt.Container;
 import java.awt.event.ActionListener;
-import charva.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import java.awt.event.ActionEvent;
-import charva.awt.event.KeyEvent;
 import charva.awt.*;
 
 /**
@@ -20,7 +24,6 @@ class JTabbedPaneTest
 
     JTabbedPaneTest(Frame owner_) {
         super(owner_, "JTabbedPane Test");
-        _insets = new Insets(2, 3, 2, 3);
         Container contentPane = getContentPane();
 
         JPanel toppan = new JPanel();
@@ -45,6 +48,10 @@ class JTabbedPaneTest
         contentPane.add(_okButton, BorderLayout.SOUTH);
 
         pack();
+    }
+
+    public Insets getInsets() {
+        return new Insets(2, 3, 2, 3);
     }
 
     public void actionPerformed(ActionEvent e_) {

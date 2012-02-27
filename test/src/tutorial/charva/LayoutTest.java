@@ -3,11 +3,12 @@ package tutorial.charva;
 import charvax.swing.*;
 import charvax.swing.border.TitledBorder;
 import java.awt.event.ActionListener;
-import charva.awt.event.KeyEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import charva.awt.Frame;
-import charva.awt.Container;
-import charva.awt.BorderLayout;
+
+import java.awt.BorderLayout;
+import java.awt.Container;
 
 /**
  * This class demonstrates how to use the BorderLayout (which is

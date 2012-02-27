@@ -23,9 +23,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Insets;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 
 import charva.awt.*;
-import charva.awt.event.KeyEvent;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -57,9 +57,11 @@ public class JLabel
     public JLabel(String text_, int align_) {
         _labeltext = text_;
         _width = text_.length();
+/* TODO dropped with charva's implementation of Component
+ * will work again when dropping JLabel, too
         switch (align_) {
             case SwingConstants.LEFT:
-                _alignmentX = LEFT_ALIGNMENT;
+                setAlignmentX = LEFT_ALIGNMENT;
                 break;
             case SwingConstants.CENTER:
                 _alignmentX = CENTER_ALIGNMENT;
@@ -67,7 +69,7 @@ public class JLabel
             case SwingConstants.RIGHT:
                 _alignmentX = RIGHT_ALIGNMENT;
                 break;
-        }
+        } */
     }
 
     public void setLength(int length_) {
@@ -101,7 +103,7 @@ public class JLabel
         } else if (_width < textlength)
             buf.setLength(_width);	// truncate
 
-        int colorpair = getCursesColor();
+        int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
         int attribute = (getFont().getStyle() == Font.BOLD) ? Toolkit.A_BOLD : Toolkit.A_NORMAL;
         term.addString(buf.toString(), attribute, colorpair);
     }
@@ -166,7 +168,7 @@ public class JLabel
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
-        System.err.println("JLabel origin=" + _origin +
+        System.err.println("JLabel origin=" + new Point(getX(), getY()) +
                 " size=" + getSize() + " label=" + _labeltext);
     }
 

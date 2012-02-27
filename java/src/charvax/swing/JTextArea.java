@@ -20,16 +20,18 @@
 package charvax.swing;
 
 import charva.awt.*;
-import charva.awt.event.KeyEvent;
-import charva.awt.event.MouseEvent;
 import charva.awt.event.ScrollEvent;
 import charva.awt.event.ScrollListener;
+import charva.awt.event.SyncEvent;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -102,7 +104,7 @@ public class JTextArea
     }
 
     public void setBounds(Point topleft_, Dimension size_) {
-        super.setBounds(topleft_, size_);
+        super.setBounds(new Rectangle(topleft_, size_));
         setColumns( size_.width );
         setRows( size_.height );
     }
@@ -296,7 +298,7 @@ public class JTextArea
         	if ((ke_.getModifiers() & InputEvent.SHIFT_MASK) == 0) {
         		getParent().nextFocus();
         	} else {
-                getParent().previousFocus();
+                getParent().transferFocusBackward();
         	}
         return;
         } else if (key == KeyEvent.VK_LEFT && caret > 0) {
@@ -381,7 +383,7 @@ public class JTextArea
         if (!(getParent() instanceof JViewport)) {
             draw();
             requestFocus();
-            super.requestSync();
+            Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(new SyncEvent(this));
         }
     }
 
@@ -420,7 +422,7 @@ public class JTextArea
     }
 
     /**
-     * Implements the abstract method in charva.awt.Component.
+     * Implements the abstract method in java.awt.Component.
      */
     public void draw() {
         Point tempCaret = null;
@@ -431,7 +433,7 @@ public class JTextArea
         Point origin = getLocationOnScreen();
 
         Toolkit term = Toolkit.getDefaultToolkit();
-        int colorpair = getCursesColor();
+        int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
 
         /* Start by blanking out the text area
          */
@@ -612,7 +614,7 @@ public class JTextArea
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
-        System.err.println("JTextArea origin=" + _origin +
+        System.err.println("JTextArea origin=" + new Point(getX(), getY()) +
                 " size=" + getSize());
     }
 

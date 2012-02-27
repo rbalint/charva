@@ -31,19 +31,84 @@
 package charva.awt;
 
 import java.awt.AWTEvent;
-import charva.awt.event.KeyEvent;
-import charva.awt.event.MouseEvent;
-import charva.awt.event.FocusEvent;
 
+import java.awt.Button;
+import java.awt.Canvas;
+import java.awt.Checkbox;
+import java.awt.CheckboxMenuItem;
+import java.awt.Choice;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Desktop;
+import java.awt.Dialog;
 import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.FileDialog;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Frame;
+import java.awt.HeadlessException;
+import java.awt.Image;
+import java.awt.KeyboardFocusManager;
+import java.awt.Label;
+import java.awt.List;
+import java.awt.Menu;
+import java.awt.MenuBar;
+import java.awt.MenuItem;
+import java.awt.Panel;
 import java.awt.Point;
+import java.awt.PopupMenu;
+import java.awt.PrintJob;
 import java.awt.Rectangle;
+import java.awt.ScrollPane;
+import java.awt.Scrollbar;
+import java.awt.TextArea;
+import java.awt.TextField;
+import java.awt.Dialog.ModalExclusionType;
+import java.awt.Dialog.ModalityType;
+import java.awt.datatransfer.Clipboard;
+import java.awt.dnd.DragGestureEvent;
+import java.awt.dnd.InvalidDnDOperationException;
+import java.awt.dnd.peer.DragSourceContextPeer;
+import java.awt.event.FocusEvent;
 import java.awt.event.InputEvent;
 import java.io.File;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.font.TextAttribute;
+import java.awt.im.InputMethodHighlight;
+import java.awt.image.ColorModel;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.awt.peer.ButtonPeer;
+import java.awt.peer.CanvasPeer;
+import java.awt.peer.CheckboxMenuItemPeer;
+import java.awt.peer.CheckboxPeer;
+import java.awt.peer.ChoicePeer;
+import java.awt.peer.DesktopPeer;
+import java.awt.peer.DialogPeer;
+import java.awt.peer.FileDialogPeer;
+import java.awt.peer.FontPeer;
+import java.awt.peer.FramePeer;
+import java.awt.peer.LabelPeer;
+import java.awt.peer.ListPeer;
+import java.awt.peer.MenuBarPeer;
+import java.awt.peer.MenuItemPeer;
+import java.awt.peer.MenuPeer;
+import java.awt.peer.PanelPeer;
+import java.awt.peer.PopupMenuPeer;
+import java.awt.peer.ScrollPanePeer;
+import java.awt.peer.ScrollbarPeer;
+import java.awt.peer.TextAreaPeer;
+import java.awt.peer.TextFieldPeer;
+import java.awt.peer.WindowPeer;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.net.URL;
+import java.util.Map;
+import java.util.Properties;
 import java.util.Vector;
 
 import org.apache.commons.logging.Log;
@@ -64,7 +129,7 @@ import org.apache.commons.logging.LogFactory;
  * public FocusEvent getLastFocusEvent()
  * protected void setLastFocusEvent(FocusEvent ev_ )
  */
-public class Toolkit {
+public class Toolkit extends java.awt.Toolkit {
 
     private static final Log LOG = LogFactory.getLog(Toolkit.class);
 
@@ -73,7 +138,13 @@ public class Toolkit {
      * making this an example of the Singleton pattern.
      */
     public Toolkit() {
-        _evtQueue = EventQueue.getInstance();
+        try { // FIXME Don't commit!
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		_evtQueue = new EventQueue();
 
         /* If the terminal is capable of handling colors, initialize the
          * color capability and the first color-pair (the default
@@ -132,7 +203,7 @@ public class Toolkit {
         return _instance;
     }
 
-    public EventQueue getSystemEventQueue() {
+    protected EventQueue getSystemEventQueueImpl() {
         return _evtQueue;
     }
 
@@ -175,20 +246,8 @@ public class Toolkit {
      *             key as defined in the "VK_*" values.
      */
     public void fireKeystroke(int key_) {
-        Component currentFocus;
-
-        synchronized (_windowList) {
-
-            Window sourcewin = getTopWindow();
-
-            /* Get the (non-Container) component within the source window
-             * that generated the keystroke.
-             */
-            currentFocus = sourcewin.getCurrentFocus();
-            while (currentFocus instanceof Container) {
-                currentFocus = ((Container) currentFocus).getCurrentFocus();
-            }
-        }
+        Component currentFocus =
+                KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
 
         fireKeystroke(key_, currentFocus);
     }
@@ -988,6 +1047,31 @@ public class Toolkit {
         }
     }
 
+/**
+ * Get the Window that contains this component.
+ * TODO problably obsolete, moved here from deleted Component impl.
+ * @param comp component 
+ * @return
+ */
+    
+    public static final Window getAncestorWindow(Component comp) {
+		Container ancestor;
+		Container nextancestor;
+
+		if (comp instanceof Window)
+			return (Window) comp;
+
+		for (ancestor = comp.getParent(); !(ancestor instanceof Window); ancestor = nextancestor) {
+
+			if (ancestor == null)
+				return null;
+
+			if ((nextancestor = ancestor.getParent()) == null)
+				return null;
+		}
+		return (Window) ancestor;
+	}
+
     //====================================================================
     // INSTANCE VARIABLES
 
@@ -1134,4 +1218,261 @@ public class Toolkit {
     public static final int BUTTON3_RELEASED = 010000;
     public static final int BUTTON3_PRESSED = 020000;
     public static final int BUTTON3_CLICKED = 040000;
+
+	@Override
+	public int checkImage(Image image, int width, int height,
+			ImageObserver observer) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	protected ButtonPeer createButton(Button target) throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected CanvasPeer createCanvas(Canvas target) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected CheckboxPeer createCheckbox(Checkbox target)
+			throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected CheckboxMenuItemPeer createCheckboxMenuItem(
+			CheckboxMenuItem target) throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected ChoicePeer createChoice(Choice target) throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected DesktopPeer createDesktopPeer(Desktop target)
+			throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected DialogPeer createDialog(Dialog target) throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DragSourceContextPeer createDragSourceContextPeer(
+			DragGestureEvent dge) throws InvalidDnDOperationException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected FileDialogPeer createFileDialog(FileDialog target)
+			throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected FramePeer createFrame(Frame target) throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Image createImage(String filename) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Image createImage(URL url) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Image createImage(ImageProducer producer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Image createImage(byte[] imagedata, int imageoffset, int imagelength) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected LabelPeer createLabel(Label target) throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected ListPeer createList(List target) throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected MenuPeer createMenu(Menu target) throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected MenuBarPeer createMenuBar(MenuBar target)
+			throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected MenuItemPeer createMenuItem(MenuItem target)
+			throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected PanelPeer createPanel(Panel target) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected PopupMenuPeer createPopupMenu(PopupMenu target)
+			throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected ScrollPanePeer createScrollPane(ScrollPane target)
+			throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected ScrollbarPeer createScrollbar(Scrollbar target)
+			throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected TextAreaPeer createTextArea(TextArea target)
+			throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected TextFieldPeer createTextField(TextField target)
+			throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected WindowPeer createWindow(java.awt.Window target)
+			throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ColorModel getColorModel() throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String[] getFontList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public FontMetrics getFontMetrics(Font font) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected FontPeer getFontPeer(String name, int style) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Image getImage(String filename) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Image getImage(URL url) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PrintJob getPrintJob(Frame frame, String jobtitle, Properties props) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getScreenResolution() throws HeadlessException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Clipboard getSystemClipboard() throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isModalExclusionTypeSupported(
+			ModalExclusionType modalExclusionType) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isModalityTypeSupported(ModalityType modalityType) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Map<TextAttribute, ?> mapInputMethodHighlight(
+			InputMethodHighlight highlight) throws HeadlessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean prepareImage(Image image, int width, int height,
+			ImageObserver observer) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

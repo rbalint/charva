@@ -6,8 +6,11 @@ import charvax.swing.border.*;
 import charva.awt.event.*;
 import charvax.swing.table.*;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.util.*;
 import java.awt.event.ActionEvent;

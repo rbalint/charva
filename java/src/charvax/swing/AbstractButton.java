@@ -19,15 +19,18 @@
 
 package charvax.swing;
 
-import charva.awt.EventQueue;
 import charva.awt.ItemSelectable;
 import charva.awt.Toolkit;
 import charva.awt.Window;
 import charva.awt.event.*;
 
 import java.awt.AWTEvent;
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -79,7 +82,7 @@ public abstract class AbstractButton
      */
     public void setMnemonic(int mnemonic_) {
         _mnemonic = mnemonic_;
-        Window ancestor = super.getAncestorWindow();
+        Window ancestor = charva.awt.Toolkit.getAncestorWindow(this);
         if (ancestor != null) {
             ancestor.addKeyListener(this);
         }
@@ -144,7 +147,9 @@ public abstract class AbstractButton
         // This is required because our parent window will send the KeyEvent
         // to the Container containing the component with the current focus.
 //	super.requestFocus();
-        getParent().setFocus(this);	// Mustn't generate FocusEvents (?)
+ /* TODO disabled for now
+  *        getParent().setFocus(this);	// Mustn't generate FocusEvents (?)
+  */
 
         Toolkit.getDefaultToolkit().fireKeystroke(KeyEvent.VK_ENTER, this);
     }
@@ -162,8 +167,7 @@ public abstract class AbstractButton
         }
 
         _selected = state_;
-        if (isDisplayed())
-            super.repaint();
+        super.repaint();
     }
 
     /**

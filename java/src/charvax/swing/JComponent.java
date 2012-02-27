@@ -19,7 +19,7 @@
 
 package charvax.swing;
 
-import charva.awt.Component;
+import java.awt.Component;
 
 import java.awt.Insets;
 import java.awt.Point;
@@ -60,13 +60,13 @@ public abstract class JComponent
     public void draw() {
         Point origin = getLocationOnScreen();
 
-//	int colorpair = getCursesColor();
+//	int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
 
         /* Blank out the area of this component, but only if this
          * component's color-pair is different than that of the
          * parent container.
         Container parent = getParent();
-        if (parent != null && colorpair != parent.getCursesColor())
+        if (parent != null && colorpair != parent.Toolkit.getCursesColor(getForeground(), getBackground()))
             Toolkit.getDefaultToolkit().blankBox(origin, this.getSize(), colorpair);
          */
 

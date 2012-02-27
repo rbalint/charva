@@ -23,7 +23,13 @@ import charva.awt.*;
 import charvax.swing.*;
 import charva.awt.event.*;
 
+import java.awt.Component;
+import java.awt.FlowLayout;
 import java.awt.Point;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.TimeZone;
 import java.util.Calendar;
 import java.util.GregorianCalendar;

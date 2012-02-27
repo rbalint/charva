@@ -21,7 +21,7 @@ package charvax.swing.border;
 
 import java.awt.Insets;
 
-import charva.awt.Component;
+import java.awt.Component;
 
 /**
  * Interface describing an object capable of rendering a border

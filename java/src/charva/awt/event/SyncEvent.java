@@ -20,6 +20,8 @@
 package charva.awt.event;
 
 import java.awt.AWTEvent;
+import java.awt.Component;
+
 import charva.awt.*;
 
 /**

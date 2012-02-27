@@ -19,7 +19,10 @@
 
 package charvax.swing;
 
+import java.awt.FlowLayout;
 import java.awt.Insets;
+import java.awt.Container;
+import java.awt.LayoutManager;
 import java.awt.Point;
 
 import charva.awt.*;
@@ -35,7 +38,8 @@ public class JPanel
      * The default constructor sets the layout manager to FlowLayout.
      */
     public JPanel() {
-        _layoutMgr = new FlowLayout();
+        super();
+    	setLayout(new FlowLayout());
     }
 
     /**
@@ -43,7 +47,8 @@ public class JPanel
      * the default FlowLayout.
      */
     public JPanel(LayoutManager layout_) {
-        _layoutMgr = layout_;
+        super();
+        setLayout(layout_);
     }
 
     public void setBorder(Border border_) {
@@ -72,31 +77,30 @@ public class JPanel
          * component's color-pair is different than that of the
          * parent container.
          */
-        int colorpair = getCursesColor();
+        int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
 //	Container parent = getParent();
-//	if (parent != null && colorpair != parent.getCursesColor())
-        Toolkit.getDefaultToolkit().blankBox(origin, _size, colorpair);
+//	if (parent != null && colorpair != parent.Toolkit.getCursesColor(getForeground(), getBackground()))
+        Toolkit.getDefaultToolkit().blankBox(origin, getSize(), colorpair);
 
         if (_border != null) {
             _border.paintBorder(this, 0,
                     origin.x, origin.y,
-                    _size.width, _size.height);
+                    getWidth(), getHeight());
         }
 
         /* Draw all the components contained by this container.
          */
-        super.draw();
+        super.repaint();
     }
 
     public String toString() {
-        return "JPanel name=[" + getName() + "] origin=" + _origin + " size=" + _size;
+        return "JPanel name=[" + getName() + "] origin=" + new Point(getX(), getY()) + " size=" + getSize();
     }
 
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
         System.err.println(this.toString());
-        super.debug(level_ + 1);
     }
 
     //====================================================================

@@ -19,7 +19,10 @@
 
 package charvax.swing;
 
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.Rectangle;
 
 import charva.awt.*;
@@ -86,6 +89,6 @@ public class JDialog
     }
 
     public void debug(int level_) {
-        LOG.debug("JDialog origin=" + _origin + " size=" + _size);
+        LOG.debug("JDialog origin=" + new Point(getX(), getY()) + " size=" + getSize());
     }
 }

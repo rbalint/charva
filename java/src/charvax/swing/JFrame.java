@@ -19,7 +19,9 @@
 
 package charvax.swing;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Insets;
 
@@ -44,18 +46,23 @@ public class JFrame
         return _contentPane;
     }
 
+    public Insets getInsets() {
+        return new Insets(2, 1, 1, 1);
+    }
+
     /**
      * Sets the menubar for this frame.
      */
     public void setJMenuBar(JMenuBar menubar_) {
         _menubar = menubar_;
-        super._insets = new Insets(2, 1, 1, 1);
 
         /* Insert the menubar as the first component so that it will be
          * the first to get the keyboard focus.
          */
-        super._components.insertElementAt(menubar_, 0);
-        menubar_.setParent(this);
+        super.add(menubar_, 0);
+/* TODO maybe obsolete
+ *         menubar_.setParent(this);
+ */
         menubar_.doLayout();
     }
 
@@ -68,8 +75,9 @@ public class JFrame
             return minsize;
 
         Dimension menubarSize = _menubar.minimumSize();
-        if (menubarSize.width + _insets.left + _insets.right > minsize.width)
-            minsize.width = menubarSize.width + _insets.left + _insets.right;
+        Insets insets = getInsets();
+        if (menubarSize.width + insets.left + insets.right > minsize.width)
+            minsize.width = menubarSize.width + insets.left + insets.right;
 
         if (menubarSize.height > minsize.height)
             minsize.height = menubarSize.height;

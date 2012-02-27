@@ -19,8 +19,11 @@
 
 package charvax.swing;
 
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Insets;
+import java.awt.LayoutManager;
 
 import charva.awt.*;
 
@@ -158,4 +161,33 @@ public class BoxLayout
 
     public static final int X_AXIS = 100;
     public static final int Y_AXIS = 101;
+	@Override
+	public void addLayoutComponent(String name, Component comp) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void layoutContainer(Container parent) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Dimension minimumLayoutSize(Container parent) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Dimension preferredLayoutSize(Container parent) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void removeLayoutComponent(Component comp) {
+		// TODO Auto-generated method stub
+		
+	}
 }

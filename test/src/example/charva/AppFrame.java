@@ -3,7 +3,11 @@ package example.charva;
 import charvax.swing.*;
 import charva.awt.*;
 import charva.awt.event.*;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 
 /**
@@ -70,7 +74,7 @@ public class AppFrame extends JFrame {
             }
         });
         this.setTitle("CHARVA Example");
-        this.addKeyListener(new charva.awt.event.KeyAdapter() {
+        this.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 this_keyPressed(e);
             }

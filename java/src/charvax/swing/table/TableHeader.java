@@ -19,7 +19,7 @@
 
 package charvax.swing.table;
 
-import charva.awt.Component;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
 import charva.awt.Toolkit;
@@ -59,7 +59,7 @@ public class TableHeader
 
         Toolkit term = Toolkit.getDefaultToolkit();
         int columns = _model.getColumnCount();
-        int colorpair = getCursesColor();
+        int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
 
         /* Start by blanking out the table area and drawing the box
          * around the table.
@@ -117,7 +117,7 @@ public class TableHeader
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
-        System.err.println("TableHeader origin=" + _origin +
+        System.err.println("TableHeader origin=" + new Point(getX(), getY()) +
                 " size=" + getSize());
     }
 

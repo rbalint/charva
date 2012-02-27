@@ -28,9 +28,14 @@ import charvax.swing.event.TableModelListener;
 import charvax.swing.table.DefaultTableModel;
 import charvax.swing.table.TableModel;
 
+import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.Point;
 import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -200,7 +205,7 @@ public class JTable
         Toolkit term = Toolkit.getDefaultToolkit();
         int rows = _model.getRowCount();
         int columns = _model.getColumnCount();
-        int colorpair = getCursesColor();
+        int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
 
         /* Start by blanking out the table area and drawing the box
          * around the table.
@@ -293,7 +298,7 @@ public class JTable
         	if ((ke_.getModifiers() & InputEvent.SHIFT_MASK) == 0) {
         		getParent().nextFocus();
         	} else {
-                getParent().previousFocus();
+                getParent().transferFocusBackward();
         	}
             return;
         }
@@ -412,7 +417,7 @@ public class JTable
         if (!(getParent() instanceof JViewport)) {
             draw();
             requestFocus();
-            super.requestSync();
+            Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(new SyncEvent(this));
         }
     }
 
@@ -692,7 +697,7 @@ public class JTable
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
-        System.err.println("JTable origin=" + _origin +
+        System.err.println("JTable origin=" + new Point(getX(), getY()) +
                 " size=" + getSize());
     }
 
@@ -780,4 +785,16 @@ public class JTable
 
     protected ListSelectionModel _columnSelectionModel =
             new DefaultListSelectionModel();
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }

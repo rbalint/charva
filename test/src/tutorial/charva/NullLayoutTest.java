@@ -5,7 +5,7 @@ import charvax.swing.border.TitledBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import charva.awt.Frame;
-import charva.awt.Container;
+import java.awt.Container;
 
 /**
  * This class demonstrates how to lay out components manually,

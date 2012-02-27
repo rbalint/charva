@@ -19,12 +19,15 @@
 
 package charvax.swing;
 
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.KeyboardFocusManager;
 import java.awt.Point;
 import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 
 import charva.awt.*;
-import charva.awt.event.KeyEvent;
 
 
 /**
@@ -40,7 +43,7 @@ public class JMenuBar
         /* The menubar is always offset from the origin of its parent
          * JFrame by (1, 1).
          */
-        super._origin = new Point(1, 1);
+        super.setLocation(1, 1);
     }
 
     /**
@@ -92,7 +95,7 @@ public class JMenuBar
 
         Toolkit term = Toolkit.getDefaultToolkit();
 
-        int colorpair = getCursesColor();
+        int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
 
         /* Build a horizontal line of spaces extending across the top
          * of the frame.
@@ -108,7 +111,7 @@ public class JMenuBar
         int x = 0;
         for (int i = 0; i < menus.length; i++) {
             menus[i].setLocation(x, 0);
-            menus[i].draw();
+            menus[i].repaint();
             x += menus[i].getWidth();
         }
     }
@@ -125,12 +128,13 @@ public class JMenuBar
         	if ((ke_.getModifiers() & InputEvent.SHIFT_MASK) == 0) {
         		getParent().nextFocus();
         	} else {
-                getParent().previousFocus();
+                getParent().transferFocusBackward();
         	}
             ke_.consume();
             return;
         } else if (key == KeyEvent.VK_RIGHT) {
-            Component currentFocus = super.getCurrentFocus();
+            Component currentFocus = KeyboardFocusManager
+			.getCurrentKeyboardFocusManager().getFocusOwner();
             int menuCount = getMenuCount();
             int i = 0;
             for (i = 0; i < menuCount; i++) {
@@ -144,7 +148,8 @@ public class JMenuBar
             getMenu(i).requestFocus();
             ke_.consume();
         } else if (key == KeyEvent.VK_LEFT) {
-            Component currentFocus = super.getCurrentFocus();
+            Component currentFocus = KeyboardFocusManager
+			.getCurrentKeyboardFocusManager().getFocusOwner();
             int menuCount = getMenuCount();
             int i = 0;
             for (i = 0; i < menuCount; i++) {
@@ -163,7 +168,7 @@ public class JMenuBar
              * key.
              */
             char keyLower = Character.toLowerCase((char) key);
-            for (int i = 0; i < super._components.size(); i++) {
+            for (int i = 0; i < super.getComponentCount(); i++) {
                 JMenu menu = getMenu(i);
                 if (menu != null) {
                     if (menu.getMnemonic() == -1)

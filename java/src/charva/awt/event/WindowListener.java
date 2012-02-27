@@ -19,6 +19,7 @@
 
 package charva.awt.event;
 
+import java.awt.event.WindowEvent;
 import java.util.EventListener;
 
 /**

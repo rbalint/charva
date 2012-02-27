@@ -19,6 +19,8 @@
 
 package charvax.swing;
 
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -72,7 +74,7 @@ public class JViewport
         Point origin = getLocationOnScreen();
 
         term.setClipRect(new Rectangle(origin, getExtentSize()));
-        _child.draw();
+        _child.repaint();
         term.resetClipRect();
     }
 
@@ -124,9 +126,8 @@ public class JViewport
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
-        System.err.println("Viewport origin=" + _origin +
+        System.err.println("Viewport origin=" + new Point(getX(), getY()) +
                 " size=" + getSize());
-        super.debug(level_ + 1);
     }
 
     //====================================================================

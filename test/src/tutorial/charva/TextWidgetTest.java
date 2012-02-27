@@ -3,6 +3,12 @@ package tutorial.charva;
 import charvax.swing.*;
 import charvax.swing.border.TitledBorder;
 import charvax.swing.border.EmptyBorder;
+
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import charva.awt.event.ItemListener;

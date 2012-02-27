@@ -19,6 +19,8 @@
 
 package charvax.swing;
 
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Point;
@@ -94,7 +96,7 @@ public class JSeparator
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
-        System.err.println("JSeparator origin=" + _origin);
+        System.err.println("JSeparator origin=" + new Point(getX(), getY()));
     }
 
     //====================================================================

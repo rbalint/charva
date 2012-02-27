@@ -27,6 +27,8 @@ import java.awt.AWTEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Insets;
@@ -113,7 +115,7 @@ public class JTextField
     }
 
     public void setBounds(Point topleft_, Dimension size_) {
-        super.setBounds(topleft_, size_);
+        super.setBounds(new Rectangle(topleft_, size_));
         setColumns(size_.width);
     }
 
@@ -195,7 +197,7 @@ public class JTextField
          * UNDERLINE attribute.
          */
         int attrib = 0;
-        if (super._enabled)
+        if (isEnabled())
             attrib |= Toolkit.A_UNDERLINE;
 
         if (_bold)
@@ -209,7 +211,7 @@ public class JTextField
 
         Toolkit term = Toolkit.getDefaultToolkit();
 
-        int colorpair = getCursesColor();
+        int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
 
         term.setCursor(origin);
         term.addString(_padding, attrib, colorpair);
@@ -247,7 +249,7 @@ public class JTextField
 			if ((ke_.getModifiers() & InputEvent.SHIFT_MASK) == 0) {
 				getParent().nextFocus();
 			} else {
-				getParent().previousFocus();
+				getParent().transferFocusBackward();
 			}
 			return;
 		}
@@ -310,7 +312,7 @@ public class JTextField
             }
         }
         draw();
-        super.requestSync();
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(new SyncEvent(this));
     }
 
     /**
@@ -428,7 +430,7 @@ public class JTextField
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
-        System.err.println("JTextField origin=" + _origin +
+        System.err.println("JTextField origin=" + new Point(getX(), getY()) +
                 " size=" + getSize() + " text=" + super._document);
     }
 

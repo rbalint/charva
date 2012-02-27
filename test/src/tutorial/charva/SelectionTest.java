@@ -11,8 +11,9 @@ import java.awt.event.ActionEvent;
 import charva.awt.event.ItemListener;
 import charva.awt.event.ItemEvent;
 import charva.awt.Frame;
-import charva.awt.Container;
-import charva.awt.BorderLayout;
+
+import java.awt.BorderLayout;
+import java.awt.Container;
 
 /**
  * This class demonstrates how to use the JComboBox and

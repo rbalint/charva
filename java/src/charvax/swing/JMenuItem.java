@@ -63,7 +63,7 @@ public class JMenuItem
         Point origin = getLocationOnScreen();
         Toolkit term = Toolkit.getDefaultToolkit();
         term.setCursor(origin);
-        int colorpair = getCursesColor();
+        int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
 
         int attribute;
         if (!super.isEnabled()) {
@@ -121,7 +121,7 @@ public class JMenuItem
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
-        System.err.println("JMenuItem origin=" + _origin +
+        System.err.println("JMenuItem origin=" + new Point(getX(), getY()) +
                 " size=" + _size);
     }
 

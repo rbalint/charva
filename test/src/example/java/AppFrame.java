@@ -9,7 +9,7 @@ import java.awt.event.*;
  * Title:        GUI Example
  * Description:  An example to demonstrate the portability of the Charva library.
  * Copyright:    Copyright (c) 2001
- * Company:      Pitman Computer Consulting
+ * Company:      
  * @author
  * @version 1.0
  */

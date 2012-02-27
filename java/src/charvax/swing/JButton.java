@@ -30,13 +30,14 @@
 package charvax.swing;
 
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.Insets;
 import java.awt.Point;
 import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 
 import charva.awt.*;
 import charva.awt.event.ItemEvent;
-import charva.awt.event.KeyEvent;
 
 /**
  * An implementation of a "pushbutton" with a text label.
@@ -116,7 +117,7 @@ public class JButton
 
         term.setCursor(origin);
 
-        int colorpair = getCursesColor();
+        int colorpair = Toolkit.getCursesColor(getForeground(), getBackground());
         if (super.isEnabled()) {
             term.addString(" ", Toolkit.A_REVERSE, colorpair);
             term.addString(super.getLabelString(), Toolkit.A_REVERSE,
@@ -160,7 +161,7 @@ public class JButton
         	if ((ke_.getModifiers() & InputEvent.SHIFT_MASK) == 0) {
         		getParent().nextFocus();
         	} else {
-                getParent().previousFocus();
+                getParent().transferFocusBackward();
         	}
         	return;
         }
@@ -196,7 +197,7 @@ public class JButton
     public void debug(int level_) {
         for (int i = 0; i < level_; i++)
             System.err.print("    ");
-        System.err.println("JButton origin=" + _origin +
+        System.err.println("JButton origin=" + new Point(getX(), getY()) +
                 " size=" + getSize() + " label=" + super.getText());
     }
 
